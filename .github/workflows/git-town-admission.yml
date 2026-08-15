@@ -1,0 +1,117 @@
+name: git-town-candidate-admission
+
+on:
+  workflow_dispatch:
+    inputs:
+      acknowledgement:
+        description: Type EXECUTE_PINNED_CANDIDATE_IN_EPHEMERAL_RUNNER
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: git-town-candidate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  candidate-canary:
+    name: pinned-v24.0.0-disposable-canary
+    if: ${{ inputs.acknowledgement == 'EXECUTE_PINNED_CANDIDATE_IN_EPHEMERAL_RUNNER' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CANDIDATE: docs/git/admission/git-town-v24.0.0-linux-x86_64.json
+      RECEIPTS: artifacts/git-town-candidate
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.13"
+
+      - name: Validate immutable candidate metadata and mutation controls
+        run: |
+          python3 scripts/git-town/verify_admission.py \
+            --candidate "$CANDIDATE" \
+            --self-test \
+            --receipt "$RECEIPTS/static-verification.json"
+
+      - name: Read only statically admitted download subjects
+        id: candidate
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+
+          value = json.loads(Path("docs/git/admission/git-town-v24.0.0-linux-x86_64.json").read_text())
+          print(f"archive_url={value['archive']['downloadUrl']}")
+          print(f"archive_sha256={value['archive']['sha256']}")
+          print(f"archive_name={value['archive']['name']}")
+          print(f"checksums_url={value['checksumsAsset']['downloadUrl']}")
+          print(f"checksums_sha256={value['checksumsAsset']['sha256']}")
+          PY
+
+      - name: Download exact immutable release assets
+        run: |
+          mkdir -p .candidate-download "$RECEIPTS"
+          curl --fail --location --proto '=https' --proto-redir '=https' --tlsv1.2 \
+            --retry 3 --retry-all-errors \
+            --output ".candidate-download/${{ steps.candidate.outputs.archive_name }}" \
+            "${{ steps.candidate.outputs.archive_url }}"
+          curl --fail --location --proto '=https' --proto-redir '=https' --tlsv1.2 \
+            --retry 3 --retry-all-errors \
+            --output .candidate-download/checksums.txt \
+            "${{ steps.candidate.outputs.checksums_url }}"
+
+      - name: Verify checksums before extraction or execution
+        run: |
+          echo "${{ steps.candidate.outputs.checksums_sha256 }}  .candidate-download/checksums.txt" | sha256sum --check --strict
+          echo "${{ steps.candidate.outputs.archive_sha256 }}  .candidate-download/${{ steps.candidate.outputs.archive_name }}" | sha256sum --check --strict
+          grep -F "${{ steps.candidate.outputs.archive_sha256 }}" .candidate-download/checksums.txt | \
+            grep -F "${{ steps.candidate.outputs.archive_name }}" >/dev/null
+          python3 scripts/git-town/verify_admission.py \
+            --candidate "$CANDIDATE" \
+            --archive ".candidate-download/${{ steps.candidate.outputs.archive_name }}" \
+            --self-test \
+            --receipt "$RECEIPTS/archive-verification.json"
+
+      - name: Extract the already-verified archive
+        id: binary
+        run: |
+          mkdir -p .candidate-bin
+          tar -xzf ".candidate-download/${{ steps.candidate.outputs.archive_name }}" -C .candidate-bin
+          binary="$(find .candidate-bin -type f -name git-town -print -quit)"
+          test -n "$binary"
+          chmod 0755 "$binary"
+          echo "path=$binary" >> "$GITHUB_OUTPUT"
+
+      - name: Verify binary version and execute disposable no-push canaries
+        run: |
+          python3 scripts/git-town/verify_admission.py \
+            --candidate "$CANDIDATE" \
+            --binary "${{ steps.binary.outputs.path }}" \
+            --self-test \
+            --receipt "$RECEIPTS/binary-verification.json"
+          bash scripts/git-town/run_disposable_canary.sh \
+            "${{ steps.binary.outputs.path }}" \
+            "$CANDIDATE" \
+            "$RECEIPTS"
+
+      - name: Assert the consumer repository was not configured or synchronized
+        run: |
+          test ! -e .git-town.toml
+          test ! -e git-town.toml
+          test ! -e .git-branches.toml
+          git diff --exit-code
+          unexpected="$(git status --porcelain | grep -Ev '^\?\? artifacts/' | grep -Ev '^\?\? \.candidate-' || true)"
+          test -z "$unexpected"
+
+      - name: Upload public-safe candidate receipts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: git-town-v24.0.0-candidate-receipts
+          path: artifacts/git-town-candidate/
+          if-no-files-found: error
+          retention-days: 14

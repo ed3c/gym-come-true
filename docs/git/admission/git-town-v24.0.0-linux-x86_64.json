@@ -1,0 +1,99 @@
+{
+  "schema": "gym-come-true/git-town-admission-candidate/v1",
+  "candidateState": "CANDIDATE_METADATA_VERIFIED",
+  "productionUse": "DENY",
+  "runtimeAdmitted": false,
+  "release": {
+    "repository": "git-town/git-town",
+    "releaseId": 358702660,
+    "tag": "v24.0.0",
+    "tagCommit": "0f3e55f5a6bae5b319dd713a0606263d0551af66",
+    "immutable": true,
+    "prerelease": false,
+    "publishedAt": "2026-07-23T13:48:21Z",
+    "apiUrl": "https://api.github.com/repos/git-town/git-town/releases/358702660"
+  },
+  "archive": {
+    "assetId": 487215105,
+    "name": "git-town_linux_intel_64.tar.gz",
+    "platform": "linux",
+    "architecture": "x86_64",
+    "sizeBytes": 7640994,
+    "sha256": "0ed4936f010b42db2ef573e4b2abd951289f4980d95b8236a619429e2501cbc7",
+    "downloadUrl": "https://github.com/git-town/git-town/releases/download/v24.0.0/git-town_linux_intel_64.tar.gz"
+  },
+  "checksumsAsset": {
+    "assetId": 487215219,
+    "name": "checksums.txt",
+    "sizeBytes": 1442,
+    "sha256": "7532377166cb59dc01c74f86e3a71c54ba9567a461313a5d203a1ea99c571b24",
+    "downloadUrl": "https://github.com/git-town/git-town/releases/download/v24.0.0/checksums.txt"
+  },
+  "license": {
+    "spdx": "MIT",
+    "sourceRef": "v24.0.0",
+    "path": "LICENSE",
+    "byteLength": 1093,
+    "sha256": "eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791",
+    "reviewState": "DIRECT_LICENSE_IDENTIFIED",
+    "localEvidencePath": "docs/git/admission/upstream/git-town-v24.0.0-LICENSE.txt"
+  },
+  "dependencies": {
+    "manifestPath": "go.mod",
+    "sourceRef": "v24.0.0",
+    "goVersion": "1.26.1",
+    "byteLength": 3090,
+    "sha256": "5a7627e581f45c29750ceef8116ee0bdf61f0c36ead5b31d8f1f3fe33753c721",
+    "directModuleCount": 24,
+    "indirectModuleCount": 39,
+    "sbomState": "ABSENT",
+    "transitiveLicenseReview": "REVIEW_REQUIRED",
+    "noticesReview": "REVIEW_REQUIRED",
+    "localEvidencePath": "docs/git/admission/upstream/git-town-v24.0.0-go.mod"
+  },
+  "provenance": {
+    "releaseImmutableMetadata": true,
+    "assetDigestFromGitHubReleaseMetadata": true,
+    "artifactAttestation": "ABSENT",
+    "artifactSignature": "ABSENT",
+    "organizationLegalApproval": "ABSENT"
+  },
+  "runtime": {
+    "archiveMaterialized": false,
+    "archiveHashVerified": false,
+    "binaryExtracted": false,
+    "binarySha256": "NOT_EXERCISED",
+    "versionCommand": "NOT_EXERCISED",
+    "configState": "NOT_IMPLEMENTED",
+    "consumerRepositorySync": "NOT_EXERCISED"
+  },
+  "canaries": {
+    "disposableRepository": "NOT_EXERCISED",
+    "branchHierarchy": "NOT_EXERCISED",
+    "dryRunNoPushSync": "NOT_EXERCISED",
+    "actualNoPushSync": "NOT_EXERCISED",
+    "remoteImmobility": "NOT_EXERCISED",
+    "semanticConflictFailClosed": "NOT_EXERCISED",
+    "promptSuppression": "NOT_EXERCISED",
+    "cleanup": "NOT_EXERCISED",
+    "consumerWorktreeAndLease": "NOT_EXERCISED",
+    "publication": "NOT_EXERCISED"
+  },
+  "policy": {
+    "mutableLatestReference": false,
+    "autoResolve": false,
+    "defaultPush": false,
+    "backgroundSyncEnabled": false,
+    "publicationEnabled": false,
+    "mergeEnabled": false,
+    "shipEnabled": false
+  },
+  "observedAt": "2026-08-15",
+  "sources": [
+    "https://api.github.com/repos/git-town/git-town/releases/358702660",
+    "https://api.github.com/repos/git-town/git-town/git/refs/tags/v24.0.0",
+    "https://api.github.com/repos/git-town/git-town/contents/LICENSE?ref=v24.0.0",
+    "https://api.github.com/repos/git-town/git-town/contents/go.mod?ref=v24.0.0"
+  ],
+  "note": "This record proves exact upstream candidate metadata only. It does not prove that the archive or binary was materialized, executed, legally approved, configured in gym-come-true, synchronized against a consumer branch, published, merged, shipped, or production-admitted."
+}

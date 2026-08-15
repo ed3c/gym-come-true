@@ -3,270 +3,210 @@
 ## Current decision
 
 ```yaml
-state: BLOCKED_ABSENT_EXECUTABLE
+schema: gym-come-true/git-town-admission-state/v1
+state: CANDIDATE_METADATA_VERIFIED_RUNTIME_BLOCKED
 runtime_admitted: false
-config_admitted: false
+consumer_config_admitted: false
+candidate_metadata_verified: true
+archive_materialized_in_current_environment: false
+binary_executed_in_current_environment: false
 live_canaries_exercised: false
 background_sync_enabled: false
 publication_enabled: false
+production_use: DENY
 ```
 
-The repository has adopted the shared method at the documentation/policy layer only. It has not admitted a Git Town executable.
+The repository has advanced from an unknown tool reference to one exact upstream **candidate**. This is not runtime admission. No Git Town command has executed against `gym-come-true`, no consumer `.git-town.toml` exists, and no Worker may report Git Town synchronization, publication, merge, ship, promotion, or rollback authority.
 
-## Canonical method evidence
+## Canonical method and repository evidence
+
+| Subject | Authority |
+|---|---|
+| Portable Worker method | `ed3c/skills-shared/skills/git-town-stacked-pr-worker/SKILL.md` |
+| Repository policy | `docs/git/REPO_PROFILE.md` |
+| Molecular branch graph | `docs/git/STACKED_PRS.md` |
+| Worker protocol | `docs/git/WORKER_PROTOCOL.md` |
+| Exact candidate packet | `docs/git/admission/git-town-v24.0.0-linux-x86_64.json` |
+| Tagged direct-license bytes | `docs/git/admission/upstream/git-town-v24.0.0-LICENSE.txt` |
+| Tagged dependency manifest | `docs/git/admission/upstream/git-town-v24.0.0-go.mod` |
+| Static/archive/binary verifier | `scripts/git-town/verify_admission.py` |
+| Disposable local-only canary | `scripts/git-town/run_disposable_canary.sh` |
+| Manual hosted canary | `.github/workflows/git-town-admission.yml` |
+
+Do not copy the shared Skill into this repository. A consumer-local copy would shadow the canonical method.
+
+## Exact upstream candidate
 
 ```yaml
-shared_repository: ed3c/skills-shared
-skill_path: skills/git-town-stacked-pr-worker/SKILL.md
-resolved_ref: main
-observed_blob_sha: eb2d915bca3e8a3938625f7d33a10fae95a15769
-consumer_shadow_copy: denied
+upstream:
+  repository: git-town/git-town
+  release_id: 358702660
+  tag: v24.0.0
+  tag_commit: 0f3e55f5a6bae5b319dd713a0606263d0551af66
+  release_immutable_metadata: true
+  prerelease: false
+  published_at: 2026-07-23T13:48:21Z
+archive:
+  asset_id: 487215105
+  name: git-town_linux_intel_64.tar.gz
+  platform: linux
+  architecture: x86_64
+  size_bytes: 7640994
+  sha256: 0ed4936f010b42db2ef573e4b2abd951289f4980d95b8236a619429e2501cbc7
+checksums_asset:
+  asset_id: 487215219
+  name: checksums.txt
+  size_bytes: 1442
+  sha256: 7532377166cb59dc01c74f86e3a71c54ba9567a461313a5d203a1ea99c571b24
+direct_license:
+  spdx: MIT
+  tagged_bytes_length: 1093
+  tagged_bytes_sha256: eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791
+dependency_manifest:
+  path: go.mod
+  source_ref: v24.0.0
+  go_version: 1.26.1
+  direct_modules: 24
+  indirect_modules: 39
+  byte_length: 3090
+  sha256: 5a7627e581f45c29750ceef8116ee0bdf61f0c36ead5b31d8f1f3fe33753c721
 ```
 
-`main` is sufficient to identify what was inspected during this documentation task, but it is not an executable identity. Runtime admission must pin an immutable Git Town release and its evidence independently.
+These values identify a candidate for later verification. They do not prove archive download, executable identity, transitive-license acceptance, organization legal approval, or consumer-repository behavior.
 
-## Admission matrix
+## Evidence-state matrix
 
-| Evidence dimension | Current state | Required before admission |
+| Evidence lane | Current state | Required next evidence |
 |---|---|---|
-| Git Town source repository | `ABSENT` | exact upstream/package source |
-| Version/tag/commit | `ABSENT` | immutable version; never `latest` |
-| Platform/architecture | `ABSENT` | execution-host subjects |
-| Executable/package checksum | `ABSENT` | SHA-256 or host-owned immutable receipt |
-| Provenance | `ABSENT` | release/package provenance |
-| Direct license bytes/digest | `ABSENT` | exact license and SHA-256 |
-| Transitive dependency/SBOM review | `ABSENT` | result and evidence reference |
-| Required notices | `ABSENT` | reviewed notice set |
-| Organization/legal approval | `ABSENT` | explicit decision for intended use |
-| Binary version command | `NOT_EXERCISED` | exact output bound to executable hash |
-| `.git-town.toml` | `NOT_IMPLEMENTED` | generated only after policy admission |
-| Feature/perennial strategy canary | `NOT_EXERCISED` | observed behavior in disposable test repo |
-| Linked-worktree canary | `NOT_EXERCISED` | primary checkout remains untouched |
-| Branch/path lease canary | `NOT_EXERCISED` | duplicate/overlap controls fail closed |
-| Dry-run no-push sync | `NOT_EXERCISED` | before/after graph and no remote movement |
-| Planted conflict canary | `NOT_EXERCISED` | semantic conflict stops without auto-resolution |
-| Prompt suppression canary | `NOT_EXERCISED` | no editor/credential prompt |
-| Timeout canary | `NOT_EXERCISED` | bounded termination and receipt |
-| Publication canary | `NOT_EXERCISED` | two guards + one operation + post-push verify |
-| Cleanup/residue canary | `NOT_EXERCISED` | safe lease/worktree cleanup evidence |
+| Shared canonical Skill | `PASS` | Re-read when its exact content changes |
+| Exact release/tag/asset metadata | `CANDIDATE_METADATA_VERIFIED` | Revalidate before materialization |
+| Tagged MIT bytes | `DIRECT_LICENSE_IDENTIFIED` | Human/legal acceptance for intended use |
+| Tagged dependency manifest | `MANIFEST_HASH_VERIFIED` | SBOM, transitive license, notices, vulnerability and policy review |
+| Artifact attestation/signature | `ABSENT` | Explicit policy decision or trustworthy evidence |
+| Organization legal approval | `ABSENT` | Human-owned approval |
+| Archive bytes | `NOT_EXERCISED` | Verify exact size and SHA-256 before extraction |
+| Binary SHA/version | `NOT_EXERCISED` | Extract only from verified archive and require exact `24.0.0` output |
+| Disposable branch hierarchy | `NOT_EXERCISED` | Subject-bound local receipt |
+| Dry-run no-push sync | `NOT_EXERCISED` | Before/after graph and unchanged local bare remote |
+| Actual no-push sync | `NOT_EXERCISED` | Exact command, ancestry and remote immobility receipt |
+| Semantic conflict fail-closed | `NOT_EXERCISED` | Non-zero exit and preserved inspectable blocked state |
+| Prompt suppression | `NOT_EXERCISED` | No editor or credential prompt |
+| Consumer worktree/lease | `NOT_EXERCISED` | Host-owned linked-worktree and lease canaries |
+| Consumer `.git-town.toml` | `NOT_IMPLEMENTED` | Version-specific config after all prior gates |
+| Consumer repository sync | `NOT_EXERCISED` | Human-approved exact-head no-push canary |
+| Publication canary | `NOT_EXERCISED` | Separate two-guard publication packet or `SKIPPED_BY_POLICY` |
+| Background synchronization | `DISABLED` | Separate implementation and admission |
+| Merge/ship/promotion/rollback | `HUMAN_ADMIT` | Never Worker-owned |
 
-No unchecked row may be inferred as complete.
+No weaker row may stand in for a stronger row:
 
-## Why `.git-town.toml` is absent
+```text
+CANDIDATE_METADATA_VERIFIED != BINARY_VERIFIED
+BINARY_VERIFIED != DISPOSABLE_CANARY_PASS
+DISPOSABLE_CANARY_PASS != CONSUMER_SYNC_PASS
+CONSUMER_SYNC_PASS != PUBLICATION_ALLOW
+PUBLICATION_ALLOW != MERGE_OR_SHIP
+MIT != TRANSITIVE_OR_ORGANIZATION_LEGAL_APPROVAL
+```
 
-A configuration file would imply branch-strategy and tool behavior before the repository has established:
+## Static verification
 
-- which exact Git Town version is executable;
-- how that version interprets configuration;
-- whether feature-branch rewrite is allowed;
-- whether protected/perennial strategy is compatible with GitHub policy;
-- whether creation/sync/push behavior matches the shared Worker contract;
-- whether the executable and dependency/legal evidence is admitted.
+```bash
+python3 -m py_compile scripts/git-town/verify_admission.py
+python3 scripts/git-town/verify_admission.py \
+  --candidate docs/git/admission/git-town-v24.0.0-linux-x86_64.json \
+  --self-test \
+  --receipt /tmp/git-town-candidate-static.json
+bash -n scripts/git-town/run_disposable_canary.sh
+```
 
-Therefore:
+Static PASS proves only that:
+
+- repository-owned candidate fields match the pinned subjects;
+- retained license and `go.mod` bytes match their hashes and lengths;
+- unsafe policy flags remain false;
+- runtime and canary states remain non-admitted;
+- fourteen planted mutations fail closed;
+- workflow/canary surfaces retain manual-only, read-only, no-push and no-consumer-target boundaries.
+
+Static PASS cannot prove archive materialization, binary execution, Git Town behavior, hosted runner allocation, worktree isolation, publication or legal approval.
+
+## Optional exact-byte verification
+
+An authorized operator may provide exact local bytes without committing them:
+
+```bash
+python3 scripts/git-town/verify_admission.py \
+  --candidate docs/git/admission/git-town-v24.0.0-linux-x86_64.json \
+  --archive /approved/path/git-town_linux_intel_64.tar.gz \
+  --self-test \
+  --receipt /tmp/git-town-archive-verification.json
+
+python3 scripts/git-town/verify_admission.py \
+  --candidate docs/git/admission/git-town-v24.0.0-linux-x86_64.json \
+  --binary /approved/path/git-town \
+  --self-test \
+  --receipt /tmp/git-town-binary-verification.json
+```
+
+The verifier rejects symlinks, non-regular files, archive traversal, links inside the archive, wrong size/hash, multiple executable members, non-executable binaries, command timeout and non-`24.0.0` output. Even a successful binary receipt keeps `runtimeAdmitted=false` and `productionUse=DENY`.
+
+## Disposable canary
+
+After exact binary verification, the canary may run only against temporary local repositories and local bare remotes:
+
+```bash
+bash scripts/git-town/run_disposable_canary.sh \
+  /approved/path/git-town \
+  docs/git/admission/git-town-v24.0.0-linux-x86_64.json \
+  /tmp/git-town-candidate-receipts
+```
+
+The canary is designed to prove:
+
+- local `main -> feature-a -> feature-b` hierarchy detection;
+- dry-run and actual `--stack --non-interactive --no-auto-resolve --no-push` synchronization;
+- unchanged local bare-remote refs;
+- a planted semantic conflict exits non-zero and preserves inspectable blocked state;
+- prompt suppression variables are active;
+- no `ship`, `continue`, `skip`, `undo`, consumer publication, or consumer sync occurs;
+- temporary repositories are removed on process exit.
+
+Disposable canary PASS still does not authorize consumer configuration or synchronization.
+
+## Manual hosted workflow
+
+`.github/workflows/git-town-admission.yml` is `workflow_dispatch` only and requires the exact acknowledgement:
+
+```text
+EXECUTE_PINNED_CANDIDATE_IN_EPHEMERAL_RUNNER
+```
+
+The workflow has read-only repository permissions, consumes no repository secret, pins all GitHub Actions by commit SHA, downloads only URLs already present in the verified candidate, restricts redirects to HTTPS, verifies the checksums asset and archive before extraction, verifies the binary before execution, runs only the disposable canary, asserts no consumer Git Town configuration or tracked mutation, and uploads public-safe receipts.
+
+Workflow existence or queueing is `NOT_EXERCISED`. A runner-budget block is infrastructure evidence, not tool PASS or code FAIL. Do not dispatch the workflow until the candidate execution and supply-chain review are explicitly authorized.
+
+## Why `.git-town.toml` remains absent
 
 ```text
 .git-town.toml = NOT_IMPLEMENTED
 ```
 
-until the exact runtime and canaries are approved.
+The consumer configuration would prematurely imply that the repository has admitted an exact executable, version-specific schema, rewrite strategy, no-push behavior, conflict boundary, worktree/lease controls, transitive/legal review and consumer synchronization. The disposable canary creates configuration only inside temporary repositories.
 
-## Proposed policy after admission
+## Remaining admission procedure
 
-This proposal is non-executable until approved:
+1. Materialize and verify the exact checksums/archive bytes.
+2. Verify the extracted executable hash and version output.
+3. Complete SBOM/transitive-license/notices/vulnerability/policy review.
+4. Obtain organization legal approval or an explicit rejection.
+5. Run and review the disposable no-push/conflict canary receipts.
+6. Implement and exercise host-owned linked-worktree, branch lease and path lease controls.
+7. Generate a version-specific consumer `.git-town.toml`, record its digest and run repository doctor.
+8. Run one Human-approved, exact-head, no-push consumer sync and all applicable repository evals.
+9. Exercise publication separately or record `SKIPPED_BY_POLICY` with reason.
+10. Obtain Human Admit for runtime use. Merge, ship, release promotion and production rollback remain separate Human Admit operations.
 
-```yaml
-main-branch: main
-feature-strategy: rebase
-perennial-strategy: ff-only
-new-branch-push: false
-sync-default-scope: owned-stack
-sync-auto-resolve: false
-sync-push: false
-background-sync: false
-```
+## Rollback
 
-The actual syntax must be generated from the admitted Git Town version’s official schema, not from memory.
-
-## Required admission procedure
-
-### 1. Select exact executable
-
-Record:
-
-- source/package repository;
-- immutable version/tag/commit;
-- platform and architecture;
-- acquisition method;
-- checksum;
-- provenance;
-- version-command output.
-
-### 2. Review policy and legal evidence
-
-Record separately:
-
-- direct license text and digest;
-- transitive dependencies/SBOM;
-- notices;
-- host/package-manager/service terms;
-- organization legal approval.
-
-A permissive direct license does not automatically complete the other dimensions.
-
-### 3. Create disposable canary repository
-
-Do not make `gym-come-true` the first experimental subject.
-
-Canary graph:
-
-```text
-main
-└── feature-a
-    └── feature-b
-```
-
-Plant:
-
-- one clean synchronization;
-- one stale parent;
-- one deterministic semantic conflict;
-- one dirty worktree;
-- one duplicate lease;
-- one sibling path overlap;
-- one prompt attempt;
-- one timeout;
-- one unexpected remote movement.
-
-### 4. Exercise worktree and leases
-
-Prove:
-
-- primary checkout mutation denied;
-- linked worktree is isolated;
-- branch writer lease is exclusive;
-- path overlap fails closed;
-- lease expiry/heartbeat/takeover is deterministic;
-- blocked state is preserved.
-
-### 5. Exercise no-push synchronization
-
-Require:
-
-- exact executable hash/version;
-- non-interactive mode;
-- no auto-resolve;
-- bounded timeout;
-- one owned stack;
-- no remote movement;
-- before/after graph;
-- post-sync ancestry;
-- eval rerun.
-
-Expected safe outcomes:
-
-```text
-SYNCED
-NO_CHANGE
-BLOCKED_CONFLICT
-BLOCKED_DIRTY
-BLOCKED_TIMEOUT
-BLOCKED_PROMPT
-BLOCKED_ANCESTRY
-```
-
-### 6. Exercise conflict boundary
-
-The planted semantic conflict must:
-
-- stop synchronization;
-- preserve the worktree;
-- emit `BLOCKED_CONFLICT`;
-- avoid automatic continue/skip/undo/ship;
-- hand exact subjects to a human.
-
-### 7. Exercise publication gate
-
-In a disposable repository or authorized test branch:
-
-- complete task packet;
-- exact local head and verification;
-- explicit `--publish`;
-- environment guard;
-- one allowed remote operation;
-- fetch and verify pushed head/ancestry;
-- do not merge or mark ready unless separately authorized.
-
-### 8. Exercise cleanup and rollback
-
-Prove:
-
-- safe cleanup after success/no-change;
-- preserve blocked worktree;
-- release leases;
-- refuse drifted rollback;
-- no deletion of uncommitted human state.
-
-### 9. Admit repository config
-
-Only after canaries:
-
-- create version-specific `.git-town.toml`;
-- record file digest;
-- run repository doctor;
-- run one no-push stack sync;
-- run repository evals;
-- attach subject-bound receipts;
-- obtain Human Admit.
-
-## Required runtime report
-
-```yaml
-git_town_admission:
-  executable:
-    source: REQUIRED_ON_ADMISSION
-    version: REQUIRED_ON_ADMISSION
-    sha256: REQUIRED_ON_ADMISSION
-    platform: REQUIRED_ON_ADMISSION
-    architecture: REQUIRED_ON_ADMISSION
-    provenance_ref: REQUIRED_ON_ADMISSION
-  legal:
-    direct_license: REQUIRED_ON_ADMISSION
-    direct_license_sha256: REQUIRED_ON_ADMISSION
-    sbom_or_transitive_review: REQUIRED_ON_ADMISSION
-    notices_review: REQUIRED_ON_ADMISSION
-    legal_approval: REQUIRED_ON_ADMISSION
-  canaries:
-    worktree_and_lease: REQUIRED_ON_ADMISSION
-    no_push_sync: REQUIRED_ON_ADMISSION
-    conflict_fail_closed: REQUIRED_ON_ADMISSION
-    prompt_suppression: REQUIRED_ON_ADMISSION
-    timeout: REQUIRED_ON_ADMISSION
-    publication: REQUIRED_ON_ADMISSION_OR_SKIPPED_BY_POLICY_WITH_REASON
-    cleanup_and_rollback: REQUIRED_ON_ADMISSION
-  repository:
-    config_sha256: REQUIRED_ON_ADMISSION
-    doctor: REQUIRED_ON_ADMISSION
-    no_push_sync: REQUIRED_ON_ADMISSION
-    evals: REQUIRED_ON_ADMISSION_AND_EXACT_HEAD
-  human_admit:
-    reviewer_ref: REQUIRED_ON_ADMISSION
-    decision: ADMIT_OR_REJECT
-```
-
-## Non-admission claims
-
-The following do not prove runtime adoption:
-
-- shared Skill URL resolves;
-- this document exists;
-- a branch graph is documented;
-- a package is available in a package manager;
-- a binary exists somewhere on a host;
-- a sync command is described;
-- a local Git rebase succeeded;
-- a PR was created through the GitHub connector;
-- an Actions workflow is queued;
-- a model says the setup is correct.
-
-Current truthful state remains `BLOCKED_ABSENT_EXECUTABLE`.
+Removing the Issue #21 candidate files, verifier, canary and manual workflow returns the child branch to PR #20’s documentation-only state. No product data, user state, remote branch or production system depends on this candidate packet.

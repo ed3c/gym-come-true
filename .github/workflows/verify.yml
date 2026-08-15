@@ -69,7 +69,7 @@ jobs:
 
   ios:
     name: ios-framework-and-host
-    runs-on: macos-15
+    runs-on: macos-26
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4

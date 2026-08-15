@@ -23,6 +23,7 @@ from typing import BinaryIO, NoReturn
 
 BUFFER_SIZE = 1024 * 1024
 DEFAULT_MAX_BYTES = 512 * 1024 * 1024
+READ_ONLY_MODE = stat.S_IRUSR | stat.S_IRGRP | stat.S_IROTH
 SLUG = re.compile(r"^[a-z0-9][a-z0-9._-]{1,127}$")
 HTTPS = re.compile(r"^https://[^\s]+$")
 SYNTHETIC_URL = re.compile(r"^(?:https|repo)://[^\s]+$")
@@ -59,6 +60,24 @@ def safe_slug(value: str) -> str:
             "expected 2-128 lowercase slug characters: a-z, 0-9, dot, underscore, hyphen"
         )
     return value
+
+
+def ensure_directory_without_symlink(path: Path, label: str) -> None:
+    if path.is_symlink():
+        fail(f"{label} cannot be a symlink: {path}")
+    path.mkdir(parents=True, exist_ok=True)
+    if path.is_symlink() or not path.is_dir():
+        fail(f"{label} is not a trusted directory: {path}")
+
+
+def fsync_directory(path: Path) -> None:
+    if not hasattr(os, "O_DIRECTORY"):
+        return
+    descriptor = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
 
 
 def open_regular_file_without_following_symlinks(path: Path) -> BinaryIO:
@@ -99,9 +118,9 @@ def capture_bytes(
     if source_path.is_symlink():
         fail(f"symlink input is not admitted: {source_path}")
 
-    archive_root.mkdir(parents=True, exist_ok=True)
+    ensure_directory_without_symlink(archive_root, "archive root")
     source_directory = archive_root / source_id
-    source_directory.mkdir(parents=True, exist_ok=True)
+    ensure_directory_without_symlink(source_directory, "source archive directory")
 
     digest = hashlib.sha256()
     size = 0
@@ -129,7 +148,7 @@ def capture_bytes(
 
         sha256 = digest.hexdigest()
         target = source_directory / f"{sha256}{suffix}"
-        if target.exists():
+        if target.exists() or target.is_symlink():
             existing_sha, existing_size = hash_file(target)
             if existing_sha != sha256 or existing_size != size:
                 fail(f"content-address collision or corrupted archive target: {target}")
@@ -137,16 +156,35 @@ def capture_bytes(
         else:
             os.replace(temporary_path, target)
         temporary_path = None
+
+        archived_sha, archived_size = hash_file(target)
+        if archived_sha != sha256 or archived_size != size:
+            fail(f"archived bytes do not match the capture receipt: {target}")
+        os.chmod(target, READ_ONLY_MODE)
+        fsync_directory(source_directory)
         return target, sha256, size
     finally:
         if temporary_path is not None:
             temporary_path.unlink(missing_ok=True)
 
 
-def write_json_atomically(path: Path, payload: dict[str, object]) -> None:
+def write_json_atomically(
+    path: Path,
+    payload: dict[str, object],
+    *,
+    replace_manifest: bool,
+) -> None:
+    if path.parent.is_symlink():
+        fail(f"manifest parent cannot be a symlink: {path.parent}")
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.is_symlink():
         fail(f"manifest output cannot be a symlink: {path}")
+    if path.exists() and not replace_manifest:
+        fail(
+            f"manifest already exists; refuse silent evidence-receipt replacement: {path}. "
+            "Use --replace-manifest only after explicit operator review."
+        )
+
     descriptor, temporary_name = tempfile.mkstemp(
         prefix=f".{path.name}.",
         suffix=".tmp",
@@ -160,6 +198,7 @@ def write_json_atomically(path: Path, payload: dict[str, object]) -> None:
             output.flush()
             os.fsync(output.fileno())
         os.replace(temporary_path, path)
+        fsync_directory(path.parent)
     finally:
         temporary_path.unlink(missing_ok=True)
 
@@ -190,6 +229,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-bytes", type=int, default=DEFAULT_MAX_BYTES)
     parser.add_argument("--synthetic", action="store_true")
     parser.add_argument("--redistributable", action="store_true")
+    parser.add_argument(
+        "--replace-manifest",
+        action="store_true",
+        help="Explicitly replace an existing manifest receipt after operator review.",
+    )
     return parser
 
 
@@ -255,7 +299,11 @@ def main(argv: list[str] | None = None) -> int:
             "modelGenerated": False,
             "note": arguments.note.strip(),
         }
-        write_json_atomically(arguments.manifest_out, manifest)
+        write_json_atomically(
+            arguments.manifest_out,
+            manifest,
+            replace_manifest=bool(arguments.replace_manifest),
+        )
         print(
             json.dumps(
                 {

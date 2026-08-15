@@ -1,238 +1,443 @@
 # Delivery roadmap
 
-## Delivery rule
+## Operating rule
 
-The roadmap is dependency-ordered. A later issue cannot weaken the evidence, safety, privacy, or rights contract delivered by Issue #1.
+The roadmap is dependency-ordered and evidence-gated. A later slice cannot weaken safety, privacy, rights, source-lineage, or branch-lineage contracts delivered by an earlier slice.
+
+Actual GitHub Issue numbers are authoritative:
 
 ```text
-#1 Cross-platform foundation
- ├─> #2 Taiwan supplement evidence and reviewed rule pack
- ├─> #3 iOS Vision UI, HealthKit, reminders, and AlarmKit assessment
- ├─> #4 Android Health Connect and alarm/reboot reliability
- ├─> #5 Copyright-clean exercise catalog and licensed media pipeline
- ├─> #6 Private LLM explanation gateway and adversarial evals
- ├─> #7 Subscription, privacy, store, and release operations
- └─> #8 Creator-market validation and launch evidence
+#1   KMP foundation
+#8   Taiwan supplement evidence and reviewed rule pack
+#9   iOS native evidence / HealthKit / reminders / AlarmKit assessment
+#10  Android Health Connect / reminder reliability
+#11  Copyright-clean exercise catalog / licensed media
+#12  Private LLM explanation gateway / adversarial evals
+#13  Entitlements / privacy / stores / release operations
+#14  Creator-market validation / launch evidence
+#19  Directory state machines and Git Town stacked delivery index
+```
 
-#2 + #3 + #4 + #5 + #6 + #7
+See [GitHub Issue / PR index](github-issue-index.md) for duplicate/superseded issue notes and [Stacked PR index](git/STACKED_PRS.md) for branch-level work packets.
+
+## Current published graph
+
+```text
+main
+└── PR #2 / Issue #1
+    agent/bootstrap-kmp-fitness-platform
+    └── PR #15 / Issue #8
+        agent/taiwan-supplement-evidence
+        └── PR #16 / Issue #8
+            agent/taiwan-source-lifecycle
+            └── Issue #19
+                agent/document-git-town-delivery-graph
+```
+
+All published PRs remain Draft and unmerged.
+
+## Dependency graph
+
+```mermaid
+flowchart TB
+    F[#1 / PR #2<br/>KMP foundation]
+    TW[#8<br/>Taiwan evidence + reviewed rule pack]
+    IOS[#9<br/>iOS native evidence / HealthKit / reminders]
+    AND[#10<br/>Android Health Connect / reliability]
+    CAT[#11<br/>Rights-clean catalog / media]
+    LLM[#12<br/>Private explanation gateway]
+    REL[#13<br/>Entitlements / privacy / store release]
+    MKT[#14<br/>Creator-market evidence]
+    DOC[#19<br/>Directory state machines / Git Town index]
+    RC[STORE_RELEASE_CANDIDATE]
+
+    F --> TW
+    F --> IOS
+    F --> AND
+    F --> CAT
+    F --> MKT
+    TW --> LLM
+    TW --> REL
+    IOS --> REL
+    AND --> REL
+    CAT --> REL
+    LLM --> REL
+    MKT --> REL
+    F --> DOC
+    TW --> DOC
+    REL --> RC
+```
+
+Independent domain work is represented as sibling stacks from the nearest common parent. It must not be serialized merely to make the branch graph visually simple.
+
+## Phase 0 — Published foundation and evidence contracts
+
+### Issue #1 / PR #2 — Auditable KMP foundation
+
+**State:** Open Draft PR.  
+**Branch:** `agent/bootstrap-kmp-fitness-platform` → `main`.
+
+Delivered:
+
+- shared KMP domain/UI and tests;
+- Android OCR/barcode candidate flow and inexact reminder;
+- iOS and Web hosts;
+- default-deny source/media governance;
+- no client provider secret, automatic dosing, scraped media, Health API, or exact-alarm completion claim.
+
+Gate:
+
+- exact-head hosted checks must execute and pass;
+- product/release claims remain bounded by the capability matrix.
+
+### Issue #8 / PR #15 — Taiwan evidence contract
+
+**State:** Open Draft PR.  
+**Branch:** `agent/taiwan-supplement-evidence` → `agent/bootstrap-kmp-fitness-platform`.
+
+Delivered:
+
+- product variant and serving schemas;
+- consent-aware corpus contract;
+- field-level OCR accuracy/correction metrics;
+- deterministic rule-pack admission;
+- seven safety cases;
+- reviewer/wording/rollback gates;
+- versioned decision receipts.
+
+Missing:
+
+- real consented corpus;
+- exact official source bytes and mappings;
+- qualified reviewer;
+- production rules and signatures.
+
+### Issue #8 / PR #16 — Immutable source and release lifecycle
+
+**State:** Open Draft PR.  
+**Branch:** `agent/taiwan-source-lifecycle` → `agent/taiwan-supplement-evidence`.
+
+Delivered:
+
+- mutable official candidates remain `CANDIDATE + DENY`;
+- local-only content-addressed source capture;
+- source/snapshot identity and exact mappings;
+- deterministic review/stage/active/suspend/revoke/expire/rollback lifecycle;
+- synthetic fixtures and hardening controls.
+
+Missing:
+
+- real MOHW/TFDA archive bytes;
+- exact reuse-rights decision;
+- verified official mappings;
+- qualified clinical review and signed activation;
+- hosted exact-head execution.
+
+### Issue #19 — Documentation and Git Town delivery graph
+
+**State:** Documentation branch created from PR #16 exact head.  
+**Branch:** `agent/document-git-town-delivery-graph`.
+
+Outcome:
+
+- root README maps directories to state machines and data flows;
+- AGENTS routes branch work through the shared Git Town Skill;
+- `docs/git/` contains repository profile, admission state, Worker protocol, work-packet template, and molecular stack graph;
+- roadmap numbers match actual Issues #8–#14;
+- stale iOS architecture paths are removed.
+
+Git Town executable/runtime adoption remains blocked until exact version/provenance admission and live canaries.
+
+## Phase 1 — Issue #8 reviewed Taiwan rule-pack stack
+
+```text
+agent/taiwan-source-lifecycle
+└── agent/tw-consent-corpus-contract
+    └── agent/tw-ocr-evaluation-contract
+        └── agent/tw-reviewed-rule-pack
+```
+
+### TW1 — Consent corpus contract
+
+State transition:
+
+```text
+CORPUS_UNKNOWN -> CONSENT_CONTRACT_DRAFT
+```
+
+Work:
+
+- consent receipt schema;
+- withdrawal and deletion receipts;
+- encrypted retention policy;
+- representative-corpus sampling plan outside Git;
+- no raw image in repository;
+- tests for unknown/withdrawn/expired consent.
+
+Gate: privacy/legal review and operational storage/deletion environment.
+
+### TW2 — OCR evaluation contract
+
+State transition:
+
+```text
+CONSENT_CONTRACT_DRAFT -> OCR_EVALUATION_DRAFT
+```
+
+Work:
+
+- Android ML Kit and Apple Vision field observations;
+- first-pass accuracy, correction requirement, correction completion, unresolved fields;
+- device/model/version identity;
+- aggregate report without image or raw-label leakage;
+- negative controls for fabricated or mixed-engine results.
+
+Gate: real consented corpus and device execution.
+
+### TW3 — Reviewed Taiwan rule pack
+
+State transition:
+
+```text
+OCR_EVALUATED -> REVIEWED_TAIWAN_RULE_PACK
+```
+
+Work:
+
+- immutable official snapshots;
+- exact source-field mappings and excerpt hashes;
+- deterministic production rules and conflict precedence;
+- bounded effective window;
+- signed source/legal/clinical/wording/test bundle;
+- stage/activate/revoke/rollback receipts;
+- incident and kill-switch drill.
+
+Gate: qualified Taiwan reviewer, conflict-of-interest evidence, legal source scope, exact-head tests. No model-created rules or personal dose advice.
+
+## Phase 2 — Native platform sibling stacks
+
+### Issue #9 — iOS
+
+```text
+agent/bootstrap-kmp-fitness-platform
+└── agent/ios-evidence-bridge
+    └── agent/ios-healthkit-minimal
+        └── agent/ios-reminder-alarmkit-assessment
+```
+
+Terminal slices:
+
+1. **Evidence bridge:** structured Vision candidates reach shared confirmation state; temporary images are released.
+2. **Minimal HealthKit:** only user-selected records required by a visible feature; consent/revocation/export/delete.
+3. **Reminder/AlarmKit:** recurrence, cancellation, timezone, permission denial, capability detection, honest fallback, real-device/store evidence.
+
+Hard limits: no default photo upload, broad HealthKit collection, guaranteed alarm, or challenge-to-dismiss claim.
+
+### Issue #10 — Android
+
+```text
+agent/bootstrap-kmp-fitness-platform
+└── agent/android-health-connect-minimal
+    └── agent/android-reminder-reliability
+```
+
+Terminal slices:
+
+1. **Minimal Health Connect:** explicit availability/permission, user-selected records, no hidden background collection.
+2. **Reliability harness:** recurrence, reboot/timezone/package changes, OEM/API matrix, measured delivery receipts, exact-alarm need assessment.
+
+Hard limits: no universal-device reliability claim or default exact-alarm special access.
+
+## Phase 3 — Issue #11 rights-clean catalog stack
+
+```text
+agent/bootstrap-kmp-fitness-platform
+└── agent/exercise-taxonomy-contract
+    └── agent/exercise-top50-content
+        └── agent/exercise-media-admission
+```
+
+### C1 — Taxonomy
+
+- canonical exercise, muscle, equipment, movement, and difficulty identifiers;
+- schema/version/migration contract;
+- deterministic import validation.
+
+### C2 — Top-50 metadata
+
+- independently authored Traditional Chinese and English instructions;
+- per-record/per-field provenance;
+- accessibility text;
+- retention/usefulness validation before breadth.
+
+### C3 — Media admission
+
+- executed asset rights or commissioned first-party assets;
+- content-addressed originals and deterministic derivatives;
+- platform/territory/term/derivative/CDN scope;
+- attribution and takedown/kill-switch drill;
+- signed catalog/media manifests.
+
+Hard limits: no scraped mirror, vendor hotlink, or repository-level license used as proof for every asset.
+
+## Phase 4 — Issue #12 explanation gateway stack
+
+Depends on TW3’s admitted decision receipt.
+
+```text
+agent/tw-reviewed-rule-pack
+└── agent/explanation-gateway-contract
+    └── agent/explanation-gateway-provider
+        └── agent/explanation-gateway-adversarial-evals
+```
+
+Terminal slices:
+
+1. authenticated receipt-only API and minimized schema;
+2. provider abstraction, protected secret boundary, timeout/cost/fallback/audit;
+3. adversarial tests for missing evidence, IU, medication, symptoms, prompt injection, diagnosis, dose advice, and warning suppression.
+
+Hard limits: no client key, raw photo upload, model-created rules, or model-owned decisions.
+
+## Phase 5 — Issue #13 entitlement, privacy, and release convergence
+
+```text
+agent/bootstrap-kmp-fitness-platform
+└── agent/entitlement-contract
+    └── agent/privacy-delete-export
+        └── agent/store-release-candidate   # convergence after admitted domain heads
+```
+
+### R1 — Entitlement contract
+
+- StoreKit/Play/Web receipt DTOs;
+- server validation;
+- replay/idempotency;
+- restore/refund/cancel/offline-grace projection;
+- no client-only entitlement authority.
+
+### R2 — Account data lifecycle
+
+- data inventory and purpose;
+- consent history;
+- export/delete;
+- retention and regional storage;
+- analytics/crash redaction;
+- privacy policy/forms matching runtime flow.
+
+### R3 — Store release candidate
+
+- admitted domain heads and exact merge order;
+- signing and protected secrets;
+- SBOM/vulnerability/provenance;
+- store forms, screenshots, listings, support, incident, rollback;
+- accessibility/localization/performance/offline/upgrade tests.
+
+Gate: Human Admit, provider/store accounts, device evidence, exact-head trusted checks.
+
+## Phase 6 — Issue #14 market evidence sibling stack
+
+```text
+agent/bootstrap-kmp-fitness-platform
+└── agent/market-interview-protocol
+    └── agent/creator-rights-contract
+        └── agent/market-experiment-ledger
+```
+
+Terminal slices:
+
+1. problem interviews and seven-day concierge protocol;
+2. creator contracts separating creation/posting/views/raw footage/paid usage/platform/territory/term and disclosure;
+3. aggregate cohort ledger for activation, paid conversion, refund, day-30 retention, contribution, and safety complaints.
+
+Hard limits: no hidden sponsorship, fabricated metrics/comments, copied CPM forecast, or scale decision based only on views/installs.
+
+## Final convergence
+
+```text
+admitted TW3
++ admitted iOS/Android slices
++ admitted catalog/media
++ evaluated explanation gateway
++ entitlement/privacy/store evidence
++ market evidence
+  -> agent/release-convergence-index
   -> STORE_RELEASE_CANDIDATE
 ```
 
-Issue numbers after #1 are reserved by the implementation sequence below and should be reconciled with the actual GitHub issue URLs before merge.
+The convergence branch owns only shared indexes, exact parent heads, merge ordering, release evidence, and rollback references. It must not silently repair domain failures.
 
-## #1 — Auditable KMP foundation
+## Git Town adoption roadmap
 
-**State:** implemented on `agent/bootstrap-kmp-fitness-platform`; draft PR and hosted checks pending.
+Documentation adoption:
 
-Acceptance:
+```text
+shared Skill resolved
+  -> repo profile
+  -> work-packet and branch graph
+  -> Worker laws
+  -> admission checklist
+```
 
-- shared KMP domain/UI and tests;
-- Android app with local OCR/barcode candidate flow and inexact reminder;
-- iOS and Web hosts;
-- default-deny source/media governance;
-- no automatic dosing, client LLM secret, scraped media, Health API, or exact-alarm completion claim;
-- exact-head hosted CI evidence.
+Runtime adoption remains:
 
-Rollback: return branch to base SHA `0148e135a4855a700bb666e1181e65611517507c`; no production data migration exists.
+```text
+ABSENT exact executable/version/provenance
+  -> legal/transitive/notices admission
+  -> .git-town.toml
+  -> linked-worktree/lease canary
+  -> dry-run no-push sync canary
+  -> planted conflict canary
+  -> guarded publication canary
+  -> ADMITTED runtime
+```
 
-## #2 — Taiwan supplement evidence and reviewed rule pack
+No step may be inferred from documentation presence.
 
-**Outcome:** convert Taiwan product labels and source documents into a versioned, reviewer-signed deterministic policy pack without introducing dose advice.
-
-Work:
-
-- define product-variant identity and serving schema;
-- collect consented representative Traditional Chinese labels;
-- measure OCR field accuracy and user correction rate;
-- archive primary-source documents with hashes and effective dates;
-- implement rule DSL, conflict precedence, expiry, rollback, and decision receipts;
-- obtain qualified health/legal review for wording and scope;
-- add false-positive, false-negative, ambiguity, medication-context, IU, and regression cases.
-
-Non-goals:
-
-- universal medication interaction engine;
-- personal dose recommendation;
-- model-generated rules;
-- unsupported product authenticity claim.
-
-Gate: no rule becomes `CLINICALLY_REVIEWED` without source, reviewer, version, tests, effective date, and rollback.
-
-## #3 — iOS native evidence, HealthKit, reminders, and AlarmKit assessment
-
-**Outcome:** wire the iOS camera/photo UX to shared evidence, add user-consented health reads where justified, and decide whether AlarmKit is necessary and store-compliant.
-
-Work:
-
-- delete the excluded draft Swift bridge and promote one reviewed native adapter;
-- camera/photo picker with local Vision OCR/barcode;
-- Swift/Kotlin evidence handoff and confirmation UI;
-- UserNotifications recurrence, time-zone, cancellation, and permission state;
-- HealthKit capability inventory, minimal data schema, consent, revocation, export/delete;
-- AlarmKit proof of concept behind capability detection and honest fallback;
-- simulator/device tests and privacy-manifest/store disclosure evidence.
-
-Non-goals:
-
-- guaranteed alarm wording;
-- uploading raw photos by default;
-- reading all HealthKit categories;
-- challenge-to-dismiss behavior without platform and safety review.
-
-## #4 — Android Health Connect and reminder reliability
-
-**Outcome:** add the minimum Health Connect and reminder capabilities needed for protocol execution while handling reboot, time zone, permission, and OEM behavior honestly.
-
-Work:
-
-- Health Connect availability/permission adapter;
-- minimal read model for user-selected fitness/recovery records;
-- no background health collection without a visible job;
-- recurring reminder projection and cancellation;
-- boot/time-zone/package-replaced rescheduling receiver;
-- exact-alarm need analysis and special-access UX only if justified;
-- device/API/OEM harness matrix and delivery-reliability metrics;
-- Play data-safety and permission declarations.
-
-Non-goals:
-
-- hidden background monitoring;
-- exact-alarm permission as a default shortcut;
-- medical interpretation of health samples;
-- “works on every Android device” claim.
-
-## #5 — Copyright-clean catalog and licensed media pipeline
-
-**Outcome:** ship a useful catalog whose every record and asset has reproducible provenance and revocation behavior.
-
-Work:
-
-- canonical exercise/muscle/equipment taxonomy;
-- per-field/per-record source model;
-- independent Traditional Chinese and English instruction authoring workflow;
-- top-50 requested exercise set before catalog breadth;
-- commercial/commissioned asset procurement decision;
-- contract evidence store and public-safe references;
-- content-addressed originals and deterministic derivatives;
-- signed catalog/media manifests;
-- build-time hash enforcement, attribution generation, takedown, and kill switch;
-- accessibility alternatives for every visual asset.
-
-Non-goals:
-
-- scraped mirror import;
-- CDN hotlink;
-- claiming repository-wide license resolves each media file;
-- 1,000+ exercises before top-50 retention proof.
-
-## #6 — Private LLM explanation gateway and evals
-
-**Outcome:** add optional plain-language explanations while deterministic code remains authoritative.
-
-Work:
-
-- authenticated backend and provider abstraction;
-- payload minimization/redaction;
-- immutable decision receipt input;
-- structured output schema and forbidden-language filter;
-- adversarial evals for missing evidence, dosage requests, medication, symptoms, IU, prompt injection, and warning suppression;
-- provider/version trace, cost caps, timeouts, fallback, and kill switch;
-- no raw label photo or client provider key;
-- human review path for flagged output.
-
-Non-goals:
-
-- free-form supplement advisor;
-- model-created safety rules;
-- diagnosis or dose recommendation;
-- model output replacing decision history.
-
-## #7 — Entitlements, privacy, stores, and release operations
-
-**Outcome:** produce a real Android/iOS/Web release candidate with consistent entitlement and privacy behavior.
-
-Work:
-
-- StoreKit, Play Billing, and Web billing entitlement model;
-- server receipt validation and restore/refund state;
-- feature flags independent of model availability;
-- account deletion, data export, retention, regional storage, and consent history;
-- privacy policy, terms, health disclaimers, third-party notices, and store forms matching runtime flow;
-- crash/analytics vendor review and sensitive-field redaction;
-- signing, protected secrets, release provenance, SBOM, vulnerability scanning, rollback, and support runbook;
-- accessibility, localization, performance, offline, and upgrade tests.
-
-Non-goals:
-
-- client-only entitlement authority;
-- dark-pattern trial or renewal flow;
-- collecting health data for advertising;
-- production signing material in Git.
-
-## #8 — Creator-market validation and launch evidence
-
-**Outcome:** prove a retained-user acquisition loop using rights-cleared, disclosed, native creator content.
-
-Work:
-
-- 30 problem interviews and seven-day concierge test;
-- 12 owned raw creative variants;
-- creator selection scorecard and prohibited-claim review;
-- staged contracts separating creation, posting, views, raw footage, and paid usage rights;
-- creator/store/landing cohort instrumentation;
-- verified-protocol activation, paid conversion, refund, day-30 retention, and contribution metrics;
-- experiment ledger with stop/revise/repeat/scale decisions;
-- rights/disclosure evidence for every published and reused asset.
-
-Non-goals:
-
-- fabricated comments or results;
-- hidden sponsorship;
-- copying another app's CPM or revenue as a forecast;
-- scaling on views or installs without retained contribution.
-
-## Release train
+## Release trains
 
 ### Foundation 0.1
 
-- Issue #1 only;
+- PR #2 scope only;
 - internal/demo distribution;
-- original schematic visuals;
-- no backend and no health claim.
+- first-party schematic;
+- no backend, health integration, or medical claim.
 
 ### Evidence Alpha 0.2
 
-- safe subset of #2, #3, and #4;
-- closed cohort;
-- local/consented evidence and protocol testing;
-- no public supplement-intelligence claim.
+- safe reviewed subset of Issue #8, #9, and #10;
+- closed consented cohort;
+- no public personalized supplement-intelligence claim.
 
 ### Catalog Beta 0.3
 
-- #5 top-50 rights-clean catalog;
+- Issue #11 rights-clean top-50;
 - revocation drill;
-- creator alpha content with rights evidence.
+- rights-cleared creator alpha.
 
 ### Release Candidate 1.0
 
-- reviewed scope of #2–#7;
-- #8 acquisition evidence;
-- exact store build, privacy declarations, and support/rollback readiness.
+- admitted scope of Issues #8–#13;
+- Issue #14 retained-contribution evidence;
+- exact store builds, privacy declarations, support, incident, and rollback readiness.
 
 ## Definition of done
 
-A feature is done only when all applicable dimensions pass:
+A terminal slice is done only when all applicable dimensions pass:
 
 ```text
-code + deterministic tests
+complete work packet + path lease
++ code / deterministic tests
++ negative and mutation controls
 + platform/device evidence
 + source and rights evidence
-+ health/safety review
-+ privacy and permission behavior
++ health/safety/privacy review
 + observability without sensitive leakage
-+ failure and rollback path
++ failure / incident / rollback path
 + user-facing wording matching reality
-+ exact-head hosted checks
++ exact-head remote ancestry
++ trusted hosted checks
++ Human Admit
 ```
 
-A screenshot, model response, vendor marketing page, local-only build, or issue comment cannot replace this evidence set.
+A screenshot, prompt response, branch name, schema-valid fixture, local-only build, Git Town sync exit code, or issue comment cannot replace this evidence set.

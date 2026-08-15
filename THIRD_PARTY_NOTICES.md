@@ -14,15 +14,15 @@ This file is an engineering inventory, not legal advice. Release owners must reg
 | kotlinx.coroutines | 1.11.0 | Asynchronous work | Apache License 2.0 |
 | kotlinx.datetime | 0.8.0 | Shared time primitives | Apache License 2.0 |
 | kotlinx.serialization | 1.11.0 | Structured evidence payloads | Apache License 2.0 |
-| Google ML Kit Text Recognition | 16.0.1 | Android on-device OCR | Google ML Kit / Google APIs terms; not treated as repository-owned open source |
+| Google ML Kit Chinese Text Recognition | 16.0.1 | Android on-device Traditional Chinese/Latin OCR | Google ML Kit / Google APIs terms; not treated as repository-owned open source |
 | Google ML Kit Barcode Scanning | 17.3.0 | Android on-device barcode candidate | Google ML Kit / Google APIs terms; not treated as repository-owned open source |
-| Apple Vision, CryptoKit, UserNotifications, SwiftUI, UIKit | platform SDK | iOS evidence and host capabilities | Apple SDK and developer-program agreements |
+| Apple Vision, CryptoKit, PhotosUI, UserNotifications, SwiftUI, UIKit | platform SDK | iOS evidence and host capabilities | Apple SDK and developer-program agreements |
 | XcodeGen | 2.42.0+ tool requirement | Deterministic Xcode project generation | MIT license; build tool is not vendored in this repository |
-| Gradle | 9.5.1 | Build execution | Apache License 2.0; launcher refuses unpinned versions |
+| Gradle | 9.5.0 | Build execution | Apache License 2.0; launcher refuses unpinned versions |
 
 ## Exercise data and media
 
-No third-party exercise image, GIF, video, SVG anatomy map, or 3D model is currently admitted. The three records under `data/seed/exercises.example.json` are original schema examples with `mediaRef: null`.
+No third-party exercise image, GIF, video, anatomy SVG, or 3D model is admitted. The repository contains first-party schema/demo records and a first-party non-diagnostic schematic with provenance under `legal/provenance/`.
 
 Candidate upstream sources are tracked in `legal/source-registry.json`. A source listed as `REVIEW` or `DENY` contributes no redistribution right and must not be packaged into a release.
 

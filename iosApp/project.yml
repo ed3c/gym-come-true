@@ -17,7 +17,9 @@ targets:
     type: application
     platform: iOS
     sources:
-      - path: GymComeTrue
+      - path: GymComeTrue/GymComeTrueApp.swift
+      - path: GymComeTrue/ContentView.swift
+      - path: GymComeTrue/NativeCapabilityBridge.swift
     info:
       path: GymComeTrue/Info.plist
     settings:
@@ -35,7 +37,6 @@ targets:
         basedOnDependencyAnalysis: false
         script: |
           set -eu
-          export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
           cd "$SRCROOT/.."
           sh ./gradlew :shared:embedAndSignAppleFrameworkForXcode
 

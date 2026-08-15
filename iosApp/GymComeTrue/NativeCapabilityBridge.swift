@@ -14,7 +14,7 @@ struct NativeScanEvidence {
             .split(whereSeparator: \.isNewline)
             .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
         let barcodePart = barcode.map { " Barcode: \($0.prefix(32))." } ?? " No barcode detected."
-        return "Recognized \(lines.count) non-empty lines. Evidence hash: \(rawTextSHA256.prefix(12))…\(barcodePart) Confirm against the physical label."
+        return "Recognized \(lines.count) non-empty lines. Evidence hash: \(rawTextSHA256.prefix(12))…\(barcodePart) Confirm against the physical label; no dose was calculated."
     }
 }
 
@@ -90,11 +90,15 @@ final class NativeReminderBridge {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { granted, error in
             if let error {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
                 return
             }
             guard granted else {
-                completion(.success(()))
+                DispatchQueue.main.async {
+                    completion(.success(()))
+                }
                 return
             }
 
@@ -113,10 +117,12 @@ final class NativeReminderBridge {
                 trigger: trigger
             )
             center.add(request) { addError in
-                if let addError {
-                    completion(.failure(addError))
-                } else {
-                    completion(.success(()))
+                DispatchQueue.main.async {
+                    if let addError {
+                        completion(.failure(addError))
+                    } else {
+                        completion(.success(()))
+                    }
                 }
             }
         }

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-required="9.5.1"
+required="9.5.0"
 
 if ! command -v gradle >/dev/null 2>&1; then
   echo "Gradle $required is required but no 'gradle' executable was found." >&2

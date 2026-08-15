@@ -4,7 +4,25 @@
 
 Evidence-first fitness planning for Android, iOS, and Web, built with Kotlin Multiplatform and Compose Multiplatform.
 
-> **Status:** auditable foundation / draft PR. This repository is not a medical device and does not provide diagnosis, treatment, medication advice, or automatic supplement dosing.
+> **Status:** auditable foundation + Taiwan evidence-contract draft. This repository is not a medical device and does not provide diagnosis, treatment, medication advice, or automatic supplement dosing.
+
+## Delivery stack
+
+```text
+PR #2  AUDITABLE_CROSS_PLATFORM_FOUNDATION
+  └─ PR #15  TAIWAN_EVIDENCE_CONTRACT_DRAFT
+       └─ Issue #8  REVIEWED_TAIWAN_RULE_PACK                 # not complete
+
+Follow-up issues:
+#9  iOS native evidence / Apple Health / reminders / AlarmKit
+#10 Android Health Connect / reminder reliability
+#11 Copyright-clean exercise catalog / licensed media
+#12 Private LLM explanation gateway / adversarial evals
+#13 Entitlements / privacy / stores / release operations
+#14 Creator-market validation / launch evidence
+```
+
+PR #15 is stacked on the exact current PR #2 head. Its evidence commit is preserved through an explicit merge/relock rather than a force reset. Both PRs remain Draft until exact-head hosted validation executes successfully.
 
 ## Product thesis
 
@@ -17,7 +35,9 @@ Most fitness apps optimize for workout logging or generic AI chat. Gym Come True
 5. **A/B daily protocol execution** — the same plan supports a 16:00 workout day and a 22:00 workout day, including cross-midnight ordering, reminders, meals, recovery, and confirmation checkpoints.
 6. **Proof before advice** — an LLM may explain verified rule-engine output. It may not invent ingredients, calculate dosage, override a warning, or act as the safety authority.
 
-## What is implemented in this foundation
+## What is implemented
+
+### Foundation — PR #2
 
 - Shared Kotlin domain models, Traditional Chinese/English supplement-label parser, unit normalization, daily intake arithmetic, duplicate-ingredient detection, safety evaluation, A/B schedule compiler, and tests.
 - Shared Compose dashboard and a locally rendered muscle-activation view without third-party anatomy media.
@@ -25,7 +45,17 @@ Most fitness apps optimize for workout logging or generic AI chat. Gym Come True
 - iOS SwiftUI/Compose shell with native PhotosPicker, Apple Vision OCR/barcode extraction, and a local-notification reminder control.
 - Web JS and Wasm entry points plus a compatibility distribution.
 - Default-deny exercise source and media registries, first-party provenance records, policy validation, and CI contracts.
-- Architecture, health-safety, copyright, market strategy, launch-material, and delivery-roadmap documents.
+
+### Taiwan evidence contract — PR #15
+
+- Product-variant identity across market, barcode, internal product ID, formulation, and label revision.
+- Consent-aware corpus admission with default no-image retention and fail-closed withdrawal/unknown states.
+- Field-level OCR observations that separate first-pass accuracy from correction completion.
+- Default-deny MOHW/TFDA source registry candidates.
+- Deterministic Taiwan rule-pack admission gates, source/reviewer coverage, safety-case requirements, rollback identity, and decision receipts.
+- Synthetic Traditional Chinese fixtures and JSON Schema transport contracts.
+
+This slice is an engineering admission contract only. It does not contain a production Taiwan rule pack, real consented label corpus, personalized safe-dose thresholds, medication-interaction conclusions, or a qualified reviewer attestation.
 
 ## Repository map
 
@@ -36,10 +66,10 @@ Most fitness apps optimize for workout logging or generic AI chat. Gym Come True
 ├── shared/                     # KMP domain, rules, tests, and Compose UI
 ├── webApp/                     # JS/Wasm browser application
 ├── assets/                     # First-party assets with provenance
-├── data/                       # Original/example data only
-├── legal/                      # Source, media, and provenance registries
+├── data/                       # Original/example data and Taiwan synthetic fixtures
+├── legal/                      # Source, media, provenance, Taiwan source registries
 ├── docs/                       # Architecture, compliance, strategy, safety, roadmap
-├── scripts/                    # Repository and policy verification
+├── scripts/                    # Repository and rule-pack policy verification
 ├── .github/workflows/          # Hosted build evidence
 ├── AGENTS.md                   # Agent execution contract and hard laws
 └── THIRD_PARTY_NOTICES.md      # Dependency and asset obligations
@@ -57,9 +87,16 @@ flowchart LR
     Rules -->|log / review / block| Protocol[Daily Protocol Compiler]
     Protocol --> UI[Shared Compose UI]
     Protocol --> Reminder[Platform Reminder Adapter]
-    Rules --> SafePayload[Minimized structured payload]
+    Rules --> Receipt[Versioned decision receipt]
+    Receipt --> SafePayload[Minimized structured payload]
     SafePayload --> Gateway[Future server-side LLM gateway]
     Gateway --> Explain[Explanation only]
+
+    TaiwanSource[MOHW / TFDA candidate] --> SourceRegistry[Default-deny source registry]
+    SourceRegistry --> Snapshot[Future archived snapshot + SHA-256]
+    Snapshot --> Review[Future qualified review]
+    Review --> Pack[Reviewed rule-pack admission]
+    Pack --> Rules
 
     Source[Exercise source] --> Registry[Source + media registry]
     Registry -->|ALLOW with evidence| Import[Build-time importer]
@@ -78,10 +115,11 @@ The shared module owns business state and deterministic decisions. Platform modu
 - Daily totals are arithmetic observations, not safety limits or recommendations.
 - Medication use, pregnancy, surgery, adverse symptoms, missing label evidence, or conflicting products require professional review.
 - The application never turns a user-entered supplement schedule into a medical recommendation.
-- Raw label images are temporary by default and are deleted or released after local extraction.
+- Raw label images are temporary by default; production corpus retention requires explicit consent, encryption, expiry, withdrawal support, and provenance.
 - LLM output is explanatory and non-authoritative; deterministic warnings cannot be suppressed by model text.
+- A Taiwan rule pack is not production-admitted merely because its schema validates; archived source evidence and qualified review are separate hard gates.
 
-See [docs/health-safety.md](docs/health-safety.md).
+See [docs/health-safety.md](docs/health-safety.md) and [docs/taiwan-supplement-evidence.md](docs/taiwan-supplement-evidence.md).
 
 ## Copyright and data admission
 
@@ -95,16 +133,17 @@ Prerequisites:
 
 - JDK 21
 - Gradle **9.5.0** available as `gradle`
-- Android SDK Platform 36 (Android 16, stable)
+- Android SDK Platform 36
 - Xcode and XcodeGen for the iOS host
 
 The checked-in `gradlew` is a thin, fail-fast launcher that delegates to an installed Gradle 9.5.0. It does not silently download executable code.
 
 ```bash
+python3 scripts/validate_repository.py
+python3 scripts/validate_taiwan_rule_pack.py
 ./gradlew :shared:jvmTest
 ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 ./gradlew :webApp:composeCompatibilityBrowserDistribution
-python3 scripts/validate_repository.py
 ```
 
 Run browser development builds:
@@ -123,7 +162,7 @@ xcodegen generate --spec project.yml
 open GymComeTrue.xcodeproj
 ```
 
-Set your Apple development team and bundle identifier through local Xcode settings; do not commit signing credentials.
+Set Apple signing locally; do not commit signing credentials.
 
 ## Honest capability matrix
 
@@ -133,18 +172,18 @@ Set your Apple development team and bundle identifier through local Xcode settin
 | OCR label extraction | Bundled Chinese/Latin ML Kit | Vision via photo picker | Manual/import later | Candidate evidence only |
 | Barcode extraction | ML Kit | Vision | Planned | Not a product truth source |
 | Daily intake arithmetic | Shared | Shared | Shared | No safety-limit interpretation |
+| Taiwan rule-pack admission contract | Shared | Shared | Shared | Draft contract; no production pack |
 | Local reminders | Inexact AlarmManager | UserNotifications | Browser notification later | No exact-delivery guarantee |
 | Health data | Adapter boundary | Adapter boundary | Not applicable | Not implemented |
 | System alarm challenge | Future exact-alarm review | Future AlarmKit review | Not applicable | No coercive/undismissable promise |
 | LLM explanation | Contract only | Contract only | Contract only | Server gateway not implemented |
 | Licensed third-party exercise media | None | None | None | Default deny |
 
-See [docs/platform-capability-matrix.md](docs/platform-capability-matrix.md) and [docs/store-compliance.md](docs/store-compliance.md).
-
 ## Product and launch documents
 
 - [Architecture and data flow](docs/architecture.md)
 - [Health and supplement safety](docs/health-safety.md)
+- [Taiwan supplement evidence contract](docs/taiwan-supplement-evidence.md)
 - [Copyright and source governance](docs/copyright-and-data-governance.md)
 - [Blue-ocean product strategy](docs/product-strategy.md)
 - [90-day marketing plan and UGC material](docs/marketing-plan.md)
@@ -155,15 +194,20 @@ See [docs/platform-capability-matrix.md](docs/platform-capability-matrix.md) and
 
 ```text
 EMPTY_REPOSITORY
-  -> AUDITABLE_CROSS_PLATFORM_FOUNDATION
-  -> REVIEWED_TAIWAN_RULE_PACK
-  -> LICENSED_EXERCISE_CATALOG
-  -> NATIVE_HEALTH_AND_ALARM_INTEGRATION
-  -> PRIVATE_LLM_EXPLANATION_GATEWAY
-  -> STORE_RELEASE_CANDIDATE
+  -> AUDITABLE_CROSS_PLATFORM_FOUNDATION       # PR #2
+  -> TAIWAN_EVIDENCE_CONTRACT_DRAFT            # PR #15
+  -> REVIEWED_TAIWAN_RULE_PACK                  # Issue #8, blocked on real evidence/review
+  -> LICENSED_EXERCISE_CATALOG                  # Issue #11
+  -> NATIVE_HEALTH_AND_ALARM_INTEGRATION        # Issues #9 / #10
+  -> PRIVATE_LLM_EXPLANATION_GATEWAY            # Issue #12
+  -> STORE_RELEASE_CANDIDATE                     # Issues #13 / #14
 ```
 
-Each transition requires code, policy, provenance, privacy review, and hosted build evidence. Later phases must not weaken earlier safety or rights guarantees.
+Each transition requires code, policy, provenance, privacy review, and exact-head hosted build evidence. Later phases must not weaken earlier safety or rights guarantees.
+
+## Hosted evidence status
+
+PR #2 and PR #15 remain Draft. The latest exact-head PR #15 workflow was prevented from allocating a runner by the repository's GitHub Actions budget. A pre-run infrastructure failure is neither a passing build nor evidence of a product-code failure. Do not promote either PR based on stale or partial runs.
 
 ## License
 

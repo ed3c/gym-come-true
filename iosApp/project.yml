@@ -1,0 +1,50 @@
+name: GymComeTrue
+options:
+  minimumXcodeGenVersion: 2.42.0
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: 5.0
+    CODE_SIGN_STYLE: Automatic
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 0.1.0
+
+targets:
+  GymComeTrue:
+    type: application
+    platform: iOS
+    sources:
+      - path: GymComeTrue
+    info:
+      path: GymComeTrue/Info.plist
+    settings:
+      base:
+        PRODUCT_NAME: GymComeTrue
+        PRODUCT_BUNDLE_IDENTIFIER: dev.ed3c.gymcometrue
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1,2"
+        FRAMEWORK_SEARCH_PATHS:
+          - $(inherited)
+          - $(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)
+        OTHER_LDFLAGS: $(inherited) -framework GymComeTrueShared
+    preBuildScripts:
+      - name: Compile Kotlin framework
+        basedOnDependencyAnalysis: false
+        script: |
+          set -eu
+          export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+          cd "$SRCROOT/.."
+          sh ./gradlew :shared:embedAndSignAppleFrameworkForXcode
+
+schemes:
+  GymComeTrue:
+    build:
+      targets:
+        GymComeTrue: all
+    run:
+      config: Debug
+    archive:
+      config: Release

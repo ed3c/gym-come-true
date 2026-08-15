@@ -182,6 +182,16 @@ enum class TrainingVariant {
 }
 
 @Serializable
+enum class ProtocolCategory {
+    MEAL,
+    SUPPLEMENT_CHECKPOINT,
+    TRAINING,
+    HYDRATION,
+    RECOVERY,
+    SLEEP,
+}
+
+@Serializable
 data class ProtocolTime(
     val hour: Int,
     val minute: Int,
@@ -193,10 +203,9 @@ data class ProtocolTime(
         require(dayOffset >= 0)
     }
 
-    val sortKey: Int
-        get() = dayOffset * 24 * 60 + hour * 60 + minute
+    val sortKey: Int = dayOffset * 24 * 60 + hour * 60 + minute
 
-    override fun toString(): String = buildString {
+    fun display(): String = buildString {
         if (dayOffset > 0) append("+").append(dayOffset).append("d ")
         append(hour.toString().padStart(2, '0'))
         append(":")
@@ -205,23 +214,13 @@ data class ProtocolTime(
 }
 
 @Serializable
-enum class ProtocolEventKind {
-    MEAL,
-    SUPPLEMENT_LOG,
-    WORKOUT,
-    HYDRATION,
-    RECOVERY,
-    CHECKPOINT,
-}
-
-@Serializable
 data class ProtocolEvent(
     val id: String,
     val time: ProtocolTime,
-    val kind: ProtocolEventKind,
     val title: String,
-    val detail: String,
-    val reminderEligible: Boolean = true,
+    val category: ProtocolCategory,
+    val note: String,
+    val requiresConfirmation: Boolean = false,
 )
 
 object DailyProtocolCompiler {
@@ -230,132 +229,160 @@ object DailyProtocolCompiler {
         TrainingVariant.NIGHT_2200 -> nightPlan()
     }.sortedBy { it.time.sortKey }
 
-    private fun sharedMorning() = listOf(
+    private fun sharedMorning(): List<ProtocolEvent> = listOf(
         ProtocolEvent(
-            id = "breakfast",
+            id = "morning-meal",
             time = ProtocolTime(8, 0),
-            kind = ProtocolEventKind.MEAL,
-            title = "Breakfast / 早餐",
-            detail = "Log the meal and only confirmed supplement facts. The app does not prescribe a dose.",
+            title = "Morning nutrition base",
+            category = ProtocolCategory.MEAL,
+            note = "Oats, unsweetened soy milk, nuts, and other foods are logged as foods—not treatment claims.",
+        ),
+        ProtocolEvent(
+            id = "morning-evidence",
+            time = ProtocolTime(8, 15),
+            title = "Confirm supplement label evidence",
+            category = ProtocolCategory.SUPPLEMENT_CHECKPOINT,
+            note = "Review product, serving size, unit, duplicate ingredients, medication context, and expiry. No automatic dose change.",
+            requiresConfirmation = true,
+        ),
+        ProtocolEvent(
+            id = "hydration-1",
+            time = ProtocolTime(10, 30),
+            title = "Hydration checkpoint",
+            category = ProtocolCategory.HYDRATION,
+            note = "Use a personal hydration target reviewed for climate, activity, and health conditions.",
         ),
         ProtocolEvent(
             id = "lunch",
             time = ProtocolTime(12, 0),
-            kind = ProtocolEventKind.MEAL,
-            title = "Lunch / 午餐",
-            detail = "Protein + carbohydrate + vegetables; confirm any supplement label before logging.",
-        ),
-        ProtocolEvent(
-            id = "hydration",
-            time = ProtocolTime(14, 0),
-            kind = ProtocolEventKind.HYDRATION,
-            title = "Hydration checkpoint / 補水",
-            detail = "Use your own clinician- or coach-reviewed hydration target.",
+            title = "Lunch",
+            category = ProtocolCategory.MEAL,
+            note = "A protein source, carbohydrate source, vegetables, and a tolerated dressing. Record symptoms rather than hiding them.",
         ),
     )
 
-    private fun afternoonPlan() = sharedMorning() + listOf(
+    private fun sharedDinner(): List<ProtocolEvent> = listOf(
         ProtocolEvent(
-            id = "a-preworkout",
+            id = "dinner",
+            time = ProtocolTime(19, 15),
+            title = "Dinner and recovery meal",
+            category = ProtocolCategory.MEAL,
+            note = "Prioritize adequate energy and protein. Mineral or supplement timing remains an unverified user protocol until reviewed.",
+        ),
+        ProtocolEvent(
+            id = "evening-safety",
+            time = ProtocolTime(20, 0),
+            title = "Evening safety check",
+            category = ProtocolCategory.SUPPLEMENT_CHECKPOINT,
+            note = "Pause automation when medication, unusual symptoms, a procedure, or conflicting labels are present.",
+            requiresConfirmation = true,
+        ),
+    )
+
+    private fun afternoonPlan(): List<ProtocolEvent> = sharedMorning() + listOf(
+        ProtocolEvent(
+            id = "a-pre-workout",
             time = ProtocolTime(15, 30),
-            kind = ProtocolEventKind.CHECKPOINT,
-            title = "Pre-workout checkpoint / 訓練前確認",
-            detail = "Confirm readiness and any label evidence; no automatic supplement recommendation.",
+            title = "Pre-workout readiness",
+            category = ProtocolCategory.MEAL,
+            note = "Use a tolerated light snack when needed; check hydration and training readiness.",
         ),
         ProtocolEvent(
             id = "a-training",
             time = ProtocolTime(16, 0),
-            kind = ProtocolEventKind.WORKOUT,
-            title = "Workout / 訓練",
-            detail = "Follow the selected workout session and record completion.",
+            title = "Strength training",
+            category = ProtocolCategory.TRAINING,
+            note = "Run today's progressive plan with technique and pain stop-rules.",
         ),
         ProtocolEvent(
-            id = "a-recovery",
+            id = "a-post-workout",
             time = ProtocolTime(17, 30),
-            kind = ProtocolEventKind.RECOVERY,
-            title = "Recovery / 恢復",
-            detail = "Log recovery food and hydration without automated dose advice.",
+            title = "Post-workout recovery",
+            category = ProtocolCategory.RECOVERY,
+            note = "Log food, fluid, effort, and recovery. Supplements remain evidence entries, not automatic prescriptions.",
         ),
-        ProtocolEvent(
-            id = "a-dinner",
-            time = ProtocolTime(19, 30),
-            kind = ProtocolEventKind.MEAL,
-            title = "Dinner / 晚餐",
-            detail = "Complete the meal and supplement log from confirmed evidence only.",
-        ),
+    ) + sharedDinner() + listOf(
         ProtocolEvent(
             id = "a-sleep",
             time = ProtocolTime(23, 30),
-            kind = ProtocolEventKind.RECOVERY,
-            title = "Wind down / 睡前修復",
-            detail = "Recovery reminder; do not treat it as medical advice.",
+            title = "Sleep preparation",
+            category = ProtocolCategory.SLEEP,
+            note = "Reduce stimulation, review tomorrow's plan, and record any adverse response.",
         ),
     )
 
-    private fun nightPlan() = sharedMorning() + listOf(
+    private fun nightPlan(): List<ProtocolEvent> = sharedMorning() + listOf(
         ProtocolEvent(
-            id = "b-snack",
+            id = "b-afternoon-snack",
             time = ProtocolTime(16, 0),
-            kind = ProtocolEventKind.MEAL,
-            title = "Afternoon snack / 下午點心",
-            detail = "Record the snack and hydration checkpoint.",
+            title = "Afternoon snack",
+            category = ProtocolCategory.MEAL,
+            note = "Choose a familiar food that supports the later session without replacing dinner.",
         ),
+    ) + sharedDinner() + listOf(
         ProtocolEvent(
-            id = "b-dinner",
-            time = ProtocolTime(19, 30),
-            kind = ProtocolEventKind.MEAL,
-            title = "Dinner / 晚餐",
-            detail = "Finish the main meal before the late workout window.",
-        ),
-        ProtocolEvent(
-            id = "b-preworkout",
+            id = "b-pre-workout",
             time = ProtocolTime(21, 30),
-            kind = ProtocolEventKind.CHECKPOINT,
-            title = "Pre-workout checkpoint / 訓練前確認",
-            detail = "Confirm readiness; uncertain supplement evidence remains blocked from automation.",
+            title = "Late-session readiness",
+            category = ProtocolCategory.RECOVERY,
+            note = "Check fatigue, hydration, stimulant exposure, and whether a late workout will impair sleep.",
+            requiresConfirmation = true,
         ),
         ProtocolEvent(
             id = "b-training",
             time = ProtocolTime(22, 0),
-            kind = ProtocolEventKind.WORKOUT,
-            title = "Workout / 訓練",
-            detail = "Follow the selected workout session and record completion.",
+            title = "Strength training",
+            category = ProtocolCategory.TRAINING,
+            note = "Use the lower-noise late-session plan and stop for pain, dizziness, or unusual symptoms.",
         ),
         ProtocolEvent(
-            id = "b-recovery",
+            id = "b-post-workout",
             time = ProtocolTime(23, 30),
-            kind = ProtocolEventKind.RECOVERY,
-            title = "Post-workout recovery / 訓練後恢復",
-            detail = "Log food and hydration. No dose is inferred from OCR or a model.",
+            title = "Late recovery meal",
+            category = ProtocolCategory.MEAL,
+            note = "Use a tolerated recovery meal; avoid turning OCR output into an automatic dose instruction.",
         ),
         ProtocolEvent(
             id = "b-sleep",
-            time = ProtocolTime(0, 30, dayOffset = 1),
-            kind = ProtocolEventKind.RECOVERY,
-            title = "Wind down / 睡前修復",
-            detail = "Cross-midnight recovery checkpoint.",
+            time = ProtocolTime(0, 15, dayOffset = 1),
+            title = "Sleep transition",
+            category = ProtocolCategory.SLEEP,
+            note = "The compiler preserves next-day ordering rather than sorting 00:15 before the 22:00 session.",
         ),
     )
 }
 
 @Serializable
-data class LlmExplanationPayload(
-    val confirmedFacts: List<String>,
-    val safetyDecision: SafetyDecision,
-    val reasons: List<String>,
+data class MuscleActivation(
+    val muscle: String,
+    val intensity: Int,
+) {
+    init {
+        require(intensity in 0..10)
+    }
+}
+
+@Serializable
+data class ExplanationPayload(
+    val evidence: ScanEvidence,
+    val evaluation: SafetyEvaluation,
+    val purpose: String = "Explain deterministic results in plain language",
     val mayRecommendDose: Boolean = false,
     val mayOverrideWarnings: Boolean = false,
+    val instructions: List<String> = listOf(
+        "Do not infer missing ingredients or serving sizes.",
+        "Do not calculate or recommend a dose.",
+        "Do not diagnose, treat, or claim medical safety.",
+        "Repeat blocking reasons and direct the user to qualified review when required.",
+    ),
 )
 
 object LlmExplanationBoundary {
     fun createPayload(
         evidence: ScanEvidence,
         evaluation: SafetyEvaluation,
-    ): LlmExplanationPayload = LlmExplanationPayload(
-        confirmedFacts = evidence.candidates
-            .filter { it.evidenceStatus == EvidenceStatus.VERIFIED_BY_REVIEWED_SOURCE }
-            .map { "${it.ingredient}: ${it.amount} ${it.rawUnit}" },
-        safetyDecision = evaluation.decision,
-        reasons = evaluation.reasons,
+    ): ExplanationPayload = ExplanationPayload(
+        evidence = evidence.copy(rawTextSha256 = evidence.rawTextSha256.take(64)),
+        evaluation = evaluation,
     )
 }

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "TW",
+  "candidate": {
+    "packId": "tw-supplement-safety",
+    "version": "0.2.0-draft",
+    "generatedAtIsoDate": "2026-08-15",
+    "effectiveFromIsoDate": null,
+    "effectiveUntilIsoDate": null,
+    "contentSha256": null,
+    "sourceBundleSha256": null,
+    "testSuiteSha256": null,
+    "reviewerAttestationSha256": null,
+    "userFacingWordingSha256": null,
+    "mappingIds": [
+      "synthetic-serving-definition",
+      "mohw-serving-definition-candidate",
+      "tfda-9047-product-name-zh",
+      "tfda-9640-scope-and-limit"
+    ],
+    "rollbackToVersion": null,
+    "modelUsedForDecision": false,
+    "productionAdmitted": false
+  },
+  "requiredPromotionOrder": [
+    "DRAFT",
+    "REVIEWED",
+    "STAGED",
+    "ACTIVE"
+  ],
+  "terminalOrRecoveryStates": [
+    "SUSPENDED",
+    "REVOKED",
+    "EXPIRED",
+    "ROLLED_BACK"
+  ],
+  "events": [],
+  "resolvedState": "DRAFT",
+  "productionAdmitted": false,
+  "note": "This fixture has no signatures, immutable source bundle, qualified review, effective window, tests, wording hash, or rollback target. It is intentionally non-executable."
+}

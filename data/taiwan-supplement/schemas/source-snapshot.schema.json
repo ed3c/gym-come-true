@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gym-come-true.invalid/schemas/source-snapshot.schema.json",
+  "title": "Immutable Taiwan primary-source snapshot receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "snapshotId",
+    "sourceId",
+    "state",
+    "artifactKind",
+    "jurisdiction",
+    "canonicalUrl",
+    "capturedAtIsoDate",
+    "mediaType",
+    "licenseId",
+    "attributionText",
+    "redistributable",
+    "synthetic",
+    "productionUse",
+    "modelGenerated",
+    "note"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "snapshotId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "state": {
+      "enum": [
+        "CANDIDATE",
+        "CAPTURED",
+        "HASH_VERIFIED",
+        "LEGAL_REVIEWED",
+        "REVOKED"
+      ]
+    },
+    "artifactKind": {
+      "enum": [
+        "PDF",
+        "CSV",
+        "JSON",
+        "XML",
+        "HTML",
+        "ZIP",
+        "TEXT"
+      ]
+    },
+    "jurisdiction": {
+      "const": "TW"
+    },
+    "canonicalUrl": {
+      "type": "string",
+      "minLength": 1
+    },
+    "retrievalUrl": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^https://"
+    },
+    "capturedAtIsoDate": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "sourceModifiedAtIsoDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "effectiveFromIsoDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "effectiveUntilIsoDate": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "mediaType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "byteLength": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "sha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "archiveUri": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^(repo|evidence|s3|gs|az|oci|ipfs|file)://"
+    },
+    "licenseId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "attributionText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "redistributable": {
+      "type": "boolean"
+    },
+    "synthetic": {
+      "type": "boolean"
+    },
+    "legalReviewRef": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "productionUse": {
+      "enum": [
+        "DENY",
+        "TEST_ONLY",
+        "ALLOW"
+      ]
+    },
+    "modelGenerated": {
+      "const": false
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "enum": [
+              "HASH_VERIFIED",
+              "LEGAL_REVIEWED"
+            ]
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "required": [
+          "byteLength",
+          "sha256",
+          "archiveUri"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "state": {
+            "const": "LEGAL_REVIEWED"
+          }
+        },
+        "required": [
+          "state"
+        ]
+      },
+      "then": {
+        "required": [
+          "legalReviewRef"
+        ],
+        "properties": {
+          "legalReviewRef": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "productionUse": {
+            "const": "TEST_ONLY"
+          }
+        },
+        "required": [
+          "productionUse"
+        ]
+      },
+      "then": {
+        "properties": {
+          "synthetic": {
+            "const": true
+          },
+          "state": {
+            "enum": [
+              "HASH_VERIFIED",
+              "LEGAL_REVIEWED"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "productionUse": {
+            "const": "ALLOW"
+          }
+        },
+        "required": [
+          "productionUse"
+        ]
+      },
+      "then": {
+        "properties": {
+          "synthetic": {
+            "const": false
+          },
+          "state": {
+            "const": "LEGAL_REVIEWED"
+          }
+        },
+        "required": [
+          "legalReviewRef",
+          "sha256",
+          "archiveUri",
+          "byteLength"
+        ]
+      }
+    }
+  ]
+}

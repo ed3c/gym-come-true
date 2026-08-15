@@ -1,0 +1,6 @@
+SYNTHETIC TAIWAN SOURCE SNAPSHOT
+source-id: synthetic-tw-label-guidance-v1
+jurisdiction: TW
+published-date: 2026-08-15
+claim: packaged supplement labels must include a serving definition.
+note: repository-authored fixture; not law or regulator guidance.

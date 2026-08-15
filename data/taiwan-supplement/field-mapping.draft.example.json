@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "TW",
+  "defaultPolicy": "DENY",
+  "productionAdmitted": false,
+  "mappings": [
+    {
+      "mappingId": "synthetic-serving-definition",
+      "sourceId": "synthetic-tw-label-guidance",
+      "status": "VERIFIED",
+      "snapshotId": "synthetic-tw-label-guidance-v1",
+      "claimScope": "LABEL_SCHEMA",
+      "selector": {
+        "kind": "TEXT_RANGE",
+        "locator": "claim",
+        "pageNumber": null,
+        "lineStart": 5,
+        "lineEnd": 5
+      },
+      "targetField": "label.serving.definitionRequired",
+      "transform": "EXACT_COPY",
+      "evidenceExcerptSha256": "8ce50c9964fc97ab8d7bb1cd92860c244a747cff07b018fe9f729c5c88b509f8",
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "TEST_ONLY",
+      "modelGenerated": false,
+      "note": "Positive contract fixture only; the source is repository-authored synthetic text."
+    },
+    {
+      "mappingId": "mohw-serving-definition-candidate",
+      "sourceId": "mohw-vitamin-mineral-tablet-capsule-labeling-2019",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "LABEL_SCHEMA",
+      "selector": {
+        "kind": "PDF_PAGE_LINE",
+        "locator": "serving-definition-section",
+        "pageNumber": 1,
+        "lineStart": 8,
+        "lineEnd": 24
+      },
+      "targetField": "label.serving",
+      "transform": "EXACT_COPY",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Provisional page/line selector. Recompute against the immutable locally captured PDF before verification."
+    },
+    {
+      "mappingId": "mohw-vitamin-unit-display-candidate",
+      "sourceId": "mohw-vitamin-mineral-tablet-capsule-labeling-2019",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "REGULATORY_TEXT",
+      "selector": {
+        "kind": "PDF_PAGE_LINE",
+        "locator": "vitamin-display-unit-section",
+        "pageNumber": 1,
+        "lineStart": 25,
+        "lineEnd": 40
+      },
+      "targetField": "label.ingredient.displayUnit",
+      "transform": "EXACT_COPY",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Candidate mapping for label display requirements, not a generic IU-to-mass conversion rule. Qualified review is mandatory before any production use."
+    },
+    {
+      "mappingId": "tfda-9047-product-name-zh",
+      "sourceId": "tfda-imported-tablet-capsule-foods",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "PRODUCT_IDENTITY",
+      "selector": {
+        "kind": "CSV_COLUMN",
+        "locator": "中文品名",
+        "pageNumber": null,
+        "lineStart": null,
+        "lineEnd": null
+      },
+      "targetField": "product.productName",
+      "transform": "TRIM_WHITESPACE",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Candidate product-identity field. Registration does not establish safety or efficacy."
+    },
+    {
+      "mappingId": "tfda-9047-registration-document",
+      "sourceId": "tfda-imported-tablet-capsule-foods",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "PRODUCT_IDENTITY",
+      "selector": {
+        "kind": "CSV_COLUMN",
+        "locator": "核備函字號",
+        "pageNumber": null,
+        "lineStart": null,
+        "lineEnd": null
+      },
+      "targetField": "product.regulatorRegistrationId",
+      "transform": "TRIM_WHITESPACE",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Candidate registration identity only."
+    },
+    {
+      "mappingId": "tfda-9047-ingredient-text",
+      "sourceId": "tfda-imported-tablet-capsule-foods",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "PRODUCT_IDENTITY",
+      "selector": {
+        "kind": "CSV_COLUMN",
+        "locator": "成分",
+        "pageNumber": null,
+        "lineStart": null,
+        "lineEnd": null
+      },
+      "targetField": "product.regulatorIngredientText",
+      "transform": "EXACT_COPY",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Candidate regulator text; it does not replace physical-label confirmation."
+    },
+    {
+      "mappingId": "tfda-9640-additive-category",
+      "sourceId": "tfda-food-additive-limits",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "FOOD_ADDITIVE_CATEGORY",
+      "selector": {
+        "kind": "CSV_COLUMN",
+        "locator": "類別",
+        "pageNumber": null,
+        "lineStart": null,
+        "lineEnd": null
+      },
+      "targetField": "foodAdditive.category",
+      "transform": "TRIM_WHITESPACE",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Category candidate only; exact food scope and professional review remain required."
+    },
+    {
+      "mappingId": "tfda-9640-scope-and-limit",
+      "sourceId": "tfda-food-additive-limits",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "REGULATORY_TEXT",
+      "selector": {
+        "kind": "CSV_COLUMN",
+        "locator": "使用食品範圍及限量",
+        "pageNumber": null,
+        "lineStart": null,
+        "lineEnd": null
+      },
+      "targetField": "foodAdditive.scopeAndLimitText",
+      "transform": "EXACT_COPY",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Raw regulatory text candidate. It must not be converted into a personal supplement dose."
+    },
+    {
+      "mappingId": "tfda-8938-business-registration-id",
+      "sourceId": "tfda-food-business-registry",
+      "status": "DRAFT",
+      "snapshotId": null,
+      "claimScope": "BUSINESS_IDENTITY",
+      "selector": {
+        "kind": "CSV_COLUMN",
+        "locator": "食品業者登錄字號",
+        "pageNumber": null,
+        "lineStart": null,
+        "lineEnd": null
+      },
+      "targetField": "business.foodRegistrationId",
+      "transform": "TRIM_WHITESPACE",
+      "evidenceExcerptSha256": null,
+      "qualifiedReviewerAttestationSha256": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "note": "Business identity reconciliation only; no product-quality or health inference."
+    }
+  ],
+  "note": "Only the repository-authored synthetic mapping is VERIFIED and TEST_ONLY. Every official-source mapping remains DRAFT with no snapshot ID or excerpt hash."
+}

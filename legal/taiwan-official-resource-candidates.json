@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "TW",
+  "observedAt": "2026-08-15",
+  "defaultPolicy": "DENY",
+  "medicalAdvice": false,
+  "networkCaptureInCi": false,
+  "licenses": [
+    {
+      "id": "OGL-TW-1.0",
+      "title": "Government Data Open License Taiwan, version 1.0",
+      "canonicalUrl": "https://data.gov.tw/license",
+      "observedPermissionBoundary": "Reuse candidate with source attribution; exact resource packaging, notices, and downstream obligations still require admission review.",
+      "productionAdmission": "REQUIRES_LEGAL_REVIEW"
+    },
+    {
+      "id": "MOHW-SITE-TERMS-PENDING",
+      "title": "MOHW website and attachment terms pending exact review",
+      "canonicalUrl": "https://www.mohw.gov.tw/",
+      "observedPermissionBoundary": "Research and source-identification candidate only until attachment redistribution, archive, and attribution terms are reviewed.",
+      "productionAdmission": "DENY"
+    }
+  ],
+  "sources": [
+    {
+      "id": "mohw-vitamin-mineral-tablet-capsule-labeling-2019",
+      "publisher": "Ministry of Health and Welfare, Taiwan",
+      "title": "包裝維生素礦物質類之錠狀膠囊狀食品營養標示應遵行事項",
+      "sourceType": "REGULATOR_GUIDANCE",
+      "canonicalUrl": "https://www.mohw.gov.tw/cp-16-50175-1.html",
+      "datasetId": null,
+      "licenseId": "MOHW-SITE-TERMS-PENDING",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "retrievalCandidates": [
+        {
+          "role": "announcement",
+          "url": "https://www.mohw.gov.tw/dl-57536-42689d6e-e5c9-47d6-9366-526b1d3a6aac.html",
+          "artifactKind": "PDF",
+          "mediaTypeCandidate": "application/pdf"
+        },
+        {
+          "role": "requirements",
+          "url": "https://www.mohw.gov.tw/dl-57537-86cd6880-58a2-4158-9754-f72d8a55dcb7.html",
+          "artifactKind": "PDF",
+          "mediaTypeCandidate": "application/pdf"
+        },
+        {
+          "role": "qa",
+          "url": "https://www.mohw.gov.tw/dl-57538-9769c122-cd5d-4bde-bc8e-221aa860dd93.html",
+          "artifactKind": "PDF",
+          "mediaTypeCandidate": "application/pdf"
+        },
+        {
+          "role": "amendment-comparison",
+          "url": "https://www.mohw.gov.tw/dl-57539-ca34cd22-d403-4c50-860d-73f01316c820.html",
+          "artifactKind": "PDF",
+          "mediaTypeCandidate": "application/pdf"
+        }
+      ],
+      "observedFields": [
+        "serving amount",
+        "serving unit",
+        "servings per container",
+        "vitamin/mineral display unit",
+        "required warning wording"
+      ],
+      "allowedResearchUse": "Label-schema and wording candidate mapping after immutable capture.",
+      "prohibitedInference": "No personalized dose, medication compatibility, efficacy, or clinical-safety conclusion."
+    },
+    {
+      "id": "tfda-imported-tablet-capsule-foods",
+      "publisher": "Taiwan Food and Drug Administration",
+      "title": "輸入錠狀膠囊狀食品查驗登記資料集",
+      "sourceType": "REGULATOR_DATASET",
+      "canonicalUrl": "https://data.gov.tw/dataset/9047",
+      "datasetId": "9047",
+      "upstreamInfoId": "23",
+      "licenseId": "OGL-TW-1.0",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "retrievalCandidates": [
+        {
+          "role": "csv",
+          "url": "https://data.fda.gov.tw/data/opendata/export/23/csv",
+          "artifactKind": "CSV",
+          "mediaTypeCandidate": "text/csv"
+        },
+        {
+          "role": "json",
+          "url": "https://data.fda.gov.tw/data/opendata/export/23/json",
+          "artifactKind": "JSON",
+          "mediaTypeCandidate": "application/json"
+        },
+        {
+          "role": "xml",
+          "url": "https://data.fda.gov.tw/data/opendata/export/23/xml",
+          "artifactKind": "XML",
+          "mediaTypeCandidate": "application/xml"
+        }
+      ],
+      "observedFields": [
+        "核備函字號",
+        "中文品名",
+        "英文品名",
+        "有效日期",
+        "發證日期",
+        "申請商名稱",
+        "申請商電話",
+        "申請商地址",
+        "成分",
+        "簽審文件編號"
+      ],
+      "allowedResearchUse": "Product identity and regulator-registration evidence candidate.",
+      "prohibitedInference": "Registration is not personalized safety, efficacy, or medication-interaction evidence."
+    },
+    {
+      "id": "tfda-food-additive-limits",
+      "publisher": "Taiwan Food and Drug Administration",
+      "title": "食品添加物使用範圍及限量暨規格標準資料集",
+      "sourceType": "REGULATOR_DATASET",
+      "canonicalUrl": "https://data.gov.tw/dataset/9640",
+      "datasetId": "9640",
+      "upstreamInfoId": "61",
+      "licenseId": "OGL-TW-1.0",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "retrievalCandidates": [
+        {
+          "role": "csv",
+          "url": "https://data.fda.gov.tw/data/opendata/export/61/csv",
+          "artifactKind": "CSV",
+          "mediaTypeCandidate": "text/csv"
+        },
+        {
+          "role": "json",
+          "url": "https://data.fda.gov.tw/data/opendata/export/61/json",
+          "artifactKind": "JSON",
+          "mediaTypeCandidate": "application/json"
+        },
+        {
+          "role": "xml",
+          "url": "https://data.fda.gov.tw/data/opendata/export/61/xml",
+          "artifactKind": "XML",
+          "mediaTypeCandidate": "application/xml"
+        }
+      ],
+      "observedFields": [
+        "類別",
+        "中文品名",
+        "英文品名",
+        "使用食品範圍及限量",
+        "使用限制",
+        "規格",
+        "類別說明"
+      ],
+      "allowedResearchUse": "Food-additive category and restriction candidate after exact product/category mapping and qualified review.",
+      "prohibitedInference": "No direct translation into a person's supplement dose or medication-interaction conclusion."
+    },
+    {
+      "id": "tfda-food-business-registry",
+      "publisher": "Taiwan Food and Drug Administration",
+      "title": "食品業者登錄資料集",
+      "sourceType": "REGULATOR_DATASET",
+      "canonicalUrl": "https://data.gov.tw/dataset/8938",
+      "datasetId": "8938",
+      "upstreamInfoId": "97",
+      "licenseId": "OGL-TW-1.0",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "retrievalCandidates": [
+        {
+          "role": "csv-or-zip",
+          "url": "https://data.fda.gov.tw/data/opendata/export/97/csv",
+          "artifactKind": "ZIP",
+          "mediaTypeCandidate": "application/zip",
+          "captureNote": "The official portal notes that this large resource is compressed; preserve the exact downloaded bytes before extraction."
+        },
+        {
+          "role": "json",
+          "url": "https://data.fda.gov.tw/data/opendata/export/97/json",
+          "artifactKind": "JSON",
+          "mediaTypeCandidate": "application/json"
+        },
+        {
+          "role": "xml",
+          "url": "https://data.fda.gov.tw/data/opendata/export/97/xml",
+          "artifactKind": "XML",
+          "mediaTypeCandidate": "application/xml"
+        }
+      ],
+      "observedFields": [
+        "公司或商業登記名稱",
+        "統一編號",
+        "營業地址",
+        "食品業者登錄字號",
+        "登錄項目"
+      ],
+      "allowedResearchUse": "Business identity reconciliation candidate.",
+      "prohibitedInference": "No health, quality, efficacy, or product-safety inference."
+    }
+  ]
+}

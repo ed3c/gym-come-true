@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gym-come-true.invalid/schemas/source-field-mapping.schema.json",
+  "title": "Exact Taiwan source-to-domain field mappings",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "jurisdiction",
+    "defaultPolicy",
+    "productionAdmitted",
+    "mappings",
+    "note"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "jurisdiction": {
+      "const": "TW"
+    },
+    "defaultPolicy": {
+      "const": "DENY"
+    },
+    "productionAdmitted": {
+      "const": false
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/mapping"
+      }
+    }
+  },
+  "$defs": {
+    "selector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "locator",
+        "pageNumber",
+        "lineStart",
+        "lineEnd"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "JSON_POINTER",
+            "CSV_COLUMN",
+            "XML_XPATH",
+            "PDF_PAGE_LINE",
+            "HTML_SELECTOR",
+            "TEXT_RANGE"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pageNumber": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "lineStart": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "lineEnd": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "PDF_PAGE_LINE"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "pageNumber": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "lineStart": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "lineEnd": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "TEXT_RANGE"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "lineStart": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "lineEnd": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingId",
+        "sourceId",
+        "status",
+        "snapshotId",
+        "claimScope",
+        "selector",
+        "targetField",
+        "transform",
+        "evidenceExcerptSha256",
+        "qualifiedReviewerAttestationSha256",
+        "productionUse",
+        "modelGenerated",
+        "note"
+      ],
+      "properties": {
+        "mappingId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "DRAFT",
+            "VERIFIED",
+            "REVOKED"
+          ]
+        },
+        "snapshotId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "claimScope": {
+          "enum": [
+            "LABEL_SCHEMA",
+            "PRODUCT_IDENTITY",
+            "BUSINESS_IDENTITY",
+            "REGULATORY_TEXT",
+            "FOOD_ADDITIVE_CATEGORY",
+            "REFERENCE_VALUE",
+            "TOLERANCE_RANGE"
+          ]
+        },
+        "selector": {
+          "$ref": "#/$defs/selector"
+        },
+        "targetField": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transform": {
+          "enum": [
+            "EXACT_COPY",
+            "TRIM_WHITESPACE",
+            "PARSE_ISO_DATE",
+            "PARSE_DECIMAL",
+            "NORMALIZE_UNIT",
+            "IDENTITY_MATCH"
+          ]
+        },
+        "evidenceExcerptSha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "qualifiedReviewerAttestationSha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "productionUse": {
+          "enum": [
+            "DENY",
+            "TEST_ONLY",
+            "ALLOW"
+          ]
+        },
+        "modelGenerated": {
+          "const": false
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "VERIFIED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "snapshotId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidenceExcerptSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "productionUse": {
+                "enum": [
+                  "TEST_ONLY",
+                  "ALLOW"
+                ]
+              }
+            },
+            "required": [
+              "productionUse"
+            ]
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "VERIFIED"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "productionUse": {
+                "const": "ALLOW"
+              },
+              "claimScope": {
+                "enum": [
+                  "REGULATORY_TEXT",
+                  "REFERENCE_VALUE",
+                  "TOLERANCE_RANGE"
+                ]
+              }
+            },
+            "required": [
+              "productionUse",
+              "claimScope"
+            ]
+          },
+          "then": {
+            "properties": {
+              "qualifiedReviewerAttestationSha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

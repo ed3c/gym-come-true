@@ -1,0 +1,17 @@
+.gradle/
+.kotlin/
+build/
+**/build/
+.idea/
+*.iml
+local.properties
+.DS_Store
+DerivedData/
+*.xcuserstate
+xcuserdata/
+iosApp/GymComeTrue.xcodeproj/
+*.keystore
+*.jks
+.env
+.env.*
+!.env.example

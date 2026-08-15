@@ -114,14 +114,13 @@ def iter_admitted_text_files() -> list[Path]:
             }:
                 paths.append(path)
 
-    # Only the source files listed by project.safe.yml are admitted for iOS.
-    safe_spec = (ROOT / "iosApp/project.safe.yml").read_text(encoding="utf-8")
+    project_spec = (ROOT / "iosApp/project.yml").read_text(encoding="utf-8")
     for relative in (
         "iosApp/GymComeTrue/GymComeTrueApp.swift",
         "iosApp/GymComeTrue/ContentView.swift",
-        "iosApp/GymComeTrue/NativeCapabilityBridgeV2.swift",
+        "iosApp/GymComeTrue/NativeCapabilityBridge.swift",
     ):
-        require(Path(relative).name in safe_spec, f"Safe iOS spec omits {relative}")
+        require(Path(relative).name in project_spec, f"Canonical iOS spec omits {relative}")
         paths.append(ROOT / relative)
     return paths
 
@@ -140,7 +139,7 @@ def validate_no_secrets_or_hotlinks() -> None:
     require(not failures, "; ".join(failures))
 
 
-def validate_no_unregistered_media() -> None:
+def validate_no_unregistered_binary_media() -> None:
     offenders = [
         path.relative_to(ROOT)
         for path in ROOT.rglob("*")
@@ -159,6 +158,41 @@ def validate_llm_boundary() -> None:
     require("val mayRecommendDose: Boolean = false" in domain, "LLM dose boundary is missing")
     require("val mayOverrideWarnings: Boolean = false" in domain, "LLM warning boundary is missing")
     require("MassUnit.IU" in domain and "-> null" in domain, "IU must not have a generic mass conversion")
+
+    ledger = (ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/domain/DailyIntake.kt").read_text(
+        encoding="utf-8"
+    )
+    require(
+        "val mayBeComparedWithReviewedLimits: Boolean = false" in ledger,
+        "Daily intake arithmetic must not imply reviewed limits",
+    )
+
+
+def validate_toolchain_and_platform_wiring() -> None:
+    launcher = (ROOT / "gradlew").read_text(encoding="utf-8")
+    require('required="9.5.0"' in launcher, "gradlew must pin Gradle 9.5.0")
+    require("9.5.1" not in launcher, "unsupported Gradle 9.5.1 reference remains")
+
+    catalog = (ROOT / "gradle/libs.versions.toml").read_text(encoding="utf-8")
+    require('kotlin = "2.4.10"' in catalog, "Kotlin pin changed unexpectedly")
+    require('agp = "9.1.0"' in catalog, "AGP pin changed unexpectedly")
+    require("text-recognition-chinese" in catalog, "Bundled Chinese ML Kit dependency is missing")
+
+    scanner = (
+        ROOT
+        / "androidApp/src/main/kotlin/dev/ed3c/gymcometrue/scan/AndroidLabelScanner.kt"
+    ).read_text(encoding="utf-8")
+    require("ChineseTextRecognizerOptions" in scanner, "Android scanner is not using Chinese OCR")
+    require("file.delete()" in scanner, "Android temporary scan file deletion is missing")
+
+    require(not (ROOT / "iosApp/project.safe.yml").exists(), "iOS safe-spec bypass must be removed")
+    require(
+        not (ROOT / "iosApp/GymComeTrue/NativeCapabilityBridgeV2.swift").exists(),
+        "Duplicate iOS bridge must be removed",
+    )
+    project = (ROOT / "iosApp/project.yml").read_text(encoding="utf-8")
+    require("NativeCapabilityBridge.swift" in project, "Canonical iOS bridge is not admitted")
+    require("NativeCapabilityBridgeV2.swift" not in project, "Duplicate iOS bridge is admitted")
 
 
 def validate_governance_docs() -> None:
@@ -179,6 +213,15 @@ def validate_governance_docs() -> None:
     ):
         require(invariant in agents, f"AGENTS.md is missing invariant {invariant}")
 
+    for path in (
+        "README.zh-TW.md",
+        "CONTRIBUTING.md",
+        "SECURITY.md",
+        "docs/platform-capability-matrix.md",
+        "docs/store-compliance.md",
+    ):
+        require((ROOT / path).is_file(), f"Missing governance document: {path}")
+
 
 def print_manifest_digest() -> None:
     admitted = sorted(path.relative_to(ROOT).as_posix() for path in iter_admitted_text_files())
@@ -192,8 +235,9 @@ def main() -> int:
         validate_media_registry,
         validate_seed_data,
         validate_no_secrets_or_hotlinks,
-        validate_no_unregistered_media,
+        validate_no_unregistered_binary_media,
         validate_llm_boundary,
+        validate_toolchain_and_platform_wiring,
         validate_governance_docs,
     )
     try:

@@ -17,7 +17,9 @@ targets:
     type: application
     platform: iOS
     sources:
-      - path: GymComeTrue
+      - path: GymComeTrue/GymComeTrueApp.swift
+      - path: GymComeTrue/ContentView.swift
+      - path: GymComeTrue/NativeCapabilityBridge.swift
     info:
       path: GymComeTrue/Info.plist
     settings:

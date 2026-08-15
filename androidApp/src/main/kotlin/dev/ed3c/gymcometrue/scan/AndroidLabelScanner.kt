@@ -6,7 +6,7 @@ import com.google.android.gms.tasks.Task
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
-import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.google.mlkit.vision.text.chinese.ChineseTextRecognizerOptions
 import dev.ed3c.gymcometrue.domain.ScanEvidence
 import dev.ed3c.gymcometrue.domain.SupplementLabelParser
 import kotlinx.coroutines.CancellationException
@@ -25,7 +25,9 @@ class AndroidLabelScanner(
     )
 
     suspend fun scan(file: File): Result {
-        val textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+        val textRecognizer = TextRecognition.getClient(
+            ChineseTextRecognizerOptions.Builder().build(),
+        )
         val barcodeScanner = BarcodeScanning.getClient()
 
         return try {

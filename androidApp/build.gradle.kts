@@ -18,7 +18,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.mlkit.text.recognition)
+    implementation(libs.mlkit.text.recognition.chinese)
     implementation(libs.mlkit.barcode.scanning)
     debugImplementation(libs.compose.ui.tooling)
 }

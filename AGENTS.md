@@ -23,18 +23,18 @@ Do not claim a later state merely because an interface, stub, prompt, or sample 
 - OCR and barcode results begin as `UNVERIFIED`.
 - Preserve the physical-label confirmation step.
 - Never infer a missing serving size, ingredient, unit, product identity, or daily amount.
-- Raw label images are temporary by default and must be deleted after local processing unless the user explicitly opts into encrypted storage.
+- Raw label images are temporary by default and must be deleted/released after local processing unless the user explicitly opts into encrypted storage.
 
 ### MEDIA_DEFAULT_DENY
 
 - Publicly reachable is not the same as redistributable.
-- Do not add images, GIFs, video, SVG anatomy maps, 3D models, scraped IDs, or CDN links unless `legal/media-registry.json` contains an `ALLOW` record with a rights reference and SHA-256.
+- Do not add images, GIFs, video, SVG anatomy maps, 3D models, scraped IDs, or CDN links unless provenance and `legal/media-registry.json` establish the allowed scope and SHA-256.
 - Do not hotlink ExerciseDB or another vendor CDN.
 - Keep metadata, media, rendering code, and user-generated uploads as separate rights domains.
 
 ### LLM_EXPLANATION_ONLY
 
-- Deterministic code owns unit conversion, warnings, blocking decisions, and protocol state.
+- Deterministic code owns unit conversion, arithmetic, warnings, blocking decisions, and protocol state.
 - A model may explain a structured result; it may not calculate or recommend dosage, diagnose, suppress a warning, or fill missing evidence.
 - The client must not call a model provider directly. Future model access goes through a server-side policy gateway with minimized payloads and audit logs.
 
@@ -47,33 +47,36 @@ Do not claim a later state merely because an interface, stub, prompt, or sample 
 ### REVIEWED_HEALTH_RULES_ONLY
 
 - Generic mass conversion is limited to `mcg/µg/μg`, `mg`, and `g`.
-- `IU`, activity units, proprietary blends, medication interactions, pregnancy, procedures, and symptoms fail closed.
-- A Taiwan or other regional rule pack is not production-ready until the source, reviewer, version, effective date, and rollback are recorded.
+- `IU`, volume, container count, proprietary blends, medication interactions, pregnancy, procedures, and symptoms fail closed.
+- A daily total is an arithmetic observation, not a safe or recommended dose.
+- A Taiwan or other regional rule pack is not production-ready until the source, reviewer, version, effective date, tests, and rollback are recorded.
 
 ### HONEST_ALARM_SEMANTICS
 
 - Android `set`/`setAndAllowWhileIdle` and iOS local notifications are reminders, not guaranteed alarms.
 - Exact-alarm special access and AlarmKit require their own permission, review, fallback, and store-policy work.
+- AlarmKit provides a system stop control; never claim a movement challenge can remove it.
 - Never market background delivery as 100% reliable without measured evidence and platform qualification.
 
 ## Module ownership
 
 ```text
 shared/
-  domain models, deterministic safety, protocol compiler, tests, shared Compose UI
+  domain models, deterministic safety, daily ledger, protocol compiler, tests,
+  shared Compose UI
 
 androidApp/
-  Android permissions, system camera hand-off, ML Kit, temporary files, notifications,
-  future Health Connect and exact-alarm adapters
+  Android permissions, system camera hand-off, ML Kit, temporary files,
+  notifications, future Health Connect and exact-alarm adapters
 
 iosApp/
-  SwiftUI host, Vision evidence adapter, UserNotifications,
+  SwiftUI host, PhotosPicker, Vision evidence adapter, UserNotifications,
   future HealthKit and AlarmKit adapters
 
 webApp/
-  JS/Wasm host and browser-safe features; no native-health parity claim
+  JS/Wasm compatibility host and browser-safe features; no native-health parity claim
 
-legal/ + data/
+legal/ + data/ + assets/
   provenance and admission truth; build must fail closed
 
 docs/
@@ -84,7 +87,7 @@ Shared code must not import Android, Apple, browser, store, or model-provider AP
 
 ## Canonical iOS source set
 
-`iosApp/project.safe.yml` is the admitted iOS build specification for this foundation. It explicitly lists the Swift files that CI compiles. New Swift files do not enter the build merely by being placed in the directory; add them to the safe spec and provide validation evidence.
+`iosApp/project.yml` is the only admitted iOS build specification. It explicitly lists the Swift files that CI compiles. Do not create a second “safe” project file to hide a broken default build. New Swift files enter the build only through an explicit `project.yml` change and hosted validation.
 
 ## Required commands
 
@@ -92,15 +95,14 @@ Shared code must not import Android, Apple, browser, store, or model-provider AP
 python3 scripts/validate_repository.py
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
-sh ./gradlew :webApp:jsBrowserDistribution
-sh ./gradlew :webApp:wasmJsBrowserDistribution
+sh ./gradlew :webApp:composeCompatibilityBrowserDistribution
 ```
 
 On macOS with XcodeGen:
 
 ```bash
 cd iosApp
-xcodegen generate --spec project.safe.yml
+xcodegen generate --spec project.yml
 xcodebuild \
   -project GymComeTrue.xcodeproj \
   -scheme GymComeTrue \

@@ -38,17 +38,17 @@ data class ScanEvidence(
 
 object SupplementLabelParser {
     private val factLine = Regex(
-        pattern = """(?im)^\s*([^\d\n:：]{2,70}?)\s*[:：]?\s*(\d+(?:[.,]\d+)?)\s*(mcg|µg|μg|mg|g|iu)\b""",
+        pattern = """(?im)^\s*(.{2,90}?)\s*[:：]?\s*(\d+(?:[.,]\d+)*)\s*(國際單位|international\s*units?|micrograms?|milligrams?|grams?|milliliters?|capsules?|tablets?|微克|毫克|公克|毫升|mcg|µg|μg|mg|ml|iu|g|克|顆|粒|錠)(?=$|[\s/／（(，,；;])""",
     )
 
     fun parse(rawText: String): List<SupplementFactCandidate> = factLine.findAll(rawText)
         .mapNotNull { match ->
             val name = match.groupValues[1]
-                .replace(Regex("\\s+"), " ")
-                .trim(' ', '-', '•', '*')
-            val amount = match.groupValues[2].replace(',', '.').toDoubleOrNull()
+                .replace(Regex("""\s+"""), " ")
+                .trim(' ', '-', '—', '–', '•', '*', ':', '：')
+            val amount = parseAmount(match.groupValues[2])
             val rawUnit = match.groupValues[3]
-            if (name.length < 2 || amount == null || amount <= 0.0) {
+            if (name.isBlank() || name.none(Char::isLetter) || amount == null || amount <= 0.0) {
                 null
             } else {
                 SupplementFactCandidate(
@@ -59,15 +59,29 @@ object SupplementLabelParser {
                 )
             }
         }
-        .distinctBy { "${it.ingredient.lowercase()}|${it.amount}|${it.unit}" }
+        .distinctBy { "${it.ingredient.normalizedIngredientKey()}|${it.amount}|${it.unit}" }
         .toList()
 
-    private fun String.toMassUnit(): MassUnit = when (lowercase()) {
-        "mcg", "µg", "μg" -> MassUnit.MCG
-        "mg" -> MassUnit.MG
-        "g" -> MassUnit.G
-        "iu" -> MassUnit.IU
-        else -> MassUnit.UNKNOWN
+    private fun parseAmount(raw: String): Double? {
+        val normalized = when {
+            ',' in raw && '.' in raw -> raw.replace(",", "")
+            raw.count { it == ',' } == 1 &&
+                raw.substringAfter(',').length == 3 &&
+                raw.substringBefore(',').all(Char::isDigit) -> raw.replace(",", "")
+            else -> raw.replace(',', '.')
+        }
+        return normalized.toDoubleOrNull()
+    }
+
+    private fun String.toMassUnit(): MassUnit {
+        val normalized = lowercase().replace(Regex("""\s+"""), "")
+        return when (normalized) {
+            "mcg", "µg", "μg", "微克", "microgram", "micrograms" -> MassUnit.MCG
+            "mg", "毫克", "milligram", "milligrams" -> MassUnit.MG
+            "g", "公克", "克", "gram", "grams" -> MassUnit.G
+            "iu", "國際單位", "internationalunit", "internationalunits" -> MassUnit.IU
+            else -> MassUnit.UNKNOWN
+        }
     }
 }
 
@@ -144,7 +158,7 @@ object SupplementSafetyEngine {
             reasons += "OCR and user-entered label facts remain unverified evidence."
         }
         if (evidence.candidates.any { it.unit == MassUnit.IU || it.unit == MassUnit.UNKNOWN }) {
-            reasons += "IU or unknown units cannot use a generic mass conversion."
+            reasons += "IU, volume, count, or unknown units cannot use a generic mass conversion."
         }
         if (context.rulePackStatus != RulePackStatus.CLINICALLY_REVIEWED) {
             reasons += "No clinically reviewed regional rule pack is active."
@@ -162,10 +176,13 @@ object SupplementSafetyEngine {
             else -> SafetyDecision.LOG_ONLY
         }
 
-        val normalized = evidence.candidates.mapNotNull { candidate ->
-            MassUnitConverter.toMilligrams(candidate.amount, candidate.unit)
-                ?.let { candidate.ingredient to it }
-        }.toMap()
+        val normalized = evidence.candidates
+            .mapNotNull { candidate ->
+                MassUnitConverter.toMilligrams(candidate.amount, candidate.unit)
+                    ?.let { candidate.ingredient.normalizedIngredientKey() to it }
+            }
+            .groupBy({ it.first }, { it.second })
+            .mapValues { (_, values) -> values.sum() }
 
         return SafetyEvaluation(
             decision = decision,
@@ -174,6 +191,11 @@ object SupplementSafetyEngine {
         )
     }
 }
+
+internal fun String.normalizedIngredientKey(): String = trim()
+    .lowercase()
+    .replace(Regex("""[\s\-_()/（）]+"""), " ")
+    .trim()
 
 @Serializable
 enum class TrainingVariant {

@@ -25,7 +25,9 @@ jobs:
         with:
           python-version: "3.13"
       - name: Validate default-deny contracts
-        run: python3 scripts/validate_repository.py
+        run: |
+          python3 scripts/validate_repository.py
+          python3 scripts/validate_taiwan_rule_pack.py
 
   android-web-domain:
     name: android-web-domain

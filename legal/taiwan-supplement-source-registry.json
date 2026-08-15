@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "TW",
+  "defaultPolicy": "DENY",
+  "medicalAdvice": false,
+  "reviewedAt": "2026-08-15",
+  "sources": [
+    {
+      "id": "mohw-vitamin-mineral-tablet-capsule-labeling-2019",
+      "publisher": "Ministry of Health and Welfare, Taiwan",
+      "title": "包裝維生素礦物質類之錠狀膠囊狀食品營養標示應遵行事項（2019 revision announcement）",
+      "type": "REGULATOR_GUIDANCE",
+      "status": "REVIEW",
+      "canonicalUrl": "https://www.mohw.gov.tw/fp-16-50175-1.html",
+      "datasetId": null,
+      "retrievedAt": "2026-08-15",
+      "snapshotSha256": null,
+      "licenseOrTerms": "Taiwan government website terms; archive and legal review required before redistribution",
+      "allowedUse": "Field-schema and label-format research only",
+      "prohibitedUse": "No dose-safety or medication-interaction conclusion"
+    },
+    {
+      "id": "tfda-imported-tablet-capsule-foods",
+      "publisher": "Taiwan Food and Drug Administration",
+      "title": "輸入錠狀膠囊狀食品查驗登記資料集",
+      "type": "REGULATOR_DATASET",
+      "status": "REVIEW",
+      "canonicalUrl": "https://data.gov.tw/dataset/9047",
+      "datasetId": "9047",
+      "retrievedAt": "2026-08-15",
+      "snapshotSha256": null,
+      "licenseOrTerms": "Government Data Open License Taiwan 1.0; exact resource and attribution review required",
+      "allowedUse": "Product identity candidate and regulator registration evidence",
+      "prohibitedUse": "Registration must not be interpreted as personalized safety or efficacy"
+    },
+    {
+      "id": "tfda-food-additive-limits",
+      "publisher": "Taiwan Food and Drug Administration",
+      "title": "食品添加物使用範圍及限量暨規格標準資料集",
+      "type": "REGULATOR_DATASET",
+      "status": "REVIEW",
+      "canonicalUrl": "https://data.gov.tw/dataset/9640",
+      "datasetId": "9640",
+      "retrievedAt": "2026-08-15",
+      "snapshotSha256": null,
+      "licenseOrTerms": "Government Data Open License Taiwan 1.0; exact resource and attribution review required",
+      "allowedUse": "Food-additive rule research after exact category mapping",
+      "prohibitedUse": "No direct mapping to an individual supplement dose or medication interaction"
+    },
+    {
+      "id": "tfda-food-business-registry",
+      "publisher": "Taiwan Food and Drug Administration",
+      "title": "食品業者登錄資料集",
+      "type": "REGULATOR_DATASET",
+      "status": "REVIEW",
+      "canonicalUrl": "https://data.gov.tw/dataset/8938",
+      "datasetId": "8938",
+      "retrievedAt": "2026-08-15",
+      "snapshotSha256": null,
+      "licenseOrTerms": "Government Data Open License Taiwan 1.0; exact resource and attribution review required",
+      "allowedUse": "Business identity reconciliation",
+      "prohibitedUse": "No health, quality, efficacy, or product-safety inference"
+    }
+  ]
+}

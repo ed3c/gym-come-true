@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gym-come-true.invalid/schemas/corpus-record.schema.json",
+  "title": "Consent-aware Taiwan label corpus record",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "recordId",
+    "synthetic",
+    "consent",
+    "retentionPolicy",
+    "storesRawImage",
+    "rawTextSha256",
+    "product",
+    "productionUse",
+    "provenanceNote"
+  ],
+  "properties": {
+    "recordId": { "type": "string", "minLength": 1 },
+    "synthetic": { "type": "boolean" },
+    "consent": {
+      "enum": ["SYNTHETIC", "EXPLICIT_OPT_IN", "WITHDRAWN", "UNKNOWN"]
+    },
+    "retentionPolicy": {
+      "enum": ["DO_NOT_STORE_IMAGE", "ENCRYPTED_WITH_EXPIRY"]
+    },
+    "storesRawImage": { "type": "boolean" },
+    "encryptedAtRest": { "type": "boolean" },
+    "deleteAfterIsoDate": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "rawTextSha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "imageSha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+    "product": { "$ref": "product-variant.schema.json" },
+    "productionUse": { "const": "DENY" },
+    "provenanceNote": { "type": "string", "minLength": 1 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "storesRawImage": { "const": true } } },
+      "then": {
+        "required": ["imageSha256", "encryptedAtRest", "deleteAfterIsoDate"],
+        "properties": {
+          "retentionPolicy": { "const": "ENCRYPTED_WITH_EXPIRY" },
+          "encryptedAtRest": { "const": true }
+        }
+      }
+    }
+  ]
+}

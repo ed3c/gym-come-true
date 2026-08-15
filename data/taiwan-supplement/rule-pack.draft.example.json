@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "packId": "tw-supplement-safety",
+  "version": "0.1.0-draft",
+  "jurisdiction": "TW",
+  "status": "DRAFT",
+  "generatedAtIsoDate": "2026-08-15",
+  "effectiveFrom": null,
+  "effectiveUntil": null,
+  "contentSha256": null,
+  "sourceIds": [
+    "mohw-vitamin-mineral-tablet-capsule-labeling-2019",
+    "tfda-imported-tablet-capsule-foods",
+    "tfda-food-additive-limits"
+  ],
+  "rules": [],
+  "testCaseIds": [
+    "iu-unresolved",
+    "missing-serving",
+    "duplicate-ingredient",
+    "proprietary-blend",
+    "medication-context",
+    "adverse-symptom",
+    "source-conflict"
+  ],
+  "reviewerAttestation": null,
+  "rollbackToVersion": null,
+  "productionAdmitted": false,
+  "note": "This manifest is intentionally non-executable. Source snapshots, hashes, deterministic field mappings, qualified review, wording review, tests, and rollback evidence are still missing."
+}

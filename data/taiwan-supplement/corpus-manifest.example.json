@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "recordId": "synthetic-tw-label-001",
+  "synthetic": true,
+  "consent": "SYNTHETIC",
+  "retentionPolicy": "DO_NOT_STORE_IMAGE",
+  "storesRawImage": false,
+  "rawTextSha256": "78cb29856c65ad0b616cdb6fc5ddac3586ea777b216afdd334218dbbe059dddb",
+  "product": {
+    "productId": "synthetic-zinc-d3",
+    "productName": "合成測試鋅與維生素D3",
+    "brand": "Gym Come True Test Fixture",
+    "barcode": null,
+    "market": "TW",
+    "formulation": "capsule",
+    "labelRevision": "rev-1",
+    "labelEffectiveDate": "2026-08-15",
+    "serving": {
+      "amount": 2,
+      "unit": "粒",
+      "servingsPerContainer": 30
+    }
+  },
+  "rawText": "營養標示\n每一份量 2 粒\n本包裝含 30 份\n鋅 15 毫克\n維生素D3 800 國際單位",
+  "productionUse": "DENY",
+  "provenanceNote": "Repository-authored synthetic Traditional Chinese label. No person, product, or third-party image is represented."
+}

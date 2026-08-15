@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gym-come-true.invalid/schemas/product-variant.schema.json",
+  "title": "Taiwan supplement product variant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "productId",
+    "productName",
+    "market",
+    "formulation",
+    "labelRevision",
+    "serving"
+  ],
+  "properties": {
+    "productId": { "type": "string", "minLength": 1 },
+    "productName": { "type": "string", "minLength": 1 },
+    "brand": { "type": ["string", "null"] },
+    "barcode": { "type": ["string", "null"], "pattern": "^[0-9]{8,14}$" },
+    "market": { "type": "string", "const": "TW" },
+    "formulation": { "type": "string", "minLength": 1 },
+    "labelRevision": { "type": "string", "minLength": 1 },
+    "labelEffectiveDate": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "serving": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "unit"],
+      "properties": {
+        "amount": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "unit": { "type": ["string", "null"], "minLength": 1 },
+        "servingsPerContainer": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "sourceId": "original-example-seed",
+    "mediaIncluded": false,
+    "purpose": "Schema, tests, and interface development only"
+  },
+  "exercises": [
+    {
+      "id": "original-bodyweight-squat",
+      "name": {
+        "en": "Bodyweight Squat",
+        "zh-Hant": "徒手深蹲"
+      },
+      "movementPattern": "squat",
+      "equipment": ["bodyweight"],
+      "primaryMuscles": ["quadriceps", "glutes"],
+      "secondaryMuscles": ["hamstrings", "core"],
+      "steps": [
+        "Stand in a stable position and choose a comfortable stance.",
+        "Descend under control while keeping the feet supported.",
+        "Stop for pain, loss of balance, or technique breakdown.",
+        "Return under control without forcing range of motion."
+      ],
+      "mediaRef": null,
+      "medicalClaim": false
+    },
+    {
+      "id": "original-incline-push-up",
+      "name": {
+        "en": "Incline Push-up",
+        "zh-Hant": "上斜伏地挺身"
+      },
+      "movementPattern": "horizontal-push",
+      "equipment": ["stable-elevated-surface"],
+      "primaryMuscles": ["chest", "triceps"],
+      "secondaryMuscles": ["shoulders", "core"],
+      "steps": [
+        "Use a stable surface that will not slide.",
+        "Maintain a controlled trunk position.",
+        "Lower only through a pain-free range.",
+        "Press away from the surface without locking into pain."
+      ],
+      "mediaRef": null,
+      "medicalClaim": false
+    },
+    {
+      "id": "original-supported-row",
+      "name": {
+        "en": "Supported One-arm Row",
+        "zh-Hant": "支撐式單臂划船"
+      },
+      "movementPattern": "horizontal-pull",
+      "equipment": ["dumbbell", "stable-support"],
+      "primaryMuscles": ["back"],
+      "secondaryMuscles": ["biceps", "rear-shoulders"],
+      "steps": [
+        "Set a stable support and a manageable load.",
+        "Keep the torso controlled without twisting for momentum.",
+        "Pull through a comfortable path and pause briefly.",
+        "Lower under control and stop if grip or posture fails."
+      ],
+      "mediaRef": null,
+      "medicalClaim": false
+    }
+  ]
+}

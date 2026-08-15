@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "defaultPolicy": "DENY",
+  "requiredAllowFields": [
+    "id",
+    "status",
+    "sourceId",
+    "sourceUrl",
+    "licenseEvidenceRef",
+    "allowedPlatforms",
+    "sha256",
+    "reviewedAt",
+    "reviewedBy"
+  ],
+  "assets": [],
+  "exampleOnly": {
+    "id": "replace-with-owned-asset-id",
+    "status": "DENY",
+    "sourceId": "commercial-exercise-media",
+    "sourceUrl": null,
+    "licenseEvidenceRef": null,
+    "allowedPlatforms": [],
+    "sha256": null,
+    "reviewedAt": null,
+    "reviewedBy": null,
+    "notes": "Copy this shape into assets only after rights and hash verification."
+  }
+}

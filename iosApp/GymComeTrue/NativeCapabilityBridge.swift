@@ -11,7 +11,7 @@ struct NativeScanEvidence {
 
     var summary: String {
         let lines = recognizedText
-            .split(whereSeparator: \ .isNewline)
+            .split(whereSeparator: \.isNewline)
             .filter { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
         let barcodePart = barcode.map { " Barcode: \($0.prefix(32))." } ?? " No barcode detected."
         return "Recognized \(lines.count) non-empty lines. Evidence hash: \(rawTextSHA256.prefix(12))…\(barcodePart) Confirm against the physical label."

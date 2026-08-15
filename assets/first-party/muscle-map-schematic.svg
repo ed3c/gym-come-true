@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Gym Come True first-party muscle map schematic</title>
+  <desc id="desc">A non-diagnostic front and back body schematic with stable muscle region identifiers for local UI highlighting.</desc>
+  <style>
+    .outline { fill: #f3f4f6; stroke: #111827; stroke-width: 5; stroke-linejoin: round; }
+    .region { fill: #d1d5db; stroke: #4b5563; stroke-width: 2; transition: opacity .2s ease; }
+    .label { font: 600 22px system-ui, sans-serif; fill: #111827; text-anchor: middle; }
+    .note { font: 16px system-ui, sans-serif; fill: #4b5563; text-anchor: middle; }
+  </style>
+
+  <text class="label" x="250" y="44">FRONT</text>
+  <text class="label" x="710" y="44">BACK</text>
+
+  <!-- Front silhouette -->
+  <g id="front" transform="translate(90 62)">
+    <circle class="outline" cx="160" cy="52" r="42"/>
+    <path class="outline" d="M110 104 C72 128 61 181 72 242 L92 354 L80 530 L133 530 L160 376 L187 530 L240 530 L228 354 L248 242 C259 181 248 128 210 104 Z"/>
+    <path class="outline" d="M104 125 L52 180 L28 318 L69 326 L104 220 Z"/>
+    <path class="outline" d="M216 125 L268 180 L292 318 L251 326 L216 220 Z"/>
+
+    <ellipse id="muscle-front-left-shoulder" class="region" data-muscle="ANTERIOR_DELTOID" cx="105" cy="145" rx="34" ry="28"/>
+    <ellipse id="muscle-front-right-shoulder" class="region" data-muscle="ANTERIOR_DELTOID" cx="215" cy="145" rx="34" ry="28"/>
+    <path id="muscle-front-left-chest" class="region" data-muscle="PECTORALIS_MAJOR" d="M119 157 C129 139 151 137 157 150 L157 214 C136 216 116 202 110 178 Z"/>
+    <path id="muscle-front-right-chest" class="region" data-muscle="PECTORALIS_MAJOR" d="M201 157 C191 139 169 137 163 150 L163 214 C184 216 204 202 210 178 Z"/>
+    <path id="muscle-front-left-arm" class="region" data-muscle="BICEPS_BRACHII" d="M74 174 C55 201 51 251 46 294 L72 299 C81 255 91 216 102 185 Z"/>
+    <path id="muscle-front-right-arm" class="region" data-muscle="BICEPS_BRACHII" d="M246 174 C265 201 269 251 274 294 L248 299 C239 255 229 216 218 185 Z"/>
+    <path id="muscle-front-abdominals" class="region" data-muscle="ABDOMINALS" d="M132 222 Q160 208 188 222 L184 334 Q160 350 136 334 Z"/>
+    <path id="muscle-front-left-oblique" class="region" data-muscle="OBLIQUES" d="M110 218 Q128 218 134 230 L136 327 Q118 314 104 282 Z"/>
+    <path id="muscle-front-right-oblique" class="region" data-muscle="OBLIQUES" d="M210 218 Q192 218 186 230 L184 327 Q202 314 216 282 Z"/>
+    <path id="muscle-front-left-quadriceps" class="region" data-muscle="QUADRICEPS" d="M105 342 Q132 328 153 354 L137 482 Q110 491 92 474 Z"/>
+    <path id="muscle-front-right-quadriceps" class="region" data-muscle="QUADRICEPS" d="M215 342 Q188 328 167 354 L183 482 Q210 491 228 474 Z"/>
+    <path id="muscle-front-left-lower-leg" class="region" data-muscle="TIBIALIS_ANTERIOR" d="M94 484 Q115 474 136 486 L128 526 L89 526 Z"/>
+    <path id="muscle-front-right-lower-leg" class="region" data-muscle="TIBIALIS_ANTERIOR" d="M226 484 Q205 474 184 486 L192 526 L231 526 Z"/>
+  </g>
+
+  <!-- Back silhouette -->
+  <g id="back" transform="translate(550 62)">
+    <circle class="outline" cx="160" cy="52" r="42"/>
+    <path class="outline" d="M110 104 C72 128 61 181 72 242 L92 354 L80 530 L133 530 L160 376 L187 530 L240 530 L228 354 L248 242 C259 181 248 128 210 104 Z"/>
+    <path class="outline" d="M104 125 L52 180 L28 318 L69 326 L104 220 Z"/>
+    <path class="outline" d="M216 125 L268 180 L292 318 L251 326 L216 220 Z"/>
+
+    <ellipse id="muscle-back-left-shoulder" class="region" data-muscle="POSTERIOR_DELTOID" cx="105" cy="145" rx="34" ry="28"/>
+    <ellipse id="muscle-back-right-shoulder" class="region" data-muscle="POSTERIOR_DELTOID" cx="215" cy="145" rx="34" ry="28"/>
+    <path id="muscle-back-trapezius" class="region" data-muscle="TRAPEZIUS" d="M125 112 Q160 91 195 112 L184 205 Q160 223 136 205 Z"/>
+    <path id="muscle-back-left-lat" class="region" data-muscle="LATISSIMUS_DORSI" d="M105 180 Q132 169 154 205 L151 292 Q125 302 103 267 Z"/>
+    <path id="muscle-back-right-lat" class="region" data-muscle="LATISSIMUS_DORSI" d="M215 180 Q188 169 166 205 L169 292 Q195 302 217 267 Z"/>
+    <path id="muscle-back-left-triceps" class="region" data-muscle="TRICEPS_BRACHII" d="M74 174 C55 201 51 251 46 294 L72 299 C81 255 91 216 102 185 Z"/>
+    <path id="muscle-back-right-triceps" class="region" data-muscle="TRICEPS_BRACHII" d="M246 174 C265 201 269 251 274 294 L248 299 C239 255 229 216 218 185 Z"/>
+    <path id="muscle-back-erectors" class="region" data-muscle="ERECTOR_SPINAE" d="M145 214 Q160 205 175 214 L181 320 Q160 335 139 320 Z"/>
+    <path id="muscle-back-left-glute" class="region" data-muscle="GLUTEUS_MAXIMUS" d="M105 304 Q133 291 157 322 L153 375 Q123 389 96 365 Z"/>
+    <path id="muscle-back-right-glute" class="region" data-muscle="GLUTEUS_MAXIMUS" d="M215 304 Q187 291 163 322 L167 375 Q197 389 224 365 Z"/>
+    <path id="muscle-back-left-hamstring" class="region" data-muscle="HAMSTRINGS" d="M99 377 Q127 365 151 383 L137 478 Q112 487 93 468 Z"/>
+    <path id="muscle-back-right-hamstring" class="region" data-muscle="HAMSTRINGS" d="M221 377 Q193 365 169 383 L183 478 Q208 487 227 468 Z"/>
+    <path id="muscle-back-left-calf" class="region" data-muscle="GASTROCNEMIUS" d="M94 480 Q116 468 137 486 L128 526 L89 526 Z"/>
+    <path id="muscle-back-right-calf" class="region" data-muscle="GASTROCNEMIUS" d="M226 480 Q204 468 183 486 L192 526 L231 526 Z"/>
+  </g>
+
+  <text class="note" x="480" y="616">Schematic UI asset — not a diagnostic or anatomically validated medical illustration</text>
+</svg>

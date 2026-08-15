@@ -1,0 +1,159 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "gym-come-true-first-party-demo",
+  "dataset_version": "2026-08-15.1",
+  "purpose": "Development and UI validation only",
+  "license_record_id": "lic-first-party-demo-2026-08-15",
+  "media_policy": "NO_MEDIA_INCLUDED",
+  "exercises": [
+    {
+      "id": "gct-bodyweight-squat",
+      "slug": "bodyweight-squat",
+      "name": {
+        "en": "Bodyweight Squat",
+        "zh-Hant-TW": "徒手深蹲"
+      },
+      "summary": {
+        "en": "A lower-body squat performed without external load.",
+        "zh-Hant-TW": "不使用外加重量完成的下肢蹲起動作。"
+      },
+      "movement_pattern": "SQUAT",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "equipment": ["BODYWEIGHT"],
+      "primary_muscles": ["QUADRICEPS", "GLUTEUS_MAXIMUS"],
+      "secondary_muscles": ["HAMSTRINGS", "ADDUCTORS", "ERECTOR_SPINAE", "ABDOMINALS"],
+      "steps": {
+        "en": [
+          "Stand with a stable foot position and keep the whole foot in contact with the floor.",
+          "Bend at the hips and knees while keeping the knees aligned with the feet.",
+          "Descend only as far as you can control without pain or loss of balance.",
+          "Push through the floor and return to a stable standing position."
+        ],
+        "zh-Hant-TW": [
+          "採取穩定站距，整個腳掌保持接觸地面。",
+          "髖與膝同時彎曲，膝蓋方向與腳掌大致一致。",
+          "只下降到能穩定控制、沒有疼痛或失去平衡的深度。",
+          "穩定踩地，回到站立位置。"
+        ]
+      },
+      "common_errors": {
+        "en": ["Losing foot contact", "Collapsing the knees inward", "Using a depth that cannot be controlled"],
+        "zh-Hant-TW": ["腳掌失去穩定接觸", "膝蓋明顯向內塌", "下降到無法控制的深度"]
+      },
+      "safety_note": {
+        "en": "Stop when pain, dizziness, numbness, or loss of balance occurs. This entry is not rehabilitation or medical advice.",
+        "zh-Hant-TW": "出現疼痛、暈眩、麻木或失去平衡時應停止。本條目不是復健或醫療建議。"
+      },
+      "muscle_visualization": [
+        {"muscle": "QUADRICEPS", "intensity": 3},
+        {"muscle": "GLUTEUS_MAXIMUS", "intensity": 3},
+        {"muscle": "HAMSTRINGS", "intensity": 1},
+        {"muscle": "ABDOMINALS", "intensity": 1}
+      ],
+      "media": [],
+      "provenance_record_id": "prov-gct-bodyweight-squat-2026-08-15",
+      "review_state": "DEMO_REVIEWED"
+    },
+    {
+      "id": "gct-wall-push-up",
+      "slug": "wall-push-up",
+      "name": {
+        "en": "Wall Push-Up",
+        "zh-Hant-TW": "牆面伏地挺身"
+      },
+      "summary": {
+        "en": "An incline pressing movement performed against a stable wall.",
+        "zh-Hant-TW": "以穩固牆面作為支撐完成的上肢推動作。"
+      },
+      "movement_pattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "equipment": ["WALL"],
+      "primary_muscles": ["PECTORALIS_MAJOR", "TRICEPS_BRACHII"],
+      "secondary_muscles": ["ANTERIOR_DELTOID", "SERRATUS_ANTERIOR", "ABDOMINALS"],
+      "steps": {
+        "en": [
+          "Place both hands on a stable wall and step back into a controlled incline.",
+          "Keep the body aligned while bending the elbows and moving the chest toward the wall.",
+          "Stop before the shoulders lose a comfortable position.",
+          "Press the wall away and return without locking the elbows forcefully."
+        ],
+        "zh-Hant-TW": [
+          "雙手放在穩固牆面，向後站到能控制的傾斜角度。",
+          "身體保持大致一直線，彎曲手肘讓胸口靠近牆面。",
+          "在肩膀失去舒適位置前停止下降。",
+          "推離牆面回到起始位置，不要用力鎖死手肘。"
+        ]
+      },
+      "common_errors": {
+        "en": ["Unstable wall or footing", "Shrugging the shoulders", "Dropping the hips"],
+        "zh-Hant-TW": ["牆面或站姿不穩", "肩膀聳起", "髖部下沉"]
+      },
+      "safety_note": {
+        "en": "Use a non-slippery surface. Stop with wrist, elbow, shoulder, chest pain, or dizziness.",
+        "zh-Hant-TW": "請使用不易滑動的地面；手腕、手肘、肩膀、胸口疼痛或暈眩時停止。"
+      },
+      "muscle_visualization": [
+        {"muscle": "PECTORALIS_MAJOR", "intensity": 3},
+        {"muscle": "TRICEPS_BRACHII", "intensity": 2},
+        {"muscle": "ANTERIOR_DELTOID", "intensity": 2},
+        {"muscle": "SERRATUS_ANTERIOR", "intensity": 1}
+      ],
+      "media": [],
+      "provenance_record_id": "prov-gct-wall-push-up-2026-08-15",
+      "review_state": "DEMO_REVIEWED"
+    },
+    {
+      "id": "gct-glute-bridge",
+      "slug": "glute-bridge",
+      "name": {
+        "en": "Glute Bridge",
+        "zh-Hant-TW": "臀橋"
+      },
+      "summary": {
+        "en": "A floor-based hip-extension movement performed from a supported supine position.",
+        "zh-Hant-TW": "仰躺支撐於地面完成的髖伸展動作。"
+      },
+      "movement_pattern": "HIP_EXTENSION",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "equipment": ["BODYWEIGHT", "EXERCISE_MAT_OPTIONAL"],
+      "primary_muscles": ["GLUTEUS_MAXIMUS"],
+      "secondary_muscles": ["HAMSTRINGS", "ADDUCTORS", "ERECTOR_SPINAE", "ABDOMINALS"],
+      "steps": {
+        "en": [
+          "Lie on a stable surface with the knees bent and feet supported.",
+          "Brace gently and press through the feet to raise the hips.",
+          "Stop at a controlled position without forcing the lower back into extension.",
+          "Lower the hips slowly to the starting position."
+        ],
+        "zh-Hant-TW": [
+          "仰躺在穩定表面，膝蓋彎曲、雙腳踩穩。",
+          "輕微收緊軀幹，踩地抬起髖部。",
+          "在可控制的位置停止，不要刻意讓下背過度伸展。",
+          "慢慢下降髖部回到起始位置。"
+        ]
+      },
+      "common_errors": {
+        "en": ["Overextending the lower back", "Pushing through an unstable foot position", "Moving too quickly"],
+        "zh-Hant-TW": ["下背過度伸展", "腳部支撐不穩", "動作速度過快"]
+      },
+      "safety_note": {
+        "en": "Stop with back, hip, or leg pain, numbness, cramping that does not resolve, or dizziness.",
+        "zh-Hant-TW": "出現背部、髖部或腿部疼痛、麻木、持續抽筋或暈眩時停止。"
+      },
+      "muscle_visualization": [
+        {"muscle": "GLUTEUS_MAXIMUS", "intensity": 3},
+        {"muscle": "HAMSTRINGS", "intensity": 2},
+        {"muscle": "ABDOMINALS", "intensity": 1}
+      ],
+      "media": [],
+      "provenance_record_id": "prov-gct-glute-bridge-2026-08-15",
+      "review_state": "DEMO_REVIEWED"
+    }
+  ]
+}

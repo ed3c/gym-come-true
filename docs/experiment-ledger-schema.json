@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "required": [
+    "experimentId",
+    "hypothesis",
+    "audience",
+    "buildVersion",
+    "claimReviewStatus",
+    "rightsReviewStatus",
+    "spend",
+    "protocolActivations",
+    "paidConversions",
+    "refunds",
+    "day30VerifiedProtocolRetention",
+    "safetyIncidents",
+    "decision"
+  ],
+  "decisionValues": ["STOP", "REVISE", "REPEAT", "SCALE"]
+}

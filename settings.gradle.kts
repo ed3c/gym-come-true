@@ -18,7 +18,10 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    // Kotlin/JS provisions Node.js through a project-scoped Ivy repository.
+    // Prefer centrally declared dependency repositories while allowing
+    // toolchain-owned distribution repositories required by Kotlin JS/Wasm.
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google {
             mavenContent {

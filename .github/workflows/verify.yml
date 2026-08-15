@@ -29,6 +29,7 @@ jobs:
           python3 scripts/validate_repository.py
           python3 scripts/validate_taiwan_rule_pack.py
           python3 scripts/validate_taiwan_source_lifecycle.py
+          python3 scripts/validate_taiwan_source_hardening.py
 
   android-web-domain:
     name: android-web-domain

@@ -1,0 +1,19 @@
+{
+  "id": "example-only",
+  "status": "DENY",
+  "experimentId": null,
+  "creatorId": null,
+  "sourceFileSha256": null,
+  "sponsorshipDisclosure": null,
+  "musicRightsRef": null,
+  "fontRightsRef": null,
+  "personReleaseRef": null,
+  "propertyReleaseRef": null,
+  "allowedPlatforms": [],
+  "territories": [],
+  "term": null,
+  "editRights": null,
+  "paidUsageRights": null,
+  "postUrl": null,
+  "notes": "Template only. Copy into a private rights system after review."
+}

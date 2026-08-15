@@ -1,0 +1,85 @@
+{
+  "schema": "gym-come-true/git-town-candidate-local-static-receipt/v1",
+  "recordedAt": "2026-08-15",
+  "branch": "agent/git-town-admission-candidate",
+  "parentHead": "ad065c8ac944f2fb4f9d60e65b008367b1291c43",
+  "validatedCommit": "f96db75d9570e859b18c6d6b046a63944dff3473",
+  "candidate": {
+    "path": "docs/git/admission/git-town-v24.0.0-linux-x86_64.json",
+    "sha256": "2b474dcba8b3df966e7843428a1673dc602a51f5e9388f4d7ee14f90da8130ff",
+    "state": "CANDIDATE_METADATA_VERIFIED",
+    "runtimeAdmitted": false,
+    "productionUse": "DENY"
+  },
+  "subjects": [
+    {
+      "path": "scripts/git-town/verify_admission.py",
+      "sha256": "27f37dabc04de0d20ebef7a0fdf3bdff04d29e85c988120cb33eb9c1bdea7b35"
+    },
+    {
+      "path": "scripts/git-town/run_disposable_canary.sh",
+      "sha256": "42fe78ed070c5a35c1cc954f241835921e50348231742b00145f48e661c29ec4"
+    },
+    {
+      "path": ".github/workflows/git-town-admission.yml",
+      "sha256": "1bab3f5bd9e3e8a77d7c2e7c2a360ace85a8217b6ab4910ac0443f68a7dfd6d1"
+    },
+    {
+      "path": "docs/git/admission/upstream/git-town-v24.0.0-LICENSE.txt",
+      "sha256": "eec8a092b92231375231488d27b959e2fa2be80559c97db60c1b0458d3298791"
+    },
+    {
+      "path": "docs/git/admission/upstream/git-town-v24.0.0-go.mod",
+      "sha256": "5a7627e581f45c29750ceef8116ee0bdf61f0c36ead5b31d8f1f3fe33753c721"
+    }
+  ],
+  "checks": [
+    {
+      "name": "python_compile",
+      "status": "PASS",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "static_candidate_and_repository_surfaces",
+      "status": "PASS",
+      "exitCode": 0,
+      "logSha256": "19d7a21aba54ae4e1e3bfc4293f119548a91e092fb3775d2c059e5f609f7b1ff"
+    },
+    {
+      "name": "shell_syntax",
+      "status": "PASS",
+      "exitCode": 0,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "structured_document_contract",
+      "status": "PASS",
+      "exitCode": 0,
+      "logSha256": "e86031f472d41c683bda5943b65e1472d0121da739f7dc0a2d1dc816fe14a77c"
+    },
+    {
+      "name": "negative_controls_14_mutations",
+      "status": "PASS",
+      "exitCode": 0,
+      "logSha256": "03a838dbfe94bfe02d61f0f95f041773a495772f6360bc0a2a30672a0624c2fe"
+    },
+    {
+      "name": "secret_and_forbidden_command_scan",
+      "status": "PASS",
+      "exitCode": 0,
+      "logSha256": "a0807d524da8005d2806d328c078840da203a483f518b0e61f48cf1080732746"
+    }
+  ],
+  "runtimeLanes": {
+    "archiveMaterialization": "NOT_EXERCISED",
+    "binaryVerification": "NOT_EXERCISED",
+    "disposableCanary": "NOT_EXERCISED",
+    "consumerWorktreeAndLease": "NOT_EXERCISED",
+    "consumerNoPushSync": "NOT_EXERCISED",
+    "publication": "NOT_EXERCISED",
+    "hostedRunner": "NOT_EXERCISED",
+    "runtimeAdmitted": false
+  },
+  "evidenceBoundary": "This receipt proves local static checks for the named file subjects. It does not prove archive download, binary execution, Git Town behavior, hosted runner allocation, consumer repository synchronization, publication, legal approval, merge, ship, promotion, rollback or production admission."
+}

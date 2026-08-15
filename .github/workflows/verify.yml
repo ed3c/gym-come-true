@@ -42,8 +42,10 @@ jobs:
           gradle-version: "9.5.0"
           cache-read-only: ${{ github.ref != 'refs/heads/main' }}
       - uses: android-actions/setup-android@v3
-      - name: Install Android API 37 preview
-        run: sdkmanager --channel=3 "platforms;android-37"
+        with:
+          packages: platform-tools
+      - name: Install stable Android API 36
+        run: sdkmanager "platforms;android-36"
       - name: Shared domain tests
         run: sh ./gradlew :shared:jvmTest --stacktrace
       - name: Android debug and lint

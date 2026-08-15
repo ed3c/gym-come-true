@@ -95,7 +95,7 @@ Prerequisites:
 
 - JDK 21
 - Gradle **9.5.0** available as `gradle`
-- Android SDK for API 37
+- Android SDK Platform 36 (Android 16, stable)
 - Xcode and XcodeGen for the iOS host
 
 The checked-in `gradlew` is a thin, fail-fast launcher that delegates to an installed Gradle 9.5.0. It does not silently download executable code.

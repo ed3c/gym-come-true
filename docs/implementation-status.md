@@ -129,7 +129,7 @@ Only hosted checks attached to the exact PR head count as merge evidence. A loca
 ## Known review points
 
 1. Confirm the pinned Kotlin/Compose/AGP/Gradle matrix on hosted runners.
-2. Confirm Android API 37 package availability and bundled Chinese ML Kit behavior.
+2. Confirm Android API 36 compilation, target behavior, and bundled Chinese ML Kit behavior.
 3. Confirm XcodeGen/Xcode can locate the embedded static KMP framework.
 4. Validate the iOS photo picker and Vision flow on a real device.
 5. Review all license descriptions against pinned upstream versions before external release.

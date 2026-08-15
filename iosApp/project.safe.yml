@@ -37,7 +37,6 @@ targets:
         basedOnDependencyAnalysis: false
         script: |
           set -eu
-          export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
           cd "$SRCROOT/.."
           sh ./gradlew :shared:embedAndSignAppleFrameworkForXcode
 

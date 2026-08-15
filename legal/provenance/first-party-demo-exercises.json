@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "license_record": {
+    "id": "lic-first-party-demo-2026-08-15",
+    "asset_scope": "data/seed/first-party-demo-exercises.json textual exercise metadata only",
+    "rights_holder": "ed3c / Gym Come True project owner",
+    "authorship_method": "Original first-party text written for this repository; no third-party exercise descriptions or media copied",
+    "license_to_repository": "All rights reserved by the project owner; authorized for use in Gym Come True products and repository testing",
+    "territories": ["WORLDWIDE"],
+    "channels": ["SOURCE_REPOSITORY", "ANDROID", "IOS", "WEB", "MARKETING_SCREENSHOTS"],
+    "modification_allowed": true,
+    "redistribution_allowed": false,
+    "attribution_required": false,
+    "effective_at": "2026-08-15",
+    "expires_at": null,
+    "decision": "ALLOW",
+    "limitations": [
+      "No image, video, animation, audio, font, 3D model, logo, or trademark right is included",
+      "Entries are development examples and not a substitute for coach, rehabilitation, or medical review",
+      "A separate review is required before describing the seed as an anatomically validated production catalogue"
+    ]
+  },
+  "records": [
+    {
+      "id": "prov-gct-bodyweight-squat-2026-08-15",
+      "asset_id": "gct-bodyweight-squat",
+      "source_type": "FIRST_PARTY_AUTHORSHIP",
+      "source_location": "data/seed/first-party-demo-exercises.json",
+      "created_at": "2026-08-15",
+      "reviewer": "repository-owner",
+      "decision": "ALLOW_FOR_DEMO",
+      "media_ids": []
+    },
+    {
+      "id": "prov-gct-wall-push-up-2026-08-15",
+      "asset_id": "gct-wall-push-up",
+      "source_type": "FIRST_PARTY_AUTHORSHIP",
+      "source_location": "data/seed/first-party-demo-exercises.json",
+      "created_at": "2026-08-15",
+      "reviewer": "repository-owner",
+      "decision": "ALLOW_FOR_DEMO",
+      "media_ids": []
+    },
+    {
+      "id": "prov-gct-glute-bridge-2026-08-15",
+      "asset_id": "gct-glute-bridge",
+      "source_type": "FIRST_PARTY_AUTHORSHIP",
+      "source_location": "data/seed/first-party-demo-exercises.json",
+      "created_at": "2026-08-15",
+      "reviewer": "repository-owner",
+      "decision": "ALLOW_FOR_DEMO",
+      "media_ids": []
+    }
+  ]
+}

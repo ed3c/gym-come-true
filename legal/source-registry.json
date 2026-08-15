@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "defaultPolicy": "DENY",
+  "legalAdvice": false,
+  "reviewedAt": "2026-08-15",
+  "sources": [
+    {
+      "id": "original-example-seed",
+      "name": "Gym Come True original example records",
+      "status": "ALLOW",
+      "scope": "Synthetic metadata authored for this repository; no third-party media",
+      "declaredLicense": "Proprietary / repository LICENSE",
+      "sourceUrl": null,
+      "evidence": "Repository history",
+      "notes": "May be used for tests and UI demonstrations only."
+    },
+    {
+      "id": "free-exercise-db",
+      "name": "yuhonas/free-exercise-db",
+      "status": "REVIEW",
+      "scope": "Metadata only; images excluded until each asset has a defensible rights chain",
+      "declaredLicense": "Unlicense declaration in upstream repository",
+      "sourceUrl": "https://github.com/yuhonas/free-exercise-db",
+      "evidence": "Upstream LICENSE and issue review required at a pinned commit",
+      "notes": "A repository-level public-domain declaration does not by itself prove that every contributed image is controlled by the declarant."
+    },
+    {
+      "id": "wger-code",
+      "name": "wger application code",
+      "status": "REVIEW",
+      "scope": "Reference or separately operated service only; no code incorporation approved",
+      "declaredLicense": "AGPL family according to upstream notices",
+      "sourceUrl": "https://github.com/wger-project/wger",
+      "evidence": "Pin commit and review network-use obligations before adoption",
+      "notes": "Do not treat application code, database content, and user-contributed media as one uniform license."
+    },
+    {
+      "id": "wger-data-media",
+      "name": "wger exercise data and contributed media",
+      "status": "REVIEW",
+      "scope": "No production import approved",
+      "declaredLicense": "Record and asset terms may differ; attribution/share-alike review required",
+      "sourceUrl": "https://wger.de",
+      "evidence": "Per-record provenance and current upstream terms required",
+      "notes": "Share-alike and contributor provenance can affect a proprietary catalog."
+    },
+    {
+      "id": "hasaneyldrm-exercises-dataset",
+      "name": "hasaneyldrm/exercises-dataset",
+      "status": "DENY",
+      "scope": "No production metadata, media IDs, CDN URLs, or derived catalog",
+      "declaredLicense": "Upstream usage restrictions and provenance require review",
+      "sourceUrl": "https://github.com/hasaneyldrm/exercises-dataset",
+      "evidence": "Upstream README and source-chain review",
+      "notes": "Scraped identifiers and absent media files do not create redistribution rights; hotlinking is prohibited by project policy."
+    },
+    {
+      "id": "body-muscles",
+      "name": "body-muscles",
+      "status": "REVIEW",
+      "scope": "Code evaluation only; no anatomy asset vendoring approved",
+      "declaredLicense": "Apache-2.0 according to the currently reviewed upstream repository",
+      "sourceUrl": "https://github.com/vulovix/body-muscles",
+      "evidence": "Pin exact version, inspect asset authorship, preserve NOTICE obligations",
+      "notes": "The foundation renders an original geometric body view instead of importing this package."
+    },
+    {
+      "id": "react-muscle-highlighter-family",
+      "name": "React and React Native muscle highlighter packages",
+      "status": "REVIEW",
+      "scope": "Web/mobile reference only; no KMP redistribution approved",
+      "declaredLicense": "Verify exact package, fork, SVG assets, and version",
+      "sourceUrl": "https://github.com/HichamELBSI/react-native-body-highlighter",
+      "evidence": "Package lock, LICENSE, SVG provenance, and security review required",
+      "notes": "A permissive code license does not automatically resolve embedded anatomy illustration rights."
+    },
+    {
+      "id": "commercial-exercise-media",
+      "name": "Commercial exercise media purchase",
+      "status": "REVIEW",
+      "scope": "No asset admitted until contract and receipt are stored outside the public client",
+      "declaredLicense": "Vendor-specific",
+      "sourceUrl": null,
+      "evidence": "Executed license, invoice, permitted platforms, territory, term, derivative rights, CDN rights, and asset hashes",
+      "notes": "Marketing pages and price summaries are not a license grant."
+    }
+  ]
+}

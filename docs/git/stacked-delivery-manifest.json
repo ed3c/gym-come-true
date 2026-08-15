@@ -1,0 +1,960 @@
+{
+  "schema": "gym-come-true/stacked-delivery-manifest/v1",
+  "narrativeSource": {
+    "path": "docs/git/STACKED_PRS.md",
+    "sha256": "5173dd3e72d80fb41415910884f21626f791e4381a8bf219278acca2d2b2cb0e"
+  },
+  "gitTownRuntime": {
+    "executable": "ABSENT",
+    "canary": "NOT_EXERCISED",
+    "runtimeAdmitted": false
+  },
+  "evalSets": [
+    "E-BASE",
+    "E-TW",
+    "E-DOC",
+    "E-GIT",
+    "E-IOS",
+    "E-ANDROID",
+    "E-CATALOG",
+    "E-LLM",
+    "E-RELEASE",
+    "E-MARKET"
+  ],
+  "packets": [
+    {
+      "id": "S0",
+      "status": "MERGED_TO_MAIN",
+      "pullRequest": 2,
+      "issue": 1,
+      "parents": [
+        "main"
+      ],
+      "head": "agent/bootstrap-kmp-fitness-platform",
+      "transition": "EMPTY_REPOSITORY -> AUDITABLE_CROSS_PLATFORM_FOUNDATION",
+      "pathLease": [
+        "shared/**",
+        "build.gradle.kts",
+        "settings.gradle.kts",
+        "gradle/**",
+        "gradlew",
+        "gradle.properties",
+        ".github/workflows/verify.yml",
+        "scripts/validate_repository.py",
+        "webApp/**"
+      ],
+      "evals": [
+        "E-BASE"
+      ],
+      "negativeControls": [
+        "no client provider secret",
+        "no automatic dose advice",
+        "no scraped or hotlinked media"
+      ],
+      "rollback": "0148e135a4855a700bb666e1181e65611517507c",
+      "humanAdmit": [
+        "merge",
+        "release/store promotion"
+      ],
+      "mergedHeadSha": "58492815f22af65665172bcf98bfb661639ece92"
+    },
+    {
+      "id": "S1",
+      "status": "MERGED_TO_MAIN",
+      "pullRequest": 15,
+      "issue": 8,
+      "parents": [
+        "S0"
+      ],
+      "head": "agent/taiwan-supplement-evidence",
+      "transition": "AUDITABLE_CROSS_PLATFORM_FOUNDATION -> TAIWAN_EVIDENCE_CONTRACT_DRAFT",
+      "pathLease": [
+        "data/taiwan-supplement/**",
+        "legal/taiwan-supplement-source-registry.json",
+        "scripts/validate_taiwan_rule_pack.py",
+        "docs/taiwan-supplement-evidence.md"
+      ],
+      "evals": [
+        "E-TW"
+      ],
+      "negativeControls": [
+        "Draft pack cannot execute",
+        "unknown/withdrawn consent denies admission",
+        "modelUsedForDecision remains false"
+      ],
+      "rollback": "58492815f22af65665172bcf98bfb661639ece92",
+      "humanAdmit": [
+        "clinical/legal acceptance",
+        "merge"
+      ],
+      "mergedHeadSha": "79f8a65b370806925c32f0a15da88c7c0d7bda36"
+    },
+    {
+      "id": "S2",
+      "status": "MERGED_TO_MAIN",
+      "pullRequest": 16,
+      "issue": 17,
+      "parents": [
+        "S1"
+      ],
+      "head": "agent/taiwan-source-lifecycle",
+      "transition": "TAIWAN_EVIDENCE_CONTRACT_DRAFT -> TAIWAN_SOURCE_LIFECYCLE_DRAFT",
+      "pathLease": [
+        "legal/taiwan-official-resource-candidates.json",
+        "scripts/capture_taiwan_source.py",
+        "scripts/validate_taiwan_source_lifecycle.py",
+        "scripts/validate_taiwan_source_hardening.py",
+        "docs/taiwan-source-lifecycle.md",
+        "docs/taiwan-source-capture-hardening.md"
+      ],
+      "evals": [
+        "E-TW"
+      ],
+      "negativeControls": [
+        "synthetic snapshot cannot enter production",
+        "capture command has no network client",
+        "mismatched mapping is rejected",
+        "skipped lifecycle state is rejected",
+        "rollback target must equal declared prior version"
+      ],
+      "rollback": "79f8a65b370806925c32f0a15da88c7c0d7bda36",
+      "humanAdmit": [
+        "source acquisition and legal terms",
+        "clinical review and activation/rollback",
+        "merge"
+      ],
+      "mergedHeadSha": "f58a2feac580ca37bb4d7b3c30e122908bfd6b07"
+    },
+    {
+      "id": "S3",
+      "status": "MERGED_TO_MAIN",
+      "pullRequest": 20,
+      "issue": 19,
+      "parents": [
+        "S2"
+      ],
+      "head": "agent/document-git-town-delivery-graph",
+      "transition": "TAIWAN_SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT",
+      "pathLease": [
+        "README.md",
+        "README.zh-TW.md",
+        "AGENTS.md",
+        "docs/architecture.md",
+        "docs/implementation-status.md",
+        "docs/roadmap.md",
+        "docs/github-issue-index.md",
+        "docs/git/README.md",
+        "docs/git/STACKED_PRS.md",
+        "docs/git/WORKER_PROTOCOL.md",
+        "docs/git/WORK_PACKET.template.md"
+      ],
+      "evals": [
+        "E-DOC"
+      ],
+      "negativeControls": [
+        "no Git Town runtime PASS claim",
+        "no planned branch marked as existing PR",
+        "no Actions budget block marked code PASS/FAIL"
+      ],
+      "rollback": "f58a2feac580ca37bb4d7b3c30e122908bfd6b07",
+      "humanAdmit": [
+        "documentation review",
+        "merge order and merge"
+      ],
+      "mergedHeadSha": "ad065c8ac944f2fb4f9d60e65b008367b1291c43"
+    },
+    {
+      "id": "S4",
+      "status": "MERGED_TO_MAIN",
+      "pullRequest": 22,
+      "issue": 21,
+      "parents": [
+        "S3"
+      ],
+      "head": "agent/git-town-admission-candidate",
+      "transition": "DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED",
+      "pathLease": [
+        "docs/git/GIT_TOWN_ADMISSION.md",
+        "docs/git/REPO_PROFILE.md",
+        "docs/git/admission/**",
+        "scripts/git-town/**",
+        ".github/workflows/git-town-admission.yml"
+      ],
+      "evals": [
+        "E-GIT"
+      ],
+      "negativeControls": [
+        "no Git Town runtime admission before the canary executes",
+        "no consumer repository configuration or synchronization",
+        "no archive execution before checksum verification"
+      ],
+      "rollback": "ad065c8ac944f2fb4f9d60e65b008367b1291c43",
+      "humanAdmit": [
+        "runtime admission",
+        "merge"
+      ],
+      "mergedHeadSha": "a70a52cc6e3e2f4107edae2f7bb2034029161568"
+    },
+    {
+      "id": "S5",
+      "status": "DELIVERED_ON_MAIN",
+      "issue": 23,
+      "parents": [
+        "S4"
+      ],
+      "head": "agent/stacked-delivery-contract",
+      "transition": "GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED -> MACHINE_VERIFIED_STACKED_DELIVERY_DRAFT",
+      "pathLease": [
+        "docs/git/stacked-delivery-manifest.json",
+        "docs/git/schemas/**",
+        "scripts/validate_stacked_delivery.py",
+        ".github/ISSUE_TEMPLATE/**",
+        ".github/pull_request_template.md"
+      ],
+      "evals": [
+        "E-DOC",
+        "E-GIT"
+      ],
+      "negativeControls": [
+        "graph cycles are rejected",
+        "unknown parents are rejected",
+        "sibling path leases may not overlap",
+        "a planned packet may not carry a pull request number",
+        "narrative digest drift is rejected",
+        "premature Git Town runtime admission is rejected"
+      ],
+      "rollback": "a70a52cc6e3e2f4107edae2f7bb2034029161568",
+      "humanAdmit": [
+        "governance review",
+        "merge"
+      ]
+    },
+    {
+      "id": "TW1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 24,
+      "parents": [
+        "S2"
+      ],
+      "head": "agent/tw-consent-corpus-contract",
+      "transition": "CORPUS_UNKNOWN -> CONSENT_CONTRACT_DRAFT",
+      "pathLease": [
+        "data/taiwan-supplement/consent/**",
+        "scripts/validate_taiwan_consent.py",
+        "docs/taiwan-consent-and-retention.md"
+      ],
+      "evals": [
+        "E-TW"
+      ],
+      "negativeControls": [
+        "UNKNOWN/WITHDRAWN/expired consent denies use",
+        "deletion cannot be a manifest-only claim"
+      ],
+      "rollback": "exact parent head at branch creation",
+      "externalGate": [
+        "privacy/legal review",
+        "production storage/deletion system"
+      ],
+      "humanAdmit": [
+        "privacy/legal acceptance",
+        "merge"
+      ]
+    },
+    {
+      "id": "TW2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 25,
+      "parents": [
+        "TW1"
+      ],
+      "head": "agent/tw-ocr-evaluation-contract",
+      "transition": "CONSENT_CONTRACT_DRAFT -> OCR_EVALUATION_DRAFT",
+      "pathLease": [
+        "data/taiwan-supplement/ocr-eval/**",
+        "scripts/validate_taiwan_ocr_evaluation.py",
+        "docs/taiwan-ocr-evaluation.md"
+      ],
+      "evals": [
+        "E-TW"
+      ],
+      "negativeControls": [
+        "corrected output cannot count as first-pass exact",
+        "engine/device/model versions cannot mix silently",
+        "aggregate output cannot contain raw label or image path"
+      ],
+      "rollback": "exact TW1 head",
+      "externalGate": [
+        "consented corpus",
+        "authorized Android/iOS device execution"
+      ],
+      "humanAdmit": [
+        "corpus/device/privacy approval",
+        "merge"
+      ]
+    },
+    {
+      "id": "TW3",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 26,
+      "parents": [
+        "TW2"
+      ],
+      "head": "agent/tw-reviewed-rule-pack",
+      "transition": "OCR_EVALUATED -> REVIEWED_TAIWAN_RULE_PACK",
+      "pathLease": [
+        "data/taiwan-supplement/reviewed/**",
+        "scripts/validate_taiwan_reviewed_pack.py",
+        "docs/taiwan-reviewed-rule-pack.md"
+      ],
+      "evals": [
+        "E-TW"
+      ],
+      "negativeControls": [
+        "no model-created rule",
+        "no source without immutable bytes and hash",
+        "no high-impact field without qualified reviewer",
+        "no unbounded effective window",
+        "no personal dose recommendation"
+      ],
+      "rollback": "exact prior pack version plus parent head",
+      "externalGate": [
+        "approved MOHW/TFDA bytes and reuse terms",
+        "qualified reviewer and COI",
+        "signed wording/rule/test bundle"
+      ],
+      "humanAdmit": [
+        "clinical/legal acceptance",
+        "signing, stage, activation, revocation, rollback, merge"
+      ]
+    },
+    {
+      "id": "I1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 27,
+      "parents": [
+        "S0"
+      ],
+      "head": "agent/ios-evidence-bridge",
+      "transition": "IOS_SHELL -> IOS_EVIDENCE_HANDOFF",
+      "pathLease": [
+        "iosApp/**"
+      ],
+      "evals": [
+        "E-IOS"
+      ],
+      "negativeControls": [
+        "raw pixels are not retained or uploaded",
+        "a candidate cannot auto-confirm"
+      ],
+      "rollback": "exact foundation head",
+      "externalGate": [
+        "authorized Apple device execution"
+      ],
+      "humanAdmit": [
+        "permission review",
+        "merge"
+      ]
+    },
+    {
+      "id": "I2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 28,
+      "parents": [
+        "I1"
+      ],
+      "head": "agent/ios-healthkit-minimal",
+      "transition": "IOS_EVIDENCE_HANDOFF -> IOS_MINIMAL_HEALTH_READS",
+      "pathLease": [
+        "iosApp/**",
+        "docs/privacy/ios-health.md"
+      ],
+      "evals": [
+        "E-IOS"
+      ],
+      "negativeControls": [
+        "no broad HealthKit categories",
+        "no hidden background reads",
+        "no medical interpretation"
+      ],
+      "rollback": "exact I1 head",
+      "externalGate": [
+        "Apple entitlement and privacy acceptance"
+      ],
+      "humanAdmit": [
+        "Apple/store/privacy acceptance",
+        "merge"
+      ]
+    },
+    {
+      "id": "I3",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 29,
+      "parents": [
+        "I2"
+      ],
+      "head": "agent/ios-reminder-alarmkit-assessment",
+      "transition": "IOS_MINIMAL_HEALTH_READS -> IOS_DELIVERY_EVIDENCE",
+      "pathLease": [
+        "iosApp/**",
+        "docs/evidence/ios-reminders.md"
+      ],
+      "evals": [
+        "E-IOS"
+      ],
+      "negativeControls": [
+        "no guaranteed alarm claim",
+        "no removal of system stop semantics",
+        "no challenge-to-dismiss claim"
+      ],
+      "rollback": "exact I2 head",
+      "externalGate": [
+        "real Apple device evidence"
+      ],
+      "humanAdmit": [
+        "store/device review",
+        "merge"
+      ]
+    },
+    {
+      "id": "A1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 30,
+      "parents": [
+        "S0"
+      ],
+      "head": "agent/android-health-connect-minimal",
+      "transition": "ANDROID_SHELL -> ANDROID_MINIMAL_HEALTH_READS",
+      "pathLease": [
+        "androidApp/**"
+      ],
+      "evals": [
+        "E-ANDROID"
+      ],
+      "negativeControls": [
+        "no hidden background collection",
+        "no medical interpretation"
+      ],
+      "rollback": "exact foundation head",
+      "externalGate": [
+        "Play data-safety acceptance"
+      ],
+      "humanAdmit": [
+        "Play/privacy review",
+        "merge"
+      ]
+    },
+    {
+      "id": "A2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 31,
+      "parents": [
+        "A1"
+      ],
+      "head": "agent/android-reminder-reliability",
+      "transition": "ANDROID_MINIMAL_HEALTH_READS -> ANDROID_DELIVERY_EVIDENCE",
+      "pathLease": [
+        "androidApp/**",
+        "docs/evidence/android-reminders.md"
+      ],
+      "evals": [
+        "E-ANDROID"
+      ],
+      "negativeControls": [
+        "no default exact-alarm special access",
+        "no universal reliability claim"
+      ],
+      "rollback": "exact A1 head",
+      "externalGate": [
+        "device-farm execution"
+      ],
+      "humanAdmit": [
+        "device-farm/Play review",
+        "merge"
+      ]
+    },
+    {
+      "id": "C1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 32,
+      "parents": [
+        "S0"
+      ],
+      "head": "agent/exercise-taxonomy-contract",
+      "transition": "DEMO_CATALOG -> TAXONOMY_CONTRACT",
+      "pathLease": [
+        "data/catalog/**",
+        "scripts/validate_exercise_catalog.py",
+        "docs/exercise-catalog.md"
+      ],
+      "evals": [
+        "E-CATALOG"
+      ],
+      "negativeControls": [
+        "duplicate taxonomy identifiers are rejected",
+        "unknown taxonomy identifiers are rejected"
+      ],
+      "rollback": "exact foundation head",
+      "externalGate": [
+        "editorial taxonomy review"
+      ],
+      "humanAdmit": [
+        "taxonomy review",
+        "merge"
+      ]
+    },
+    {
+      "id": "C2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 33,
+      "parents": [
+        "C1"
+      ],
+      "head": "agent/exercise-top50-content",
+      "transition": "TAXONOMY_CONTRACT -> RIGHTS_CLEAN_TOP50",
+      "pathLease": [
+        "data/catalog/**",
+        "docs/exercise-authoring.md"
+      ],
+      "evals": [
+        "E-CATALOG"
+      ],
+      "negativeControls": [
+        "no scraped third-party text",
+        "no unsupported medical claim"
+      ],
+      "rollback": "exact C1 head",
+      "externalGate": [
+        "editorial and rights review"
+      ],
+      "humanAdmit": [
+        "editorial/rights review",
+        "merge"
+      ]
+    },
+    {
+      "id": "C3",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 34,
+      "parents": [
+        "C2"
+      ],
+      "head": "agent/exercise-media-admission",
+      "transition": "RIGHTS_CLEAN_TOP50 -> LICENSED_MEDIA_PIPELINE",
+      "pathLease": [
+        "assets/exercise/**",
+        "legal/media-registry.json",
+        "scripts/derive_exercise_media.py"
+      ],
+      "evals": [
+        "E-CATALOG"
+      ],
+      "negativeControls": [
+        "no remote media URL",
+        "no vendor media identifier",
+        "no repository-license shortcut"
+      ],
+      "rollback": "exact C2 head plus prior manifest",
+      "externalGate": [
+        "executed rights or commissioned first-party assets",
+        "private contract evidence"
+      ],
+      "humanAdmit": [
+        "legal/procurement/revocation",
+        "merge"
+      ]
+    },
+    {
+      "id": "L1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 35,
+      "parents": [
+        "TW3"
+      ],
+      "head": "agent/explanation-gateway-contract",
+      "transition": "REVIEWED_RECEIPT -> GATEWAY_CONTRACT",
+      "pathLease": [
+        "server/gateway/**",
+        "docs/explanation-gateway.md"
+      ],
+      "evals": [
+        "E-LLM"
+      ],
+      "negativeControls": [
+        "no raw image or OCR payload",
+        "no free-form medication context",
+        "no decision mutation by the gateway"
+      ],
+      "rollback": "exact TW3 head",
+      "externalGate": [
+        "security and privacy review"
+      ],
+      "humanAdmit": [
+        "security/privacy review",
+        "merge"
+      ]
+    },
+    {
+      "id": "L2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 36,
+      "parents": [
+        "L1"
+      ],
+      "head": "agent/explanation-gateway-provider",
+      "transition": "GATEWAY_CONTRACT -> PROVIDER_DRAFT",
+      "pathLease": [
+        "server/gateway/**",
+        "docs/explanation-gateway-operations.md"
+      ],
+      "evals": [
+        "E-LLM"
+      ],
+      "negativeControls": [
+        "no secret in Git, client, or log",
+        "no provider decision authority"
+      ],
+      "rollback": "exact L1 head",
+      "externalGate": [
+        "protected provider credentials",
+        "independent security review"
+      ],
+      "humanAdmit": [
+        "credential/provider/legal/deployment",
+        "merge"
+      ]
+    },
+    {
+      "id": "L3",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 37,
+      "parents": [
+        "L2"
+      ],
+      "head": "agent/explanation-gateway-adversarial-evals",
+      "transition": "PROVIDER_DRAFT -> EVALUATED_GATEWAY",
+      "pathLease": [
+        "server/gateway/**",
+        "docs/explanation-gateway-evals.md"
+      ],
+      "evals": [
+        "E-LLM"
+      ],
+      "negativeControls": [
+        "planted unsafe output must be rejected"
+      ],
+      "rollback": "exact L2 head",
+      "externalGate": [
+        "red-team execution"
+      ],
+      "humanAdmit": [
+        "red-team and production promotion",
+        "merge"
+      ]
+    },
+    {
+      "id": "R1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 38,
+      "parents": [
+        "S0"
+      ],
+      "head": "agent/entitlement-contract",
+      "transition": "NO_ENTITLEMENT -> VERIFIED_ENTITLEMENT_DRAFT",
+      "pathLease": [
+        "server/entitlement/**",
+        "docs/entitlements.md"
+      ],
+      "evals": [
+        "E-RELEASE"
+      ],
+      "negativeControls": [
+        "a client callback cannot grant access",
+        "a local boolean cannot grant access"
+      ],
+      "rollback": "exact foundation head",
+      "externalGate": [
+        "store provider accounts"
+      ],
+      "humanAdmit": [
+        "provider-design review",
+        "merge"
+      ]
+    },
+    {
+      "id": "R2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 39,
+      "parents": [
+        "R1"
+      ],
+      "head": "agent/privacy-delete-export",
+      "transition": "VERIFIED_ENTITLEMENT_DRAFT -> ACCOUNT_DATA_LIFECYCLE_DRAFT",
+      "pathLease": [
+        "server/account/**",
+        "docs/privacy/account-lifecycle.md"
+      ],
+      "evals": [
+        "E-RELEASE"
+      ],
+      "negativeControls": [
+        "health data is never used for advertising",
+        "deletion is not UI-only"
+      ],
+      "rollback": "exact R1 head",
+      "externalGate": [
+        "production storage and deletion system"
+      ],
+      "humanAdmit": [
+        "privacy/legal/storage review",
+        "merge"
+      ]
+    },
+    {
+      "id": "R3",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 40,
+      "parents": [
+        "R2",
+        "I3",
+        "A2",
+        "C3",
+        "L3",
+        "TW3"
+      ],
+      "head": "agent/store-release-candidate",
+      "transition": "ADMITTED_DOMAIN_SLICES -> STORE_RELEASE_CANDIDATE",
+      "pathLease": [
+        "release/**",
+        "docs/store-release.md"
+      ],
+      "evals": [
+        "E-RELEASE"
+      ],
+      "negativeControls": [
+        "no signing secret in the repository",
+        "no stale head promotion",
+        "no client-only entitlement"
+      ],
+      "rollback": "exact prior manifest plus parent set",
+      "externalGate": [
+        "Apple/Google/Web provider accounts",
+        "signing credentials and store-console operations",
+        "trusted exact-head CI"
+      ],
+      "humanAdmit": [
+        "signing, store submission, promotion, rollback",
+        "merge"
+      ]
+    },
+    {
+      "id": "M1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 41,
+      "parents": [
+        "S0"
+      ],
+      "head": "agent/market-interview-protocol",
+      "transition": "MARKET_UNKNOWN -> PROBLEM_EVIDENCE_DRAFT",
+      "pathLease": [
+        "docs/market/**"
+      ],
+      "evals": [
+        "E-MARKET"
+      ],
+      "negativeControls": [
+        "no fabricated interview or quote"
+      ],
+      "rollback": "exact foundation head",
+      "externalGate": [
+        "participant recruitment and consent"
+      ],
+      "humanAdmit": [
+        "participant recruitment/consent",
+        "merge"
+      ]
+    },
+    {
+      "id": "M2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 42,
+      "parents": [
+        "M1"
+      ],
+      "head": "agent/creator-rights-contract",
+      "transition": "PROBLEM_EVIDENCE_DRAFT -> RIGHTS_CLEARED_CREATIVE",
+      "pathLease": [
+        "docs/market/**",
+        "docs/marketing-assets/**"
+      ],
+      "evals": [
+        "E-MARKET"
+      ],
+      "negativeControls": [
+        "no hidden sponsorship",
+        "no unlicensed media",
+        "no unsupported medical or alarm claim"
+      ],
+      "rollback": "exact M1 head",
+      "externalGate": [
+        "executed creator contracts"
+      ],
+      "humanAdmit": [
+        "contract/legal/payment/publication",
+        "merge"
+      ]
+    },
+    {
+      "id": "M3",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 43,
+      "parents": [
+        "M2"
+      ],
+      "head": "agent/market-experiment-ledger",
+      "transition": "RIGHTS_CLEARED_CREATIVE -> RETENTION_EVIDENCE_DRAFT",
+      "pathLease": [
+        "docs/market/**",
+        "scripts/validate_experiment_ledger.py"
+      ],
+      "evals": [
+        "E-MARKET"
+      ],
+      "negativeControls": [
+        "no user-level attribution",
+        "no fabricated metric",
+        "no scale decision from views alone"
+      ],
+      "rollback": "exact M2 head",
+      "externalGate": [
+        "real audited campaigns"
+      ],
+      "humanAdmit": [
+        "campaign spend/audit/scale decision",
+        "merge"
+      ]
+    },
+    {
+      "id": "N1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 46,
+      "parents": [
+        "S1"
+      ],
+      "head": "agent/taiwan-food-nutrition-data",
+      "transition": "NO_FOOD_LAYER -> COPYRIGHT_CLEAN_FOOD_DATA_DRAFT",
+      "pathLease": [
+        "data/food/**",
+        "scripts/validate_food_data.py",
+        "docs/taiwan-food-data.md"
+      ],
+      "evals": [
+        "E-TW",
+        "E-CATALOG"
+      ],
+      "negativeControls": [
+        "no scraped nutrition table",
+        "no source without reuse terms"
+      ],
+      "rollback": "exact parent head at branch creation",
+      "externalGate": [
+        "approved food-composition reuse terms"
+      ],
+      "humanAdmit": [
+        "legal review",
+        "merge"
+      ]
+    },
+    {
+      "id": "N2",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 47,
+      "parents": [
+        "N1"
+      ],
+      "head": "agent/meal-plan-compiler",
+      "transition": "COPYRIGHT_CLEAN_FOOD_DATA_DRAFT -> DETERMINISTIC_MEAL_PLAN_DRAFT",
+      "pathLease": [
+        "data/food/**",
+        "docs/meal-plan-compiler.md"
+      ],
+      "evals": [
+        "E-TW"
+      ],
+      "negativeControls": [
+        "no personalized clinical prescription",
+        "no non-deterministic plan output"
+      ],
+      "rollback": "exact N1 head",
+      "externalGate": [
+        "nutrition reviewer acceptance"
+      ],
+      "humanAdmit": [
+        "nutrition review",
+        "merge"
+      ]
+    },
+    {
+      "id": "V1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 48,
+      "parents": [
+        "C1"
+      ],
+      "head": "agent/muscle-visualization-ui",
+      "transition": "SCHEMATIC_ASSET -> LOCAL_MUSCLE_VISUALIZATION",
+      "pathLease": [
+        "assets/first-party/**",
+        "docs/muscle-visualization.md"
+      ],
+      "evals": [
+        "E-CATALOG",
+        "E-BASE"
+      ],
+      "negativeControls": [
+        "no third-party anatomy asset",
+        "no remote asset fetch at runtime"
+      ],
+      "rollback": "exact C1 head",
+      "externalGate": [
+        "first-party asset commissioning"
+      ],
+      "humanAdmit": [
+        "rights review",
+        "merge"
+      ]
+    },
+    {
+      "id": "X1",
+      "status": "PLANNED_WORK_PACKET",
+      "issue": 44,
+      "parents": [
+        "R3",
+        "M3",
+        "N2",
+        "V1"
+      ],
+      "head": "agent/release-convergence-index",
+      "transition": "REVIEWABLE_DOMAIN_SLICES -> RELEASE_CONVERGENCE_DRAFT",
+      "pathLease": [
+        "release/index/**"
+      ],
+      "evals": [
+        "E-RELEASE",
+        "E-MARKET"
+      ],
+      "negativeControls": [
+        "convergence cannot repair domain code",
+        "a stale or failed parent blocks admission"
+      ],
+      "rollback": "exact pre-convergence branch and parent-head manifest",
+      "externalGate": [
+        "all upstream external gates"
+      ],
+      "humanAdmit": [
+        "semantic conflicts",
+        "merge order/queue",
+        "release promotion/rollback"
+      ]
+    }
+  ]
+}

@@ -74,7 +74,7 @@ Independent domain work is represented as sibling stacks from the nearest common
 
 ### Issue #1 / PR #2 — Auditable KMP foundation
 
-**State:** Open Draft PR.  
+**State:** Merged into `main`; hosted exact-head evidence still missing (Issue #45).  
 **Branch:** `agent/bootstrap-kmp-fitness-platform` → `main`.
 
 Delivered:
@@ -92,7 +92,7 @@ Gate:
 
 ### Issue #8 / PR #15 — Taiwan evidence contract
 
-**State:** Open Draft PR.  
+**State:** Merged into `main`; hosted exact-head evidence still missing (Issue #45).  
 **Branch:** `agent/taiwan-supplement-evidence` → `agent/bootstrap-kmp-fitness-platform`.
 
 Delivered:
@@ -114,7 +114,7 @@ Missing:
 
 ### Issue #8 / PR #16 — Immutable source and release lifecycle
 
-**State:** Open Draft PR.  
+**State:** Merged into `main`; hosted exact-head evidence still missing (Issue #45).  
 **Branch:** `agent/taiwan-source-lifecycle` → `agent/taiwan-supplement-evidence`.
 
 Delivered:
@@ -135,7 +135,7 @@ Missing:
 
 ### Issue #19 — Documentation and Git Town delivery graph
 
-**State:** Documentation branch created from PR #16 exact head.  
+**State:** Merged into `main`; hosted exact-head evidence still missing (Issue #45).  
 **Branch:** `agent/document-git-town-delivery-graph`.
 
 Outcome:
@@ -147,6 +147,33 @@ Outcome:
 - stale iOS architecture paths are removed.
 
 Git Town executable/runtime adoption remains blocked until exact version/provenance admission and live canaries.
+
+### Issue #21 / PR #22 — Git Town candidate evidence and canary harness
+
+**State:** Merged into `main`; hosted exact-head evidence still missing (Issue #45).  
+**Branch:** `agent/git-town-admission-candidate`.
+
+Outcome:
+
+- exact upstream `v24.0.0` candidate metadata, license bytes, and digests recorded under `docs/git/admission/`;
+- `scripts/git-town/verify_admission.py` verifies metadata, archive, and binary with a `--self-test`;
+- `scripts/git-town/run_disposable_canary.sh` exercises no-push canaries in a disposable repository;
+- `workflow_dispatch`-only admission workflow refuses to configure or synchronize the consumer repository.
+
+Runtime remains `NOT_EXERCISED`: the canary workflow has never been dispatched, so no binary has run here.
+
+### Issue #23 — Machine-verifiable stacked delivery contract
+
+**State:** Delivered on `main`; hosted exact-head evidence still missing (Issue #45).
+
+Outcome:
+
+- `docs/git/stacked-delivery-manifest.json` records every published and planned packet with parents, path leases, evals, negative controls, rollback subjects, and Human Admit operations;
+- `docs/git/schemas/stacked-delivery-manifest.schema.json` fixes the transport shape;
+- `scripts/validate_stacked_delivery.py` rejects graph cycles, unknown or self parents, orphan packets, sibling path-lease overlap, planned-as-published drift, missing merged heads, narrative digest drift, and premature Git Town runtime admission;
+- `--self-test` plants sixteen mutations and fails if any survives;
+- Issue and pull-request templates require the work packet, evidence lanes, negative controls, rollback subject, and Human Admit boundary;
+- the validator runs in the `policy-and-provenance` job.
 
 ## Phase 1 — Issue #8 reviewed Taiwan rule-pack stack
 

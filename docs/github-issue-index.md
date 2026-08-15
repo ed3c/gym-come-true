@@ -2,16 +2,23 @@
 
 This file maps actual GitHub Issues, published PRs, proposed molecular branches, and duplicate/superseded records. Branch names and documents do not create implementation status; GitHub PR state and exact commit ancestry are authoritative.
 
-## Published Draft stack
+## Integrated stack
 
-| PR | Issue | Branch → Base | State transition | Status at 2026-08-15 |
-|---:|---:|---|---|---|
-| [#2](https://github.com/ed3c/gym-come-true/pull/2) | [#1](https://github.com/ed3c/gym-come-true/issues/1) | `agent/bootstrap-kmp-fitness-platform` → `main` | `EMPTY_REPOSITORY -> AUDITABLE_CROSS_PLATFORM_FOUNDATION` | Open Draft, unmerged |
-| [#15](https://github.com/ed3c/gym-come-true/pull/15) | [#8](https://github.com/ed3c/gym-come-true/issues/8) | `agent/taiwan-supplement-evidence` → foundation | `FOUNDATION -> TAIWAN_EVIDENCE_CONTRACT_DRAFT` | Open Draft, unmerged |
-| [#16](https://github.com/ed3c/gym-come-true/pull/16) | [#8](https://github.com/ed3c/gym-come-true/issues/8) | `agent/taiwan-source-lifecycle` → Taiwan evidence | `EVIDENCE_DRAFT -> TAIWAN_SOURCE_LIFECYCLE_DRAFT` | Open Draft, unmerged |
-| [#20](https://github.com/ed3c/gym-come-true/pull/20) | [#19](https://github.com/ed3c/gym-come-true/issues/19) | `agent/document-git-town-delivery-graph` → source lifecycle | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT` | Open Draft, unmerged |
+The stack was strictly linear and conflict-free. `main` was fast-forwarded to
+`a70a52cc6e3e2f4107edae2f7bb2034029161568`, the exact head of the topmost branch, so all five
+PRs entered `main` in one operation.
 
-PR #20 initial publication head was `5995ac50058f6a4c0a9fd72c96d211046631fd35`. Its current exact head is authoritative in PR metadata after documentation-index follow-up commits.
+| PR | Issue | Branch | Merged head | State transition | Status at 2026-08-16 |
+|---:|---:|---|---|---|---|
+| [#2](https://github.com/ed3c/gym-come-true/pull/2) | [#1](https://github.com/ed3c/gym-come-true/issues/1) | `agent/bootstrap-kmp-fitness-platform` | `58492815f22af65665172bcf98bfb661639ece92` | `EMPTY_REPOSITORY -> AUDITABLE_CROSS_PLATFORM_FOUNDATION` | Merged; no hosted evidence |
+| [#15](https://github.com/ed3c/gym-come-true/pull/15) | [#8](https://github.com/ed3c/gym-come-true/issues/8) | `agent/taiwan-supplement-evidence` | `79f8a65b370806925c32f0a15da88c7c0d7bda36` | `FOUNDATION -> TAIWAN_EVIDENCE_CONTRACT_DRAFT` | Merged; no hosted evidence |
+| [#16](https://github.com/ed3c/gym-come-true/pull/16) | [#17](https://github.com/ed3c/gym-come-true/issues/17) | `agent/taiwan-source-lifecycle` | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | `EVIDENCE_DRAFT -> TAIWAN_SOURCE_LIFECYCLE_DRAFT` | Merged; no hosted evidence |
+| [#20](https://github.com/ed3c/gym-come-true/pull/20) | [#19](https://github.com/ed3c/gym-come-true/issues/19) | `agent/document-git-town-delivery-graph` | `ad065c8ac944f2fb4f9d60e65b008367b1291c43` | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT` | Merged; no hosted evidence |
+| [#22](https://github.com/ed3c/gym-come-true/pull/22) | [#21](https://github.com/ed3c/gym-come-true/issues/21) | `agent/git-town-admission-candidate` | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | `DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED` | Merged; Git Town runtime `NOT_EXERCISED` |
+
+Merging integrated code. It produced no hosted evidence: every workflow run so far ended before
+runner allocation (`PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET`, Issue #45), so the exact-head hosted
+acceptance box on every issue above remains unticked.
 
 ## Active product and delivery issues
 

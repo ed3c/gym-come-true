@@ -42,6 +42,8 @@ Documentation does not complete Git Town adoption.
 |---|---|
 | [REPO_PROFILE.md](REPO_PROFILE.md) | Immutable repo identity, authority paths, safe sync defaults, leases, receipts, publication and eval policy |
 | [STACKED_PRS.md](STACKED_PRS.md) | Published and planned branch graph, parentage, path leases, state transitions, evals, rollback and Human Admit |
+| [stacked-delivery-manifest.json](stacked-delivery-manifest.json) | Machine projection of the branch graph, gated by `scripts/validate_stacked_delivery.py --self-test` |
+| [schemas/stacked-delivery-manifest.schema.json](schemas/stacked-delivery-manifest.schema.json) | JSON Schema for the delivery manifest |
 | [WORKER_PROTOCOL.md](WORKER_PROTOCOL.md) | Worker lifecycle, stable outcomes, sync/publication lanes, cleanup and recovery |
 | [GIT_TOWN_ADMISSION.md](GIT_TOWN_ADMISSION.md) | Exact executable/provenance admission state and canary checklist |
 | [WORK_PACKET.template.md](WORK_PACKET.template.md) | Required issue/Worker packet before a branch can start |

@@ -21,22 +21,23 @@ A missing input is `ABSENT`. Do not infer it from a branch name, stale PR body, 
 
 Do not copy the shared Skill into this repository. A local copy would shadow the canonical method.
 
-## Current published stack
+## Current stack
 
 ```text
-main
-└── PR #2  agent/bootstrap-kmp-fitness-platform
+main  (contains PR #2 -> #15 -> #16 -> #20 -> #22, plus the Issue #23 delivery contract)
     AUDITABLE_CROSS_PLATFORM_FOUNDATION
-    └── PR #15  agent/taiwan-supplement-evidence
-        TAIWAN_EVIDENCE_CONTRACT_DRAFT
-        └── PR #16  agent/taiwan-source-lifecycle
-            TAIWAN_SOURCE_LIFECYCLE_DRAFT
-            └── PR #20 / Issue #19
-                agent/document-git-town-delivery-graph
-                DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT
+    TAIWAN_EVIDENCE_CONTRACT_DRAFT
+    TAIWAN_SOURCE_LIFECYCLE_DRAFT
+    DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT
+    GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED
+    MACHINE_VERIFIED_STACKED_DELIVERY_DRAFT
 ```
 
-Issues #8–#14 remain planned domain work. PR existence, branch existence, local checks, hosted checks, legal review, clinical review, and production admission are separate evidence lanes.
+The gated machine view of this graph is `docs/git/stacked-delivery-manifest.json`; read it, not a
+branch name. Issues #24–#48 remain planned domain work. PR existence, branch existence, local
+checks, hosted checks, legal review, clinical review, and production admission are separate
+evidence lanes — and merging into `main` advanced only the first of them. No hosted check has ever
+executed on this repository (Issue #45).
 
 ## Git Town and Stacked-PR boundary
 

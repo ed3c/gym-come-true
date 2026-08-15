@@ -4,7 +4,7 @@
 
 Evidence-first fitness protocol execution for Android, iOS, and Web, built with Kotlin Multiplatform and Compose Multiplatform.
 
-> **Current truth:** the repository has an open Draft stack for the cross-platform foundation, Taiwan supplement-evidence contracts, immutable Taiwan source lifecycle, and the documentation/Git Town delivery graph. It is not a medical device, is not store-ready, has no clinically admitted Taiwan rule pack, has no licensed third-party exercise-media catalog, and has not admitted a Git Town executable.
+> **Current truth:** `main` now contains the cross-platform foundation, Taiwan supplement-evidence contracts, immutable Taiwan source lifecycle, the documentation/Git Town delivery graph, and the machine-verified stacked delivery contract. Integration is not admission: no hosted CI run has ever allocated a runner on this repository, so nothing below is backed by hosted evidence. It is not a medical device, is not store-ready, has no clinically admitted Taiwan rule pack, has no licensed third-party exercise-media catalog, and has not admitted a Git Town executable.
 
 ## Authority and status vocabulary
 
@@ -23,27 +23,20 @@ Read this file for the repository-wide map, then read [AGENTS.md](AGENTS.md), [A
 
 ## Published delivery stack
 
-```text
-main
-└── PR #2  agent/bootstrap-kmp-fitness-platform
-    AUDITABLE_CROSS_PLATFORM_FOUNDATION
-    └── PR #15  agent/taiwan-supplement-evidence
-        TAIWAN_EVIDENCE_CONTRACT_DRAFT
-        └── PR #16  agent/taiwan-source-lifecycle
-            TAIWAN_SOURCE_LIFECYCLE_DRAFT
-            └── PR #20 / Issue #19
-                agent/document-git-town-delivery-graph
-                DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT
-```
+The stack was strictly linear, contained no merge conflicts, and was integrated into `main`
+as a single fast-forward from `agent/git-town-admission-candidate` (owner-directed merge).
 
-| PR | Base | Exact subject | Admission |
+| PR | Merged head | Exact subject | Admission |
 |---:|---|---|---|
-| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `main` | `agent/bootstrap-kmp-fitness-platform` | Open Draft; hosted exact-head success still required |
-| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `agent/bootstrap-kmp-fitness-platform` | `agent/taiwan-supplement-evidence` | Open Draft; no clinically reviewed pack |
-| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `agent/taiwan-supplement-evidence` | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` at child-branch creation | Open Draft; official sources remain denied |
-| [#20](https://github.com/ed3c/gym-come-true/pull/20) | `agent/taiwan-source-lifecycle` | initial publication head `5995ac50058f6a4c0a9fd72c96d211046631fd35`; current head is PR metadata | Open Draft documentation/convergence slice |
+| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `58492815f22af65665172bcf98bfb661639ece92` | `agent/bootstrap-kmp-fitness-platform` | Merged into `main`; hosted exact-head success still required |
+| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `79f8a65b370806925c32f0a15da88c7c0d7bda36` | `agent/taiwan-supplement-evidence` | Merged into `main`; no clinically reviewed pack |
+| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | `agent/taiwan-source-lifecycle` | Merged into `main`; official sources remain denied |
+| [#20](https://github.com/ed3c/gym-come-true/pull/20) | `ad065c8ac944f2fb4f9d60e65b008367b1291c43` | `agent/document-git-town-delivery-graph` | Merged into `main`; documentation/convergence slice |
+| [#22](https://github.com/ed3c/gym-come-true/pull/22) | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | `agent/git-town-admission-candidate` | Merged into `main`; Git Town runtime still `NOT_EXERCISED` |
 
-PRs #2, #15, #16, and #20 are the published Draft stack. Issues #8–#14 are requirements and future work packets, not completed PRs.
+Merging integrated the code. It did not produce hosted evidence: every workflow run on this
+repository so far ended before runner allocation (`PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET`, Issue #45).
+Issues #24–#48 are requirements and future work packets, not completed PRs.
 
 ## Product thesis
 
@@ -190,35 +183,46 @@ See [Git Town admission](docs/git/GIT_TOWN_ADMISSION.md), [repository profile](d
 
 ## Molecular terminal Stack PR index
 
-`OPEN DRAFT PR` means a PR exists. Every other branch below is a proposed `PLANNED WORK PACKET` unless stated otherwise.
+This table is the human view. The gated machine view is
+[`docs/git/stacked-delivery-manifest.json`](docs/git/stacked-delivery-manifest.json), checked by
+`python3 scripts/validate_stacked_delivery.py --self-test`. Any row below that disagrees with the
+manifest is a documentation bug.
+
+`MERGED` means the code is in `main`, not that hosted evidence exists. Every other branch below is a
+proposed `PLANNED WORK PACKET` unless stated otherwise.
 
 | ID | Issue | Parent | Branch | Primary transition | Status |
 |---|---:|---|---|---|---|
-| S0 | #1 | `main` | `agent/bootstrap-kmp-fitness-platform` | `EMPTY_REPOSITORY -> FOUNDATION` | **OPEN DRAFT PR #2** |
-| S1 | #8 | foundation | `agent/taiwan-supplement-evidence` | `FOUNDATION -> EVIDENCE_CONTRACT_DRAFT` | **OPEN DRAFT PR #15** |
-| S2 | #8 | Taiwan evidence | `agent/taiwan-source-lifecycle` | `EVIDENCE_DRAFT -> SOURCE_LIFECYCLE_DRAFT` | **OPEN DRAFT PR #16** |
-| S3 | #19 | source lifecycle | `agent/document-git-town-delivery-graph` | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | **OPEN DRAFT PR #20** |
-| TW1 | #8 | source lifecycle | `agent/tw-consent-corpus-contract` | `CORPUS_UNKNOWN -> CONSENT_CONTRACT_DRAFT` | PLANNED |
-| TW2 | #8 | TW1 | `agent/tw-ocr-evaluation-contract` | `CONSENT_DRAFT -> OCR_EVALUATION_DRAFT` | PLANNED |
-| TW3 | #8 | TW2 | `agent/tw-reviewed-rule-pack` | `OCR_EVALUATED -> REVIEWED_TAIWAN_RULE_PACK` | PLANNED; external source/reviewer gate |
-| I1 | #9 | foundation | `agent/ios-evidence-bridge` | `IOS_SHELL -> IOS_EVIDENCE_HANDOFF` | PLANNED sibling stack |
-| I2 | #9 | I1 | `agent/ios-healthkit-minimal` | `IOS_EVIDENCE -> MINIMAL_HEALTH_READS` | PLANNED |
-| I3 | #9 | I2 | `agent/ios-reminder-alarmkit-assessment` | `HEALTH_READS -> IOS_DELIVERY_EVIDENCE` | PLANNED |
-| A1 | #10 | foundation | `agent/android-health-connect-minimal` | `ANDROID_SHELL -> MINIMAL_HEALTH_READS` | PLANNED sibling stack |
-| A2 | #10 | A1 | `agent/android-reminder-reliability` | `HEALTH_READS -> ANDROID_DELIVERY_EVIDENCE` | PLANNED |
-| C1 | #11 | foundation | `agent/exercise-taxonomy-contract` | `DEMO_CATALOG -> TAXONOMY_CONTRACT` | PLANNED sibling stack |
-| C2 | #11 | C1 | `agent/exercise-top50-content` | `TAXONOMY -> RIGHTS_CLEAN_TOP50` | PLANNED |
-| C3 | #11 | C2 | `agent/exercise-media-admission` | `TOP50 -> LICENSED_MEDIA_PIPELINE` | PLANNED; external rights gate |
-| L1 | #12 | TW3 | `agent/explanation-gateway-contract` | `REVIEWED_RECEIPT -> GATEWAY_CONTRACT` | PLANNED |
-| L2 | #12 | L1 | `agent/explanation-gateway-provider` | `CONTRACT -> PROVIDER_DRAFT` | PLANNED; credential gate |
-| L3 | #12 | L2 | `agent/explanation-gateway-adversarial-evals` | `PROVIDER_DRAFT -> EVALUATED_GATEWAY` | PLANNED |
-| R1 | #13 | foundation | `agent/entitlement-contract` | `NO_ENTITLEMENT -> VERIFIED_ENTITLEMENT_DRAFT` | PLANNED sibling stack |
-| R2 | #13 | R1 | `agent/privacy-delete-export` | `ENTITLEMENT -> ACCOUNT_DATA_LIFECYCLE_DRAFT` | PLANNED |
-| R3 | #13 | admitted domain heads | `agent/store-release-candidate` | `DOMAIN_SLICES -> STORE_RELEASE_CANDIDATE` | PLANNED; store/signing gate |
-| M1 | #14 | foundation | `agent/market-interview-protocol` | `MARKET_UNKNOWN -> PROBLEM_EVIDENCE_DRAFT` | PLANNED sibling stack |
-| M2 | #14 | M1 | `agent/creator-rights-contract` | `PROBLEM_EVIDENCE -> RIGHTS_CLEARED_CREATIVE` | PLANNED |
-| M3 | #14 | M2 | `agent/market-experiment-ledger` | `CREATIVE -> RETENTION_EVIDENCE_DRAFT` | PLANNED |
-| X1 | #13 | admitted heads | `agent/release-convergence-index` | `REVIEWABLE_SLICES -> RELEASE_CONVERGENCE_DRAFT` | PLANNED Human-Admit convergence |
+| S0 | #1 | `main` | `agent/bootstrap-kmp-fitness-platform` | `EMPTY_REPOSITORY -> FOUNDATION` | **MERGED (PR #2)** |
+| S1 | #8 | foundation | `agent/taiwan-supplement-evidence` | `FOUNDATION -> EVIDENCE_CONTRACT_DRAFT` | **MERGED (PR #15)** |
+| S2 | #17 | Taiwan evidence | `agent/taiwan-source-lifecycle` | `EVIDENCE_DRAFT -> SOURCE_LIFECYCLE_DRAFT` | **MERGED (PR #16)** |
+| S3 | #19 | source lifecycle | `agent/document-git-town-delivery-graph` | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | **MERGED (PR #20)** |
+| S4 | #21 | delivery graph | `agent/git-town-admission-candidate` | `DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_RECORDED` | **MERGED (PR #22)** |
+| S5 | #23 | Git Town candidate | delivered on `main` | `CANDIDATE_RECORDED -> MACHINE_VERIFIED_STACKED_DELIVERY` | **MERGED** |
+| TW1 | #24 | source lifecycle | `agent/tw-consent-corpus-contract` | `CORPUS_UNKNOWN -> CONSENT_CONTRACT_DRAFT` | PLANNED; consent/privacy gate |
+| TW2 | #25 | TW1 | `agent/tw-ocr-evaluation-contract` | `CONSENT_DRAFT -> OCR_EVALUATION_DRAFT` | PLANNED; corpus/device gate |
+| TW3 | #26 | TW2 | `agent/tw-reviewed-rule-pack` | `OCR_EVALUATED -> REVIEWED_TAIWAN_RULE_PACK` | PLANNED; external source/reviewer gate |
+| I1 | #27 | foundation | `agent/ios-evidence-bridge` | `IOS_SHELL -> IOS_EVIDENCE_HANDOFF` | PLANNED sibling stack |
+| I2 | #28 | I1 | `agent/ios-healthkit-minimal` | `IOS_EVIDENCE -> MINIMAL_HEALTH_READS` | PLANNED; Apple entitlement gate |
+| I3 | #29 | I2 | `agent/ios-reminder-alarmkit-assessment` | `HEALTH_READS -> IOS_DELIVERY_EVIDENCE` | PLANNED; device evidence gate |
+| A1 | #30 | foundation | `agent/android-health-connect-minimal` | `ANDROID_SHELL -> MINIMAL_HEALTH_READS` | PLANNED sibling stack |
+| A2 | #31 | A1 | `agent/android-reminder-reliability` | `HEALTH_READS -> ANDROID_DELIVERY_EVIDENCE` | PLANNED; device-farm gate |
+| C1 | #32 | foundation | `agent/exercise-taxonomy-contract` | `DEMO_CATALOG -> TAXONOMY_CONTRACT` | PLANNED sibling stack |
+| C2 | #33 | C1 | `agent/exercise-top50-content` | `TAXONOMY -> RIGHTS_CLEAN_TOP50` | PLANNED; editorial/rights gate |
+| C3 | #34 | C2 | `agent/exercise-media-admission` | `TOP50 -> LICENSED_MEDIA_PIPELINE` | PLANNED; external rights gate |
+| L1 | #35 | TW3 | `agent/explanation-gateway-contract` | `REVIEWED_RECEIPT -> GATEWAY_CONTRACT` | PLANNED; security review gate |
+| L2 | #36 | L1 | `agent/explanation-gateway-provider` | `CONTRACT -> PROVIDER_DRAFT` | PLANNED; credential gate |
+| L3 | #37 | L2 | `agent/explanation-gateway-adversarial-evals` | `PROVIDER_DRAFT -> EVALUATED_GATEWAY` | PLANNED; red-team gate |
+| R1 | #38 | foundation | `agent/entitlement-contract` | `NO_ENTITLEMENT -> VERIFIED_ENTITLEMENT_DRAFT` | PLANNED sibling stack |
+| R2 | #39 | R1 | `agent/privacy-delete-export` | `ENTITLEMENT -> ACCOUNT_DATA_LIFECYCLE_DRAFT` | PLANNED; storage/privacy gate |
+| R3 | #40 | admitted domain heads | `agent/store-release-candidate` | `DOMAIN_SLICES -> STORE_RELEASE_CANDIDATE` | PLANNED; store/signing gate |
+| M1 | #41 | foundation | `agent/market-interview-protocol` | `MARKET_UNKNOWN -> PROBLEM_EVIDENCE_DRAFT` | PLANNED sibling stack |
+| M2 | #42 | M1 | `agent/creator-rights-contract` | `PROBLEM_EVIDENCE -> RIGHTS_CLEARED_CREATIVE` | PLANNED; creator contract gate |
+| M3 | #43 | M2 | `agent/market-experiment-ledger` | `CREATIVE -> RETENTION_EVIDENCE_DRAFT` | PLANNED; audited campaign gate |
+| N1 | #46 | Taiwan evidence | `agent/taiwan-food-nutrition-data` | `NO_FOOD_LAYER -> COPYRIGHT_CLEAN_FOOD_DATA_DRAFT` | PLANNED; reuse-terms gate |
+| N2 | #47 | N1 | `agent/meal-plan-compiler` | `FOOD_DATA_DRAFT -> DETERMINISTIC_MEAL_PLAN_DRAFT` | PLANNED; nutrition review gate |
+| V1 | #48 | C1 | `agent/muscle-visualization-ui` | `SCHEMATIC_ASSET -> LOCAL_MUSCLE_VISUALIZATION` | PLANNED; first-party asset gate |
+| X1 | #44 | admitted heads | `agent/release-convergence-index` | `REVIEWABLE_SLICES -> RELEASE_CONVERGENCE_DRAFT` | PLANNED Human-Admit convergence |
 
 Full path leases, eval commands, negative controls, rollback subjects, and Human Admit operations are in [STACKED_PRS.md](docs/git/STACKED_PRS.md). Independent domains are sibling stacks from the foundation, not one artificial serial chain.
 
@@ -233,7 +237,23 @@ Full path leases, eval commands, negative controls, rollback subjects, and Human
 
 See [Implementation status](docs/implementation-status.md).
 
-## Safety and rights contract
+## Honest capability matrix
+
+| Capability | Android | iOS | Web | Current state |
+|---|---:|---:|---:|---|
+| Shared dashboard and A/B timetable | Yes | Yes | Yes | Foundation |
+| OCR label extraction | Bundled Chinese/Latin ML Kit | Vision via photo picker | Manual/import later | Candidate evidence only |
+| Barcode extraction | ML Kit | Vision | Planned | Not product truth |
+| Daily intake arithmetic | Shared | Shared | Shared | No safety-limit interpretation |
+| Taiwan rule-pack admission contract | Shared | Shared | Shared | Draft; no production pack |
+| Source snapshot / mapping / release lifecycle | Shared | Shared | Shared | Draft; official sources remain denied |
+| Local reminders | Inexact AlarmManager | UserNotifications | Browser later | No exact-delivery guarantee |
+| Health data | Adapter boundary | Adapter boundary | N/A | Not implemented |
+| System alarm challenge | Future exact-alarm review | Future AlarmKit review | N/A | No coercive/undismissable promise |
+| LLM explanation | Contract only | Contract only | Contract only | Server gateway not implemented |
+| Licensed third-party exercise media | None | None | None | Default deny |
+
+## Safety contract
 
 - OCR and barcode results always begin `UNVERIFIED`.
 - Only `mcg/µg/μg`, `mg`, and `g` use generic mass conversion.
@@ -241,9 +261,34 @@ See [Implementation status](docs/implementation-status.md).
 - Daily totals are arithmetic observations, not safety limits or recommendations.
 - Production corpus retention requires consent, encryption, expiry, withdrawal, hashes, and provenance.
 - No official-source byte, legal state, clinical review, signature, store approval, revenue result, or CI result may be fabricated.
-- No third-party exercise media ships without exact rights evidence and an `ALLOW` record.
 - LLM output is explanatory and cannot own decisions or warnings.
 - Android inexact alarms and iOS notifications are reminders, not guaranteed alarms; AlarmKit keeps system stop semantics.
+
+## Copyright and data admission
+
+No third-party exercise image, GIF, video, SVG anatomy map, 3D model, scraped dataset, media ID, or vendor CDN URL ships merely because it is publicly reachable. Every production asset requires an `ALLOW` record with rights holder, scope, license evidence, immutable hash, review date, attribution, derivative/redistribution boundaries, and takedown path.
+
+Current visual assets are first-party schematic material. No third-party exercise media is admitted. Metadata rights, media rights, rendering-code rights, model rights, and user-upload rights remain separate.
+
+See [Copyright and data governance](docs/copyright-and-data-governance.md) and `legal/*.json`.
+
+## Delivery state machine
+
+```text
+EMPTY_REPOSITORY
+  -> AUDITABLE_CROSS_PLATFORM_FOUNDATION       # PR #2
+  -> TAIWAN_EVIDENCE_CONTRACT_DRAFT            # PR #15
+  -> TAIWAN_SOURCE_LIFECYCLE_DRAFT             # PR #16
+  -> DOCUMENTED_DELIVERY_GRAPH                 # PR #20
+  -> GIT_TOWN_CANDIDATE_RECORDED               # PR #22; executable not admitted
+  -> REVIEWED_TAIWAN_RULE_PACK                 # Issue #26; real evidence/review missing
+  -> LICENSED_EXERCISE_CATALOG                 # Issues #32 / #33 / #34
+  -> NATIVE_HEALTH_AND_ALARM_INTEGRATION       # Issues #27-#31
+  -> PRIVATE_LLM_EXPLANATION_GATEWAY           # Issues #35 / #36 / #37
+  -> STORE_RELEASE_CANDIDATE                   # Issues #38 / #39 / #40
+```
+
+Each transition requires code, policy, provenance, privacy review, deterministic tests, rollback, and exact-head hosted build evidence. Later phases must not weaken earlier safety or rights guarantees.
 
 ## Validation commands
 
@@ -252,6 +297,7 @@ python3 scripts/validate_repository.py
 python3 scripts/validate_taiwan_rule_pack.py
 python3 scripts/validate_taiwan_source_lifecycle.py
 python3 scripts/validate_taiwan_source_hardening.py
+python3 scripts/validate_stacked_delivery.py --self-test
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 sh ./gradlew :webApp:composeCompatibilityBrowserDistribution

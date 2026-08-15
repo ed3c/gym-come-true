@@ -235,9 +235,9 @@ def validate_repository_surfaces() -> None:
         "--stack --non-interactive --no-auto-resolve --no-push",
         "remote_digest",
         "semanticConflictFailClosed",
-        "consumerRepositorySync\": \"NOT_EXERCISED\",
-        "publication\": \"NOT_EXERCISED",
-        "runtimeAdmitted\": false",
+        '"consumerRepositorySync": "NOT_EXERCISED"',
+        '"publication": "NOT_EXERCISED"',
+        '"runtimeAdmitted": false',
     ):
         require(token in canary, f"disposable canary invariant is missing: {token}")
     for invocation in (

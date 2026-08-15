@@ -2,6 +2,25 @@
 
 This is the branch-level delivery source of truth for `gym-come-true`.
 
+## Machine projection
+
+Prose cannot be gated. Every packet below is also recorded in
+[`stacked-delivery-manifest.json`](stacked-delivery-manifest.json), validated against
+[`schemas/stacked-delivery-manifest.schema.json`](schemas/stacked-delivery-manifest.schema.json) by:
+
+```bash
+python3 scripts/validate_stacked_delivery.py --self-test
+```
+
+The validator is offline and fail-closed. It rejects graph cycles, unknown or self parents,
+orphan packets that never reach `main`, sibling path-lease overlap, planned packets carrying
+publication evidence, merged packets missing their exact head, drift between this file's SHA-256
+and the digest the manifest declares, and any Git Town runtime admission that has not been
+evidenced by an executed canary. `--self-test` plants sixteen mutations and fails if any survives.
+
+This file stays the human narrative; the manifest stays the machine truth. Editing this file
+without updating `narrativeSource.sha256` in the manifest is a `FAIL`, by design.
+
 Status vocabulary:
 
 ```text

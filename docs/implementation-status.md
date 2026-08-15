@@ -1,21 +1,22 @@
 # Implementation status
 
-**Snapshot date:** 2026-08-15  
+**Snapshot date:** 2026-08-16  
 **Repository:** `ed3c/gym-come-true` (private, immutable repository ID `1334805292`)  
-**Current published leaf:** PR #16, `agent/taiwan-source-lifecycle`  
-**Documentation work packet:** Issue #19, `agent/document-git-town-delivery-graph`  
-**Merge state:** all published PRs remain Draft and unmerged
+**Current leaf:** `main`, fast-forwarded to `a70a52cc6e3e2f4107edae2f7bb2034029161568` plus the delivery-contract commit  
+**Merge state:** the whole stack is integrated into `main`; hosted evidence is still absent
 
-## Published stack
+## Integrated stack
 
-| PR | Transition | Base → Head | Current meaning |
+| PR | Transition | Merged head | Current meaning |
 |---:|---|---|---|
-| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `EMPTY_REPOSITORY -> AUDITABLE_CROSS_PLATFORM_FOUNDATION` | `main` → `agent/bootstrap-kmp-fitness-platform` | KMP Android/iOS/Web foundation and default-deny safety/rights boundary |
-| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `FOUNDATION -> TAIWAN_EVIDENCE_CONTRACT_DRAFT` | `agent/bootstrap-kmp-fitness-platform` → `agent/taiwan-supplement-evidence` | Product/corpus identity, OCR metrics, rule-pack admission, decision receipts |
-| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `EVIDENCE_DRAFT -> TAIWAN_SOURCE_LIFECYCLE_DRAFT` | `agent/taiwan-supplement-evidence` → `agent/taiwan-source-lifecycle` | Immutable source, exact mapping, release/revoke/rollback contracts |
-| Issue [#19](https://github.com/ed3c/gym-come-true/issues/19) | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | `agent/taiwan-source-lifecycle` → `agent/document-git-town-delivery-graph` | README/AGENTS/architecture/roadmap/Git Town governance convergence |
+| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `EMPTY_REPOSITORY -> AUDITABLE_CROSS_PLATFORM_FOUNDATION` | `58492815f22af65665172bcf98bfb661639ece92` | KMP Android/iOS/Web foundation and default-deny safety/rights boundary |
+| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `FOUNDATION -> TAIWAN_EVIDENCE_CONTRACT_DRAFT` | `79f8a65b370806925c32f0a15da88c7c0d7bda36` | Product/corpus identity, OCR metrics, rule-pack admission, decision receipts |
+| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `EVIDENCE_DRAFT -> TAIWAN_SOURCE_LIFECYCLE_DRAFT` | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | Immutable source, exact mapping, release/revoke/rollback contracts |
+| [#20](https://github.com/ed3c/gym-come-true/pull/20) | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | `ad065c8ac944f2fb4f9d60e65b008367b1291c43` | README/AGENTS/architecture/roadmap/Git Town governance convergence |
+| [#22](https://github.com/ed3c/gym-come-true/pull/22) | `DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED` | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | Pinned Git Town candidate metadata and disposable canary harness |
+| Issue [#23](https://github.com/ed3c/gym-come-true/issues/23) | `CANDIDATE_RECORDED -> MACHINE_VERIFIED_STACKED_DELIVERY` | delivered on `main` | Machine-verifiable delivery manifest, schema, validator, and templates |
 
-Issues #8–#14 are future work packets. They are not completed PRs.
+Issues #24–#48 are future work packets. They are not completed PRs.
 
 ## Implemented by directory
 
@@ -228,7 +229,10 @@ Only exact commands that actually ran against the stated commit count as `PASS` 
 
 ## Hosted evidence
 
-PR #16 exact head `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` has workflow run `31878284072` (run #79). Its three jobs contain no executed steps and ended before runner allocation. GitHub’s annotation states that an Actions budget prevented further use.
+No workflow run on this repository has ever allocated a runner. PR #16 exact head
+`f58a2feac580ca37bb4d7b3c30e122908bfd6b07` has workflow run `31878284072` (run #79); its three jobs
+contain no executed steps and ended before runner allocation. GitHub's annotation states that an
+Actions budget prevented further use. Every other run to date matches.
 
 Classification:
 
@@ -236,7 +240,15 @@ Classification:
 PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET
 ```
 
-This is neither hosted PASS nor product-code failure. The Draft stack must remain unmerged until exact-head jobs execute and pass.
+This is neither hosted PASS nor product-code failure. Restoring capacity is Issue #45 and stays
+owner-controlled.
+
+## Local evidence
+
+Local execution is not hosted evidence and does not satisfy any exact-head acceptance box. It is
+recorded because it is the only lane that has actually executed, and because it found three defects
+the blocked hosted lane never reported. See
+[2026-08-16 local verification receipt](delivery/2026-08-16-local-verification.md).
 
 ## Next admitted work
 

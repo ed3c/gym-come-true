@@ -4,7 +4,7 @@
 
 使用 Kotlin Multiplatform 與 Compose Multiplatform 建立的 evidence-first 健身 protocol 執行系統，支援 Android、iOS 與 Web。
 
-> **目前真實狀態：** repository 已有跨平台 foundation、台灣補充品 evidence contract、immutable Taiwan source lifecycle，以及文件／Git Town delivery graph 的開放 Draft stack。它不是醫療器材，尚未達到商店上架條件，沒有 clinically admitted Taiwan rule pack，沒有已授權的第三方健身媒體庫，也尚未 admit Git Town executable。
+> **目前真實狀態：** `main` 現在包含跨平台 foundation、台灣補充品 evidence contract、immutable Taiwan source lifecycle、文件／Git Town delivery graph，以及 machine-verified stacked delivery contract。整合不等於 admission：本 repo 至今沒有任何一次 hosted CI run 配置到 runner，因此以下沒有任何一項有 hosted evidence 背書。它不是醫療器材，尚未達到商店上架條件，沒有 clinically admitted Taiwan rule pack，沒有已授權的第三方健身媒體庫，也尚未 admit Git Town executable。
 
 ## 權威文件與狀態詞彙
 
@@ -23,27 +23,19 @@
 
 ## 已發布 Delivery Stack
 
-```text
-main
-└── PR #2  agent/bootstrap-kmp-fitness-platform
-    AUDITABLE_CROSS_PLATFORM_FOUNDATION
-    └── PR #15  agent/taiwan-supplement-evidence
-        TAIWAN_EVIDENCE_CONTRACT_DRAFT
-        └── PR #16  agent/taiwan-source-lifecycle
-            TAIWAN_SOURCE_LIFECYCLE_DRAFT
-            └── PR #20 / Issue #19
-                agent/document-git-town-delivery-graph
-                DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT
-```
+這條 stack 是嚴格線性的、沒有任何 merge conflict，已由
+`agent/git-town-admission-candidate` 以單次 fast-forward 併入 `main`（owner 指示的 merge）。
 
-| PR | Base | Exact subject | Admission |
+| PR | Merged head | Exact subject | Admission |
 |---:|---|---|---|
-| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `main` | `agent/bootstrap-kmp-fitness-platform` | Open Draft；仍需 hosted exact-head success |
-| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `agent/bootstrap-kmp-fitness-platform` | `agent/taiwan-supplement-evidence` | Open Draft；沒有 clinically reviewed pack |
-| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `agent/taiwan-supplement-evidence` | 建立 child branch 時的 head：`f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | Open Draft；官方來源仍 denied |
-| [#20](https://github.com/ed3c/gym-come-true/pull/20) | `agent/taiwan-source-lifecycle` | initial publication head `5995ac50058f6a4c0a9fd72c96d211046631fd35`；current head 以 PR metadata 為準 | Open Draft documentation/convergence slice |
+| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `58492815f22af65665172bcf98bfb661639ece92` | `agent/bootstrap-kmp-fitness-platform` | 已併入 `main`；仍需 hosted exact-head success |
+| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `79f8a65b370806925c32f0a15da88c7c0d7bda36` | `agent/taiwan-supplement-evidence` | 已併入 `main`；沒有 clinically reviewed pack |
+| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | `agent/taiwan-source-lifecycle` | 已併入 `main`；官方來源仍 denied |
+| [#20](https://github.com/ed3c/gym-come-true/pull/20) | `ad065c8ac944f2fb4f9d60e65b008367b1291c43` | `agent/document-git-town-delivery-graph` | 已併入 `main`；documentation/convergence slice |
+| [#22](https://github.com/ed3c/gym-come-true/pull/22) | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | `agent/git-town-admission-candidate` | 已併入 `main`；Git Town runtime 仍 `NOT_EXERCISED` |
 
-PR #2、#15、#16、#20 是已發布 Draft stack。Issues #8–#14 是 requirements 與未來 work packets，不是已完成的 PR。
+Merge 只整合了程式碼，並未產生 hosted evidence：本 repo 至今每一次 workflow run 都在配置 runner 之前就結束
+（`PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET`，Issue #45）。Issues #24–#48 是 requirements 與未來 work packets，不是已完成的 PR。
 
 ## 產品定位
 
@@ -194,31 +186,36 @@ Canonical method：shared [`git-town-stacked-pr-worker`](https://github.com/ed3c
 
 | ID | Issue | Parent | Branch | Primary transition | Status |
 |---|---:|---|---|---|---|
-| S0 | #1 | `main` | `agent/bootstrap-kmp-fitness-platform` | `EMPTY_REPOSITORY -> FOUNDATION` | **OPEN DRAFT PR #2** |
-| S1 | #8 | foundation | `agent/taiwan-supplement-evidence` | `FOUNDATION -> EVIDENCE_CONTRACT_DRAFT` | **OPEN DRAFT PR #15** |
-| S2 | #8 | Taiwan evidence | `agent/taiwan-source-lifecycle` | `EVIDENCE_DRAFT -> SOURCE_LIFECYCLE_DRAFT` | **OPEN DRAFT PR #16** |
-| S3 | #19 | source lifecycle | `agent/document-git-town-delivery-graph` | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | **OPEN DRAFT PR #20** |
-| TW1 | #8 | source lifecycle | `agent/tw-consent-corpus-contract` | `CORPUS_UNKNOWN -> CONSENT_CONTRACT_DRAFT` | PLANNED |
-| TW2 | #8 | TW1 | `agent/tw-ocr-evaluation-contract` | `CONSENT_DRAFT -> OCR_EVALUATION_DRAFT` | PLANNED |
-| TW3 | #8 | TW2 | `agent/tw-reviewed-rule-pack` | `OCR_EVALUATED -> REVIEWED_TAIWAN_RULE_PACK` | PLANNED；需 external source/reviewer |
-| I1 | #9 | foundation | `agent/ios-evidence-bridge` | `IOS_SHELL -> IOS_EVIDENCE_HANDOFF` | PLANNED sibling stack |
-| I2 | #9 | I1 | `agent/ios-healthkit-minimal` | `IOS_EVIDENCE -> MINIMAL_HEALTH_READS` | PLANNED |
-| I3 | #9 | I2 | `agent/ios-reminder-alarmkit-assessment` | `HEALTH_READS -> IOS_DELIVERY_EVIDENCE` | PLANNED |
-| A1 | #10 | foundation | `agent/android-health-connect-minimal` | `ANDROID_SHELL -> MINIMAL_HEALTH_READS` | PLANNED sibling stack |
-| A2 | #10 | A1 | `agent/android-reminder-reliability` | `HEALTH_READS -> ANDROID_DELIVERY_EVIDENCE` | PLANNED |
-| C1 | #11 | foundation | `agent/exercise-taxonomy-contract` | `DEMO_CATALOG -> TAXONOMY_CONTRACT` | PLANNED sibling stack |
-| C2 | #11 | C1 | `agent/exercise-top50-content` | `TAXONOMY -> RIGHTS_CLEAN_TOP50` | PLANNED |
-| C3 | #11 | C2 | `agent/exercise-media-admission` | `TOP50 -> LICENSED_MEDIA_PIPELINE` | PLANNED；需 external rights |
-| L1 | #12 | TW3 | `agent/explanation-gateway-contract` | `REVIEWED_RECEIPT -> GATEWAY_CONTRACT` | PLANNED |
-| L2 | #12 | L1 | `agent/explanation-gateway-provider` | `CONTRACT -> PROVIDER_DRAFT` | PLANNED；需 credential |
-| L3 | #12 | L2 | `agent/explanation-gateway-adversarial-evals` | `PROVIDER_DRAFT -> EVALUATED_GATEWAY` | PLANNED |
-| R1 | #13 | foundation | `agent/entitlement-contract` | `NO_ENTITLEMENT -> VERIFIED_ENTITLEMENT_DRAFT` | PLANNED sibling stack |
-| R2 | #13 | R1 | `agent/privacy-delete-export` | `ENTITLEMENT -> ACCOUNT_DATA_LIFECYCLE_DRAFT` | PLANNED |
-| R3 | #13 | admitted domain heads | `agent/store-release-candidate` | `DOMAIN_SLICES -> STORE_RELEASE_CANDIDATE` | PLANNED；需 store/signing |
-| M1 | #14 | foundation | `agent/market-interview-protocol` | `MARKET_UNKNOWN -> PROBLEM_EVIDENCE_DRAFT` | PLANNED sibling stack |
-| M2 | #14 | M1 | `agent/creator-rights-contract` | `PROBLEM_EVIDENCE -> RIGHTS_CLEARED_CREATIVE` | PLANNED |
-| M3 | #14 | M2 | `agent/market-experiment-ledger` | `CREATIVE -> RETENTION_EVIDENCE_DRAFT` | PLANNED |
-| X1 | #13 | admitted heads | `agent/release-convergence-index` | `REVIEWABLE_SLICES -> RELEASE_CONVERGENCE_DRAFT` | PLANNED Human-Admit convergence |
+| S0 | #1 | `main` | `agent/bootstrap-kmp-fitness-platform` | `EMPTY_REPOSITORY -> FOUNDATION` | **已 MERGED（PR #2）** |
+| S1 | #8 | foundation | `agent/taiwan-supplement-evidence` | `FOUNDATION -> EVIDENCE_CONTRACT_DRAFT` | **已 MERGED（PR #15）** |
+| S2 | #17 | Taiwan evidence | `agent/taiwan-source-lifecycle` | `EVIDENCE_DRAFT -> SOURCE_LIFECYCLE_DRAFT` | **已 MERGED（PR #16）** |
+| S3 | #19 | source lifecycle | `agent/document-git-town-delivery-graph` | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | **已 MERGED（PR #20）** |
+| S4 | #21 | delivery graph | `agent/git-town-admission-candidate` | `DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_RECORDED` | **已 MERGED（PR #22）** |
+| S5 | #23 | Git Town candidate | 直接交付於 `main` | `CANDIDATE_RECORDED -> MACHINE_VERIFIED_STACKED_DELIVERY` | **已 MERGED** |
+| TW1 | #24 | source lifecycle | `agent/tw-consent-corpus-contract` | `CORPUS_UNKNOWN -> CONSENT_CONTRACT_DRAFT` | PLANNED；需 consent/privacy |
+| TW2 | #25 | TW1 | `agent/tw-ocr-evaluation-contract` | `CONSENT_DRAFT -> OCR_EVALUATION_DRAFT` | PLANNED；需 corpus/device |
+| TW3 | #26 | TW2 | `agent/tw-reviewed-rule-pack` | `OCR_EVALUATED -> REVIEWED_TAIWAN_RULE_PACK` | PLANNED；需 external source/reviewer |
+| I1 | #27 | foundation | `agent/ios-evidence-bridge` | `IOS_SHELL -> IOS_EVIDENCE_HANDOFF` | PLANNED sibling stack |
+| I2 | #28 | I1 | `agent/ios-healthkit-minimal` | `IOS_EVIDENCE -> MINIMAL_HEALTH_READS` | PLANNED；需 Apple entitlement |
+| I3 | #29 | I2 | `agent/ios-reminder-alarmkit-assessment` | `HEALTH_READS -> IOS_DELIVERY_EVIDENCE` | PLANNED；需 device evidence |
+| A1 | #30 | foundation | `agent/android-health-connect-minimal` | `ANDROID_SHELL -> MINIMAL_HEALTH_READS` | PLANNED sibling stack |
+| A2 | #31 | A1 | `agent/android-reminder-reliability` | `HEALTH_READS -> ANDROID_DELIVERY_EVIDENCE` | PLANNED；需 device farm |
+| C1 | #32 | foundation | `agent/exercise-taxonomy-contract` | `DEMO_CATALOG -> TAXONOMY_CONTRACT` | PLANNED sibling stack |
+| C2 | #33 | C1 | `agent/exercise-top50-content` | `TAXONOMY -> RIGHTS_CLEAN_TOP50` | PLANNED；需 editorial/rights |
+| C3 | #34 | C2 | `agent/exercise-media-admission` | `TOP50 -> LICENSED_MEDIA_PIPELINE` | PLANNED；需 external rights |
+| L1 | #35 | TW3 | `agent/explanation-gateway-contract` | `REVIEWED_RECEIPT -> GATEWAY_CONTRACT` | PLANNED；需 security review |
+| L2 | #36 | L1 | `agent/explanation-gateway-provider` | `CONTRACT -> PROVIDER_DRAFT` | PLANNED；需 credential |
+| L3 | #37 | L2 | `agent/explanation-gateway-adversarial-evals` | `PROVIDER_DRAFT -> EVALUATED_GATEWAY` | PLANNED；需 red-team |
+| R1 | #38 | foundation | `agent/entitlement-contract` | `NO_ENTITLEMENT -> VERIFIED_ENTITLEMENT_DRAFT` | PLANNED sibling stack |
+| R2 | #39 | R1 | `agent/privacy-delete-export` | `ENTITLEMENT -> ACCOUNT_DATA_LIFECYCLE_DRAFT` | PLANNED；需 storage/privacy |
+| R3 | #40 | admitted domain heads | `agent/store-release-candidate` | `DOMAIN_SLICES -> STORE_RELEASE_CANDIDATE` | PLANNED；需 store/signing |
+| M1 | #41 | foundation | `agent/market-interview-protocol` | `MARKET_UNKNOWN -> PROBLEM_EVIDENCE_DRAFT` | PLANNED sibling stack |
+| M2 | #42 | M1 | `agent/creator-rights-contract` | `PROBLEM_EVIDENCE -> RIGHTS_CLEARED_CREATIVE` | PLANNED；需 creator contract |
+| M3 | #43 | M2 | `agent/market-experiment-ledger` | `CREATIVE -> RETENTION_EVIDENCE_DRAFT` | PLANNED；需 audited campaign |
+| N1 | #46 | Taiwan evidence | `agent/taiwan-food-nutrition-data` | `NO_FOOD_LAYER -> COPYRIGHT_CLEAN_FOOD_DATA_DRAFT` | PLANNED；需 reuse terms |
+| N2 | #47 | N1 | `agent/meal-plan-compiler` | `FOOD_DATA_DRAFT -> DETERMINISTIC_MEAL_PLAN_DRAFT` | PLANNED；需 nutrition review |
+| V1 | #48 | C1 | `agent/muscle-visualization-ui` | `SCHEMATIC_ASSET -> LOCAL_MUSCLE_VISUALIZATION` | PLANNED；需 first-party asset |
+| X1 | #44 | admitted heads | `agent/release-convergence-index` | `REVIEWABLE_SLICES -> RELEASE_CONVERGENCE_DRAFT` | PLANNED Human-Admit convergence |
 
 完整 path lease、eval、negative control、rollback 與 Human Admit 見 [STACKED_PRS.md](docs/git/STACKED_PRS.md)。互相獨立的 domains 是 foundation 的 sibling stacks，不是人工串成一條 serial chain。
 
@@ -252,6 +249,7 @@ python3 scripts/validate_repository.py
 python3 scripts/validate_taiwan_rule_pack.py
 python3 scripts/validate_taiwan_source_lifecycle.py
 python3 scripts/validate_taiwan_source_hardening.py
+python3 scripts/validate_stacked_delivery.py --self-test
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 sh ./gradlew :webApp:composeCompatibilityBrowserDistribution

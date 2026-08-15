@@ -181,7 +181,9 @@ data class OcrFieldMetric(
 object OcrMetricCompiler {
     fun summarize(observations: List<OcrFieldObservation>): List<OcrFieldMetric> =
         observations.groupBy { it.fieldType }
-            .toSortedMap(compareBy { it.ordinal })
+            // `toSortedMap` is JVM-only; entry sorting keeps declaration order on JS and Wasm too.
+            .entries
+            .sortedBy { it.key.ordinal }
             .map { (fieldType, rows) ->
                 val exact = rows.count { it.observed.normalizedOcrValue() == it.expected.normalizedOcrValue() }
                 val correctionNeeded = rows.size - exact

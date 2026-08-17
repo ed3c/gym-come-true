@@ -119,12 +119,8 @@ class DomainTest {
             evidence = evidence,
             context = SafetyContext(rulePackStatus = RulePackStatus.CLINICALLY_REVIEWED),
         )
-        val payload = LlmExplanationBoundary.createPayload(evidence, result)
-
         assertEquals(SafetyDecision.LOG_ONLY, result.decision)
         assertEquals(100.0, result.normalizedMassMg["magnesium"])
-        assertFalse(payload.mayRecommendDose)
-        assertFalse(payload.mayOverrideWarnings)
     }
 
     @Test

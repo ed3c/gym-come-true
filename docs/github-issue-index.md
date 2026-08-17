@@ -34,6 +34,16 @@ acceptance box on every issue above remains unticked.
 | [#14](https://github.com/ed3c/gym-come-true/issues/14) | Creator-market validation | No implementation PR | real interviews, rights-cleared creative, retained-contribution evidence |
 | [#19](https://github.com/ed3c/gym-come-true/issues/19) | Directory state machines and Git Town Stacked-PR index | PR #20 | docs review, exact-head hosted status, Human Admit |
 
+## Domain lane drafts (2026-08-18, local only)
+
+The rows above reflect the 2026-08-16 snapshot. On 2026-08-18 seven sibling lanes advanced
+Issues #24–#40 and #46–#48 to local draft/contract states on `main` (branches
+`agent/lane-taiwan-corpus`, `agent/lane-ios-native`, `agent/lane-android-health`,
+`agent/lane-exercise-catalog`, `agent/lane-explanation-gateway`,
+`agent/lane-entitlement-privacy`, `agent/lane-nutrition`). See
+`docs/implementation-status.md` for the per-lane state table. External gates and hosted
+checks remain `ABSENT`; Issues #41–#45 stay human/external-owned.
+
 ## Overlapping Taiwan source issues
 
 Issues [#17](https://github.com/ed3c/gym-come-true/issues/17) and [#18](https://github.com/ed3c/gym-come-true/issues/18) substantially overlap immutable-source/promotion work already represented by Issue #8 and PR #16.

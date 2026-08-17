@@ -384,27 +384,6 @@ data class MuscleActivation(
     }
 }
 
-@Serializable
-data class ExplanationPayload(
-    val evidence: ScanEvidence,
-    val evaluation: SafetyEvaluation,
-    val purpose: String = "Explain deterministic results in plain language",
-    val mayRecommendDose: Boolean = false,
-    val mayOverrideWarnings: Boolean = false,
-    val instructions: List<String> = listOf(
-        "Do not infer missing ingredients or serving sizes.",
-        "Do not calculate or recommend a dose.",
-        "Do not diagnose, treat, or claim medical safety.",
-        "Repeat blocking reasons and direct the user to qualified review when required.",
-    ),
-)
-
-object LlmExplanationBoundary {
-    fun createPayload(
-        evidence: ScanEvidence,
-        evaluation: SafetyEvaluation,
-    ): ExplanationPayload = ExplanationPayload(
-        evidence = evidence.copy(rawTextSha256 = evidence.rawTextSha256.take(64)),
-        evaluation = evaluation,
-    )
-}
+// LlmExplanationBoundary/ExplanationPayload removed: forwarding ScanEvidence (raw OCR
+// candidate text) to a model is the payload shape Issue #35 forbids. The receipt-only
+// replacement is dev.ed3c.gymcometrue.explanation.ExplanationGatewayContract.

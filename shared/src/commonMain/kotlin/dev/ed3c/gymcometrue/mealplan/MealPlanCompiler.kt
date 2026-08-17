@@ -202,9 +202,10 @@ object MealPlanConstraintEvaluator {
 }
 
 /**
- * LLM_EXPLANATION_ONLY boundary for a compiled plan, mirroring
- * `dev.ed3c.gymcometrue.domain.LlmExplanationBoundary`. A model may narrate this payload; it may
- * not invent nutrient facts, medical restrictions, or personalized therapeutic targets.
+ * LLM_EXPLANATION_ONLY boundary for a compiled plan, aligned with
+ * `dev.ed3c.gymcometrue.explanation.ExplanationGatewayContract`. A model may narrate this
+ * payload; it may not invent nutrient facts, medical restrictions, or personalized
+ * therapeutic targets.
  */
 @Serializable
 data class MealPlanExplanationPayload(

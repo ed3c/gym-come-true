@@ -1,6 +1,6 @@
 # Implementation status
 
-**Snapshot date:** 2026-08-16  
+**Snapshot date:** 2026-08-18  
 **Repository:** `ed3c/gym-come-true` (private, immutable repository ID `1334805292`)  
 **Current leaf:** `main`, fast-forwarded to `a70a52cc6e3e2f4107edae2f7bb2034029161568` plus the delivery-contract commit  
 **Merge state:** the whole stack is integrated into `main`; hosted evidence is still absent
@@ -16,7 +16,25 @@
 | [#22](https://github.com/ed3c/gym-come-true/pull/22) | `DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED` | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | Pinned Git Town candidate metadata and disposable canary harness |
 | Issue [#23](https://github.com/ed3c/gym-come-true/issues/23) | `CANDIDATE_RECORDED -> MACHINE_VERIFIED_STACKED_DELIVERY` | delivered on `main` | Machine-verifiable delivery manifest, schema, validator, and templates |
 
-Issues #24–#48 are future work packets. They are not completed PRs.
+Issues #24–#40 and #46–#48 advanced to local draft/contract states on 2026-08-18 (see the
+domain-lane table below). Issues #41–#45 remain human/external-owned. No lane state is a
+completed PR, a hosted check, or an external-gate admission.
+
+## Domain lane drafts (2026-08-18, local only)
+
+Seven sibling lanes were implemented in isolated worktrees from `main` and merged back without
+conflicts. Every external gate (legal/clinical review, real consent, provider/store credentials,
+devices, licensed media, signatures) remains `ABSENT` / `HUMAN_ADMIT_REQUIRED`.
+
+| Lane branch | Issues | Delivered local state |
+|---|---|---|
+| `agent/lane-taiwan-corpus` | #24 #25 #26 | `CONSENT_CONTRACT_DRAFT`, `OCR_EVALUATION_DRAFT`; #26 deterministic admission gate only (`EXTERNAL_GATES_ABSENT`) |
+| `agent/lane-ios-native` | #27 #28 #29 | `IOS_EVIDENCE_HANDOFF_DRAFT`, `IOS_MINIMAL_HEALTH_READS_DRAFT`, reminder contract draft (device evidence `ABSENT`) |
+| `agent/lane-android-health` | #30 #31 | Health Connect adapter contract draft, reminder reliability harness contract (OEM matrix `ABSENT`) |
+| `agent/lane-exercise-catalog` | #32 #33 #34 #48 | `TAXONOMY_CONTRACT`; top-50 bilingual draft; media-admission contract core (0 admitted assets); muscle slug mapping + intensity semantics |
+| `agent/lane-explanation-gateway` | #35 #36 #37 | `EXPLANATION_GATEWAY_CONTRACT_DRAFT`, stub-only provider boundary, adversarial corpus draft |
+| `agent/lane-entitlement-privacy` | #38 #39 #40 | `VERIFIED_ENTITLEMENT_DRAFT`, `ACCOUNT_DATA_LIFECYCLE_DRAFT`; release-manifest schema only for #40 |
+| `agent/lane-nutrition` | #46 #47 | Food-catalog schema/validator draft, deterministic meal-plan compiler with tests |
 
 ## Implemented by directory
 

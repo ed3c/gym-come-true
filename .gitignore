@@ -15,3 +15,4 @@ iosApp/GymComeTrue.xcodeproj/
 .env
 .env.*
 !.env.example
+.claude/

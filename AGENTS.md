@@ -31,6 +31,11 @@ main  (contains PR #2 -> #15 -> #16 -> #20 -> #22, plus the Issue #23 delivery c
     DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT
     GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED
     MACHINE_VERIFIED_STACKED_DELIVERY_DRAFT
+    + seven domain lane drafts (2026-08-18): Taiwan corpus/OCR/rule-pack gate,
+      iOS evidence/HealthKit/reminders, Android Health Connect/reminders,
+      exercise catalog/media/muscle map, explanation gateway, entitlement/privacy/release,
+      nutrition/meal plan — local DRAFT states only, external gates ABSENT
+      (see docs/implementation-status.md)
 ```
 
 The gated machine view of this graph is `docs/git/stacked-delivery-manifest.json`; read it, not a
@@ -327,6 +332,9 @@ python3 scripts/validate_repository.py
 python3 scripts/validate_taiwan_rule_pack.py
 python3 scripts/validate_taiwan_source_lifecycle.py
 python3 scripts/validate_taiwan_source_hardening.py
+python3 scripts/validate_taiwan_corpus_contract.py
+python3 data/exercise-catalog/validate_catalog.py
+python3 data/llm-gateway/validate_gateway_corpus.py
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 sh ./gradlew :webApp:composeCompatibilityBrowserDistribution

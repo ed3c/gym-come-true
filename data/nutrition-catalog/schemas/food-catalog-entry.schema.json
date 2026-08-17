@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gym-come-true.invalid/schemas/food-catalog-entry.schema.json",
+  "title": "Nutrition catalog entry (transport validation only)",
+  "description": "Mirrors dev.ed3c.gymcometrue.nutrition.FoodCatalogEntry. The Kotlin FoodCatalogAdmissionValidator remains authoritative for default-deny admission; this schema only checks shape.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "jurisdiction", "defaultPolicy", "entries"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "jurisdiction": { "const": "TW" },
+    "defaultPolicy": { "const": "DENY" },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/foodCatalogEntry" }
+    }
+  },
+  "$defs": {
+    "localizedFoodName": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locale", "name"],
+      "properties": {
+        "locale": { "enum": ["ZH_TW", "EN"] },
+        "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "foodIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["foodId", "category", "market", "names"],
+      "properties": {
+        "foodId": { "type": "string", "minLength": 1 },
+        "category": { "type": "string", "minLength": 1 },
+        "market": { "const": "TW" },
+        "names": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/localizedFoodName" }
+        }
+      }
+    },
+    "micronutrientAmount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["nutrientKey", "amount", "unit"],
+      "properties": {
+        "nutrientKey": { "type": "string", "minLength": 1 },
+        "amount": { "type": "number", "minimum": 0 },
+        "unit": { "enum": ["MCG", "MG", "G", "IU", "UNKNOWN"] }
+      }
+    },
+    "foodNutrientProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["energyKcalPer100g", "proteinGPer100g", "fatGPer100g", "carbohydrateGPer100g"],
+      "properties": {
+        "energyKcalPer100g": { "type": "number", "minimum": 0 },
+        "proteinGPer100g": { "type": "number", "minimum": 0 },
+        "fatGPer100g": { "type": "number", "minimum": 0 },
+        "carbohydrateGPer100g": { "type": "number", "minimum": 0 },
+        "fiberGPer100g": { "type": ["number", "null"], "minimum": 0 },
+        "micronutrientsPer100g": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/micronutrientAmount" }
+        }
+      }
+    },
+    "foodServingDefinition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "grams"],
+      "properties": {
+        "label": { "type": "string", "minLength": 1 },
+        "grams": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+      }
+    },
+    "foodCatalogEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "profile", "sourceId", "synthetic", "note"],
+      "properties": {
+        "identity": { "$ref": "#/$defs/foodIdentity" },
+        "profile": { "$ref": "#/$defs/foodNutrientProfile" },
+        "servings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/foodServingDefinition" }
+        },
+        "sourceId": { "type": "string", "minLength": 1 },
+        "mappingId": { "type": ["string", "null"] },
+        "synthetic": { "type": "boolean" },
+        "note": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "synthetic": { "const": false } }, "required": ["synthetic"] },
+          "then": { "required": ["mappingId"], "properties": { "mappingId": { "type": "string", "minLength": 1 } } }
+        }
+      ]
+    }
+  }
+}

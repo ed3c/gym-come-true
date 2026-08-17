@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "TW",
+  "observedAt": "2026-08-18",
+  "defaultPolicy": "DENY",
+  "medicalAdvice": false,
+  "networkCaptureInCi": false,
+  "note": "Illustrative shape example inside this lane's data/ lease (see docs/nutrition/taiwan-source-evaluation.md for the prose evaluation). It is not the authoritative candidate registry: that role stays with legal/ (out of this lane's lease) and requires a separate packet plus Human Admit before any entry here can be promoted. Every canonicalUrl below is a top-level portal/publisher domain only -- no exact dataset ID, page path, or license clause is asserted, and every source stays CANDIDATE + DENY.",
+  "licenses": [
+    {
+      "id": "OGL-TW-1.0",
+      "title": "Government Data Open License Taiwan, version 1.0",
+      "canonicalUrl": "https://data.gov.tw/license",
+      "observedPermissionBoundary": "Reuse candidate with source attribution; exact resource packaging, notices, and downstream obligations still require admission review for this specific dataset.",
+      "productionAdmission": "REQUIRES_LEGAL_REVIEW"
+    },
+    {
+      "id": "MOHW-SITE-TERMS-PENDING",
+      "title": "MOHW/subordinate-agency website and attachment terms pending exact review",
+      "canonicalUrl": "https://www.mohw.gov.tw/",
+      "observedPermissionBoundary": "Research and source-identification candidate only until attachment redistribution, archive, and attribution terms are reviewed.",
+      "productionAdmission": "DENY"
+    }
+  ],
+  "sources": [
+    {
+      "id": "tfda-food-composition-database",
+      "publisher": "Taiwan Food and Drug Administration (TFDA)",
+      "title": "台灣食品成分資料庫 (Taiwan Food Composition Database)",
+      "sourceType": "REGULATOR_DATASET",
+      "canonicalUrl": "https://consumer.fda.gov.tw/",
+      "datasetId": null,
+      "licenseId": "OGL-TW-1.0",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "allowedResearchUse": "Canonical food identity and per-100g macro/micronutrient reference-value candidate after an operator locates the exact dataset page, pins a version, and completes legal review.",
+      "prohibitedInference": "Publication in this database does not establish a personalized diet target, medical claim, or supplement dosing conclusion.",
+      "verificationNote": "Exact dataset ID, distribution URL, and the applicable license clause for THIS dataset (as opposed to the general OGL-TW-1.0 pattern used elsewhere on data.gov.tw) are HUMAN_ADMIT_REQUIRED before capture."
+    },
+    {
+      "id": "data-gov-tw-open-data-portal",
+      "publisher": "National Development Council / data.gov.tw",
+      "title": "政府資料開放平臺 (data.gov.tw open government data portal)",
+      "sourceType": "REGULATOR_DATASET",
+      "canonicalUrl": "https://data.gov.tw/",
+      "datasetId": null,
+      "licenseId": "OGL-TW-1.0",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "allowedResearchUse": "Discovery candidate for locating an exact, versioned food-composition dataset entry (this repository already captures data.gov.tw dataset 9047/9640/8938 as supplement-side candidates; a food-composition dataset ID has not been located or pinned by this lane).",
+      "prohibitedInference": "A portal listing is not itself a captured, hashed, or legally reviewed source.",
+      "verificationNote": "ABSENT: no exact food-composition dataset ID has been pinned yet."
+    },
+    {
+      "id": "mohw-dietary-reference-intakes",
+      "publisher": "Ministry of Health and Welfare, Taiwan (Health Promotion Administration)",
+      "title": "國人膳食營養素參考攝取量 (Dietary Reference Intakes, DRIs)",
+      "sourceType": "REGULATOR_GUIDANCE",
+      "canonicalUrl": "https://www.hpa.gov.tw/",
+      "datasetId": null,
+      "licenseId": "MOHW-SITE-TERMS-PENDING",
+      "snapshotState": "CANDIDATE",
+      "snapshotId": null,
+      "snapshotSha256": null,
+      "archiveUri": null,
+      "productionUse": "DENY",
+      "modelGenerated": false,
+      "allowedResearchUse": "Reference-value candidate text for displaying an official target range alongside a compiled plan's totals -- comparison only.",
+      "prohibitedInference": "DRIs are population reference values, not a personalized medical or therapeutic prescription; REVIEWED_HEALTH_RULES_ONLY still applies and this source alone can never mark a plan medically appropriate.",
+      "verificationNote": "Exact publication/edition, page mapping, and website reuse terms are HUMAN_ADMIT_REQUIRED before any field mapping is drafted."
+    }
+  ]
+}

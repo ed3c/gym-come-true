@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "jurisdiction": "TW",
+  "defaultPolicy": "DENY",
+  "entries": [
+    {
+      "identity": {
+        "foodId": "rice-cooked-white",
+        "category": "grain",
+        "market": "TW",
+        "names": [
+          { "locale": "ZH_TW", "name": "白飯" },
+          { "locale": "EN", "name": "Cooked white rice" }
+        ]
+      },
+      "profile": {
+        "energyKcalPer100g": 130.0,
+        "proteinGPer100g": 2.4,
+        "fatGPer100g": 0.3,
+        "carbohydrateGPer100g": 28.6,
+        "fiberGPer100g": 0.4,
+        "micronutrientsPer100g": [
+          { "nutrientKey": "sodium", "amount": 1.0, "unit": "MG" }
+        ]
+      },
+      "servings": [
+        { "label": "1 bowl / 1 碗", "grams": 150.0 }
+      ],
+      "sourceId": "synthetic-fixture",
+      "mappingId": null,
+      "synthetic": true,
+      "note": "Repository-authored synthetic value for testing; not a verified nutrition claim."
+    },
+    {
+      "identity": {
+        "foodId": "chicken-breast-cooked",
+        "category": "protein",
+        "market": "TW",
+        "names": [
+          { "locale": "ZH_TW", "name": "雞胸肉（熟）" },
+          { "locale": "EN", "name": "Cooked chicken breast" }
+        ]
+      },
+      "profile": {
+        "energyKcalPer100g": 165.0,
+        "proteinGPer100g": 31.0,
+        "fatGPer100g": 3.6,
+        "carbohydrateGPer100g": 0.0,
+        "fiberGPer100g": 0.0,
+        "micronutrientsPer100g": [
+          { "nutrientKey": "sodium", "amount": 74.0, "unit": "MG" },
+          { "nutrientKey": "vitamin_e", "amount": 0.3, "unit": "IU" }
+        ]
+      },
+      "servings": [
+        { "label": "1 palm-size piece / 1 掌心大小", "grams": 120.0 }
+      ],
+      "sourceId": "synthetic-fixture",
+      "mappingId": null,
+      "synthetic": true,
+      "note": "Repository-authored synthetic value for testing; not a verified nutrition claim. The IU micronutrient entry exists to exercise the generic mcg/mg/g-only conversion boundary."
+    },
+    {
+      "identity": {
+        "foodId": "tofu-firm",
+        "category": "protein",
+        "market": "TW",
+        "names": [
+          { "locale": "ZH_TW", "name": "板豆腐" },
+          { "locale": "EN", "name": "Firm tofu" }
+        ]
+      },
+      "profile": {
+        "energyKcalPer100g": 76.0,
+        "proteinGPer100g": 8.1,
+        "fatGPer100g": 4.8,
+        "carbohydrateGPer100g": 1.9,
+        "fiberGPer100g": 0.4,
+        "micronutrientsPer100g": [
+          { "nutrientKey": "calcium", "amount": 140.0, "unit": "MG" }
+        ]
+      },
+      "servings": [
+        { "label": "1/4 block / 1/4 塊", "grams": 100.0 }
+      ],
+      "sourceId": "synthetic-fixture",
+      "mappingId": null,
+      "synthetic": true,
+      "note": "Repository-authored synthetic value for testing; not a verified nutrition claim."
+    },
+    {
+      "identity": {
+        "foodId": "broccoli-cooked",
+        "category": "vegetable",
+        "market": "TW",
+        "names": [
+          { "locale": "ZH_TW", "name": "花椰菜（熟）" },
+          { "locale": "EN", "name": "Cooked broccoli" }
+        ]
+      },
+      "profile": {
+        "energyKcalPer100g": 35.0,
+        "proteinGPer100g": 2.4,
+        "fatGPer100g": 0.4,
+        "carbohydrateGPer100g": 7.2,
+        "fiberGPer100g": 3.3,
+        "micronutrientsPer100g": [
+          { "nutrientKey": "vitamin_c", "amount": 65.0, "unit": "MG" }
+        ]
+      },
+      "servings": [
+        { "label": "1 cup / 1 杯", "grams": 90.0 }
+      ],
+      "sourceId": "synthetic-fixture",
+      "mappingId": null,
+      "synthetic": true,
+      "note": "Repository-authored synthetic value for testing; not a verified nutrition claim."
+    },
+    {
+      "identity": {
+        "foodId": "banana-medium",
+        "category": "fruit",
+        "market": "TW",
+        "names": [
+          { "locale": "ZH_TW", "name": "香蕉（中）" },
+          { "locale": "EN", "name": "Medium banana" }
+        ]
+      },
+      "profile": {
+        "energyKcalPer100g": 89.0,
+        "proteinGPer100g": 1.1,
+        "fatGPer100g": 0.3,
+        "carbohydrateGPer100g": 22.8,
+        "fiberGPer100g": 2.6,
+        "micronutrientsPer100g": [
+          { "nutrientKey": "potassium", "amount": 358.0, "unit": "MG" }
+        ]
+      },
+      "servings": [
+        { "label": "1 medium / 1 根中型", "grams": 118.0 }
+      ],
+      "sourceId": "synthetic-fixture",
+      "mappingId": null,
+      "synthetic": true,
+      "note": "Repository-authored synthetic value for testing; not a verified nutrition claim."
+    },
+    {
+      "identity": {
+        "foodId": "unresolved-serving-example",
+        "category": "example",
+        "market": "TW",
+        "names": [
+          { "locale": "ZH_TW", "name": "未定義份量範例" },
+          { "locale": "EN", "name": "Unresolved-serving example" }
+        ]
+      },
+      "profile": {
+        "energyKcalPer100g": 100.0,
+        "proteinGPer100g": 5.0,
+        "fatGPer100g": 2.0,
+        "carbohydrateGPer100g": 10.0
+      },
+      "servings": [
+        { "label": "as served / 依供應份量", "grams": null }
+      ],
+      "sourceId": "synthetic-fixture",
+      "mappingId": null,
+      "synthetic": true,
+      "note": "Deliberately has no gram-resolvable serving; demonstrates that portion arithmetic must stay unresolved, never guessed."
+    }
+  ]
+}

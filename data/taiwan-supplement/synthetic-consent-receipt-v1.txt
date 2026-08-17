@@ -1,0 +1,16 @@
+SYNTHETIC CONSENT RECEIPT v1 — NOT A REAL CONSENT RECORD
+
+grantId: synthetic-grant-001
+subjectPseudonymousId: synthetic-subject-001
+consentWordingFile: synthetic-consent-wording-v1.txt
+scopes: OCR_EVALUATION, RULE_PACK_TESTING
+grantedAtIsoDate: 2026-08-15
+expiresAtIsoDate: 2027-08-15
+withdrawnAtIsoDate: (none)
+
+This file is repository-authored synthetic text. No human being was asked for consent, no consent
+was given, and no consent-management system issued this receipt. It exists so that the Issue #24
+contract has bytes to hash instead of a fabricated hexadecimal string.
+
+The real receipt store, the real signature, and the privacy/legal review that would make a receipt
+meaningful are all ABSENT and require Human Admit.

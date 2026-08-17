@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "fixtureKind": "NEGATIVE_COUNTEREXAMPLE",
+  "admissible": false,
+  "expectedCompleteness": "MANIFEST_ONLY",
+  "requestId": "synthetic-deletion-001",
+  "subjectPseudonymousId": "synthetic-subject-001",
+  "requestedAtIsoDate": "2026-08-17",
+  "declaredLocations": [
+    "OBJECT_STORAGE",
+    "DATABASE_ROW",
+    "ENCRYPTED_BACKUP",
+    "DERIVED_OCR_METRICS"
+  ],
+  "usedForOcrEvaluation": true,
+  "manifestUpdated": true,
+  "receipts": [],
+  "externalGates": {
+    "productionStorageSystem": "ABSENT",
+    "deletionExecutor": "ABSENT",
+    "erasureVerification": "ABSENT",
+    "privacyLegalReview": "ABSENT"
+  },
+  "note": "This fixture is the shape that must FAIL. A manifest says deletion happened while no storage location carries a verified erasure receipt, so CorpusDeletionValidator returns MANIFEST_ONLY and denies. The repository keeps the failing shape rather than a passing one because no real storage system, deletion executor, or erasure verifier exists here — a fixture with populated receipts would be fabricated evidence of deletions that never ran."
+}

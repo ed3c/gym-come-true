@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "fixtureId": "exercise-media-intake-synthetic",
+  "issue": 34,
+  "purpose": "Deterministic fixture for the media intake pipeline. Contains no licensed media.",
+  "externalGates": {
+    "executedCommercialRights": "ABSENT",
+    "commissionedFirstPartyArtwork": "ABSENT",
+    "legalReview": "ABSENT",
+    "reviewerAttestation": "ABSENT"
+  },
+  "ceiling": "No record in this file may exceed HASH_VERIFIED. Reaching RIGHTS_REVIEWED or ADMITTED requires a reviewer attestation hash and an executed scope that this repository does not hold; writing one here by hand would be a fabricated evidence state.",
+  "records": [
+    {
+      "mediaId": "media-first-party-muscle-map-schematic",
+      "exerciseId": null,
+      "kind": "VECTOR_SCHEMATIC",
+      "state": "HASH_VERIFIED",
+      "revocationKey": "rk-first-party-muscle-map",
+      "rights": {
+        "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+        "licenseEvidenceRef": "repo://legal/provenance/muscle-map-schematic.json",
+        "platforms": ["android", "ios", "web"],
+        "territories": ["worldwide"],
+        "termStartIsoDate": "2026-08-15",
+        "termEndIsoDate": null,
+        "derivativesAllowed": true,
+        "redistributionAllowed": false,
+        "attributionRequired": false,
+        "attributionText": null
+      },
+      "originSha256": "1a227ee690b65fd1b1e597e85ff123fc83129f654c8f0dd58aac61559f3658ac",
+      "byteLength": 5738,
+      "remoteUrl": null,
+      "storageUri": "repo://assets/first-party/muscle-map-schematic.svg#sha256=1a227ee690b65fd1b1e597e85ff123fc83129f654c8f0dd58aac61559f3658ac",
+      "altText": {
+        "en": "Front and back body schematic with highlighted muscle regions.",
+        "zh-Hant-TW": "正面與背面人體示意圖，並標示出對應的肌群區塊。"
+      },
+      "reviewerAttestationSha256": null,
+      "synthetic": false,
+      "derivedFromSha256": null,
+      "derivativeTransform": "NONE",
+      "productionAdmitted": false,
+      "verifiedAgainst": "assets/first-party/muscle-map-schematic.svg",
+      "note": "First-party asset already in this repository. Hash verified against the exact bytes on disk; no rights review has been performed on it."
+    },
+    {
+      "mediaId": "media-candidate-demonstration-still",
+      "exerciseId": "gct-bodyweight-squat",
+      "kind": "STILL_IMAGE",
+      "state": "INTAKE",
+      "revocationKey": "rk-candidate-demonstration",
+      "rights": {
+        "licenseGrant": "NONE",
+        "licenseEvidenceRef": null,
+        "platforms": [],
+        "territories": [],
+        "termStartIsoDate": null,
+        "termEndIsoDate": null,
+        "derivativesAllowed": false,
+        "redistributionAllowed": false,
+        "attributionRequired": false,
+        "attributionText": null
+      },
+      "originSha256": null,
+      "byteLength": null,
+      "remoteUrl": null,
+      "storageUri": null,
+      "altText": {},
+      "reviewerAttestationSha256": null,
+      "synthetic": true,
+      "derivedFromSha256": null,
+      "derivativeTransform": "NONE",
+      "productionAdmitted": false,
+      "verifiedAgainst": null,
+      "note": "Placeholder intake row with no bytes attached. It exists so the pipeline has an example of the state every unadmitted candidate starts in."
+    },
+    {
+      "mediaId": "media-quarantined-unknown-origin",
+      "exerciseId": "gct-push-up",
+      "kind": "ANIMATION",
+      "state": "QUARANTINED",
+      "revocationKey": "rk-quarantined-unknown-origin",
+      "rights": {
+        "licenseGrant": "NONE",
+        "licenseEvidenceRef": null,
+        "platforms": [],
+        "territories": [],
+        "termStartIsoDate": null,
+        "termEndIsoDate": null,
+        "derivativesAllowed": false,
+        "redistributionAllowed": false,
+        "attributionRequired": false,
+        "attributionText": null
+      },
+      "originSha256": null,
+      "byteLength": null,
+      "remoteUrl": null,
+      "storageUri": null,
+      "altText": {},
+      "reviewerAttestationSha256": null,
+      "synthetic": true,
+      "derivedFromSha256": null,
+      "derivativeTransform": "NONE",
+      "productionAdmitted": false,
+      "verifiedAgainst": null,
+      "note": "Placeholder for an asset whose origin could not be established. Unknown rights stay quarantined; they never age into admission."
+    }
+  ]
+}

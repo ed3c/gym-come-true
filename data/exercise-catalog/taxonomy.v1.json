@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "taxonomyId": "gym-come-true-exercise-taxonomy",
+  "taxonomyVersion": "1.0.0",
+  "issue": 32,
+  "kotlinSource": "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/catalog/ExerciseTaxonomy.kt",
+  "vocabulary": {
+    "muscle": [
+      "ABDOMINALS",
+      "ADDUCTORS",
+      "ANTERIOR_DELTOID",
+      "BICEPS_BRACHII",
+      "ERECTOR_SPINAE",
+      "FOREARM_FLEXORS",
+      "GASTROCNEMIUS",
+      "GLUTEUS_MAXIMUS",
+      "HAMSTRINGS",
+      "HIP_FLEXORS",
+      "LATISSIMUS_DORSI",
+      "OBLIQUES",
+      "PECTORALIS_MAJOR",
+      "POSTERIOR_DELTOID",
+      "QUADRICEPS",
+      "ROTATOR_CUFF",
+      "SERRATUS_ANTERIOR",
+      "TIBIALIS_ANTERIOR",
+      "TRAPEZIUS",
+      "TRICEPS_BRACHII"
+    ],
+    "movementPattern": [
+      "SQUAT",
+      "HINGE",
+      "LUNGE",
+      "HORIZONTAL_PUSH",
+      "VERTICAL_PUSH",
+      "HORIZONTAL_PULL",
+      "VERTICAL_PULL",
+      "HIP_EXTENSION",
+      "KNEE_FLEXION",
+      "KNEE_EXTENSION",
+      "ANKLE_PLANTARFLEXION",
+      "SHOULDER_ABDUCTION",
+      "ELBOW_FLEXION",
+      "ELBOW_EXTENSION",
+      "ANTI_EXTENSION",
+      "ANTI_LATERAL_FLEXION",
+      "ROTATION",
+      "CARRY"
+    ],
+    "mechanics": [
+      "COMPOUND",
+      "ISOLATION",
+      "ISOMETRIC"
+    ],
+    "force": [
+      "PUSH",
+      "PULL",
+      "STATIC"
+    ],
+    "laterality": [
+      "BILATERAL",
+      "UNILATERAL",
+      "ALTERNATING"
+    ],
+    "skillLevel": [
+      "BEGINNER",
+      "INTERMEDIATE",
+      "ADVANCED"
+    ],
+    "equipment": [
+      "BODYWEIGHT",
+      "BARBELL",
+      "DUMBBELL",
+      "KETTLEBELL",
+      "MACHINE",
+      "CABLE_MACHINE",
+      "FLAT_BENCH",
+      "INCLINE_BENCH",
+      "SQUAT_RACK",
+      "PULL_UP_BAR",
+      "DIP_BARS",
+      "STABLE_STEP",
+      "FLOOR_MAT"
+    ],
+    "intensity": [
+      "STABILIZER",
+      "SECONDARY",
+      "PRIMARY"
+    ]
+  },
+  "intensitySemantics": {
+    "PRIMARY": {
+      "level": 3,
+      "opacity": 0.9
+    },
+    "SECONDARY": {
+      "level": 2,
+      "opacity": 0.6
+    },
+    "STABILIZER": {
+      "level": 1,
+      "opacity": 0.3
+    },
+    "claim": "Editorial movement classification only. Not an EMG measurement, not a percentage of maximal voluntary contraction, and no physiological or clinical claim is made."
+  },
+  "muscleLabels": {
+    "ABDOMINALS": {
+      "en": "Abdominals",
+      "zh-Hant-TW": "腹直肌"
+    },
+    "ADDUCTORS": {
+      "en": "Adductors",
+      "zh-Hant-TW": "內收肌群"
+    },
+    "ANTERIOR_DELTOID": {
+      "en": "Front deltoid",
+      "zh-Hant-TW": "前三角肌"
+    },
+    "BICEPS_BRACHII": {
+      "en": "Biceps",
+      "zh-Hant-TW": "肱二頭肌"
+    },
+    "ERECTOR_SPINAE": {
+      "en": "Spinal erectors",
+      "zh-Hant-TW": "豎脊肌"
+    },
+    "FOREARM_FLEXORS": {
+      "en": "Forearm flexors",
+      "zh-Hant-TW": "前臂屈肌群"
+    },
+    "GASTROCNEMIUS": {
+      "en": "Calf",
+      "zh-Hant-TW": "腓腸肌"
+    },
+    "GLUTEUS_MAXIMUS": {
+      "en": "Glutes",
+      "zh-Hant-TW": "臀大肌"
+    },
+    "HAMSTRINGS": {
+      "en": "Hamstrings",
+      "zh-Hant-TW": "腿後肌群"
+    },
+    "HIP_FLEXORS": {
+      "en": "Hip flexors",
+      "zh-Hant-TW": "髖屈肌群"
+    },
+    "LATISSIMUS_DORSI": {
+      "en": "Lats",
+      "zh-Hant-TW": "闊背肌"
+    },
+    "OBLIQUES": {
+      "en": "Obliques",
+      "zh-Hant-TW": "腹斜肌"
+    },
+    "PECTORALIS_MAJOR": {
+      "en": "Chest",
+      "zh-Hant-TW": "胸大肌"
+    },
+    "POSTERIOR_DELTOID": {
+      "en": "Rear deltoid",
+      "zh-Hant-TW": "後三角肌"
+    },
+    "QUADRICEPS": {
+      "en": "Quadriceps",
+      "zh-Hant-TW": "股四頭肌"
+    },
+    "ROTATOR_CUFF": {
+      "en": "Rotator cuff",
+      "zh-Hant-TW": "旋轉肌群"
+    },
+    "SERRATUS_ANTERIOR": {
+      "en": "Serratus anterior",
+      "zh-Hant-TW": "前鋸肌"
+    },
+    "TIBIALIS_ANTERIOR": {
+      "en": "Shin",
+      "zh-Hant-TW": "脛前肌"
+    },
+    "TRAPEZIUS": {
+      "en": "Trapezius",
+      "zh-Hant-TW": "斜方肌"
+    },
+    "TRICEPS_BRACHII": {
+      "en": "Triceps",
+      "zh-Hant-TW": "肱三頭肌"
+    }
+  },
+  "visualization": {
+    "issue": 48,
+    "assetPath": "assets/first-party/muscle-map-schematic.svg",
+    "assetProvenanceRecord": "legal/provenance/muscle-map-schematic.json",
+    "anatomicallyValidated": false,
+    "diagnostic": false,
+    "regions": [
+      {
+        "muscle": "ANTERIOR_DELTOID",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-left-shoulder",
+          "muscle-front-right-shoulder"
+        ]
+      },
+      {
+        "muscle": "PECTORALIS_MAJOR",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-left-chest",
+          "muscle-front-right-chest"
+        ]
+      },
+      {
+        "muscle": "BICEPS_BRACHII",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-left-arm",
+          "muscle-front-right-arm"
+        ]
+      },
+      {
+        "muscle": "ABDOMINALS",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-abdominals"
+        ]
+      },
+      {
+        "muscle": "OBLIQUES",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-left-oblique",
+          "muscle-front-right-oblique"
+        ]
+      },
+      {
+        "muscle": "QUADRICEPS",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-left-quadriceps",
+          "muscle-front-right-quadriceps"
+        ]
+      },
+      {
+        "muscle": "TIBIALIS_ANTERIOR",
+        "view": "FRONT",
+        "svgRegionIds": [
+          "muscle-front-left-lower-leg",
+          "muscle-front-right-lower-leg"
+        ]
+      },
+      {
+        "muscle": "POSTERIOR_DELTOID",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-left-shoulder",
+          "muscle-back-right-shoulder"
+        ]
+      },
+      {
+        "muscle": "TRAPEZIUS",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-trapezius"
+        ]
+      },
+      {
+        "muscle": "LATISSIMUS_DORSI",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-left-lat",
+          "muscle-back-right-lat"
+        ]
+      },
+      {
+        "muscle": "TRICEPS_BRACHII",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-left-triceps",
+          "muscle-back-right-triceps"
+        ]
+      },
+      {
+        "muscle": "ERECTOR_SPINAE",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-erectors"
+        ]
+      },
+      {
+        "muscle": "GLUTEUS_MAXIMUS",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-left-glute",
+          "muscle-back-right-glute"
+        ]
+      },
+      {
+        "muscle": "HAMSTRINGS",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-left-hamstring",
+          "muscle-back-right-hamstring"
+        ]
+      },
+      {
+        "muscle": "GASTROCNEMIUS",
+        "view": "BACK",
+        "svgRegionIds": [
+          "muscle-back-left-calf",
+          "muscle-back-right-calf"
+        ]
+      }
+    ],
+    "unrenderableMuscles": [
+      "ADDUCTORS",
+      "FOREARM_FLEXORS",
+      "HIP_FLEXORS",
+      "ROTATOR_CUFF",
+      "SERRATUS_ANTERIOR"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "measurement": "ABSENT",
+  "runId": "tw2-contract-shape-only",
+  "engine": "ANDROID_ML_KIT_TEXT_RECOGNITION",
+  "engineVersion": "ABSENT",
+  "modelVersion": "ABSENT",
+  "deviceModel": "ABSENT",
+  "osVersion": "ABSENT",
+  "evaluatedAtIsoDate": "2026-08-18",
+  "executedOnRealDevice": false,
+  "recordCount": 0,
+  "observationCount": 0,
+  "fieldMetrics": [],
+  "firstPassExactAccuracy": 0.0,
+  "correctionCompletion": null,
+  "externalGates": {
+    "consentedTraditionalChineseCorpus": "ABSENT",
+    "authorizedAndroidDeviceExecution": "ABSENT",
+    "authorizedIosDeviceExecution": "ABSENT",
+    "privacyApproval": "ABSENT"
+  },
+  "note": "No ML Kit or Apple Vision run has ever executed for this repository. The counts are zero because zero labels were recognized, not because recognition was perfect. engineVersion, modelVersion, deviceModel and osVersion are literally ABSENT, which OcrEvaluationRunValidator treats as an unbound run. This file records the aggregate SHAPE that may leave a device: counts, versions and rates only, with no raw label text, no image reference, no file path and no corpus record identifier."
+}

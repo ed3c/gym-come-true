@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gym-come-true.invalid/schemas/ocr-evaluation-report.schema.json",
+  "title": "Taiwan OCR field-level evaluation aggregate",
+  "description": "Transport shape of the only artifact permitted to leave an OCR evaluation device. additionalProperties is false so that raw label text, image references, file paths and corpus record identifiers cannot be attached to an aggregate. The Kotlin OcrEvaluationReport type and OcrAggregateLeakScanner remain authoritative.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "runId",
+    "engine",
+    "engineVersion",
+    "modelVersion",
+    "deviceModel",
+    "osVersion",
+    "evaluatedAtIsoDate",
+    "executedOnRealDevice",
+    "recordCount",
+    "observationCount",
+    "fieldMetrics",
+    "firstPassExactAccuracy"
+  ],
+  "properties": {
+    "schemaVersion": { "type": "integer", "minimum": 1 },
+    "synthetic": { "type": "boolean" },
+    "measurement": { "enum": ["ABSENT", "PRESENT"] },
+    "runId": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "engine": {
+      "enum": ["ANDROID_ML_KIT_TEXT_RECOGNITION", "APPLE_VISION_RECOGNIZE_TEXT"]
+    },
+    "engineVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "modelVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "deviceModel": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "osVersion": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "evaluatedAtIsoDate": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "executedOnRealDevice": { "type": "boolean" },
+    "recordCount": { "type": "integer", "minimum": 0 },
+    "observationCount": { "type": "integer", "minimum": 0 },
+    "fieldMetrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fieldType",
+          "total",
+          "exactMatches",
+          "correctionsRequired",
+          "correctionsCompleted",
+          "unresolved",
+          "exactAccuracy"
+        ],
+        "properties": {
+          "fieldType": {
+            "enum": [
+              "PRODUCT_NAME",
+              "BRAND",
+              "BARCODE",
+              "INGREDIENT_NAME",
+              "AMOUNT",
+              "UNIT",
+              "SERVING_SIZE",
+              "WARNING",
+              "EXPIRY"
+            ]
+          },
+          "total": { "type": "integer", "minimum": 0 },
+          "exactMatches": { "type": "integer", "minimum": 0 },
+          "correctionsRequired": { "type": "integer", "minimum": 0 },
+          "correctionsCompleted": { "type": "integer", "minimum": 0 },
+          "unresolved": { "type": "integer", "minimum": 0 },
+          "exactAccuracy": { "type": "number", "minimum": 0, "maximum": 1 },
+          "correctionCompletion": { "type": ["number", "null"], "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "firstPassExactAccuracy": { "type": "number", "minimum": 0, "maximum": 1 },
+    "correctionCompletion": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "externalGates": {
+      "type": "object",
+      "additionalProperties": { "enum": ["ABSENT", "DECLARED_NOT_VERIFIED", "HUMAN_ADMITTED"] }
+    },
+    "note": { "type": "string" }
+  }
+}

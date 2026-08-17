@@ -2,6 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!--
+      Least-privilege Health Connect read scope (Issue #30 / A1). Only the two
+      record types a shipped, user-visible feature can justify today
+      (docs/platform-capability-matrix.md "Health adapters"): body weight and
+      completed workout minutes. No write permission is declared. Extending
+      this set requires a named visible feature, not a speculative future one.
+    -->
+    <uses-permission android:name="android.permission.health.READ_WEIGHT" />
+    <uses-permission android:name="android.permission.health.READ_EXERCISE" />
+
+    <!-- Required so HealthConnectClient.getSdkStatus can see the provider package. -->
+    <queries>
+        <package android:name="com.google.android.apps.healthdata" />
+    </queries>
 
     <application
         android:allowBackup="false"
@@ -21,6 +37,22 @@
         <receiver
             android:name=".reminder.ProtocolReminderReceiver"
             android:exported="false" />
+
+        <!--
+          Reconciles persisted pending reminders (Issue #31 / A2) after the
+          three system transitions this app can observe. Not exact-alarm
+          access: reconciliation only re-arms the same inexact
+          setAndAllowWhileIdle alarm ProtocolReminderScheduler already uses.
+        -->
+        <receiver
+            android:name=".reminder.ReminderTransitionReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
 
         <provider
             android:name="androidx.core.content.FileProvider"

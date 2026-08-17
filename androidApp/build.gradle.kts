@@ -20,7 +20,12 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.mlkit.text.recognition.chinese)
     implementation(libs.mlkit.barcode.scanning)
+    // ponytail: pinned directly rather than via gradle/libs.versions.toml because
+    // that file is outside this lane's path lease (see newDependencyRequests in
+    // the delivery report) — integrator should promote this into the catalog.
+    implementation("androidx.health.connect:connect-client:1.1.0-alpha07")
     debugImplementation(libs.compose.ui.tooling)
+    testImplementation(libs.kotlin.test)
 }
 
 android {

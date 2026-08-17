@@ -15,6 +15,10 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import dev.ed3c.gymcometrue.MainActivity
 
+private const val extraTitle = "title"
+private const val extraBody = "body"
+private const val extraTriggerAtEpochMillis = "triggerAtEpochMillis"
+
 object ProtocolReminderScheduler {
     private const val channelId = "protocol-reminders"
 
@@ -24,24 +28,40 @@ object ProtocolReminderScheduler {
      */
     fun schedule(context: Context, delayMillis: Long) {
         require(delayMillis >= 0L)
-        val triggerAt = System.currentTimeMillis() + delayMillis
+        armAt(context, System.currentTimeMillis() + delayMillis)
+    }
+
+    /**
+     * Arms (or re-arms, after a reboot/package-replace/timezone reconciliation
+     * — see [ReminderTransitionReceiver]) a reminder for an absolute trigger
+     * time and records it as pending so it can be reconciled later.
+     */
+    internal fun armAt(context: Context, triggerAtEpochMillis: Long) {
         val intent = Intent(context, ProtocolReminderReceiver::class.java).apply {
-            putExtra("title", "Protocol checkpoint")
-            putExtra("body", "Confirm evidence and readiness before the next protocol step.")
+            putExtra(extraTitle, "Protocol checkpoint")
+            putExtra(extraBody, "Confirm evidence and readiness before the next protocol step.")
+            putExtra(extraTriggerAtEpochMillis, triggerAtEpochMillis)
         }
         val pendingIntent = PendingIntent.getBroadcast(
             context,
-            triggerAt.hashCode(),
+            triggerAtEpochMillis.hashCode(),
             intent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
         )
         val alarmManager = context.getSystemService(AlarmManager::class.java)
-        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAt, pendingIntent)
+        alarmManager.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerAtEpochMillis, pendingIntent)
+        PendingReminderStore.add(context, triggerAtEpochMillis)
     }
 }
 
 class ProtocolReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
+        val triggerAtEpochMillis = intent.getLongExtra(extraTriggerAtEpochMillis, -1L)
+        if (triggerAtEpochMillis >= 0L) {
+            PendingReminderStore.remove(context, triggerAtEpochMillis)
+            DeliveryDelayLog.record(context, System.currentTimeMillis() - triggerAtEpochMillis)
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
             ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) !=
             PackageManager.PERMISSION_GRANTED
@@ -68,9 +88,9 @@ class ProtocolReminderReceiver : BroadcastReceiver() {
         )
         val notification = NotificationCompat.Builder(context, channelId)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
-            .setContentTitle(intent.getStringExtra("title") ?: "Protocol checkpoint")
+            .setContentTitle(intent.getStringExtra(extraTitle) ?: "Protocol checkpoint")
             .setContentText(
-                intent.getStringExtra("body")
+                intent.getStringExtra(extraBody)
                     ?: "Review the next protocol step before acting.",
             )
             .setContentIntent(openApp)

@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "packId": "tw-supplement",
+  "jurisdiction": "TW",
+  "defaultPolicy": "DENY",
+  "decision": "EXTERNAL_GATES_ABSENT",
+  "statuses": [
+    {
+      "gate": "IMMUTABLE_OFFICIAL_SOURCE_BYTES",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No approved MOHW/TFDA bytes have been captured. legal/taiwan-official-resource-candidates.json holds CANDIDATE + DENY endpoints only."
+    },
+    {
+      "gate": "LEGAL_REUSE_REVIEW",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No counsel has reviewed reuse or redistribution of any official Taiwan source."
+    },
+    {
+      "gate": "QUALIFIED_CLINICAL_REVIEWER",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No qualified reviewer has been engaged. Reviewer identity is never a repository path."
+    },
+    {
+      "gate": "REVIEWER_CONFLICT_OF_INTEREST_DECLARATION",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No COI declaration exists because no reviewer exists."
+    },
+    {
+      "gate": "REVIEWED_USER_FACING_WORDING",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No user-facing warning wording has been reviewed or hash-bound."
+    },
+    {
+      "gate": "CRYPTOGRAPHIC_SIGNATURES",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No signing material exists in this repository and none may."
+    },
+    {
+      "gate": "ACTIVATION_RECEIPT",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No rule pack has been staged or activated."
+    },
+    {
+      "gate": "REVOCATION_AND_ROLLBACK_RECEIPT",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "No revocation or rollback has been exercised against a real prior version."
+    },
+    {
+      "gate": "CONSENTED_CORPUS",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "Issue #24 delivers the consent contract only. No consented Traditional Chinese corpus exists."
+    },
+    {
+      "gate": "AUTHORIZED_DEVICE_OCR_EVALUATION",
+      "state": "ABSENT",
+      "evidenceRef": null,
+      "note": "Issue #25 delivers the evaluation contract only. No authorized Android or iOS device run exists."
+    }
+  ],
+  "note": "Every gate is ABSENT. TaiwanReviewedRulePackGate therefore returns EXTERNAL_GATES_ABSENT for any pack, however well-formed. HUMAN_ADMITTED is never written by repository code; it is set only by a person with authority, out of band."
+}

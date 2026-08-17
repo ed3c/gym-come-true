@@ -1,0 +1,5901 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "gym-come-true-top50",
+  "catalogVersion": "1.0.0-draft",
+  "issue": 33,
+  "authoredOn": "2026-08-18",
+  "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+  "externalGates": {
+    "editorialReview": "ABSENT",
+    "rightsReview": "ABSENT",
+    "clinicalReview": "ABSENT",
+    "media": "ABSENT"
+  },
+  "safetyNotes": {
+    "general": {
+      "en": "Stop the set if pain, dizziness, numbness, chest discomfort, or loss of balance occurs. This entry describes a movement; it is not coaching, rehabilitation, or medical advice, and it is not personalised to any condition.",
+      "zh-Hant-TW": "出現疼痛、暈眩、麻木、胸悶或失去平衡時應停止該組。本條目只描述動作本身，不是個人化指導、復健處方或醫療建議，也未針對任何身體狀況調整。"
+    },
+    "loaded-spine": {
+      "en": "This movement loads the spine. Set safety pins or use a spotter, choose a load you can return under control, and stop the set when the back position can no longer be held. This entry is not coaching, rehabilitation, or medical advice.",
+      "zh-Hant-TW": "本動作會讓脊椎承重。請架設保護槓或請人補位，選擇能有控制放回的重量，背部姿勢守不住時就結束該組。本條目不是個人化指導、復健處方或醫療建議。"
+    },
+    "overhead": {
+      "en": "This movement takes the arms overhead. Work only inside a shoulder range that stays comfortable, and stop with shoulder, neck, or arm pain, numbness, or tingling. This entry is not coaching, rehabilitation, or medical advice.",
+      "zh-Hant-TW": "本動作會把手臂帶到過頭位置。只在肩膀舒適的活動範圍內操作；出現肩、頸或手臂疼痛、麻木或刺麻感時停止。本條目不是個人化指導、復健處方或醫療建議。"
+    },
+    "hanging-grip": {
+      "en": "This movement hangs the bodyweight from the hands. Check that the bar is fixed, end the set before the grip fails, and step down rather than dropping. This entry is not coaching, rehabilitation, or medical advice.",
+      "zh-Hant-TW": "本動作以雙手承受全身體重。請先確認單槓已固定牢靠，在握力失效前結束該組，並走下來而不是直接落下。本條目不是個人化指導、復健處方或醫療建議。"
+    },
+    "machine-setup": {
+      "en": "Machine setup decides where the load lands. Set the seat, pads, and stops before the first repetition, and stop if a joint is being pushed outside a comfortable range. This entry is not coaching, rehabilitation, or medical advice.",
+      "zh-Hant-TW": "機械的調整決定了負荷落在哪裡。第一下之前先調好座椅、護墊與限位；若關節被推到不舒適的角度就停止。本條目不是個人化指導、復健處方或醫療建議。"
+    }
+  },
+  "records": [
+    {
+      "id": "gct-bodyweight-squat",
+      "slug": "bodyweight-squat",
+      "name": {
+        "en": "Bodyweight Squat",
+        "zh-Hant-TW": "徒手深蹲"
+      },
+      "summary": {
+        "en": "A lower-body squat performed without external load.",
+        "zh-Hant-TW": "不使用外加負重完成的下肢蹲起動作。"
+      },
+      "movementPattern": "SQUAT",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand with a foot position you can hold, keeping the whole foot on the floor.",
+          "Bend the hips and knees together while the knees track over the feet.",
+          "Descend only as far as you can control, then press the floor away and stand up."
+        ],
+        "zh-Hant-TW": [
+          "採取能站穩的站距，整個腳掌保持貼地。",
+          "髖與膝一起彎曲，膝蓋方向大致跟著腳掌走。",
+          "只下降到自己控制得住的深度，再踩地站回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Lifting the heels off the floor.",
+          "Going deeper than the position can be held."
+        ],
+        "zh-Hant-TW": [
+          "腳跟離地。",
+          "下降到守不住姿勢的深度。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bodyweight-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-back-squat",
+      "slug": "back-squat",
+      "name": {
+        "en": "Back Squat",
+        "zh-Hant-TW": "槓鈴背蹲舉"
+      },
+      "summary": {
+        "en": "A barbell squat with the bar carried across the upper back.",
+        "zh-Hant-TW": "將槓鈴置於上背完成的蹲起動作。"
+      },
+      "movementPattern": "SQUAT",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the rack hooks and safety pins at a height you can reach without rising onto the toes.",
+          "Take the bar on the upper back, step into a stance you can hold, and brace the trunk.",
+          "Bend the hips and knees to a depth you control, stand back up, and return the bar to the hooks."
+        ],
+        "zh-Hant-TW": [
+          "把掛勾與保護槓調到不必踮腳就能取放的高度。",
+          "將槓放在上背，退到能站穩的站距，輕微收緊軀幹。",
+          "髖與膝一起彎曲到可控制的深度，站起後把槓放回掛勾。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the bar drift away from the middle of the foot.",
+          "Skipping the safety pins when training alone."
+        ],
+        "zh-Hant-TW": [
+          "槓的重心偏離腳掌中線。",
+          "單獨訓練時沒有架設保護槓。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-back-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-front-squat",
+      "slug": "front-squat",
+      "name": {
+        "en": "Front Squat",
+        "zh-Hant-TW": "槓鈴前蹲舉"
+      },
+      "summary": {
+        "en": "A barbell squat with the bar carried on the front of the shoulders.",
+        "zh-Hant-TW": "將槓鈴架在肩前完成的蹲起動作。"
+      },
+      "movementPattern": "SQUAT",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "BARBELL",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Build a front rack you can hold with the elbows lifted and the bar resting on the shoulders.",
+          "Step back into a stance you can hold and keep the elbows from dropping.",
+          "Bend the hips and knees to a depth you control, then stand up and return the bar."
+        ],
+        "zh-Hant-TW": [
+          "先建立能維持的前架姿勢：手肘抬高，槓靠在肩前。",
+          "退到能站穩的站距，過程中手肘不要掉下來。",
+          "髖與膝一起彎曲到可控制的深度，站起後把槓放回掛勾。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Elbows dropping so the bar rolls forward.",
+          "Choosing a load the front rack cannot hold."
+        ],
+        "zh-Hant-TW": [
+          "手肘掉落使槓往前滾。",
+          "使用前架姿勢撐不住的重量。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-front-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-goblet-squat",
+      "slug": "goblet-squat",
+      "name": {
+        "en": "Goblet Squat",
+        "zh-Hant-TW": "高腳杯深蹲"
+      },
+      "summary": {
+        "en": "A squat holding a single weight at chest height.",
+        "zh-Hant-TW": "在胸前抱住單一負重完成的蹲起動作。"
+      },
+      "movementPattern": "SQUAT",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "KETTLEBELL",
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hold one weight close to the chest with both hands and the elbows tucked in.",
+          "Set a stance you can hold and keep the weight against the chest throughout.",
+          "Bend the hips and knees to a depth you control, then stand back up."
+        ],
+        "zh-Hant-TW": [
+          "雙手把單一負重抱在胸前，手肘收在身體內側。",
+          "採取能站穩的站距，全程讓負重貼著胸口。",
+          "髖與膝一起彎曲到可控制的深度，再站回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the weight drift away from the chest.",
+          "Rounding forward when the load gets heavy."
+        ],
+        "zh-Hant-TW": [
+          "負重離開胸口往前跑。",
+          "重量變重時上半身向前塌。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-goblet-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-split-squat",
+      "slug": "split-squat",
+      "name": {
+        "en": "Split Squat",
+        "zh-Hant-TW": "分腿蹲"
+      },
+      "summary": {
+        "en": "A stationary split-stance squat loading one leg at a time.",
+        "zh-Hant-TW": "維持前後分腿站姿、一次訓練單腳的蹲起動作。"
+      },
+      "movementPattern": "LUNGE",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "UNILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "TIBIALIS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Step into a front-and-back stance where both feet stay flat and balanced.",
+          "Lower the back knee toward the floor while the front shin stays under control.",
+          "Press through the front foot to return, and repeat before changing sides."
+        ],
+        "zh-Hant-TW": [
+          "採取前後分腿站姿，兩腳都能踩穩、重心平衡。",
+          "後腳膝蓋往地面下降，前腳小腿維持在可控制的角度。",
+          "以前腳踩地推回起始位置，完成後再換邊。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A stance too short to balance in.",
+          "Letting the front knee collapse inward."
+        ],
+        "zh-Hant-TW": [
+          "站距太短導致重心不穩。",
+          "前腳膝蓋明顯向內塌。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-split-squat-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-walking-lunge",
+      "slug": "walking-lunge",
+      "name": {
+        "en": "Walking Lunge",
+        "zh-Hant-TW": "行走弓步"
+      },
+      "summary": {
+        "en": "A lunge that travels forward, alternating legs each step.",
+        "zh-Hant-TW": "向前移動、左右腳交替的弓步動作。"
+      },
+      "movementPattern": "LUNGE",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "ALTERNATING",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BODYWEIGHT",
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "TIBIALIS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Choose a clear path with enough room for several steps.",
+          "Step forward into a stance you can hold and lower the back knee under control.",
+          "Press the front foot into the floor to stand, then step through with the other leg."
+        ],
+        "zh-Hant-TW": [
+          "選一段沒有障礙、足夠走好幾步的路徑。",
+          "向前跨到能站穩的距離，後腳膝蓋有控制地下降。",
+          "前腳踩地站起，再換另一腳向前跨出。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Steps longer than balance allows.",
+          "Letting the trunk twist to reach the next step."
+        ],
+        "zh-Hant-TW": [
+          "步幅超過能維持平衡的範圍。",
+          "為了跨下一步而讓軀幹扭轉。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-walking-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-reverse-lunge",
+      "slug": "reverse-lunge",
+      "name": {
+        "en": "Reverse Lunge",
+        "zh-Hant-TW": "後跨弓步"
+      },
+      "summary": {
+        "en": "A lunge stepping backward rather than forward.",
+        "zh-Hant-TW": "向後跨步完成的弓步動作。"
+      },
+      "movementPattern": "LUNGE",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "ALTERNATING",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand tall with the feet under the hips and the weight balanced.",
+          "Step one foot backward and lower that knee toward the floor under control.",
+          "Press the front foot into the floor to return to standing, then change sides."
+        ],
+        "zh-Hant-TW": [
+          "站直，雙腳與髖同寬，重心平均分配。",
+          "一腳向後跨出，該側膝蓋有控制地朝地面下降。",
+          "前腳踩地回到站立位置，再換邊。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Landing hard on the back foot.",
+          "Leaning the trunk far forward to reach back."
+        ],
+        "zh-Hant-TW": [
+          "後腳落地過重。",
+          "為了往後跨而讓軀幹過度前傾。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-reverse-lunge-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-step-up",
+      "slug": "step-up",
+      "name": {
+        "en": "Step-Up",
+        "zh-Hant-TW": "登階"
+      },
+      "summary": {
+        "en": "A single-leg step onto a stable raised surface.",
+        "zh-Hant-TW": "以單腳踏上穩固平台的動作。"
+      },
+      "movementPattern": "LUNGE",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "UNILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "STABLE_STEP",
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "TIBIALIS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Use a step that does not slide and a height you can reach without straining.",
+          "Place one whole foot on the step and press through it to stand up.",
+          "Step back down under control and complete the set before changing sides."
+        ],
+        "zh-Hant-TW": [
+          "使用不會滑動的踏箱，高度以不需勉強即可踏上為準。",
+          "整個腳掌踏上平台，以該腳踩實推起身體。",
+          "有控制地退下平台，完成該側後再換邊。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A step so high that the trunk has to swing.",
+          "Pushing off the floor with the trailing leg."
+        ],
+        "zh-Hant-TW": [
+          "平台過高使軀幹必須甩動。",
+          "以後腳蹬地借力。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-step-up-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-leg-press",
+      "slug": "leg-press",
+      "name": {
+        "en": "Leg Press",
+        "zh-Hant-TW": "腿推機"
+      },
+      "summary": {
+        "en": "A machine press that extends the hips and knees against a foot platform.",
+        "zh-Hant-TW": "以腳掌推蹬踏板、伸展髖與膝的機械動作。"
+      },
+      "movementPattern": "SQUAT",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "SECONDARY"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the seat and the stops so the range stays inside what you can control.",
+          "Place both feet flat on the platform with the hips and back supported.",
+          "Press the platform away, then return to the set stop without letting the hips lift."
+        ],
+        "zh-Hant-TW": [
+          "先調整座椅與限位，讓活動範圍落在可控制的區間。",
+          "雙腳完整踩在踏板上，髖部與背部保持有支撐。",
+          "推出踏板後回到設定的限位，過程中髖部不要離開椅面。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Locking the knees hard at the top.",
+          "Letting the hips roll off the pad at the bottom."
+        ],
+        "zh-Hant-TW": [
+          "頂端用力鎖死膝蓋。",
+          "底部讓髖部離開椅墊。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-press-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-leg-extension",
+      "slug": "leg-extension",
+      "name": {
+        "en": "Leg Extension",
+        "zh-Hant-TW": "腿伸展機"
+      },
+      "summary": {
+        "en": "A seated machine movement that extends the knees against a pad.",
+        "zh-Hant-TW": "坐姿下以小腿推動阻力墊、伸直膝關節的機械動作。"
+      },
+      "movementPattern": "KNEE_EXTENSION",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the seat so the knee joint lines up with the machine pivot.",
+          "Set the shin pad above the ankle, not on the front of the ankle joint.",
+          "Extend the knees to a range you control, then lower under control."
+        ],
+        "zh-Hant-TW": [
+          "調整座椅，讓膝關節對齊機器轉軸。",
+          "阻力墊放在腳踝上方，不要壓在踝關節正面。",
+          "在可控制的範圍內伸直膝關節，再有控制地放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A pivot that does not line up with the knee.",
+          "Swinging the weight up instead of moving it."
+        ],
+        "zh-Hant-TW": [
+          "轉軸與膝關節沒有對齊。",
+          "用甩的方式把重量帶上去。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-leg-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-lying-leg-curl",
+      "slug": "lying-leg-curl",
+      "name": {
+        "en": "Lying Leg Curl",
+        "zh-Hant-TW": "俯臥腿彎舉"
+      },
+      "summary": {
+        "en": "A prone machine movement that bends the knees against a pad.",
+        "zh-Hant-TW": "俯臥於機器上、以小腿捲起阻力墊的動作。"
+      },
+      "movementPattern": "KNEE_FLEXION",
+      "mechanics": "ISOLATION",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GASTROCNEMIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Lie face down and line the knee joint up with the machine pivot.",
+          "Set the pad just above the heels and hold the handles.",
+          "Bend the knees through a range you control, then lower without letting the hips lift."
+        ],
+        "zh-Hant-TW": [
+          "俯臥並讓膝關節對齊機器轉軸。",
+          "阻力墊調到腳跟略上方，雙手握住把手。",
+          "在可控制的範圍內彎曲膝關節，放回時髖部不要抬起。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Lifting the hips to finish the repetition.",
+          "Dropping the weight back instead of lowering it."
+        ],
+        "zh-Hant-TW": [
+          "抬起髖部硬做完一下。",
+          "重量直接掉回去而不是有控制地放下。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lying-leg-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-romanian-deadlift",
+      "slug": "romanian-deadlift",
+      "name": {
+        "en": "Romanian Deadlift",
+        "zh-Hant-TW": "羅馬尼亞硬舉"
+      },
+      "summary": {
+        "en": "A hip hinge lowering a barbell along the legs with the knees only slightly bent.",
+        "zh-Hant-TW": "膝蓋微彎、以髖屈伸將槓鈴沿腿部下放的動作。"
+      },
+      "movementPattern": "HINGE",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand holding the bar at the hips with the knees slightly bent.",
+          "Push the hips backward and let the bar travel close to the legs.",
+          "Stop when the back position can no longer be held, then drive the hips forward to stand."
+        ],
+        "zh-Hant-TW": [
+          "站姿持槓於髖前，膝蓋保持微彎。",
+          "髖部往後推，讓槓貼著腿部下行。",
+          "背部姿勢守不住時就停止下降，再以髖部前推站直。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the bar swing away from the legs.",
+          "Continuing down after the back position is lost."
+        ],
+        "zh-Hant-TW": [
+          "槓離開腿部往前晃。",
+          "背部姿勢跑掉後還繼續下降。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-romanian-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-conventional-deadlift",
+      "slug": "conventional-deadlift",
+      "name": {
+        "en": "Conventional Deadlift",
+        "zh-Hant-TW": "傳統硬舉"
+      },
+      "summary": {
+        "en": "A barbell lift from the floor to standing with a hip-width stance.",
+        "zh-Hant-TW": "以與髖同寬的站距，把槓鈴從地面拉到站直的動作。"
+      },
+      "movementPattern": "HINGE",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "BARBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the feet under the bar with the shins close and the whole foot on the floor.",
+          "Take a grip, set the back position you intend to hold, and take the slack out of the bar.",
+          "Stand up by pushing the floor away, then return the bar under control along the same path."
+        ],
+        "zh-Hant-TW": [
+          "雙腳站到槓下方，小腿靠近槓身，整個腳掌貼地。",
+          "握槓後先建立要維持的背部姿勢，把槓的鬆動拉掉。",
+          "以踩地的方式站起，再沿原路徑有控制地把槓放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Starting the pull before the back position is set.",
+          "Letting the bar drift forward away from the body."
+        ],
+        "zh-Hant-TW": [
+          "背部姿勢還沒建立就開始拉。",
+          "槓離開身體往前跑。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-conventional-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-sumo-deadlift",
+      "slug": "sumo-deadlift",
+      "name": {
+        "en": "Sumo Deadlift",
+        "zh-Hant-TW": "相撲硬舉"
+      },
+      "summary": {
+        "en": "A barbell lift from the floor using a wide stance and hands inside the knees.",
+        "zh-Hant-TW": "採寬站距、雙手握在膝內側，把槓鈴從地面拉起的動作。"
+      },
+      "movementPattern": "HINGE",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "BARBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "SECONDARY"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set a wide stance with the toes turned out to a comfortable angle.",
+          "Grip inside the knees, set the back position, and take the slack out of the bar.",
+          "Push the floor apart to stand, then return the bar under control."
+        ],
+        "zh-Hant-TW": [
+          "採寬站距，腳尖外開到自己舒服的角度。",
+          "雙手握在膝蓋內側，建立背部姿勢並把槓的鬆動拉掉。",
+          "以向外踩地的方式站起，再有控制地把槓放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A stance wider than the hips can work in.",
+          "Letting the hips rise before the bar moves."
+        ],
+        "zh-Hant-TW": [
+          "站距寬到髖關節無法出力。",
+          "槓還沒動髖部就先抬起。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-sumo-deadlift-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-hip-thrust",
+      "slug": "hip-thrust",
+      "name": {
+        "en": "Hip Thrust",
+        "zh-Hant-TW": "臀推"
+      },
+      "summary": {
+        "en": "A supported hip extension driving a loaded bar upward from a bench.",
+        "zh-Hant-TW": "上背靠在臥推椅上，把負重推向上方的髖伸展動作。"
+      },
+      "movementPattern": "HIP_EXTENSION",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL",
+        "FLAT_BENCH"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Rest the upper back on a bench that will not slide and pad the bar across the hips.",
+          "Set the feet flat at a distance that keeps the shins upright at the top.",
+          "Press the hips upward to a position you control, then lower without letting the bar roll."
+        ],
+        "zh-Hant-TW": [
+          "上背靠在不會滑動的臥推椅上，槓身加護墊放在髖部。",
+          "雙腳踩實，距離調到頂端時小腿接近垂直。",
+          "把髖部推到可控制的高度，下降時不要讓槓滾動。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A bench that slides during the set.",
+          "Pushing the hips higher than the trunk can hold."
+        ],
+        "zh-Hant-TW": [
+          "臥推椅在過程中滑動。",
+          "髖部推到軀幹守不住的高度。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hip-thrust-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-glute-bridge",
+      "slug": "glute-bridge",
+      "name": {
+        "en": "Glute Bridge",
+        "zh-Hant-TW": "臀橋"
+      },
+      "summary": {
+        "en": "A floor-based hip extension from a supported supine position.",
+        "zh-Hant-TW": "仰躺在地面上完成的髖伸展動作。"
+      },
+      "movementPattern": "HIP_EXTENSION",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "FLOOR_MAT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ADDUCTORS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Lie on your back with the knees bent and both feet flat on the floor.",
+          "Press through the feet and lift the hips to a position you can hold.",
+          "Lower the hips slowly back to the floor."
+        ],
+        "zh-Hant-TW": [
+          "仰躺，膝蓋彎曲，雙腳完整踩在地面。",
+          "踩地把髖部抬到自己能維持的高度。",
+          "有控制地把髖部慢慢放回地面。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Arching the lower back to gain height.",
+          "Letting the knees fall inward."
+        ],
+        "zh-Hant-TW": [
+          "靠下背過度後仰來換取高度。",
+          "膝蓋向內倒。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-glute-bridge-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-good-morning",
+      "slug": "good-morning",
+      "name": {
+        "en": "Good Morning",
+        "zh-Hant-TW": "早安式"
+      },
+      "summary": {
+        "en": "A hip hinge performed with a bar across the upper back.",
+        "zh-Hant-TW": "槓鈴置於上背完成的髖屈伸動作。"
+      },
+      "movementPattern": "HINGE",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "BARBELL",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "HAMSTRINGS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Take a light bar on the upper back and step into a stance you can hold.",
+          "Push the hips backward and let the trunk tip forward only as far as the back position holds.",
+          "Drive the hips forward to return to standing, then rack the bar."
+        ],
+        "zh-Hant-TW": [
+          "以輕重量把槓放在上背，退到能站穩的站距。",
+          "髖部往後推，軀幹前傾的幅度以背部姿勢守得住為限。",
+          "髖部前推回到站直，再把槓放回掛勾。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Choosing a load that suits a squat rather than a hinge.",
+          "Bending at the waist instead of the hips."
+        ],
+        "zh-Hant-TW": [
+          "用深蹲的重量做這個髖主導動作。",
+          "從腰部彎折而不是從髖部。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-good-morning-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-standing-calf-raise",
+      "slug": "standing-calf-raise",
+      "name": {
+        "en": "Standing Calf Raise",
+        "zh-Hant-TW": "站姿提踵"
+      },
+      "summary": {
+        "en": "A standing movement that raises the heels against resistance.",
+        "zh-Hant-TW": "站姿下抬起腳跟對抗阻力的動作。"
+      },
+      "movementPattern": "ANKLE_PLANTARFLEXION",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "STABLE_STEP"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "GASTROCNEMIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TIBIALIS_ANTERIOR",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand on a stable surface with something to hold for balance.",
+          "Raise the heels to a height you can control without the ankles rolling outward.",
+          "Lower the heels slowly to the starting position."
+        ],
+        "zh-Hant-TW": [
+          "站在穩固的表面上，旁邊有可以扶的支撐。",
+          "把腳跟抬到可控制的高度，過程中腳踝不要往外翻。",
+          "有控制地把腳跟慢慢放回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Bouncing at the bottom of each repetition.",
+          "Letting the ankles roll to the outside edge."
+        ],
+        "zh-Hant-TW": [
+          "每一下在底部彈跳。",
+          "腳踝往外側翻倒。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-standing-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-seated-calf-raise",
+      "slug": "seated-calf-raise",
+      "name": {
+        "en": "Seated Calf Raise",
+        "zh-Hant-TW": "坐姿提踵"
+      },
+      "summary": {
+        "en": "A seated machine movement that raises the heels with the knees bent.",
+        "zh-Hant-TW": "坐姿、膝蓋彎曲下抬起腳跟的機械動作。"
+      },
+      "movementPattern": "ANKLE_PLANTARFLEXION",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "GASTROCNEMIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TIBIALIS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the knee pad so it sits on the thighs, not on the kneecaps.",
+          "Place the balls of the feet on the platform with the heels free.",
+          "Raise and lower the heels through a range you control."
+        ],
+        "zh-Hant-TW": [
+          "調整護墊讓它壓在大腿上，而不是壓在膝蓋骨。",
+          "前腳掌踩在踏板上，腳跟保持懸空。",
+          "在可控制的範圍內抬起與放下腳跟。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A pad resting directly on the kneecap.",
+          "Using a range the ankle cannot control."
+        ],
+        "zh-Hant-TW": [
+          "護墊直接壓在膝蓋骨上。",
+          "使用腳踝控制不了的活動範圍。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-calf-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-bench-press",
+      "slug": "bench-press",
+      "name": {
+        "en": "Barbell Bench Press",
+        "zh-Hant-TW": "槓鈴臥推"
+      },
+      "summary": {
+        "en": "A supine barbell press from the chest with the back supported on a bench.",
+        "zh-Hant-TW": "仰躺於臥推椅上，把槓鈴自胸口推起的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL",
+        "FLAT_BENCH",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "SERRATUS_ANTERIOR",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the safety pins beside the bench before loading the bar.",
+          "Lie back with the feet supported, take a grip you can hold, and unrack the bar.",
+          "Lower the bar to the chest under control, then press it back over the shoulders."
+        ],
+        "zh-Hant-TW": [
+          "上槓片前先把兩側保護槓架好。",
+          "仰躺並讓雙腳有支撐，握距選擇握得穩的位置，然後取槓。",
+          "有控制地把槓下放到胸口，再推回肩膀上方。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Training alone with no safety pins or spotter.",
+          "Bouncing the bar off the chest."
+        ],
+        "zh-Hant-TW": [
+          "單獨訓練時既沒有保護槓也沒有補手。",
+          "讓槓在胸口彈起。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-incline-bench-press",
+      "slug": "incline-bench-press",
+      "name": {
+        "en": "Incline Barbell Bench Press",
+        "zh-Hant-TW": "上斜槓鈴臥推"
+      },
+      "summary": {
+        "en": "A barbell press performed on an inclined bench.",
+        "zh-Hant-TW": "在上斜臥推椅上完成的槓鈴推舉。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL",
+        "INCLINE_BENCH",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "SERRATUS_ANTERIOR",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the bench to an incline the shoulders stay comfortable in.",
+          "Unrack the bar with a grip you can hold and the feet supported.",
+          "Lower the bar to the upper chest under control, then press it back up."
+        ],
+        "zh-Hant-TW": [
+          "把椅背調到肩膀不會不適的傾斜角度。",
+          "以握得穩的握距取槓，雙腳保持有支撐。",
+          "有控制地把槓下放到上胸，再推回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "An incline steep enough to load the shoulders instead.",
+          "Lowering past a comfortable shoulder position."
+        ],
+        "zh-Hant-TW": [
+          "傾斜角度太高，變成主要壓在肩膀上。",
+          "下放超過肩膀舒適的位置。"
+        ]
+      },
+      "safetyNoteRef": "overhead",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-dumbbell-bench-press",
+      "slug": "dumbbell-bench-press",
+      "name": {
+        "en": "Dumbbell Bench Press",
+        "zh-Hant-TW": "啞鈴臥推"
+      },
+      "summary": {
+        "en": "A supine press with a dumbbell in each hand.",
+        "zh-Hant-TW": "仰躺於臥推椅上、雙手各持一支啞鈴的推舉動作。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL",
+        "FLAT_BENCH"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "SERRATUS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Sit on the bench with the dumbbells on the thighs, then lie back with them.",
+          "Press both dumbbells over the shoulders as the starting position.",
+          "Lower to a depth the shoulders stay comfortable in, then press back up."
+        ],
+        "zh-Hant-TW": [
+          "先坐在椅上把啞鈴放在大腿，再帶著啞鈴躺下。",
+          "把兩支啞鈴推到肩膀上方作為起始位置。",
+          "下放到肩膀仍舒適的深度，再推回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Dropping the dumbbells to the floor to finish.",
+          "Lowering deeper than the shoulders tolerate."
+        ],
+        "zh-Hant-TW": [
+          "結束時直接把啞鈴摔到地上。",
+          "下放深度超過肩膀能接受的範圍。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-bench-press-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-push-up",
+      "slug": "push-up",
+      "name": {
+        "en": "Push-Up",
+        "zh-Hant-TW": "伏地挺身"
+      },
+      "summary": {
+        "en": "A bodyweight press from the floor with the trunk held in one line.",
+        "zh-Hant-TW": "以地面為支撐、軀幹維持一直線的徒手推力動作。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "FLOOR_MAT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "SERRATUS_ANTERIOR",
+          "intensity": "SECONDARY"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Place the hands slightly wider than the shoulders on a stable floor.",
+          "Hold the trunk in one line from the shoulders to the ankles.",
+          "Lower the chest under control, then press the floor away without losing the line."
+        ],
+        "zh-Hant-TW": [
+          "雙手放在略寬於肩的位置，地面要穩固。",
+          "肩膀到腳踝維持成一直線。",
+          "有控制地下降胸口，再推地回到起始位置，過程中不要塌腰。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the hips sag below the line.",
+          "Moving the head forward instead of the chest."
+        ],
+        "zh-Hant-TW": [
+          "髖部下沉跌出身體線條。",
+          "用頭部前伸代替胸口下降。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-incline-push-up",
+      "slug": "incline-push-up",
+      "name": {
+        "en": "Incline Push-Up",
+        "zh-Hant-TW": "上斜伏地挺身"
+      },
+      "summary": {
+        "en": "A push-up with the hands on a raised stable surface.",
+        "zh-Hant-TW": "雙手撐在較高穩固平面上的伏地挺身。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "STABLE_STEP"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "SERRATUS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Use a raised surface that will not slide or tip.",
+          "Set the hands slightly wider than the shoulders and hold the trunk in one line.",
+          "Lower the chest toward the surface under control, then press back up."
+        ],
+        "zh-Hant-TW": [
+          "使用不會滑動或翻倒的高起平面。",
+          "雙手略寬於肩，軀幹維持成一直線。",
+          "有控制地讓胸口靠近平面，再推回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A surface that shifts under load.",
+          "Letting the hips drop out of line."
+        ],
+        "zh-Hant-TW": [
+          "支撐面在受力時位移。",
+          "髖部下沉跌出身體線條。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-incline-push-up-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-chest-dip",
+      "slug": "chest-dip",
+      "name": {
+        "en": "Chest Dip",
+        "zh-Hant-TW": "雙槓胸推"
+      },
+      "summary": {
+        "en": "A press between parallel bars supporting the whole bodyweight.",
+        "zh-Hant-TW": "在雙槓上支撐全身體重完成的推力動作。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "DIP_BARS"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Get onto the bars with the arms straight and the shoulders held down.",
+          "Lower only to a depth the shoulders stay comfortable in.",
+          "Press back to the starting position and step down under control."
+        ],
+        "zh-Hant-TW": [
+          "上槓後手臂伸直，肩膀保持下沉穩定。",
+          "只下降到肩膀仍然舒適的深度。",
+          "推回起始位置，並有控制地下槓。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Dropping into the bottom without control.",
+          "Going deeper than the shoulders allow."
+        ],
+        "zh-Hant-TW": [
+          "沒有控制地直接落到底部。",
+          "下降深度超過肩膀能接受的範圍。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chest-dip-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-cable-chest-fly",
+      "slug": "cable-chest-fly",
+      "name": {
+        "en": "Cable Chest Fly",
+        "zh-Hant-TW": "滑輪飛鳥"
+      },
+      "summary": {
+        "en": "A cable movement bringing the arms together in front of the chest.",
+        "zh-Hant-TW": "以滑輪阻力把雙臂在胸前合攏的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PUSH",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "PECTORALIS_MAJOR",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set both pulleys at a matching height and take one handle in each hand.",
+          "Step into a stance you can hold with a small bend kept in the elbows.",
+          "Bring the handles together in front of the chest, then return under control."
+        ],
+        "zh-Hant-TW": [
+          "把兩側滑輪調到相同高度，雙手各握一個把手。",
+          "站到能站穩的位置，手肘保持微彎不變。",
+          "把把手在胸前合攏，再有控制地放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Straightening the elbows to reach further.",
+          "Letting the shoulders roll forward at the end."
+        ],
+        "zh-Hant-TW": [
+          "為了拉更遠而把手肘打直。",
+          "結束時肩膀往前捲。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-chest-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-overhead-press",
+      "slug": "overhead-press",
+      "name": {
+        "en": "Standing Overhead Press",
+        "zh-Hant-TW": "站姿肩推"
+      },
+      "summary": {
+        "en": "A standing barbell press from the shoulders to overhead.",
+        "zh-Hant-TW": "站姿下把槓鈴從肩上推到過頭的動作。"
+      },
+      "movementPattern": "VERTICAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Take the bar at shoulder height with a grip and stance you can hold.",
+          "Brace the trunk and press the bar overhead without leaning backward.",
+          "Lower the bar back to the shoulders under control, then rack it."
+        ],
+        "zh-Hant-TW": [
+          "在肩高取槓，握距與站距選擇自己撐得住的。",
+          "輕微收緊軀幹，把槓推到過頭，過程中不要向後仰。",
+          "有控制地把槓放回肩上，再放回掛勾。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Leaning backward to move the bar around the head.",
+          "Pressing overhead beyond a comfortable shoulder range."
+        ],
+        "zh-Hant-TW": [
+          "為了讓槓繞過頭部而向後仰。",
+          "推過頭超出肩膀舒適的活動範圍。"
+        ]
+      },
+      "safetyNoteRef": "overhead",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-press-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-seated-dumbbell-shoulder-press",
+      "slug": "seated-dumbbell-shoulder-press",
+      "name": {
+        "en": "Seated Dumbbell Shoulder Press",
+        "zh-Hant-TW": "坐姿啞鈴肩推"
+      },
+      "summary": {
+        "en": "A seated press with a dumbbell in each hand.",
+        "zh-Hant-TW": "坐姿下雙手各持一支啞鈴的過頭推舉。"
+      },
+      "movementPattern": "VERTICAL_PUSH",
+      "mechanics": "COMPOUND",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL",
+        "INCLINE_BENCH"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Sit with the back supported and bring both dumbbells to shoulder height.",
+          "Press overhead through a path that keeps the shoulders comfortable.",
+          "Lower back to shoulder height under control."
+        ],
+        "zh-Hant-TW": [
+          "坐下並讓背部有支撐，把兩支啞鈴帶到肩膀高度。",
+          "沿著肩膀舒適的路徑往上推。",
+          "有控制地放回肩膀高度。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Arching the back to finish the press.",
+          "Letting the dumbbells drift far apart at the top."
+        ],
+        "zh-Hant-TW": [
+          "靠後仰硬把重量推上去。",
+          "頂端時兩支啞鈴距離拉得太開。"
+        ]
+      },
+      "safetyNoteRef": "overhead",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-dumbbell-shoulder-press-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-lateral-raise",
+      "slug": "lateral-raise",
+      "name": {
+        "en": "Dumbbell Lateral Raise",
+        "zh-Hant-TW": "啞鈴側平舉"
+      },
+      "summary": {
+        "en": "A movement raising the arms out to the side against resistance.",
+        "zh-Hant-TW": "把手臂向身體兩側抬起、對抗阻力的動作。"
+      },
+      "movementPattern": "SHOULDER_ABDUCTION",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand with a dumbbell in each hand and a small bend in the elbows.",
+          "Raise the arms to the side up to about shoulder height.",
+          "Lower the dumbbells slowly to the starting position."
+        ],
+        "zh-Hant-TW": [
+          "站姿，雙手各持一支啞鈴，手肘保持微彎。",
+          "把手臂向兩側抬起，大約到肩膀高度。",
+          "有控制地把啞鈴慢慢放回起始位置。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Swinging the trunk to start each repetition.",
+          "Raising far above shoulder height with a heavy load."
+        ],
+        "zh-Hant-TW": [
+          "每一下都靠軀幹晃動起頭。",
+          "在重量偏重時抬到遠高於肩膀的位置。"
+        ]
+      },
+      "safetyNoteRef": "overhead",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lateral-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-rear-delt-fly",
+      "slug": "rear-delt-fly",
+      "name": {
+        "en": "Rear Delt Fly",
+        "zh-Hant-TW": "後三角飛鳥"
+      },
+      "summary": {
+        "en": "A bent-over movement raising the arms outward and backward.",
+        "zh-Hant-TW": "俯身姿勢下把手臂向外向後抬起的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PULL",
+      "mechanics": "ISOLATION",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hinge forward to a trunk position you can hold without strain.",
+          "Let the dumbbells hang below the shoulders with a small bend in the elbows.",
+          "Raise the arms outward to about shoulder level, then lower under control."
+        ],
+        "zh-Hant-TW": [
+          "向前屈髖到自己能輕鬆維持的軀幹角度。",
+          "讓啞鈴自然垂在肩膀下方，手肘保持微彎。",
+          "把手臂向外抬到約肩膀高度，再有控制地放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Standing up during the set to move more weight.",
+          "Pulling with the elbows into a shrug."
+        ],
+        "zh-Hant-TW": [
+          "過程中站起來以便舉更重。",
+          "用聳肩代替後三角出力。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-rear-delt-fly-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-face-pull",
+      "slug": "face-pull",
+      "name": {
+        "en": "Cable Face Pull",
+        "zh-Hant-TW": "滑輪臉拉"
+      },
+      "summary": {
+        "en": "A cable pull toward the face with the elbows kept high.",
+        "zh-Hant-TW": "把滑輪握把往臉部方向拉、手肘維持高位的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PULL",
+      "mechanics": "ISOLATION",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the pulley at about upper-chest height and take the rope in both hands.",
+          "Step back into a stance you can hold and keep the elbows above the wrists.",
+          "Pull the rope toward the face, then return under control."
+        ],
+        "zh-Hant-TW": [
+          "把滑輪高度調到約上胸位置，雙手握住繩索。",
+          "後退到能站穩的位置，手肘保持高於手腕。",
+          "把繩索往臉部方向拉，再有控制地放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the elbows drop into a row.",
+          "Using a load that pulls the trunk forward."
+        ],
+        "zh-Hant-TW": [
+          "手肘掉下來變成划船。",
+          "重量重到軀幹被拉著往前。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-face-pull-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-pull-up",
+      "slug": "pull-up",
+      "name": {
+        "en": "Pull-Up",
+        "zh-Hant-TW": "引體向上"
+      },
+      "summary": {
+        "en": "A hanging pull to the bar with the palms facing away.",
+        "zh-Hant-TW": "正握懸吊於單槓、把身體拉向橫槓的動作。"
+      },
+      "movementPattern": "VERTICAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "PULL_UP_BAR"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hang from a bar that is fixed in place with the palms facing away.",
+          "Pull the chest toward the bar while the shoulders stay set down.",
+          "Lower all the way under control and step down rather than dropping."
+        ],
+        "zh-Hant-TW": [
+          "以正握方式懸吊在固定牢靠的單槓上。",
+          "把胸口拉向橫槓，肩膀保持下沉穩定。",
+          "有控制地完整下放，結束時走下來而不是直接跳落。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Swinging the legs to generate the pull.",
+          "Dropping from the top of the bar."
+        ],
+        "zh-Hant-TW": [
+          "靠擺腿甩上去。",
+          "從最高點直接鬆手落下。"
+        ]
+      },
+      "safetyNoteRef": "hanging-grip",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-pull-up-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-chin-up",
+      "slug": "chin-up",
+      "name": {
+        "en": "Chin-Up",
+        "zh-Hant-TW": "反手引體向上"
+      },
+      "summary": {
+        "en": "A hanging pull to the bar with the palms facing toward you.",
+        "zh-Hant-TW": "反握懸吊於單槓、把身體拉向橫槓的動作。"
+      },
+      "movementPattern": "VERTICAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "ADVANCED",
+      "equipment": [
+        "PULL_UP_BAR"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hang from a fixed bar with the palms facing toward you.",
+          "Pull the chest toward the bar with the shoulders held down.",
+          "Lower under control to a full hang before the next repetition."
+        ],
+        "zh-Hant-TW": [
+          "以反握方式懸吊在固定牢靠的單槓上。",
+          "把胸口拉向橫槓，肩膀保持下沉。",
+          "有控制地下放到完全懸吊，再做下一下。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Kicking the legs to pass the sticking point.",
+          "Stopping the descent halfway and dropping the rest."
+        ],
+        "zh-Hant-TW": [
+          "用踢腿衝過卡點。",
+          "下放到一半就直接鬆掉。"
+        ]
+      },
+      "safetyNoteRef": "hanging-grip",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-chin-up-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-lat-pulldown",
+      "slug": "lat-pulldown",
+      "name": {
+        "en": "Lat Pulldown",
+        "zh-Hant-TW": "滑輪下拉"
+      },
+      "summary": {
+        "en": "A seated cable pull from overhead down to the upper chest.",
+        "zh-Hant-TW": "坐姿下把滑輪把手自頭頂上方拉向上胸的動作。"
+      },
+      "movementPattern": "VERTICAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the thigh pad so the hips stay down when the weight is loaded.",
+          "Take the bar with a grip you can hold and sit with the trunk upright.",
+          "Pull the bar toward the upper chest, then let it rise under control."
+        ],
+        "zh-Hant-TW": [
+          "調整大腿護墊，讓加重時髖部不會被拉起。",
+          "以握得穩的握距握住橫桿，坐好並讓軀幹保持直立。",
+          "把橫桿拉向上胸，再有控制地讓它回到上方。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Leaning far back to turn the pull into a row.",
+          "Pulling the bar behind the neck."
+        ],
+        "zh-Hant-TW": [
+          "大幅後仰把下拉變成划船。",
+          "把橫桿拉到頸後。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-lat-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-barbell-row",
+      "slug": "barbell-row",
+      "name": {
+        "en": "Bent-Over Barbell Row",
+        "zh-Hant-TW": "槓鈴俯身划船"
+      },
+      "summary": {
+        "en": "A bent-over pull of a barbell toward the trunk.",
+        "zh-Hant-TW": "俯身姿勢下把槓鈴拉向軀幹的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "BARBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hinge forward to a trunk angle you can hold for the whole set.",
+          "Pull the bar toward the lower ribs while the trunk stays still.",
+          "Lower the bar under control and stop the set when the trunk angle changes."
+        ],
+        "zh-Hant-TW": [
+          "向前屈髖到整組都守得住的軀幹角度。",
+          "把槓拉向下肋位置，過程中軀幹不要跟著動。",
+          "有控制地放下槓；軀幹角度開始跑掉就結束這一組。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Standing up progressively through the set.",
+          "Jerking the bar with the hips."
+        ],
+        "zh-Hant-TW": [
+          "整組過程中身體愈站愈直。",
+          "用髖部把槓甩起來。"
+        ]
+      },
+      "safetyNoteRef": "loaded-spine",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-one-arm-dumbbell-row",
+      "slug": "one-arm-dumbbell-row",
+      "name": {
+        "en": "One-Arm Dumbbell Row",
+        "zh-Hant-TW": "單臂啞鈴划船"
+      },
+      "summary": {
+        "en": "A supported single-arm pull of a dumbbell toward the trunk.",
+        "zh-Hant-TW": "以支撐姿勢單手把啞鈴拉向軀幹的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "UNILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL",
+        "FLAT_BENCH"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Support one hand and one knee on a bench that will not slide.",
+          "Let the dumbbell hang under the shoulder, then pull it toward the lower ribs.",
+          "Lower under control and finish the side before changing over."
+        ],
+        "zh-Hant-TW": [
+          "一手一膝支撐在不會滑動的臥推椅上。",
+          "讓啞鈴自然垂在肩膀下方，再拉向下肋位置。",
+          "有控制地放下，完成該側後再換邊。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Twisting the trunk to lift more weight.",
+          "Letting the supporting shoulder collapse."
+        ],
+        "zh-Hant-TW": [
+          "靠扭轉軀幹來舉更重。",
+          "支撐側的肩膀塌陷。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-one-arm-dumbbell-row-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-seated-cable-row",
+      "slug": "seated-cable-row",
+      "name": {
+        "en": "Seated Cable Row",
+        "zh-Hant-TW": "坐姿滑輪划船"
+      },
+      "summary": {
+        "en": "A seated cable pull toward the trunk with the feet braced.",
+        "zh-Hant-TW": "坐姿踩住踏板、把滑輪把手拉向軀幹的動作。"
+      },
+      "movementPattern": "HORIZONTAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Sit with both feet on the platform and the knees slightly bent.",
+          "Take the handle and set the trunk upright before the first repetition.",
+          "Pull the handle toward the abdomen, then let it travel back under control."
+        ],
+        "zh-Hant-TW": [
+          "坐好，雙腳踩在踏板上，膝蓋保持微彎。",
+          "握住把手，在第一下之前先把軀幹擺正。",
+          "把把手拉向腹部，再有控制地讓它回去。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Rocking the trunk backward and forward each repetition.",
+          "Letting the weight stack pull the trunk forward."
+        ],
+        "zh-Hant-TW": [
+          "每一下都靠軀幹前後搖晃。",
+          "被重量拉著讓軀幹往前倒。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-seated-cable-row-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-inverted-row",
+      "slug": "inverted-row",
+      "name": {
+        "en": "Inverted Row",
+        "zh-Hant-TW": "反向划船"
+      },
+      "summary": {
+        "en": "A bodyweight row performed under a fixed bar.",
+        "zh-Hant-TW": "身體在固定橫槓下方完成的徒手划船。"
+      },
+      "movementPattern": "HORIZONTAL_PULL",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BARBELL",
+        "SQUAT_RACK"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Fix a bar in a rack at a height that suits the difficulty you want.",
+          "Hang underneath with the trunk held in one line from shoulders to heels.",
+          "Pull the chest toward the bar, then lower under control."
+        ],
+        "zh-Hant-TW": [
+          "在深蹲架上把橫槓固定在符合目標難度的高度。",
+          "身體位於槓下方懸吊，肩膀到腳跟維持成一直線。",
+          "把胸口拉向橫槓，再有控制地放下。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "A bar that is not fixed in the rack.",
+          "Letting the hips drop out of line."
+        ],
+        "zh-Hant-TW": [
+          "橫槓沒有固定在架上。",
+          "髖部下沉跌出身體線條。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-inverted-row-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-straight-arm-pulldown",
+      "slug": "straight-arm-pulldown",
+      "name": {
+        "en": "Straight-Arm Pulldown",
+        "zh-Hant-TW": "直臂下拉"
+      },
+      "summary": {
+        "en": "A cable movement pulling the arms down in front of the body with the elbows nearly straight.",
+        "zh-Hant-TW": "手肘接近打直、把滑輪把手沿身體前方下壓的動作。"
+      },
+      "movementPattern": "VERTICAL_PULL",
+      "mechanics": "ISOLATION",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the pulley above head height and take the bar with the arms nearly straight.",
+          "Step back into a stance you can hold and hinge slightly forward.",
+          "Pull the bar down toward the thighs, then return under control."
+        ],
+        "zh-Hant-TW": [
+          "把滑輪調到高於頭部，手臂接近打直握住橫桿。",
+          "後退到能站穩的位置，上半身略微前傾。",
+          "把橫桿下壓到接近大腿，再有控制地放回。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Bending the elbows so it becomes a pushdown.",
+          "Using a load that lifts the body off the floor."
+        ],
+        "zh-Hant-TW": [
+          "手肘彎曲導致變成三頭下壓。",
+          "重量重到把身體往上拉離地面。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-straight-arm-pulldown-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-barbell-curl",
+      "slug": "barbell-curl",
+      "name": {
+        "en": "Barbell Curl",
+        "zh-Hant-TW": "槓鈴彎舉"
+      },
+      "summary": {
+        "en": "An elbow flexion movement lifting a barbell toward the shoulders.",
+        "zh-Hant-TW": "屈曲手肘把槓鈴帶向肩膀的動作。"
+      },
+      "movementPattern": "ELBOW_FLEXION",
+      "mechanics": "ISOLATION",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BARBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand holding the bar with the arms hanging and the elbows near the trunk.",
+          "Bend the elbows to bring the bar toward the shoulders.",
+          "Lower the bar slowly until the arms are straight again."
+        ],
+        "zh-Hant-TW": [
+          "站姿持槓，手臂自然下垂，手肘靠近身體。",
+          "彎曲手肘把槓帶向肩膀。",
+          "有控制地慢慢放下，直到手臂再次伸直。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Swinging the trunk to start the lift.",
+          "Letting the elbows travel far forward."
+        ],
+        "zh-Hant-TW": [
+          "靠軀幹擺盪起頭。",
+          "手肘大幅往前跑。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-barbell-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-dumbbell-hammer-curl",
+      "slug": "dumbbell-hammer-curl",
+      "name": {
+        "en": "Dumbbell Hammer Curl",
+        "zh-Hant-TW": "啞鈴錘式彎舉"
+      },
+      "summary": {
+        "en": "An elbow flexion movement with the palms facing each other.",
+        "zh-Hant-TW": "掌心相對、屈曲手肘的彎舉動作。"
+      },
+      "movementPattern": "ELBOW_FLEXION",
+      "mechanics": "ISOLATION",
+      "force": "PULL",
+      "laterality": "ALTERNATING",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "BICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Stand with a dumbbell in each hand and the palms facing each other.",
+          "Bend one elbow to bring the dumbbell toward the shoulder.",
+          "Lower under control and repeat on the other side."
+        ],
+        "zh-Hant-TW": [
+          "站姿，雙手各持一支啞鈴，掌心相對。",
+          "彎曲一側手肘，把啞鈴帶向肩膀。",
+          "有控制地放下，再換另一側。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Leaning back as the set gets hard.",
+          "Rotating the wrist out of the neutral position."
+        ],
+        "zh-Hant-TW": [
+          "組數後段開始向後仰。",
+          "手腕轉離中立位置。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dumbbell-hammer-curl-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-triceps-pushdown",
+      "slug": "triceps-pushdown",
+      "name": {
+        "en": "Cable Triceps Pushdown",
+        "zh-Hant-TW": "滑輪三頭下壓"
+      },
+      "summary": {
+        "en": "A cable movement extending the elbows downward with the upper arms held still.",
+        "zh-Hant-TW": "上臂固定、把滑輪把手向下推直手肘的動作。"
+      },
+      "movementPattern": "ELBOW_EXTENSION",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the pulley above elbow height and take the handle with both hands.",
+          "Keep the upper arms next to the trunk throughout the set.",
+          "Straighten the elbows, then let the handle rise under control."
+        ],
+        "zh-Hant-TW": [
+          "把滑輪調到高於手肘的位置，雙手握住把手。",
+          "整組過程中上臂維持貼在身體兩側。",
+          "把手肘推直，再有控制地讓把手回到上方。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the upper arms travel forward and back.",
+          "Leaning the bodyweight onto the handle."
+        ],
+        "zh-Hant-TW": [
+          "上臂前後晃動。",
+          "把體重壓在把手上代替出力。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-triceps-pushdown-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-overhead-triceps-extension",
+      "slug": "overhead-triceps-extension",
+      "name": {
+        "en": "Overhead Triceps Extension",
+        "zh-Hant-TW": "過頭三頭伸展"
+      },
+      "summary": {
+        "en": "An elbow extension performed with the upper arms overhead.",
+        "zh-Hant-TW": "上臂維持在過頭位置完成的手肘伸直動作。"
+      },
+      "movementPattern": "ELBOW_EXTENSION",
+      "mechanics": "ISOLATION",
+      "force": "PUSH",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "DUMBBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "TRICEPS_BRACHII",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ANTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hold one dumbbell with both hands and raise it overhead.",
+          "Bend the elbows to lower the weight behind the head only as far as is comfortable.",
+          "Straighten the elbows to return, keeping the upper arms in place."
+        ],
+        "zh-Hant-TW": [
+          "雙手共同握住一支啞鈴，舉到頭部上方。",
+          "彎曲手肘把重量放到頭後，只下降到自己覺得舒適的範圍。",
+          "把手肘推直回到起始位置，上臂位置保持不變。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Arching the lower back to hold the weight up.",
+          "Letting the elbows flare far apart."
+        ],
+        "zh-Hant-TW": [
+          "靠下背後仰撐住重量。",
+          "手肘往兩側大幅張開。"
+        ]
+      },
+      "safetyNoteRef": "overhead",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-overhead-triceps-extension-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-plank",
+      "slug": "plank",
+      "name": {
+        "en": "Plank",
+        "zh-Hant-TW": "棒式"
+      },
+      "summary": {
+        "en": "An isometric hold on the forearms with the trunk held in one line.",
+        "zh-Hant-TW": "以前臂支撐、軀幹維持一直線的等長支撐動作。"
+      },
+      "movementPattern": "ANTI_EXTENSION",
+      "mechanics": "ISOMETRIC",
+      "force": "STATIC",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "FLOOR_MAT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "SERRATUS_ANTERIOR",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the forearms under the shoulders on a mat.",
+          "Lift the hips so the body forms one line from shoulders to heels.",
+          "Hold only as long as that line can be held, then lower the knees to finish."
+        ],
+        "zh-Hant-TW": [
+          "前臂放在墊上，位置對齊肩膀正下方。",
+          "抬起髖部，讓肩膀到腳跟形成一直線。",
+          "只維持到守得住這條線為止，結束時先把膝蓋放下。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the hips sag toward the floor.",
+          "Holding past the point the line breaks down."
+        ],
+        "zh-Hant-TW": [
+          "髖部往地面下沉。",
+          "在身體線條垮掉之後還繼續撐。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-side-plank",
+      "slug": "side-plank",
+      "name": {
+        "en": "Side Plank",
+        "zh-Hant-TW": "側棒式"
+      },
+      "summary": {
+        "en": "An isometric side-lying hold on one forearm.",
+        "zh-Hant-TW": "側躺以單側前臂支撐的等長支撐動作。"
+      },
+      "movementPattern": "ANTI_LATERAL_FLEXION",
+      "mechanics": "ISOMETRIC",
+      "force": "STATIC",
+      "laterality": "UNILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "FLOOR_MAT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "ROTATOR_CUFF",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Lie on one side with the supporting forearm under the shoulder.",
+          "Lift the hips so the body forms one line when viewed from the side.",
+          "Hold only while the line holds, then lower and change sides."
+        ],
+        "zh-Hant-TW": [
+          "側躺，支撐側前臂放在肩膀正下方。",
+          "抬起髖部，從側面看身體呈一直線。",
+          "只維持到守得住這條線為止，放下後再換邊。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the hips drift backward.",
+          "Loading the supporting shoulder with a collapsed position."
+        ],
+        "zh-Hant-TW": [
+          "髖部往後移。",
+          "支撐側肩膀塌陷仍繼續承重。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-side-plank-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-dead-bug",
+      "slug": "dead-bug",
+      "name": {
+        "en": "Dead Bug",
+        "zh-Hant-TW": "死蟲式"
+      },
+      "summary": {
+        "en": "A supine movement extending one arm and the opposite leg while the trunk stays still.",
+        "zh-Hant-TW": "仰躺下對側手腳伸展、軀幹保持不動的動作。"
+      },
+      "movementPattern": "ANTI_EXTENSION",
+      "mechanics": "ISOMETRIC",
+      "force": "STATIC",
+      "laterality": "ALTERNATING",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "FLOOR_MAT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HIP_FLEXORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Lie on your back with the arms above the shoulders and the knees over the hips.",
+          "Lower one arm and the opposite leg only as far as the lower back stays in place.",
+          "Return to the starting position and repeat on the other side."
+        ],
+        "zh-Hant-TW": [
+          "仰躺，雙手舉在肩膀上方，膝蓋位於髖部正上方。",
+          "放下一手與對側腳，範圍以下背位置不改變為限。",
+          "回到起始位置，再換另一側。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Letting the lower back lift off the floor.",
+          "Moving faster than the trunk position can hold."
+        ],
+        "zh-Hant-TW": [
+          "下背離開地面拱起。",
+          "動作速度快到軀幹位置守不住。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-dead-bug-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-bird-dog",
+      "slug": "bird-dog",
+      "name": {
+        "en": "Bird Dog",
+        "zh-Hant-TW": "鳥狗式"
+      },
+      "summary": {
+        "en": "A quadruped movement extending one arm and the opposite leg.",
+        "zh-Hant-TW": "四足跪姿下伸出一手與對側腳的動作。"
+      },
+      "movementPattern": "ANTI_EXTENSION",
+      "mechanics": "ISOMETRIC",
+      "force": "STATIC",
+      "laterality": "ALTERNATING",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "BODYWEIGHT",
+        "FLOOR_MAT"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Start on hands and knees with the hands under the shoulders.",
+          "Reach one arm forward and the opposite leg back without letting the hips tilt.",
+          "Return under control and repeat on the other side."
+        ],
+        "zh-Hant-TW": [
+          "四足跪姿起始，雙手位於肩膀正下方。",
+          "一手向前伸、對側腳向後伸，過程中髖部不要傾斜。",
+          "有控制地收回，再換另一側。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Rotating the hips toward the lifted leg.",
+          "Lifting the arm and leg higher than the trunk can hold."
+        ],
+        "zh-Hant-TW": [
+          "髖部往抬腳那側旋轉。",
+          "手腳抬得比軀幹守得住的高度更高。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-bird-dog-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-hanging-knee-raise",
+      "slug": "hanging-knee-raise",
+      "name": {
+        "en": "Hanging Knee Raise",
+        "zh-Hant-TW": "懸吊屈膝上提"
+      },
+      "summary": {
+        "en": "A hanging movement lifting the knees toward the chest.",
+        "zh-Hant-TW": "懸吊於單槓上、把膝蓋提向胸口的動作。"
+      },
+      "movementPattern": "ANTI_EXTENSION",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "BILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "PULL_UP_BAR"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "HIP_FLEXORS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "LATISSIMUS_DORSI",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Hang from a fixed bar with the shoulders held down rather than fully relaxed.",
+          "Lift the knees toward the chest without letting the body swing.",
+          "Lower the legs under control and step down at the end of the set."
+        ],
+        "zh-Hant-TW": [
+          "懸吊在固定牢靠的單槓上，肩膀保持下沉而非完全放鬆。",
+          "把膝蓋提向胸口，過程中身體不要前後擺盪。",
+          "有控制地放下雙腿，結束時走下來。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Swinging between repetitions.",
+          "Continuing after the grip can no longer hold."
+        ],
+        "zh-Hant-TW": [
+          "每一下之間身體來回擺盪。",
+          "握力已經撐不住還繼續做。"
+        ]
+      },
+      "safetyNoteRef": "hanging-grip",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-hanging-knee-raise-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-cable-woodchop",
+      "slug": "cable-woodchop",
+      "name": {
+        "en": "Cable Woodchop",
+        "zh-Hant-TW": "滑輪斜砍"
+      },
+      "summary": {
+        "en": "A rotational cable movement travelling diagonally across the body.",
+        "zh-Hant-TW": "以滑輪阻力沿對角線橫過身體的旋轉動作。"
+      },
+      "movementPattern": "ROTATION",
+      "mechanics": "COMPOUND",
+      "force": "PULL",
+      "laterality": "UNILATERAL",
+      "skillLevel": "INTERMEDIATE",
+      "equipment": [
+        "CABLE_MACHINE"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "POSTERIOR_DELTOID",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ERECTOR_SPINAE",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Set the pulley high on one side and take the handle with both hands.",
+          "Stand side-on in a stance you can hold and let the hips turn with the movement.",
+          "Move the handle diagonally across the body, then return under control and change sides."
+        ],
+        "zh-Hant-TW": [
+          "把單側滑輪調到高位，雙手一起握住把手。",
+          "側身站到能站穩的位置，讓髖部跟著動作一起轉。",
+          "沿對角線把把手帶過身體，再有控制地放回，之後換邊。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Twisting only the spine while the hips stay locked.",
+          "Using a load that pulls the stance apart."
+        ],
+        "zh-Hant-TW": [
+          "只用脊椎扭轉、髖部完全不動。",
+          "重量重到站姿被拉開。"
+        ]
+      },
+      "safetyNoteRef": "machine-setup",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-cable-woodchop-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    },
+    {
+      "id": "gct-farmer-carry",
+      "slug": "farmer-carry",
+      "name": {
+        "en": "Farmer Carry",
+        "zh-Hant-TW": "農夫走路"
+      },
+      "summary": {
+        "en": "A loaded walk holding a weight in each hand.",
+        "zh-Hant-TW": "雙手各持負重行走的動作。"
+      },
+      "movementPattern": "CARRY",
+      "mechanics": "COMPOUND",
+      "force": "STATIC",
+      "laterality": "BILATERAL",
+      "skillLevel": "BEGINNER",
+      "equipment": [
+        "DUMBBELL",
+        "KETTLEBELL"
+      ],
+      "muscleEngagement": [
+        {
+          "muscle": "FOREARM_FLEXORS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "TRAPEZIUS",
+          "intensity": "PRIMARY"
+        },
+        {
+          "muscle": "OBLIQUES",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "ABDOMINALS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "GLUTEUS_MAXIMUS",
+          "intensity": "SECONDARY"
+        },
+        {
+          "muscle": "QUADRICEPS",
+          "intensity": "STABILIZER"
+        },
+        {
+          "muscle": "TIBIALIS_ANTERIOR",
+          "intensity": "STABILIZER"
+        }
+      ],
+      "steps": {
+        "en": [
+          "Choose a clear walking path and a load you can set down safely.",
+          "Stand up with a weight in each hand and the shoulders held down.",
+          "Walk at a steady pace, then set the weights down under control before the grip fails."
+        ],
+        "zh-Hant-TW": [
+          "選一段沒有障礙的行走路線，重量以能安全放下為準。",
+          "雙手各持一個負重站起，肩膀保持下沉。",
+          "以穩定速度行走，在握力失效之前有控制地把重量放下。"
+        ]
+      },
+      "commonErrors": {
+        "en": [
+          "Walking until the grip fails and the weights drop.",
+          "Leaning the trunk to one side."
+        ],
+        "zh-Hant-TW": [
+          "走到握力失效讓重量掉落。",
+          "軀幹持續往一側傾斜。"
+        ]
+      },
+      "safetyNoteRef": "general",
+      "mediaRefs": [],
+      "fieldProvenance": [
+        {
+          "field": "NAME",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SUMMARY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "STEPS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "COMMON_ERRORS",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "TAXONOMY",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "MUSCLE_ENGAGEMENT",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        },
+        {
+          "field": "SAFETY_NOTE",
+          "authorship": "FIRST_PARTY_AGENT_DRAFTED",
+          "licenseGrant": "FIRST_PARTY_OWNERSHIP",
+          "provenanceRecordId": "prov-gct-farmer-carry-2026-08-18",
+          "reviewState": "DRAFT"
+        }
+      ]
+    }
+  ]
+}

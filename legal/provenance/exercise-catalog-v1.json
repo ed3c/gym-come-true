@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "issue": 33,
+  "license_record": {
+    "id": "lic-exercise-catalog-v1-2026-08-18",
+    "asset_scope": "data/exercise-catalog/catalog.v1.json — Traditional Chinese and English exercise metadata, instructions, common errors, and muscle mapping. Text only.",
+    "rights_holder": "ed3c / Gym Come True project owner",
+    "authorship_method": "FIRST_PARTY_AGENT_DRAFTED",
+    "authorship_note": "Every string was drafted for this repository by an automated agent working for the project owner. Nothing was scraped, mirrored, translated from, or paraphrased out of a third-party catalogue, dataset, API response, or vendor description.",
+    "reviewer": null,
+    "reviewed_at": null,
+    "decision": "PENDING_REVIEW",
+    "review_state": "DRAFT",
+    "territories": ["WORLDWIDE"],
+    "channels": ["SOURCE_REPOSITORY"],
+    "modification_allowed": true,
+    "redistribution_allowed": false,
+    "attribution_required": false,
+    "effective_at": null,
+    "expires_at": null,
+    "limitations": [
+      "No image, animation, video, audio, font, 3D model, logo, or trademark right is included; the media lane is ABSENT (Issue #34)",
+      "Entries describe movements and are not coaching, rehabilitation, or medical advice, and are not personalised to any condition",
+      "Muscle engagement values are an editorial movement classification, not a measurement, and carry no physiological or clinical claim",
+      "Agent-drafted wording has had no human editorial pass; shipping requires editorial acceptance and a rights review that this repository does not hold",
+      "The repository-root LICENSE does not authorize these records; this record does, and only up to the DRAFT state it declares"
+    ]
+  },
+  "records_note": "Per-record provenance is carried inside catalog.v1.json as a per-field fieldProvenance list, one entry per CatalogField, so a field can never inherit rights from its neighbours. The record ids here take the form prov-gct-<slug>-2026-08-18.",
+  "external_gates": {
+    "editorial_review": "HUMAN_ADMIT_REQUIRED",
+    "rights_review": "HUMAN_ADMIT_REQUIRED",
+    "clinical_review": "HUMAN_ADMIT_REQUIRED",
+    "media_licensing": "ABSENT"
+  },
+  "rollback_subject": "data/exercise-catalog/catalog.v1.json at the exact commit that introduced it"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "synthetic": true,
+  "productionUse": "DENY",
+  "grantId": "synthetic-grant-001",
+  "subjectPseudonymousId": "synthetic-subject-001",
+  "scopes": ["OCR_EVALUATION", "RULE_PACK_TESTING"],
+  "consentReceiptSha256": "7834911050b4a2c1c1f9a68d44aa3fb0cfc452beeaa4bab747c9434ba94d3793",
+  "consentReceiptFile": "synthetic-consent-receipt-v1.txt",
+  "consentReceiptByteLength": 732,
+  "consentTextSha256": "f440761ee7333d0e86e539d196152c183f02b7ea82193e725c7768d784ba6a1c",
+  "consentTextFile": "synthetic-consent-wording-v1.txt",
+  "consentTextByteLength": 1167,
+  "grantedAtIsoDate": "2026-08-15",
+  "expiresAtIsoDate": "2027-08-15",
+  "withdrawnAtIsoDate": null,
+  "externalGates": {
+    "privacyLegalReview": "ABSENT",
+    "consentManagementSystem": "ABSENT",
+    "realConsentingSubject": "ABSENT"
+  },
+  "note": "Repository-authored synthetic grant. Both SHA-256 values are the real digests of the two synthetic text files in this directory, not fabricated evidence of a real consent event. No real person consented to anything."
+}

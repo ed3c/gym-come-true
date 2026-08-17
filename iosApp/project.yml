@@ -20,10 +20,12 @@ targets:
       - path: GymComeTrue/GymComeTrueApp.swift
       - path: GymComeTrue/ContentView.swift
       - path: GymComeTrue/NativeCapabilityBridge.swift
-    info:
-      path: GymComeTrue/Info.plist
+    # `info:` would make XcodeGen *generate* GymComeTrue/Info.plist on every run and
+    # overwrite the reviewed usage descriptions. The checked-in plist is the single
+    # source of truth, so it is referenced instead of generated.
     settings:
       base:
+        INFOPLIST_FILE: GymComeTrue/Info.plist
         PRODUCT_NAME: GymComeTrue
         PRODUCT_BUNDLE_IDENTIFIER: dev.ed3c.gymcometrue
         GENERATE_INFOPLIST_FILE: NO

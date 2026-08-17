@@ -18,6 +18,8 @@
     <string>Capture a supplement label for on-device evidence extraction. Images are temporary by default.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>Select a label image for on-device evidence extraction.</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>Read only the Health data a feature you switched on needs, such as body weight for your own trend. Health data stays on this device and is never used for medical interpretation.</string>
     <key>UISupportedInterfaceOrientations</key>
     <array>
         <string>UIInterfaceOrientationPortrait</string>

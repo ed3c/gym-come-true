@@ -13,6 +13,9 @@ the gateway can only restate an immutable receipt using repository-authored temp
 | Path | Role |
 | --- | --- |
 | [`receipt-only-gateway.md`](receipt-only-gateway.md) | The contract, the provider boundary, and the eval suite in detail |
+| [`ai-provider-key-boundary.md`](ai-provider-key-boundary.md) | Issue #49: where a provider key may live, the per-provider kill switch, and the type-enforced notice |
+| `shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContract.kt` | `ProviderId`, per-provider descriptor and kill switch, admitted explain subjects, mandatory notice, hash-only audit |
+| `shared/src/commonTest/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContractTest.kt` | Issue #49 tests: dose/diagnosis rejected per provider, kill switch blocks before a request forms, notice always present |
 | `shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationGatewayContract.kt` | Minimization, request gate, template catalogue, deterministic planner, plan verifier |
 | `shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationProviderBoundary.kt` | Provider interface, policy (kill switch, cost, timeout, credential admission), hash-only audit, service |
 | `shared/src/commonTest/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationGatewayContractTest.kt` | Contract tests, including the drift guard against the deterministic engine's reason strings |
@@ -27,6 +30,7 @@ the gateway can only restate an immutable receipt using repository-authored temp
 | #35 | `REVIEWED_TAIWAN_RULE_PACK -> EXPLANATION_GATEWAY_CONTRACT` | `EXPLANATION_GATEWAY_CONTRACT_DRAFT` | Kotlin contract + 10 deterministic tests authored; tests `NOT_EXERCISED` locally |
 | #36 | `EXPLANATION_GATEWAY_CONTRACT -> PROVIDER_DRAFT` | `PROVIDER_BOUNDARY_DRAFT` | Interface, policy, audit and fallback authored; provider implementation `ABSENT` |
 | #37 | `PROVIDER_DRAFT -> EVALUATED_GATEWAY` | `ADVERSARIAL_CORPUS_DRAFT` | 31-case corpus + harness authored; harness execution `NOT_EXERCISED` |
+| #49 | `PROVIDER_BOUNDARY_DRAFT -> NAMED_PROVIDERS_WITH_MANDATORY_NOTICE` | `AI_PROVIDER_CONTRACT_DRAFT` | `ProviderId`, per-provider kill switch, type-enforced notice + 13 tests authored; tests `NOT_EXERCISED` locally |
 
 `EVALUATED_GATEWAY` is **not** reached. An eval suite that has never executed is a written
 intention, not evidence. The only checks that actually ran in this lane are the zero-network Python
@@ -57,10 +61,13 @@ catalogue admits no dose or diagnosis template.
 | Exact model / provider / version record for a real eval run | `ABSENT` | Human Admit |
 | Production promotion of any provider | `HUMAN_ADMIT_REQUIRED` | Human Admit |
 
-No credential, endpoint, provider account, model name of a real vendor, or review signature exists
-in this repository. `ProviderCredentialSource.SERVER_INJECTED` stays `PROVIDER_NOT_ADMITTED` until
+No credential, endpoint, provider account, vendor model identifier, or review signature exists in
+this repository. Two vendors are now *named* — OpenAI (ChatGPT) and Anthropic (Claude), per the
+owner decision in `docs/product/mvp-redesign.md` — but naming a vendor admits nothing:
+`ProviderCredentialSource.SERVER_INJECTED` stays `PROVIDER_NOT_ADMITTED` until
 `GatewayPolicy.serverCredentialAdmitted` is turned on by a human in a deployment this repository
-does not describe.
+does not describe, and `AiProviderDescriptor` ships with its kill switch engaged and
+`credentialAdmitted = false`.
 
 ## Verification
 

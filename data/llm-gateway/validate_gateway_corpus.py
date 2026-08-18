@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 CORPUS = ROOT / "data/llm-gateway/adversarial-corpus.v1.json"
 CONTRACT = ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationGatewayContract.kt"
 BOUNDARY = ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationProviderBoundary.kt"
+PROVIDER_CONTRACT = ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContract.kt"
 HARNESS = ROOT / "shared/src/commonTest/kotlin/dev/ed3c/gymcometrue/explanation/AdversarialExplanationEvalTest.kt"
 
 CASE_RE = re.compile(
@@ -179,7 +180,7 @@ def validate_no_dose_or_diagnosis_template_is_admitted() -> None:
 
 
 def validate_shared_code_has_no_provider_secrets() -> None:
-    for path in (CONTRACT, BOUNDARY):
+    for path in (CONTRACT, BOUNDARY, PROVIDER_CONTRACT):
         source = read(path)
         offenders = [token for token in FORBIDDEN_CONTRACT_TOKENS if token in source]
         require(

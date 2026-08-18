@@ -221,7 +221,7 @@ def validate_governance_docs() -> None:
     for invariant in (
         "OCR_IS_EVIDENCE_NOT_TRUTH",
         "MEDIA_DEFAULT_DENY",
-        "LLM_EXPLANATION_ONLY",
+        "LLM_INFORM_WITH_MANDATORY_NOTICE",
         "NO_CLIENT_PROVIDER_SECRETS",
     ):
         require(invariant in agents, f"AGENTS.md is missing invariant {invariant}")

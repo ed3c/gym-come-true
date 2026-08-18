@@ -41,27 +41,39 @@ import dev.ed3c.gymcometrue.domain.MuscleActivation
 import dev.ed3c.gymcometrue.domain.ProtocolCategory
 import dev.ed3c.gymcometrue.domain.ProtocolEvent
 import dev.ed3c.gymcometrue.domain.SafetyContext
+import dev.ed3c.gymcometrue.domain.SafetyDecision
 import dev.ed3c.gymcometrue.domain.ScanEvidence
 import dev.ed3c.gymcometrue.domain.SupplementSafetyEngine
 import dev.ed3c.gymcometrue.domain.TrainingVariant
+import dev.ed3c.gymcometrue.explanation.ExplanationPlan
 
-private val Ink = Color(0xFF0A0D12)
-private val Panel = Color(0xFF131923)
-private val PanelRaised = Color(0xFF1A2230)
-private val Lime = Color(0xFFA8FF60)
-private val Cyan = Color(0xFF75E6FF)
-private val Warning = Color(0xFFFFC45D)
-private val Muted = Color(0xFF98A2B3)
-private val TextPrimary = Color(0xFFF5F7FA)
+internal val Ink = Color(0xFF0A0D12)
+internal val Panel = Color(0xFF131923)
+internal val PanelRaised = Color(0xFF1A2230)
+internal val Lime = Color(0xFFA8FF60)
+internal val Cyan = Color(0xFF75E6FF)
+internal val Warning = Color(0xFFFFC45D)
+internal val Muted = Color(0xFF98A2B3)
+internal val TextPrimary = Color(0xFFF5F7FA)
 
+/**
+ * [aiAccess] is resolved by the host from the persisted acknowledgement log
+ * ([FirstRunAcknowledgement.resolve]); the session flag below only carries the tap that happened
+ * on this screen, so an unwritten log cannot look acknowledged on the next launch.
+ */
 @Composable
 fun GymComeTrueApp(
     platformName: String,
     scanSummary: String? = null,
     onScanLabel: (() -> Unit)? = null,
     onScheduleNextReminder: (() -> Unit)? = null,
+    localeTag: String = "zh-TW",
+    aiAccess: AiAccess = AiAccess.UNACKNOWLEDGED,
+    explanationPlan: ExplanationPlan? = null,
+    onAcknowledgeNotice: () -> Unit = {},
 ) {
     var variant by remember { mutableStateOf(TrainingVariant.AFTERNOON_1600) }
+    var acknowledgedInSession by remember { mutableStateOf(false) }
     val events = remember(variant) { DailyProtocolCompiler.compile(variant) }
     val safety = remember {
         SupplementSafetyEngine.evaluate(
@@ -72,6 +84,7 @@ fun GymComeTrueApp(
             context = SafetyContext(),
         )
     }
+    val effectiveAccess = if (acknowledgedInSession) AiAccess.ACKNOWLEDGED else aiAccess
 
     MaterialTheme {
         Surface(
@@ -86,22 +99,30 @@ fun GymComeTrueApp(
                     .padding(horizontal = 18.dp, vertical = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
-                Header(platformName = platformName)
-                SafetyGate(
-                    decision = safety.decision.name,
-                    reason = safety.reasons.firstOrNull()
-                        ?: "Only reviewed evidence can enter an executable protocol.",
+                Header(platformName = platformName, localeTag = localeTag)
+                LoggedDataPanel(decision = safety.decision, localeTag = localeTag)
+                AiFeatureSection(
+                    access = effectiveAccess,
+                    plan = explanationPlan,
+                    localeTag = localeTag,
+                    onAcknowledge = {
+                        acknowledgedInSession = true
+                        onAcknowledgeNotice()
+                    },
                 )
                 ActionPanel(
                     scanSummary = scanSummary,
+                    localeTag = localeTag,
                     onScanLabel = onScanLabel,
                     onScheduleNextReminder = onScheduleNextReminder,
                 )
                 VariantSelector(
                     selected = variant,
+                    localeTag = localeTag,
                     onSelect = { variant = it },
                 )
                 MusclePanel(
+                    localeTag = localeTag,
                     activations = if (variant == TrainingVariant.AFTERNOON_1600) {
                         listOf(
                             MuscleActivation("chest", 8),
@@ -116,8 +137,8 @@ fun GymComeTrueApp(
                         )
                     },
                 )
-                ProtocolTimeline(events)
-                EvidenceNotice()
+                ProtocolTimeline(events = events, localeTag = localeTag)
+                PositioningNotice(localeTag = localeTag)
                 Spacer(Modifier.height(18.dp))
             }
         }
@@ -125,7 +146,7 @@ fun GymComeTrueApp(
 }
 
 @Composable
-private fun Header(platformName: String) {
+private fun Header(platformName: String, localeTag: String) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
         Text(
             text = "GYM COME TRUE",
@@ -134,20 +155,25 @@ private fun Header(platformName: String) {
             fontWeight = FontWeight.Bold,
         )
         Text(
-            text = "Your protocol, with evidence attached.",
-            style = MaterialTheme.typography.headlineMedium,
+            text = ProductCopy.positioning.forLocale(localeTag),
+            style = MaterialTheme.typography.headlineSmall,
             fontWeight = FontWeight.Bold,
         )
         Text(
-            text = "$platformName foundation · local-first · proof before advice",
+            text = "$platformName · local-first",
             color = Muted,
             style = MaterialTheme.typography.bodyMedium,
         )
     }
 }
 
+/**
+ * The deterministic engine still returns a [SafetyDecision]; this panel is the only place it turns
+ * into something a person reads, and it reads as information about their own log rather than as a
+ * verdict about their body.
+ */
 @Composable
-private fun SafetyGate(decision: String, reason: String) {
+private fun LoggedDataPanel(decision: SafetyDecision, localeTag: String) {
     Card(
         colors = CardDefaults.cardColors(containerColor = PanelRaised),
         shape = RoundedCornerShape(18.dp),
@@ -156,17 +182,14 @@ private fun SafetyGate(decision: String, reason: String) {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-            ) {
-                Text("Safety gate", fontWeight = FontWeight.Bold)
-                StatusPill(decision)
-            }
-            Text(reason, color = Muted, style = MaterialTheme.typography.bodyMedium)
+            Text(ProductCopy.loggedDataHeading.forLocale(localeTag), fontWeight = FontWeight.Bold)
             Text(
-                "The LLM cannot clear this gate or calculate a supplement dose.",
+                ProductCopy.informationFor(decision).forLocale(localeTag),
+                color = Muted,
+                style = MaterialTheme.typography.bodyMedium,
+            )
+            Text(
+                ProductCopy.aiBoundary.forLocale(localeTag),
                 color = Warning,
                 style = MaterialTheme.typography.labelMedium,
             )
@@ -175,19 +198,9 @@ private fun SafetyGate(decision: String, reason: String) {
 }
 
 @Composable
-private fun StatusPill(text: String) {
-    Box(
-        modifier = Modifier
-            .background(Warning.copy(alpha = 0.16f), RoundedCornerShape(100.dp))
-            .padding(horizontal = 10.dp, vertical = 6.dp),
-    ) {
-        Text(text, color = Warning, style = MaterialTheme.typography.labelSmall)
-    }
-}
-
-@Composable
 private fun ActionPanel(
     scanSummary: String?,
+    localeTag: String,
     onScanLabel: (() -> Unit)?,
     onScheduleNextReminder: (() -> Unit)?,
 ) {
@@ -199,11 +212,16 @@ private fun ActionPanel(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            Text("Evidence capture", fontWeight = FontWeight.Bold)
+            Text(ProductCopy.ocrAssistHeading.forLocale(localeTag), fontWeight = FontWeight.Bold)
             Text(
-                scanSummary ?: "No label has been scanned. Device OCR creates a candidate that must be confirmed.",
+                scanSummary ?: ProductCopy.ocrAssistIdle.forLocale(localeTag),
                 color = Muted,
                 style = MaterialTheme.typography.bodyMedium,
+            )
+            Text(
+                ProductCopy.ocrAssist.forLocale(localeTag),
+                color = Warning,
+                style = MaterialTheme.typography.bodySmall,
             )
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 Button(
@@ -214,13 +232,13 @@ private fun ActionPanel(
                         contentColor = Ink,
                     ),
                 ) {
-                    Text("Scan label", fontWeight = FontWeight.Bold)
+                    Text(ProductCopy.scanAction.forLocale(localeTag), fontWeight = FontWeight.Bold)
                 }
                 TextButton(
                     onClick = { onScheduleNextReminder?.invoke() },
                     enabled = onScheduleNextReminder != null,
                 ) {
-                    Text("Test reminder", color = Cyan)
+                    Text(ProductCopy.reminderAction.forLocale(localeTag), color = Cyan)
                 }
             }
         }
@@ -230,6 +248,7 @@ private fun ActionPanel(
 @Composable
 private fun VariantSelector(
     selected: TrainingVariant,
+    localeTag: String,
     onSelect: (TrainingVariant) -> Unit,
 ) {
     Card(
@@ -240,7 +259,10 @@ private fun VariantSelector(
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            Text("Training-day compiler", fontWeight = FontWeight.Bold)
+            Text(
+                ProductCopy.timelineHeadingVariants.forLocale(localeTag),
+                fontWeight = FontWeight.Bold,
+            )
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 VariantButton(
                     label = "A · 16:00",
@@ -254,7 +276,7 @@ private fun VariantSelector(
                 )
             }
             Text(
-                "Late-plan events preserve next-day ordering instead of placing 00:15 before 22:00.",
+                ProductCopy.timelineVariantNote.forLocale(localeTag),
                 color = Muted,
                 style = MaterialTheme.typography.bodySmall,
             )
@@ -280,7 +302,7 @@ private fun VariantButton(
 }
 
 @Composable
-private fun MusclePanel(activations: List<MuscleActivation>) {
+private fun MusclePanel(localeTag: String, activations: List<MuscleActivation>) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Panel),
         shape = RoundedCornerShape(18.dp),
@@ -289,9 +311,9 @@ private fun MusclePanel(activations: List<MuscleActivation>) {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Text("Local muscle view", fontWeight = FontWeight.Bold)
+            Text(ProductCopy.muscleHeading.forLocale(localeTag), fontWeight = FontWeight.Bold)
             Text(
-                "Generated from simple Compose geometry. No third-party anatomy illustration is bundled.",
+                ProductCopy.muscleNote.forLocale(localeTag),
                 color = Muted,
                 style = MaterialTheme.typography.bodySmall,
             )
@@ -384,19 +406,19 @@ private fun activationColor(intensity: Int): Color = when {
 }
 
 @Composable
-private fun ProtocolTimeline(events: List<ProtocolEvent>) {
+private fun ProtocolTimeline(events: List<ProtocolEvent>, localeTag: String) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
         Text(
-            "Today's protocol",
+            ProductCopy.timelineHeading.forLocale(localeTag),
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
-        events.forEach { event -> ProtocolCard(event) }
+        events.forEach { event -> ProtocolCard(event = event, localeTag = localeTag) }
     }
 }
 
 @Composable
-private fun ProtocolCard(event: ProtocolEvent) {
+private fun ProtocolCard(event: ProtocolEvent, localeTag: String) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Panel),
         shape = RoundedCornerShape(16.dp),
@@ -427,7 +449,11 @@ private fun ProtocolCard(event: ProtocolEvent) {
                 Text(event.title, fontWeight = FontWeight.Bold)
                 Text(event.note, color = Muted, style = MaterialTheme.typography.bodySmall)
                 if (event.requiresConfirmation) {
-                    Text("CONFIRMATION REQUIRED", color = Warning, style = MaterialTheme.typography.labelSmall)
+                    Text(
+                        ProductCopy.confirmationRequired.forLocale(localeTag),
+                        color = Warning,
+                        style = MaterialTheme.typography.labelSmall,
+                    )
                 }
             }
         }
@@ -444,7 +470,7 @@ private fun categoryColor(category: ProtocolCategory): Color = when (category) {
 }
 
 @Composable
-private fun EvidenceNotice() {
+private fun PositioningNotice(localeTag: String) {
     Card(
         colors = CardDefaults.cardColors(containerColor = Color(0xFF201A12)),
         shape = RoundedCornerShape(18.dp),
@@ -453,9 +479,13 @@ private fun EvidenceNotice() {
             modifier = Modifier.padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            Text("Not medical advice", color = Warning, fontWeight = FontWeight.Bold)
             Text(
-                "Use this foundation to capture and organize evidence. A qualified professional must assess medication interactions, symptoms, pregnancy, procedures, and supplement dosing.",
+                ProductCopy.positioning.forLocale(localeTag),
+                color = Warning,
+                fontWeight = FontWeight.Bold,
+            )
+            Text(
+                ProductCopy.aiResponseNotice.forLocale(localeTag),
                 color = TextPrimary,
                 style = MaterialTheme.typography.bodySmall,
             )

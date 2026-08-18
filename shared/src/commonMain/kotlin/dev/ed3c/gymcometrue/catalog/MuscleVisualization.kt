@@ -78,7 +78,22 @@ data class RegionHighlight(
     val intensity: ActivationIntensity,
     /** Deterministic fill opacity; a renderer must not invent its own scale. */
     val opacity: Double,
-)
+) {
+    /**
+     * The scale is closed at both ends, and the clamp lives here rather than in a renderer.
+     *
+     * A day that logs the same muscle in six exercises must still read as one PRIMARY region: the
+     * intensity is an editorial class, so "more exercises" is not "more activation" and must never
+     * accumulate into a darker shade than the class allows. Deserialization runs this too, so an
+     * out-of-scale value in a stored plan fails closed instead of reaching a screen.
+     */
+    init {
+        val scale = MuscleVisualizationPlanner.MIN_OPACITY..MuscleVisualizationPlanner.MAX_OPACITY
+        require(opacity in scale) {
+            "Fill opacity $opacity is outside the closed intensity scale $scale"
+        }
+    }
+}
 
 @Serializable
 data class MuscleVisualizationPlan(
@@ -96,10 +111,14 @@ data class MuscleVisualizationPlan(
  * (view, then muscle name, then region id) so a snapshot test is stable.
  */
 object MuscleVisualizationPlanner {
+    /** Weakest and strongest step of the closed scale; [RegionHighlight] rejects anything outside. */
+    const val MIN_OPACITY: Double = 0.30
+    const val MAX_OPACITY: Double = 0.90
+
     fun opacityFor(intensity: ActivationIntensity): Double = when (intensity) {
-        ActivationIntensity.STABILIZER -> 0.30
+        ActivationIntensity.STABILIZER -> MIN_OPACITY
         ActivationIntensity.SECONDARY -> 0.60
-        ActivationIntensity.PRIMARY -> 0.90
+        ActivationIntensity.PRIMARY -> MAX_OPACITY
     }
 
     fun plan(
@@ -141,6 +160,68 @@ object MuscleVisualizationPlanner {
             highlights = highlights,
             unrenderedMuscles = unrendered,
             accessibilitySummary = ExerciseAccessibility.muscleSummary(deduped, locale),
+        )
+    }
+}
+
+/**
+ * What a screen may draw for a set of logged exercises.
+ *
+ * Three states, not a nullable plan: "nothing logged yet" and "a logged entry matched nothing"
+ * are different facts about the user's data and read differently on screen, and only
+ * [Resolved] carries a plan — so a caller cannot draw a body from an unresolved log.
+ */
+sealed interface MuscleLogResolution {
+    /** No exercise was logged for the subject. There is nothing to draw and nothing is wrong. */
+    data object NoLoggedExercises : MuscleLogResolution
+
+    /**
+     * At least one logged slug is outside the validated catalog, so **nothing** is drawn.
+     *
+     * Fails closed on purpose: rendering the entries that did resolve would show a partial body as
+     * if it were the whole day, and the missing part is invisible precisely because it is missing.
+     */
+    data class UnknownExercises(val slugs: List<String>) : MuscleLogResolution {
+        init {
+            require(slugs.isNotEmpty()) { "UnknownExercises must name the slugs that failed" }
+        }
+    }
+
+    data class Resolved(
+        val plan: MuscleVisualizationPlan,
+        /** The distinct slugs the plan was built from, sorted. Information, not a score. */
+        val exerciseSlugs: List<String>,
+    ) : MuscleLogResolution
+}
+
+/**
+ * Turns logged exercise slugs into a draw plan (Issue #48 rendering).
+ *
+ * One entry point for both surfaces the MVP shows: a single slug is the per-exercise view, and a
+ * day's slugs are the per-day view. They cannot disagree about aggregation because there is only
+ * one aggregation — [MuscleVisualizationPlanner.plan]'s strongest-wins rule.
+ *
+ * This is a projection of what the user logged, never a prescription of what they should train.
+ */
+object MuscleLogResolver {
+    /** Slug lookup built from validated records only; raw catalog JSON can never reach it. */
+    fun index(records: List<ExerciseRecord>): Map<String, List<MuscleEngagement>> =
+        records.associate { it.slug to it.muscleEngagement }
+
+    fun resolve(
+        index: Map<String, List<MuscleEngagement>>,
+        loggedSlugs: List<String>,
+        locale: CatalogLocale,
+    ): MuscleLogResolution {
+        val distinct = loggedSlugs.distinct().sorted()
+        if (distinct.isEmpty()) return MuscleLogResolution.NoLoggedExercises
+
+        val unknown = distinct.filterNot(index::containsKey)
+        if (unknown.isNotEmpty()) return MuscleLogResolution.UnknownExercises(unknown)
+
+        return MuscleLogResolution.Resolved(
+            plan = MuscleVisualizationPlanner.plan(distinct.flatMap { index.getValue(it) }, locale),
+            exerciseSlugs = distinct,
         )
     }
 }

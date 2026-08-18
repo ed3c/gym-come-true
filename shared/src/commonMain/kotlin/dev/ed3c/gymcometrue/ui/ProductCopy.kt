@@ -1,5 +1,7 @@
 package dev.ed3c.gymcometrue.ui
 
+import dev.ed3c.gymcometrue.catalog.ActivationIntensity
+import dev.ed3c.gymcometrue.catalog.BodyView
 import dev.ed3c.gymcometrue.domain.SafetyDecision
 import dev.ed3c.gymcometrue.explanation.AdmittedExplanationTemplates
 import dev.ed3c.gymcometrue.explanation.ExplanationReasonKey
@@ -142,9 +144,54 @@ object ProductCopy {
     )
 
     val muscleNote: LocalizedText = LocalizedText(
-        zhHant = "由 Compose 幾何圖形即時繪製，沒有內含第三方解剖插圖。",
-        en = "Drawn from plain Compose geometry. No third-party anatomy illustration is bundled.",
+        zhHant = "由第一方示意圖自己的區塊幾何即時繪製，沒有內含第三方解剖插圖。",
+        en = "Drawn from the first-party schematic's own region geometry. No third-party anatomy " +
+            "illustration is bundled.",
     )
+
+    /**
+     * Muscle-map copy (Issue #48 rendering).
+     *
+     * Every sentence here describes the user's own log. None of them says what to train next, how
+     * hard to train it, or what any shading means for the body — the shading is an editorial
+     * classification of the movement, and this is where that is said out loud.
+     */
+    val muscleInformationNote: LocalizedText = LocalizedText(
+        zhHant = "這裡呈現你自己登記的動作涵蓋到哪些肌群。深淺只是動作分類的強弱，不是量測值，也不是訓練建議。",
+        en = "This shows which muscles your own logged exercises cover. The shading is an editorial " +
+            "movement classification, not a measurement and not a training recommendation.",
+    )
+
+    val muscleLogEmpty: LocalizedText = LocalizedText(
+        zhHant = "這個時段還沒有登記動作。有紀錄之後才會標示肌群。",
+        en = "No exercise is logged for this slot yet. Muscles are shaded once there is a record.",
+    )
+
+    val muscleLogUnresolved: LocalizedText = LocalizedText(
+        zhHant = "有紀錄對不到目錄裡的動作，因此這次不標示任何肌群：",
+        en = "A logged entry matches no catalog exercise, so nothing is shaded this time:",
+    )
+
+    val muscleUnrenderedNote: LocalizedText = LocalizedText(
+        zhHant = "這張示意圖沒有下列肌群的區塊，只能以文字列出：",
+        en = "The schematic has no region for these muscles, so they are listed as text only:",
+    )
+
+    val muscleViewFront: LocalizedText = LocalizedText(zhHant = "正面", en = "Front")
+
+    val muscleViewBack: LocalizedText = LocalizedText(zhHant = "背面", en = "Back")
+
+    /** Legend wording for the closed intensity scale; the same three classes the catalog uses. */
+    val muscleIntensityLabels: Map<ActivationIntensity, LocalizedText> = mapOf(
+        ActivationIntensity.PRIMARY to LocalizedText(zhHant = "主要", en = "Primary"),
+        ActivationIntensity.SECONDARY to LocalizedText(zhHant = "協同", en = "Supporting"),
+        ActivationIntensity.STABILIZER to LocalizedText(zhHant = "穩定", en = "Stabilizing"),
+    )
+
+    fun muscleViewLabel(view: BodyView): LocalizedText = when (view) {
+        BodyView.FRONT -> muscleViewFront
+        BodyView.BACK -> muscleViewBack
+    }
 
     /**
      * Information language for each deterministic decision type. The engine still returns
@@ -255,5 +302,11 @@ object ProductCopy {
         confirmationRequired,
         muscleHeading,
         muscleNote,
-    ) + templateCopy.values
+        muscleInformationNote,
+        muscleLogEmpty,
+        muscleLogUnresolved,
+        muscleUnrenderedNote,
+        muscleViewFront,
+        muscleViewBack,
+    ) + templateCopy.values + muscleIntensityLabels.values
 }

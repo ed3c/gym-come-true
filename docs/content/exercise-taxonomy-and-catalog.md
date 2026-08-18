@@ -147,7 +147,10 @@ visualization draws, and it removes 100 hand-written strings from the catalog. O
 - No human editorial or rights review. Both are `HUMAN_ADMIT_REQUIRED`.
 - No JSON Schema file. The executable contract is the Kotlin validator plus `validate_catalog.py`; a
   third hand-maintained description of the same shape would be a third thing to drift.
-- No migration path from `data/seed/first-party-demo-exercises.json`, which uses an older private
-  vocabulary. That reconciliation touches a file outside this lane's lease.
+- No migration path from `data/seed/first-party-demo-exercises.json` *into* `catalog.v1.json`. The
+  seed's own vocabulary was reconciled with the canonical one under Issue #48 and is now gated by
+  `check_seed` in `validate_catalog.py` — see [Muscle visualization](muscle-visualization.md) — but
+  the three demo records are still a separate dataset with a separate rights record, not catalog
+  rows.
 - No retention or breadth evidence. The "top 50" here is a scope decision, not a claim that these are
   the 50 most-used exercises by any measured population.

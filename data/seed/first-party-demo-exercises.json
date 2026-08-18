@@ -1,10 +1,12 @@
 {
   "schema_version": "1.0.0",
   "dataset_id": "gym-come-true-first-party-demo",
-  "dataset_version": "2026-08-15.1",
+  "dataset_version": "2026-08-18.1",
   "purpose": "Development and UI validation only",
   "license_record_id": "lic-first-party-demo-2026-08-15",
   "media_policy": "NO_MEDIA_INCLUDED",
+  "taxonomy": "data/exercise-catalog/taxonomy.v1.json",
+  "taxonomy_note": "Every token below is a member of the canonical closed vocabulary (Issue #32). The earlier private tokens WALL and EXERCISE_MAT_OPTIONAL were not: a wall push-up now declares BODYWEIGHT, and the optional mat declares FLOOR_MAT. Adding a WALL member to EquipmentClass would be a taxonomy change and is not made here. muscle_visualization intensities were numbers 1..3 and are now the ActivationIntensity names of the same three levels.",
   "exercises": [
     {
       "id": "gct-bodyweight-squat",
@@ -47,10 +49,10 @@
         "zh-Hant-TW": "出現疼痛、暈眩、麻木或失去平衡時應停止。本條目不是復健或醫療建議。"
       },
       "muscle_visualization": [
-        {"muscle": "QUADRICEPS", "intensity": 3},
-        {"muscle": "GLUTEUS_MAXIMUS", "intensity": 3},
-        {"muscle": "HAMSTRINGS", "intensity": 1},
-        {"muscle": "ABDOMINALS", "intensity": 1}
+        {"muscle": "QUADRICEPS", "intensity": "PRIMARY"},
+        {"muscle": "GLUTEUS_MAXIMUS", "intensity": "PRIMARY"},
+        {"muscle": "HAMSTRINGS", "intensity": "STABILIZER"},
+        {"muscle": "ABDOMINALS", "intensity": "STABILIZER"}
       ],
       "media": [],
       "provenance_record_id": "prov-gct-bodyweight-squat-2026-08-15",
@@ -71,7 +73,7 @@
       "mechanics": "COMPOUND",
       "force": "PUSH",
       "laterality": "BILATERAL",
-      "equipment": ["WALL"],
+      "equipment": ["BODYWEIGHT"],
       "primary_muscles": ["PECTORALIS_MAJOR", "TRICEPS_BRACHII"],
       "secondary_muscles": ["ANTERIOR_DELTOID", "SERRATUS_ANTERIOR", "ABDOMINALS"],
       "steps": {
@@ -97,10 +99,10 @@
         "zh-Hant-TW": "請使用不易滑動的地面；手腕、手肘、肩膀、胸口疼痛或暈眩時停止。"
       },
       "muscle_visualization": [
-        {"muscle": "PECTORALIS_MAJOR", "intensity": 3},
-        {"muscle": "TRICEPS_BRACHII", "intensity": 2},
-        {"muscle": "ANTERIOR_DELTOID", "intensity": 2},
-        {"muscle": "SERRATUS_ANTERIOR", "intensity": 1}
+        {"muscle": "PECTORALIS_MAJOR", "intensity": "PRIMARY"},
+        {"muscle": "TRICEPS_BRACHII", "intensity": "SECONDARY"},
+        {"muscle": "ANTERIOR_DELTOID", "intensity": "SECONDARY"},
+        {"muscle": "SERRATUS_ANTERIOR", "intensity": "STABILIZER"}
       ],
       "media": [],
       "provenance_record_id": "prov-gct-wall-push-up-2026-08-15",
@@ -121,7 +123,7 @@
       "mechanics": "COMPOUND",
       "force": "PUSH",
       "laterality": "BILATERAL",
-      "equipment": ["BODYWEIGHT", "EXERCISE_MAT_OPTIONAL"],
+      "equipment": ["BODYWEIGHT", "FLOOR_MAT"],
       "primary_muscles": ["GLUTEUS_MAXIMUS"],
       "secondary_muscles": ["HAMSTRINGS", "ADDUCTORS", "ERECTOR_SPINAE", "ABDOMINALS"],
       "steps": {
@@ -147,9 +149,9 @@
         "zh-Hant-TW": "出現背部、髖部或腿部疼痛、麻木、持續抽筋或暈眩時停止。"
       },
       "muscle_visualization": [
-        {"muscle": "GLUTEUS_MAXIMUS", "intensity": 3},
-        {"muscle": "HAMSTRINGS", "intensity": 2},
-        {"muscle": "ABDOMINALS", "intensity": 1}
+        {"muscle": "GLUTEUS_MAXIMUS", "intensity": "PRIMARY"},
+        {"muscle": "HAMSTRINGS", "intensity": "SECONDARY"},
+        {"muscle": "ABDOMINALS", "intensity": "STABILIZER"}
       ],
       "media": [],
       "provenance_record_id": "prov-gct-glute-bridge-2026-08-15",

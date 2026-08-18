@@ -259,7 +259,18 @@ Shared code must not import platform, store, provider, secret-management, networ
 - Production retention needs consent, encryption, expiry/deletion, withdrawal, hashes, and provenance.
 - Correction completion does not rewrite first-pass accuracy.
 
-### TAIWAN_RULE_PACK_DEFAULT_DENY
+### MVP_REPOSITIONING_2026_08_18
+
+Owner decision (`docs/product/mvp-redesign.md`): the shipped MVP is an information/logging
+tool. Deterministic arithmetic is presented as information, never as a safety verdict or dose
+recommendation. The Taiwan rule-pack admission lane (#26), consented corpus lane (#24),
+licensed-media lane (#34), and creator-market lane (#41–#43) are retired; their merged
+contracts stay in the tree as dormant tested code. LLM features use OpenAI and Anthropic
+providers behind the gateway contract, and every AI response must carry the medical-risk
+notice from `legal/DISCLAIMER.md` (deterministically tested). The invariants below remain the
+authority for that dormant code and for any future revival of the regulated lanes.
+
+### TAIWAN_RULE_PACK_DEFAULT_DENY (dormant lane)
 
 - `DRAFT` is inspectable, never production executable.
 - Schema validity is not clinical review.
@@ -288,12 +299,16 @@ Shared code must not import platform, store, provider, secret-management, networ
 - Metadata, media, rendering code, models, and UGC are separate rights domains.
 - Production assets need scope, attribution, derivative/redistribution rights, platform, territory, term, immutable hash, and takedown.
 
-### LLM_EXPLANATION_ONLY
+### LLM_INFORM_WITH_MANDATORY_NOTICE (MVP revision 2026-08-18)
 
-- Deterministic code owns conversion, arithmetic, warnings, blocking, admission, lifecycle, and protocol state.
-- A model may explain an immutable receipt only.
-- It may not recommend dosage, diagnose, suppress warnings, fill evidence, create rules/mappings, sign review, or become decision authority.
-- No client provider secret.
+- Deterministic code owns conversion, arithmetic, lifecycle, and protocol state.
+- Providers are OpenAI (ChatGPT) and Anthropic (Claude) behind the gateway contract; a model
+  may explain deterministic receipts and summarize the user's own logged data.
+- Every AI response surface must carry the medical-risk notice from `legal/DISCLAIMER.md`;
+  its presence is asserted by deterministic tests.
+- A model may not recommend dosage, diagnose, fill evidence, create rules/mappings, or become
+  decision authority; the app renders no safety verdicts for it to override.
+- No client provider secret; keys are server-side or user-supplied at runtime, never in Git.
 
 ### NO_CLIENT_PROVIDER_SECRETS
 

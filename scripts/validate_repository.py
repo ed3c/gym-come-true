@@ -155,9 +155,22 @@ def validate_llm_boundary() -> None:
     domain = (ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/domain/Domain.kt").read_text(
         encoding="utf-8"
     )
-    require("val mayRecommendDose: Boolean = false" in domain, "LLM dose boundary is missing")
-    require("val mayOverrideWarnings: Boolean = false" in domain, "LLM warning boundary is missing")
     require("MassUnit.IU" in domain and "-> null" in domain, "IU must not have a generic mass conversion")
+
+    gateway = (
+        ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationGatewayContract.kt"
+    ).read_text(encoding="utf-8")
+    require("GatewayRejection" in gateway, "receipt-only gateway rejection ladder is missing")
+    require(
+        "dose questions" in gateway and "rejected at the gate" in gateway,
+        "LLM dose/diagnosis rejection boundary is missing",
+    )
+
+    disclaimer = (ROOT / "legal/DISCLAIMER.md").read_text(encoding="utf-8")
+    require(
+        "並非醫療建議" in disclaimer and "not medical advice" in disclaimer,
+        "mandatory AI medical-risk notice (zh-Hant + en) is missing from legal/DISCLAIMER.md",
+    )
 
     ledger = (ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/domain/DailyIntake.kt").read_text(
         encoding="utf-8"

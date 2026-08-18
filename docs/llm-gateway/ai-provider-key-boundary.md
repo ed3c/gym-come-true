@@ -1,4 +1,4 @@
-# AI provider key boundary and mandatory notice (Issue #49)
+# AI provider key boundary and mandatory notice (Issue #49, deepened by Issue #51)
 
 Owner decision `docs/product/mvp-redesign.md` (2026-08-18): the MVP is an information and logging
 tool. AI features use OpenAI (ChatGPT) and Anthropic (Claude) and every AI response carries the
@@ -6,7 +6,9 @@ medical-risk notice from `legal/DISCLAIMER.md`. This document records the creden
 the type-level enforcement that back those claims.
 
 Source: `shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContract.kt`
+Source: `shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/ExplanationProviderBoundary.kt`
 Tests: `shared/src/commonTest/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContractTest.kt`
+Validator: `scripts/validate_repository.py::validate_llm_boundary`
 
 ## Where a key may live
 
@@ -56,6 +58,27 @@ implementations, both with internal constructors:
 The logging surface serves `tpl.logged.*` templates only. It never restates a `SafetyDecision`,
 because the MVP app renders no safety verdicts at all.
 
+## Provider deepening: an admitted provider may serve logged totals (Issue #51)
+
+`AiExplanationService.explainLoggedTotals` was deterministic-only. It now takes an optional
+`LoggedTotalsProvider`, and the widening is deliberately narrow:
+
+| Property | How it is held |
+| --- | --- |
+| The provider is reached only when the subject gate admits | its input is an `ExplainSubject.LoggedTotals`, whose constructor is internal; the service builds one only after the kill-switch, credential, caller, locale, hash and token checks have all passed |
+| The kill-switch and credential gates are unchanged | both paths call the one `providerBlocker(policy, descriptor)` in `ExplanationProviderBoundary.kt`; the per-provider switch in front of it is untouched |
+| The `GatewayRejection` ladder is unchanged | `LoggedTotalsPlanVerifier` reuses existing rungs (`PLAN_RECEIPT_MISMATCH`, `PLAN_TEMPLATE_NOT_ADMITTED`, `PLAN_INVENTED_REASON`, `PLAN_MISSING_DISCLAIMER`, `PLAN_SUPPRESSED_WARNING`, `UNSUPPORTED_LOCALE`); no enum member was added, removed or reordered |
+| A served plan carries no dose, diagnosis or clearance template | the verifier admits only `AdmittedLoggedTotalsTemplates.all` plus the disclaimer — the decision templates are not in that set, so a provider cannot restate a safety verdict on a surface that renders none |
+| Every served response carries the notice | the response type takes `MedicalRiskNotice.MANDATORY` as a property initializer, and every failure path degrades to the deterministic plan rather than to nothing |
+
+The provider's entire degree of freedom is which admitted next step (`tpl.logged.next-step.*`) to
+surface, and each one is verified against the deterministic counts: proposing "review the
+duplicate" when the day has no duplicate is an invented observation and is rejected with
+`PLAN_INVENTED_REASON`, exactly as an invented reason key is on the receipt path.
+
+The receipt path is unchanged apart from that shared blocker extraction. `PROVIDER_IMPLEMENTATION`
+stays `ABSENT` for both subjects: shared code holds the interface, the gate and the verifier.
+
 ## Type-enforced medical-risk notice
 
 `MedicalRiskNotice` has a private constructor and a single instance, `MedicalRiskNotice.MANDATORY`,
@@ -78,35 +101,55 @@ served response still carries both the notice and the template.
 
 ```text
 STATIC   Kotlin contract + tests authored                                   PRESENT
-STATIC   notice literals compared byte-for-byte against legal/DISCLAIMER.md PASS (ad-hoc script)
-STATIC   planted-defect control on that comparison                          PASS (turns red)
-STATIC   python3 scripts/validate_repository.py                             PASS
+STATIC   notice byte binding inside validate_llm_boundary()                 PASS (committed)
+STATIC   planted-defect control on that binding                             PASS (turns red, twice)
+STATIC   python3 scripts/validate_repository.py                             PASS (8/8)
 STATIC   python3 data/llm-gateway/validate_gateway_corpus.py                PASS (6/6)
 SANDBOX  ./gradlew :shared:jvmTest                                          NOT_EXERCISED in this lane
 PROD     real OpenAI or Anthropic call, real key, real deployment           ABSENT
 ```
 
-The byte comparison ran as a throwaway script in the implementation lane, not as a committed
-validator: `scripts/validate_*.py` is outside this lane's path lease. Wanted addition, for whoever
-owns that file next — extend `validate_llm_boundary()` with:
+### Notice byte binding (Issue #51) — extraction spec
 
-```python
-# concatenate the Kotlin string literals of MedicalRiskNotice.MANDATORY and of the test's
-# SSOT_NOTICE_* constants, and require both to equal the "> "-prefixed notice blocks in
-# legal/DISCLAIMER.md, so a reworded disclaimer cannot silently diverge from the shipped notice.
-```
+The wanted addition from the Issue #49 lane has landed inside
+`scripts/validate_repository.py::validate_llm_boundary`. What it does, and why in that shape:
 
-Until that lands, the notice binding is guarded by two independently typed copies (main source and
-test source) plus the Kotlin test that compares them — which catches an edit to either one but not a
-simultaneous edit to both.
+1. Split `legal/DISCLAIMER.md` at `## AI medical-risk notice` and stop at the next `## ` heading, so
+   the first-run acknowledgement blocks below it cannot be mistaken for the AI notice.
+2. Inside that section, take the `> `-prefixed lines after the `zh-Hant:` and `en:` labels and strip
+   the marker. zh-Hant wraps mid-sentence, so its lines join with **no** separator; en wraps on word
+   boundaries, so its lines join with a single space.
+3. Concatenate the Kotlin string literals of `MedicalRiskNotice.MANDATORY` (main source) and of
+   `SSOT_NOTICE_ZH_HANT` / `SSOT_NOTICE_EN` (test source), and require all four to equal the two
+   unwrapped blocks.
+
+Every anchor is a `require(...)`: a rename or a reformat that makes an anchor unfindable fails
+closed rather than silently checking nothing. Escaped Kotlin literals are refused for the same
+reason — this check unescapes nothing, so it must never pretend to.
+
+The binding closes the gap the previous lane recorded: the two independently typed Kotlin copies
+plus the Kotlin test catch an edit to either copy, but not a simultaneous edit to both, and neither
+catches a reworded `legal/DISCLAIMER.md`. The validator is a third, independent arrival that reads
+the SSOT itself.
+
+Planted-defect controls (both reverted, `legal/DISCLAIMER.md` restored to
+`sha256 1e41f5656b593db4562b94d0b2c4d5373f7c5cfa946a1a5c9b8aa6d6cd3934bd`):
+
+| Planted defect | Validator exit | Message |
+| --- | --- | --- |
+| dropped `Consult a qualified healthcare professional…` from the en block of `legal/DISCLAIMER.md` | `1` | `FAIL MedicalRiskNotice.MANDATORY en notice diverged from the legal/DISCLAIMER.md SSOT` |
+| dropped `相關決定與後果由使用者自行負責。` from the test's `SSOT_NOTICE_ZH_HANT` | `1` | `FAIL AiProviderContractTest SSOT constants zh-Hant notice diverged from the legal/DISCLAIMER.md SSOT` |
+
+The second control exists because the first one short-circuits on the main source: without it, the
+test-source arm of the comparison would be an untested claim.
 
 ## External gates (unchanged by this lane)
 
 | Gate | State | Owner |
 | --- | --- | --- |
 | OpenAI / Anthropic credentials and deployment environment | `ABSENT` | Human Admit |
-| Real provider adapter implementation | `ABSENT` | Human Admit |
-| Provider adapter for the logged-totals subject | `ABSENT` | follow-up issue |
+| Real provider adapter implementation (both subjects) | `ABSENT` | Human Admit |
+| Provider adapter *interface* for the logged-totals subject | `PRESENT` (Issue #51) | — |
 | Legal review of the shipped notice wording | `HUMAN_ADMIT_REQUIRED` | Human Admit |
 | Store review of the AI surface (Apple 1.4.x, Google Play health) | `HUMAN_ADMIT_REQUIRED` | Human Admit |
 

@@ -172,6 +172,80 @@ def validate_llm_boundary() -> None:
         "mandatory AI medical-risk notice (zh-Hant + en) is missing from legal/DISCLAIMER.md",
     )
 
+    # Byte binding of the shipped notice to its SSOT (Issue #51, extraction spec in
+    # docs/llm-gateway/ai-provider-key-boundary.md). Two independently typed Kotlin copies plus a
+    # Kotlin test catch an edit to either copy, but not a simultaneous edit to both, and neither
+    # catches a reworded legal/DISCLAIMER.md. This does: unwrap the "> " blocks of the notice
+    # section and compare them with the Kotlin literals the app and the tests actually carry.
+    # Every anchor below is required, so a reformat fails closed instead of silently checking
+    # nothing.
+
+    def notice_block(label: str, joiner: str) -> str:
+        parts = disclaimer.split("## AI medical-risk notice", 1)
+        require(len(parts) == 2, "legal/DISCLAIMER.md has no AI medical-risk notice section")
+        lines = parts[1].split("\n## ", 1)[0].splitlines()
+        require(f"{label}:" in lines, f"legal/DISCLAIMER.md notice has no {label} block")
+        quoted: list[str] = []
+        for line in lines[lines.index(f"{label}:") + 1 :]:
+            if not line.startswith("> "):
+                break
+            quoted.append(line[2:].strip())
+        require(bool(quoted), f"legal/DISCLAIMER.md {label} notice block is empty")
+        return joiner.join(quoted)
+
+    def kotlin_block(source: str, start: str, end: str, where: str) -> str:
+        begin = source.find(start)
+        require(begin >= 0, f"{where}: anchor {start!r} is missing")
+        tail = source[begin + len(start) :]
+        stop = tail.find(end)
+        require(stop >= 0, f"{where}: anchor {start!r} is not closed by {end!r}")
+        return tail[:stop]
+
+    def concatenated_literals(chunk: str, where: str) -> str:
+        require("\\" not in chunk, f"{where}: escaped Kotlin literals are not supported here")
+        literals = re.findall(r'"([^"]*)"', chunk)
+        require(bool(literals), f"{where}: no Kotlin string literal found")
+        return "".join(literals)
+
+    # zh-Hant wraps mid-sentence with no separator; en wraps on word boundaries.
+    ssot_zh_hant = notice_block("zh-Hant", "")
+    ssot_en = notice_block("en", " ")
+
+    provider_source = (
+        ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContract.kt"
+    ).read_text(encoding="utf-8")
+    mandatory = kotlin_block(
+        provider_source,
+        "val MANDATORY: MedicalRiskNotice = MedicalRiskNotice(",
+        "\n    }",
+        "MedicalRiskNotice.MANDATORY",
+    )
+    test_source = (
+        ROOT
+        / "shared/src/commonTest/kotlin/dev/ed3c/gymcometrue/explanation/AiProviderContractTest.kt"
+    ).read_text(encoding="utf-8")
+
+    for where, zh_chunk, en_chunk in (
+        (
+            "MedicalRiskNotice.MANDATORY",
+            kotlin_block(mandatory, "zhHant = ", "en = ", "MedicalRiskNotice.MANDATORY"),
+            mandatory.split("en = ", 1)[1],
+        ),
+        (
+            "AiProviderContractTest SSOT constants",
+            kotlin_block(test_source, "SSOT_NOTICE_ZH_HANT: String =", "\n\n", "SSOT_NOTICE_ZH_HANT"),
+            kotlin_block(test_source, "SSOT_NOTICE_EN: String =", "\n\n", "SSOT_NOTICE_EN"),
+        ),
+    ):
+        require(
+            concatenated_literals(zh_chunk, where) == ssot_zh_hant,
+            f"{where} zh-Hant notice diverged from the legal/DISCLAIMER.md SSOT",
+        )
+        require(
+            concatenated_literals(en_chunk, where) == ssot_en,
+            f"{where} en notice diverged from the legal/DISCLAIMER.md SSOT",
+        )
+
     ledger = (ROOT / "shared/src/commonMain/kotlin/dev/ed3c/gymcometrue/domain/DailyIntake.kt").read_text(
         encoding="utf-8"
     )

@@ -348,6 +348,7 @@ python3 scripts/validate_taiwan_rule_pack.py
 python3 scripts/validate_taiwan_source_lifecycle.py
 python3 scripts/validate_taiwan_source_hardening.py
 python3 scripts/validate_taiwan_corpus_contract.py
+python3 scripts/validate_product_surface.py
 python3 data/exercise-catalog/validate_catalog.py
 python3 data/llm-gateway/validate_gateway_corpus.py
 sh ./gradlew :shared:jvmTest

@@ -374,15 +374,8 @@ object DailyProtocolCompiler {
     )
 }
 
-@Serializable
-data class MuscleActivation(
-    val muscle: String,
-    val intensity: Int,
-) {
-    init {
-        require(intensity in 0..10)
-    }
-}
+// MuscleActivation (free-string muscle, 0..10 intensity) removed: the muscle map now uses the
+// canonical catalog vocabulary and closed intensity classes (catalog.MuscleVisualization).
 
 // LlmExplanationBoundary/ExplanationPayload removed: forwarding ScanEvidence (raw OCR
 // candidate text) to a model is the payload shape Issue #35 forbids. The receipt-only

@@ -1,5 +1,14 @@
 # Delivery roadmap
 
+> **MVP repositioning (2026-08-18).** The authoritative product direction is now
+> [`docs/product/mvp-redesign.md`](product/mvp-redesign.md): an information/logging tool with
+> OpenAI + Anthropic AI explain behind a mandatory medical-risk notice
+> ([`legal/DISCLAIMER.md`](../legal/DISCLAIMER.md)). Issues #24/#26/#34/#41–#43 and umbrellas
+> #8/#11/#14 are retired (not planned); #25/#27–#31/#36–#40 and umbrellas #9/#10/#12/#13
+> closed under owner admission; active MVP work is Issue #49 (dual-provider AI contract) and
+> Issue #50 (disclaimer flow + information-only presentation). Everything below this note is
+> the pre-repositioning roadmap kept as history.
+
 ## Operating rule
 
 The roadmap is dependency-ordered and evidence-gated. A later slice cannot weaken safety, privacy, rights, source-lineage, or branch-lineage contracts delivered by an earlier slice.

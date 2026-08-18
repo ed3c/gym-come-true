@@ -34,6 +34,22 @@ acceptance box on every issue above remains unticked.
 | [#14](https://github.com/ed3c/gym-come-true/issues/14) | Creator-market validation | No implementation PR | real interviews, rights-cleared creative, retained-contribution evidence |
 | [#19](https://github.com/ed3c/gym-come-true/issues/19) | Directory state machines and Git Town Stacked-PR index | PR #20 | docs review, exact-head hosted status, Human Admit |
 
+## MVP repositioning (2026-08-18, authoritative)
+
+Owner decision `docs/product/mvp-redesign.md`: the MVP is an information/logging tool with no
+safety verdicts. Issue surgery executed the same day:
+
+- **Retired (not planned):** #24, #26, #34, #41–#43; umbrellas #8, #11, #14.
+- **Closed under owner admission of external gates:** #25, #27–#31, #36–#40; umbrellas #9,
+  #10, #12, #13.
+- **Active MVP issues:** [#49](https://github.com/ed3c/gym-come-true/issues/49) dual-provider
+  AI explain (OpenAI + Anthropic, type-enforced risk notice),
+  [#50](https://github.com/ed3c/gym-come-true/issues/50) disclaimer flow and information-only
+  presentation surgery.
+- **Still open besides MVP:** #32/#33 (catalog, human review to close), #35 (gateway contract
+  parent of #49), #44 (release convergence), #45 (Actions capacity, human-owned), #46–#48
+  (nutrition/viz continuation).
+
 ## Domain lane drafts (2026-08-18, local only)
 
 The rows above reflect the 2026-08-16 snapshot. On 2026-08-18 seven sibling lanes advanced

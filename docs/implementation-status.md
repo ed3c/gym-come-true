@@ -1,6 +1,6 @@
 # Implementation status
 
-**Snapshot date:** 2026-08-18  
+**Snapshot date:** 2026-08-18 (post-MVP-repositioning; see `docs/product/mvp-redesign.md`)  
 **Repository:** `ed3c/gym-come-true` (private, immutable repository ID `1334805292`)  
 **Current leaf:** `main`, fast-forwarded to `a70a52cc6e3e2f4107edae2f7bb2034029161568` plus the delivery-contract commit  
 **Merge state:** the whole stack is integrated into `main`; hosted evidence is still absent

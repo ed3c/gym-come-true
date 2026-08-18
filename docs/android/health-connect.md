@@ -108,8 +108,23 @@ exception to them.
 ## Dependency note
 
 `androidx.health.connect:connect-client` is declared directly in
-`androidApp/build.gradle.kts` (pinned `1.1.0-alpha07`) rather than through
-`gradle/libs.versions.toml`, because the version catalog is outside this
-lane's path lease. The integrator should confirm the exact version against
-Google's Maven repository and promote it into the catalog alongside the
-project's other Android dependencies.
+`androidApp/build.gradle.kts` (pinned `1.1.0`, reviewed and bumped from
+`1.1.0-alpha07` in Issue #53) rather than through `gradle/libs.versions.toml`,
+because the version catalog is outside this lane's path lease. The integrator
+should promote it into the catalog alongside the project's other Android
+dependencies.
+
+**Version rationale (2026-08-18).** `dl.google.com/dl/android/maven2/androidx/
+health/connect/connect-client/maven-metadata.xml` lists `1.1.0` as a released,
+non-alpha version (the next release track, `1.2.0`, is still `alpha05`).
+`1.1.0` stable ships with no changes since its `1.1.0-rc03` release, and none
+of the intermediate alpha/beta/rc changes touch the APIs this adapter calls
+(`HealthPermission.getReadPermission`, `WeightRecord`, `ExerciseSessionRecord`,
+`PermissionController.createRequestPermissionResultContract`,
+`HealthConnectClient.getSdkStatus`, `SDK_AVAILABLE`,
+`SDK_UNAVAILABLE_PROVIDER_UPDATE_REQUIRED`) — the one relevant change
+(`Metadata`/`Device` constructors becoming factory-based) affects only code
+that constructs those types, which this adapter does not. `minSdk 24` was not
+introduced until `1.2.0-alpha05`, so it does not constrain this project's
+`minSdk 26`. Net effect of the bump: same API surface, first stable release
+instead of a two-year-old alpha.

@@ -23,7 +23,14 @@ dependencies {
     // ponytail: pinned directly rather than via gradle/libs.versions.toml because
     // that file is outside this lane's path lease (see newDependencyRequests in
     // the delivery report) — integrator should promote this into the catalog.
-    implementation("androidx.health.connect:connect-client:1.1.0-alpha07")
+    // Reviewed 2026-08-18 (Issue #53): bumped alpha07 -> 1.1.0 stable, confirmed
+    // present on Google's Maven (dl.google.com) with no changes since its rc03
+    // and no API changes to the surfaces this adapter calls (HealthPermission.
+    // getReadPermission, WeightRecord, ExerciseSessionRecord,
+    // PermissionController.createRequestPermissionResultContract,
+    // HealthConnectClient.getSdkStatus/SDK_AVAILABLE/
+    // SDK_UNAVAILABLE_PROVIDER_UPDATE_REQUIRED). See docs/android/health-connect.md.
+    implementation("androidx.health.connect:connect-client:1.1.0")
     debugImplementation(libs.compose.ui.tooling)
     testImplementation(libs.kotlin.test)
 }

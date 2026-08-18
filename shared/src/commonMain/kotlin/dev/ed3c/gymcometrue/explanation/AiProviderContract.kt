@@ -72,7 +72,18 @@ object AdmittedLoggedTotalsTemplates {
     const val DUPLICATE_INGREDIENT: String = "tpl.logged.duplicate-ingredient"
     const val UNRESOLVED_ENTRY: String = "tpl.logged.unresolved-entry"
 
-    val all: Set<String> = setOf(DAILY_TOTALS, DUPLICATE_INGREDIENT, UNRESOLVED_ENTRY)
+    /**
+     * A provider's entire degree of freedom on this surface: which admitted next step about the
+     * user's own log to surface. Each one is verified against the deterministic counts, so it
+     * cannot become an invented observation.
+     */
+    const val CONFIRM_UNRESOLVED_ENTRY: String = "tpl.logged.next-step.confirm-entry"
+    const val REVIEW_DUPLICATE: String = "tpl.logged.next-step.review-duplicate"
+
+    val optionalTemplates: Set<String> = setOf(CONFIRM_UNRESOLVED_ENTRY, REVIEW_DUPLICATE)
+
+    val all: Set<String> =
+        setOf(DAILY_TOTALS, DUPLICATE_INGREDIENT, UNRESOLVED_ENTRY) + optionalTemplates
 }
 
 /**
@@ -219,14 +230,18 @@ object AiExplanationService {
     }
 
     /**
-     * Explains the user's own logged totals. No provider adapter exists for this subject yet, so the
-     * served templates are deterministic; the request still records which provider was configured.
+     * Explains the user's own logged totals. An admitted [provider] may propose which templates to
+     * surface (Issue #51); it is consulted only after the subject gate below has passed, and only
+     * through [LoggedTotalsGatewayService], which verifies the proposal and otherwise serves the
+     * deterministic plan. With no provider the surface behaves exactly as it did before.
      */
     fun explainLoggedTotals(
         descriptor: AiProviderDescriptor,
         caller: GatewayCaller,
         totals: MinimizedLoggedTotals,
         localeTag: String = "zh-TW",
+        policy: GatewayPolicy = GatewayPolicy(),
+        provider: LoggedTotalsProvider? = null,
     ): AiExplainOutcome {
         val subjectSha256 = totals.summarySha256.takeIf { it.isSha256() }
         val blockers = providerBlockers(descriptor)
@@ -254,34 +269,28 @@ object AiExplanationService {
             return blocked(descriptor, caller, subjectSha256, rejections)
         }
 
-        val templateIds = buildList {
-            add(AdmittedLoggedTotalsTemplates.DAILY_TOTALS)
-            if (totals.duplicateIngredientKeyCount > 0) {
-                add(AdmittedLoggedTotalsTemplates.DUPLICATE_INGREDIENT)
-            }
-            if (totals.unresolvedEntryCount > 0) add(AdmittedLoggedTotalsTemplates.UNRESOLVED_ENTRY)
-            add(AdmittedExplanationTemplates.DISCLAIMER_TEMPLATE)
-        }
+        val subject = ExplainSubject.LoggedTotals(totals)
+        val served = LoggedTotalsGatewayService.serve(subject, localeTag, policy, provider)
         return AiExplainOutcome(
             request = AiExplainRequest(
                 providerId = descriptor.providerId,
-                subject = ExplainSubject.LoggedTotals(totals),
+                subject = subject,
                 localeTag = localeTag,
                 callerSessionPseudonymId = caller.sessionPseudonymId,
             ),
             response = AiExplanationResponse(
                 providerId = descriptor.providerId,
-                subjectSha256 = subjectSha256,
-                templateIds = templateIds,
-                localeTag = localeTag,
+                subjectSha256 = served.plan.summarySha256,
+                templateIds = served.plan.templateIds,
+                localeTag = served.plan.localeTag,
             ),
-            rejections = emptyList(),
+            rejections = served.rejections,
             audit = audit(
                 descriptor = descriptor,
                 caller = caller,
                 subjectSha256 = subjectSha256,
-                outcome = GatewayOutcomeKind.DETERMINISTIC_FALLBACK,
-                rejections = emptyList(),
+                outcome = served.outcome,
+                rejections = served.rejections,
             ),
         )
     }

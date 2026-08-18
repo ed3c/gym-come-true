@@ -4,6 +4,7 @@ import dev.ed3c.gymcometrue.domain.EvidenceStatus
 import dev.ed3c.gymcometrue.domain.ScanEvidence
 import dev.ed3c.gymcometrue.domain.SupplementLabelParser
 import kotlinx.serialization.Serializable
+import org.kotlincrypto.hash.sha2.SHA256
 
 /**
  * Contract for the canonical iOS native capture bridge (Issue #27).
@@ -64,17 +65,26 @@ object EvidenceHandoff {
     const val REJECTED_AUTHORIZATION = "CAPTURE_AUTHORIZATION_NOT_GRANTED"
     const val REJECTED_RETENTION = "RAW_PIXEL_RETENTION_NOT_ADMITTED"
     const val REJECTED_DIGEST_SHAPE = "DIGEST_SHAPE_INVALID"
+    const val REJECTED_DIGEST_MISMATCH = "DIGEST_MISMATCH"
     const val REJECTED_NO_CONTENT = "NO_RECOGNIZED_CONTENT"
     const val REJECTED_UNKNOWN_SOURCE = "UNKNOWN_CAPTURE_SOURCE"
     const val REJECTED_UNKNOWN_AUTHORIZATION = "UNKNOWN_CAPTURE_AUTHORIZATION"
     const val REJECTED_UNKNOWN_RETENTION = "UNKNOWN_RAW_PIXEL_RETENTION"
 
-    /**
-     * The digest is produced on device by CryptoKit. Shared code verifies its
-     * shape only; recomputation would need a multiplatform SHA-256 and stays
-     * NOT_IMPLEMENTED rather than being claimed.
-     */
+    /** A malformed digest cannot possibly equal a recomputed one; reject its shape first. */
     private val digestShape = Regex("[0-9a-f]{64}")
+    private val hexDigits = "0123456789abcdef"
+
+    private fun sha256Hex(text: String): String {
+        val digest = SHA256().digest(text.encodeToByteArray())
+        val out = CharArray(digest.size * 2)
+        digest.forEachIndexed { i, byte ->
+            val v = byte.toInt() and 0xFF
+            out[i * 2] = hexDigits[v ushr 4]
+            out[i * 2 + 1] = hexDigits[v and 0x0F]
+        }
+        return out.concatToString()
+    }
 
     fun accept(payload: NativeScanPayload): EvidenceHandoffResult {
         val rejections = mutableListOf<String>()
@@ -87,14 +97,21 @@ object EvidenceHandoff {
         if (payload.rawPixelRetention == RawPixelRetention.PERSISTED_LOCAL) {
             rejections += REJECTED_RETENTION
         }
-        if (!digestShape.matches(payload.rawTextSha256)) {
-            rejections += REJECTED_DIGEST_SHAPE
-        }
 
         val text = payload.recognizedText.trim()
         val barcode = payload.barcode?.trim()?.takeIf { it.isNotEmpty() }
         if (text.isEmpty() && barcode == null) {
             rejections += REJECTED_NO_CONTENT
+        }
+
+        // The digest is produced on device (CryptoKit on iOS) over the same
+        // trimmed text this function reads. Shared code no longer trusts its
+        // shape alone: it recomputes SHA-256 over `text` and requires an exact
+        // match, failing closed rather than accepting an unverified claim.
+        if (!digestShape.matches(payload.rawTextSha256)) {
+            rejections += REJECTED_DIGEST_SHAPE
+        } else if (sha256Hex(text) != payload.rawTextSha256) {
+            rejections += REJECTED_DIGEST_MISMATCH
         }
 
         if (rejections.isNotEmpty()) {
@@ -105,7 +122,7 @@ object EvidenceHandoff {
             .map { it.copy(evidenceStatus = EvidenceStatus.UNVERIFIED) }
         val warnings = buildList {
             add("OCR output is unverified evidence; confirm every field against the physical label.")
-            add("The text digest was produced on device and is not recomputed in shared code.")
+            add("The text digest was recomputed in shared code and matched the declared value.")
             if (barcode != null) {
                 add("A barcode identifies a candidate product only; it does not verify contents.")
             }

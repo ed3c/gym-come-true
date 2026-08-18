@@ -50,8 +50,11 @@ recognise, so drift surfaces as a visible rejection instead of a silent widening
 
 - OCR output crosses the seam as `UNVERIFIED` and cannot be raised there. Every
   accepted `ScanEvidence` carries a physical-label confirmation warning.
-- The digest is produced on device by CryptoKit. Shared code checks its **shape**
-  (64 lowercase hex) and does not claim to have recomputed it.
+- The digest is produced on device by CryptoKit over the same trimmed text the
+  shared seam reads. Shared code recomputes SHA-256 (via
+  `org.kotlincrypto.hash:sha2`, Issue #53) and rejects with `DIGEST_MISMATCH`
+  if it disagrees with the declared value; a malformed shape is rejected first
+  with `DIGEST_SHAPE_INVALID`.
 - `RawPixelRetention.PERSISTED_LOCAL` is rejected. Retention needs consent,
   encryption, expiry, deletion, withdrawal, hashes, and provenance; none exist.
 - `PhotosPicker` runs out of process, so no photo-library permission is requested;
@@ -78,9 +81,11 @@ recognise, so drift surfaces as a visible rejection instead of a silent widening
 `shared/src/commonTest/kotlin/dev/ed3c/gymcometrue/health/`
 
 - `EvidenceHandoffTest` — unverified status preserved, denied/restricted capture
-  rejected, persisted pixels rejected, malformed or absent digest rejected,
-  barcode-only capture accepted, unknown native identifiers fail closed, native
-  seam equals the typed contract.
+  rejected, persisted pixels rejected, malformed or absent digest rejected, a
+  well-shaped but wrong digest rejected as `DIGEST_MISMATCH`, recomputation
+  checked against the known `sha256("abc")` vector, barcode-only capture
+  accepted, unknown native identifiers fail closed, native seam equals the
+  typed contract.
 - `HealthReadAccessTest` — least-privilege request set, unjustified type never
   requested, unknown feature id ignored, empty read never reported as no-data or
   denial, display gate, per-feature purge, full purge on last feature, export.
@@ -144,9 +149,6 @@ a spec-derived stub. The target now references the checked-in plist through
 
 ## Known ceilings
 
-- Shared code cannot recompute the OCR digest; that needs a multiplatform SHA-256
-  and is deliberately left `NOT_IMPLEMENTED` rather than claimed. Recorded as a
-  dependency request, not added here.
 - The shared `HealthReadStateMachine` is the tested owner of display gating, but
   the iOS UI currently renders the bridge's own honest sentence; binding the
   Kotlin state object to SwiftUI is not implemented.

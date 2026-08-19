@@ -85,17 +85,18 @@ def validate(agents: str, status: str, readme: str, readme_zh: str) -> None:
     reject(readme, "Issues #24–#48 are requirements and future work packets", "README")
     reject(readme_zh, "Issues #24–#48 是 requirements 與未來 work packets", "README.zh-TW")
 
-    # Evidence-separation laws must remain independently visible on every primary routing surface.
+    # AGENTS has its own canonical routing laws. Public READMEs carry the compact four-law block.
+    require(agents, "HOSTED_PASS(commit A) != HOSTED_PASS(commit B)", "AGENTS")
+    require(agents, "Human Admit for merge or promotion", "AGENTS")
     for law in (
         "HOSTED_PASS(commit A) != HOSTED_PASS(commit B)",
         "GITHUB_CHECK_PASS != HUMAN_ADMIT",
         "ADAPTER_PRESENT != REAL_DEVICE_VALIDATION",
         "GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED",
     ):
-        require(agents, law, "AGENTS")
         require(readme, law, "README")
         require(readme_zh, law, "README.zh-TW")
-    require(agents, "Human Admit for merge or promotion", "AGENTS")
+
     require(combined, "legal", "authority surfaces")
     require(combined, "clinical", "authority surfaces")
     require(combined, "rights", "authority surfaces")
@@ -130,6 +131,8 @@ def self_test() -> None:
         (agents, status, readme.replace("Apache License 2.0", "proprietary"), readme_zh, "readme-license"),
         (agents, status, readme + "\nExact Git Town version/executable | `ABSENT`\n", readme_zh, "readme-git-town"),
         (agents, status, readme, readme_zh + "\nHealth Connect／reliability 在 Issue #10\n", "readme-zh-health"),
+        (agents, status, readme.replace("GITHUB_CHECK_PASS != HUMAN_ADMIT", "GITHUB_CHECK_PASS"), readme_zh, "readme-human-admit-law"),
+        (agents, status, readme, readme_zh.replace("GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED", "GIT_TOWN_CANDIDATE"), "readme-zh-git-town-law"),
     ]
     for mutated_agents, mutated_status, mutated_readme, mutated_readme_zh, name in mutations:
         try:

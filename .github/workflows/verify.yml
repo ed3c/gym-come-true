@@ -35,6 +35,8 @@ jobs:
           python3 data/exercise-catalog/validate_catalog.py --selftest
           python3 scripts/validate_nutrition_catalog.py
           python3 scripts/validate_nutrition_catalog.py --self-test
+          python3 scripts/validate_authority_surfaces.py
+          python3 scripts/validate_authority_surfaces.py --self-test
 
   android-web-domain:
     name: android-web-domain

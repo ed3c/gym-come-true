@@ -31,6 +31,10 @@ jobs:
           python3 scripts/validate_taiwan_source_lifecycle.py
           python3 scripts/validate_taiwan_source_hardening.py
           python3 scripts/validate_stacked_delivery.py --self-test
+          python3 data/exercise-catalog/validate_catalog.py
+          python3 data/exercise-catalog/validate_catalog.py --selftest
+          python3 scripts/validate_nutrition_catalog.py
+          python3 scripts/validate_nutrition_catalog.py --self-test
 
   android-web-domain:
     name: android-web-domain

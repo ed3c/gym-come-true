@@ -31,7 +31,7 @@ def reject(text: str, needle: str, subject: str) -> None:
 
 
 def validate(product: str, disclaimer: str, health: str) -> None:
-    # Validate owner authority semantically rather than coupling the gate to Markdown emphasis.
+    # Validate authority semantically rather than coupling the gate to Markdown emphasis/wrapping.
     require(product, "repository owner (Human Admit)", "mvp-redesign")
     require(product, "information and logging tool", "mvp-redesign")
     require(product, "no clinical rule pack is required", "mvp-redesign")
@@ -42,7 +42,8 @@ def validate(product: str, disclaimer: str, health: str) -> None:
     require(disclaimer, "information and logging tool", "DISCLAIMER")
     require(disclaimer, "it renders no safety verdicts", "DISCLAIMER")
     require(disclaimer, "AI responses are general information only and are not medical advice", "DISCLAIMER")
-    require(disclaimer, "Final terms-of-service language should get legal review before store submission", "DISCLAIMER")
+    require(disclaimer, "Final terms-of-service", "DISCLAIMER")
+    require(disclaimer, "legal review before store submission", "DISCLAIMER")
 
     require(health, "INFORMATION_OR_LOGGING != SAFETY_VERDICT", "health-safety")
     require(health, "ARITHMETIC_RESULT != DOSE_RECOMMENDATION", "health-safety")
@@ -94,7 +95,7 @@ def self_test() -> None:
         (0, "replace", "information and logging tool\0medical safety tool", "product-positioning"),
         (0, "replace", "no clinical rule pack is required\0a clinical rule pack is required", "product-retired-rule-pack"),
         (1, "replace", "it renders no safety verdicts\0it renders safety verdicts", "disclaimer-verdict"),
-        (1, "replace", "Final terms-of-service language should get legal review before store submission\0No legal review is required", "disclaimer-legal-gate"),
+        (1, "replace", "legal review before store submission\0no review before store submission", "disclaimer-legal-gate"),
         (2, "append", "Supplement intelligence cannot move from foundation to production until a reviewed rule pack is active.", "health-old-production-gate"),
         (2, "replace", "REVIEWED_RULE_PACK_CONTRACT_PRESENT != MVP_RULE_PACK_REQUIRED\0REVIEWED_RULE_PACK_CONTRACT_PRESENT", "health-rule-pack-law"),
         (2, "replace", "ARITHMETIC_RESULT != DOSE_RECOMMENDATION\0ARITHMETIC_RESULT = DOSE_RECOMMENDATION", "health-dose-law"),

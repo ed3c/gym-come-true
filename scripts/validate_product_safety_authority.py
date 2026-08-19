@@ -31,21 +31,18 @@ def reject(text: str, needle: str, subject: str) -> None:
 
 
 def validate(product: str, disclaimer: str, health: str) -> None:
-    # Owner product decision.
     require(product, "Authority: repository owner (Human Admit)", "mvp-redesign")
     require(product, "information and logging tool", "mvp-redesign")
     require(product, "no clinical rule pack is required", "mvp-redesign")
     require(product, "#26 reviewed TW rule pack", "mvp-redesign")
     require(product, "AI responses are general information only and are not medical advice", "mvp-redesign")
 
-    # User-facing disclaimer SSOT.
     require(disclaimer, "user notice and disclaimer (SSOT)", "DISCLAIMER")
     require(disclaimer, "information and logging tool", "DISCLAIMER")
     require(disclaimer, "it renders no safety verdicts", "DISCLAIMER")
     require(disclaimer, "AI responses are general information only and are not medical advice", "DISCLAIMER")
     require(disclaimer, "Final terms-of-service language should get legal review before store submission", "DISCLAIMER")
 
-    # Health/safety implementation contract must follow the owner decision.
     require(health, "INFORMATION_OR_LOGGING != SAFETY_VERDICT", "health-safety")
     require(health, "ARITHMETIC_RESULT != DOSE_RECOMMENDATION", "health-safety")
     require(health, "REVIEWED_RULE_PACK_CONTRACT_PRESENT != MVP_RULE_PACK_REQUIRED", "health-safety")
@@ -59,7 +56,6 @@ def validate(product: str, disclaimer: str, health: str) -> None:
     require(health, "DISCLAIMER_PRESENT != LEGAL_APPROVAL", "health-safety")
     require(health, "NO_SAFETY_VERDICT_MVP != NO_REGULATORY_OBLIGATIONS", "health-safety")
 
-    # Retired/contradictory MVP authority must not silently return.
     for claim in (
         "Supplement intelligence cannot move from foundation to production until",
         "a production Taiwan rule pack needs all of the following",
@@ -69,10 +65,9 @@ def validate(product: str, disclaimer: str, health: str) -> None:
     ):
         reject(health.lower(), claim.lower(), "health-safety")
 
-    # Safety invariants stay conservative despite retiring the clinical verdict lane.
     for required in (
-        "must not diagnose",
-        "must not",
+        "- diagnose a condition or symptom;",
+        "- recommend starting, stopping, increasing, decreasing or combining a supplement or medication;",
         "IU",
         "not a current MVP gate",
         "real-device",

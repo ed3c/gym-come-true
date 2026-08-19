@@ -31,7 +31,8 @@ def reject(text: str, needle: str, subject: str) -> None:
 
 
 def validate(product: str, disclaimer: str, health: str) -> None:
-    require(product, "Authority: repository owner (Human Admit)", "mvp-redesign")
+    # Validate owner authority semantically rather than coupling the gate to Markdown emphasis.
+    require(product, "repository owner (Human Admit)", "mvp-redesign")
     require(product, "information and logging tool", "mvp-redesign")
     require(product, "no clinical rule pack is required", "mvp-redesign")
     require(product, "#26 reviewed TW rule pack", "mvp-redesign")

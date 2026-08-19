@@ -180,6 +180,45 @@ Work packet
 | Artifact identity | Staged transport-vs-semantic identity receipts in PR #59 | Release reproducibility / signing / supply-chain attestation |
 | Git Town | Pinned v24.0.0 candidate metadata and canary harness | Consumer config, binary execution, live sync/publication canaries, runtime admission |
 
+## Honest capability matrix
+
+The capability table above is intentionally split between **current state** and **not yet proven/admitted**. Adapter presence, hosted checks, local arithmetic, or Draft content never upgrades an external evidence lane.
+
+## Safety contract
+
+- OCR and barcode output remains `UNVERIFIED` until explicit confirmation.
+- Compatible mass arithmetic is information, not a safe or recommended dose.
+- IU, medication context, symptoms, pregnancy/procedure context, missing servings, and evidence conflicts fail closed.
+- LLM output cannot diagnose, recommend dosage, invent nutrient facts, create regulatory rules, approve rights, or suppress deterministic warnings.
+- Exact-alarm/AlarmKit and health adapters must not be presented as universal real-device reliability without measured evidence.
+- Current hosted PASS is exact-head evidence only and never grants merge or production authority.
+
+## Copyright and data admission
+
+- Publicly reachable content is not automatically redistributable.
+- Third-party exercise media, food photos, anatomy assets, UGC, vendor IDs, and CDN URLs require exact rights/provenance evidence.
+- Repository-level Apache-2.0 licensing does not license third-party media or official datasets.
+- Nutrition and regulatory source candidates default deny until their owning source/reuse/legal review is admitted.
+- Revocation/takedown remains part of every production asset lifecycle.
+
+## Delivery state machine
+
+```text
+MERGED_MAIN
+  -> DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT            # PR #55
+  -> CURRENT_PUBLIC_REPO_SSOT_DRAFT                 # PR #57
+  -> CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT           # PR #61
+  -> MACHINE_GATED_AUTHORITY_DRAFT                  # PR #63
+
+Sibling evidence from PR #55:
+  -> TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT  # PR #59
+
+Every Draft head:
+  -> EXACT_HEAD_HOSTED_CHECKS
+  -> HUMAN_ADMIT
+  -> MERGE / PROMOTION only when authorized
+```
+
 ## Git Town boundary
 
 Canonical method: [`skills-shared/skills/git-town-stacked-pr-worker`](https://github.com/ed3c/skills-shared/tree/main/skills/git-town-stacked-pr-worker).

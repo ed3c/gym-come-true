@@ -55,7 +55,7 @@ main@b1880abe...
     │   └── PR #61  agent/reconcile-agent-runtime-contract@7a59f6b8...
     │       └── PR #63  agent/gate-authority-drift@0c76c714...
     │           └── PR #65  agent/reconcile-readme-authority@30468077...
-    │               └── X8 / Issue #66  delivery-machine SSOT convergence
+    │               └── PR #67  agent/reconcile-delivery-machine-ssot (Issue #66)
     └── PR #59  agent/artifact-identity-receipts@036951d5...
 ```
 
@@ -67,8 +67,9 @@ main@b1880abe...
 | #61 | #60 | `STALE_AGENT_AUTHORITY_SURFACE -> CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT` | run #91: 3/3 PASS | Draft; merge Human Admit |
 | #63 | #62 | `MANUALLY_RECONCILED_AUTHORITY -> MACHINE_GATED_AUTHORITY_DRAFT` | run #92: 3/3 PASS | Draft; merge Human Admit |
 | #65 | #64 | `MACHINE_GATED_AGENT_STATUS_AUTHORITY -> README_AUTHORITY_RECONCILED_AND_GATED_DRAFT` | run #96: 3/3 PASS | Draft; merge Human Admit |
+| #67 | #66 | `PUBLIC_AUTHORITY_SURFACES_CURRENT_BUT_DELIVERY_GRAPH_STALE -> LIVE_DELIVERY_GRAPH_RECONCILED_DRAFT` | fresh exact-head run required | Draft; merge Human Admit |
 
-X8 / Issue #66 is the next serial convergence packet under PR #65. Its exact PR number and final head belong to its own PR metadata after publication.
+PR #67 is the serial convergence packet under PR #65. Its final exact head and hosted receipt are recorded in PR/Issue metadata after verification; this index must not guess a future SHA.
 
 ## Open Issue semantics
 

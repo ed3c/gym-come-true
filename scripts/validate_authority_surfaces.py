@@ -85,15 +85,17 @@ def validate(agents: str, status: str, readme: str, readme_zh: str) -> None:
     reject(readme, "Issues #24–#48 are requirements and future work packets", "README")
     reject(readme_zh, "Issues #24–#48 是 requirements 與未來 work packets", "README.zh-TW")
 
-    # Evidence separation and Human Admit laws must remain visible.
+    # Evidence-separation laws must remain independently visible on every primary routing surface.
     for law in (
         "HOSTED_PASS(commit A) != HOSTED_PASS(commit B)",
         "GITHUB_CHECK_PASS != HUMAN_ADMIT",
         "ADAPTER_PRESENT != REAL_DEVICE_VALIDATION",
         "GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED",
     ):
-        require(combined, law, "authority surfaces")
-    require(combined, "HUMAN_ADMIT", "authority surfaces")
+        require(agents, law, "AGENTS")
+        require(readme, law, "README")
+        require(readme_zh, law, "README.zh-TW")
+    require(agents, "Human Admit for merge or promotion", "AGENTS")
     require(combined, "legal", "authority surfaces")
     require(combined, "clinical", "authority surfaces")
     require(combined, "rights", "authority surfaces")

@@ -1,86 +1,92 @@
 # Store and Privacy Compliance Plan
 
-This is an engineering checklist, not legal advice.
+This is an engineering checklist, not legal advice. Checked-in permission/adapter surfaces are not evidence that Apple or Google has accepted the app, disclosures, entitlements, declarations, or release.
+
+```text
+DECLARED_PERMISSION != STORE_APPROVAL
+ADAPTER_PRESENT != REAL_DEVICE_VALIDATION
+DEBUG_BUILD != RELEASE_SIGNING_ADMISSION
+```
 
 ## Apple
 
-### Health and medical wording
-
-- Describe the app as fitness planning and evidence organization.
-- Do not market it as diagnosis, treatment, medication management, or a dosage calculator.
-- Explain that OCR and arithmetic are not recommendations.
-- Provide a privacy policy URL and in-app access.
-- Disclose exactly which health data types are collected.
-- Do not use health/fitness data for targeted advertising or unrelated data mining.
-
-References:
-
-- https://developer.apple.com/app-store/review/guidelines/
-- https://developer.apple.com/documentation/healthkit/protecting-user-privacy
-
-### Permissions
-
-Current:
+### Current checked-in engineering
 
 - photo selection is user initiated;
 - notifications are requested in context;
-- camera usage description exists for the future camera flow.
+- camera/photo usage descriptions exist;
+- `NSHealthShareUsageDescription` exists;
+- `NativeHealthReadBridge` provides a least-privilege HealthKit read surface;
+- no Health write authority is claimed;
+- AlarmKit is not admitted as a current product capability.
 
-Future Apple Health:
+These bytes do not prove HealthKit entitlement configuration, real-device authorization, App Privacy answers, privacy-policy completeness, App Store review acceptance, or production data handling.
 
-- request one data type at a time in context;
-- read-only first;
-- add `NSHealthShareUsageDescription`;
-- add write permission only for a proven user benefit;
-- never store personal health information in iCloud.
+### Health and medical wording
 
-Future AlarmKit:
+- Describe the product as fitness planning, information, evidence organization, and logging.
+- Do not market it as diagnosis, treatment, medication management, or a dosage calculator.
+- Explain that OCR and arithmetic are not recommendations.
+- Disclose exactly which health data types a released feature reads and why.
+- Do not use health/fitness data for targeted advertising or unrelated profiling.
+- Keep Health reads user-visible, least-privilege, and contextual.
 
-- add `NSAlarmKitUsageDescription`;
-- present it as a system alarm with a system stop control;
-- use a secondary “Open” action for an optional challenge;
-- do not claim the challenge controls whether the system alarm can stop.
+### AlarmKit boundary
 
-## Google Play
+A future AlarmKit packet must separately establish `NSAlarmKitUsageDescription`, supported OS/device behavior, system stop semantics, fallback, timezone behavior and App Store wording. Do not claim a challenge prevents the system alarm from being stopped.
 
-- Complete the Health apps declaration accurately.
-- Provide a public privacy policy and in-app link.
-- Declare nutrition/fitness features and any later Health Connect access.
-- Use prominent disclosure before collecting or transmitting sensitive data.
-- Do not imply regulatory approval.
-- Keep exact alarm permission out until the core use case and policy eligibility are established.
-- Provider keys and privileged business logic remain server-side.
+## Google Play / Android
 
-References:
+### Current checked-in engineering
 
-- https://support.google.com/googleplay/android-developer/answer/14738291
-- https://support.google.com/googleplay/android-developer/answer/17105854
-- https://developer.android.com/health-and-fitness/health-connect
+- Android declares `READ_WEIGHT` and `READ_EXERCISE` only for the current least-privilege Health Connect read scope;
+- Health Connect availability/permission/read adapters exist;
+- no Health Connect write permission is declared;
+- notifications and reboot/package/timezone reminder reconciliation surfaces exist;
+- no exact-alarm permission is admitted.
 
-## Data inventory
+These declarations do not prove provider availability on all devices/OEMs, real-device permission UX, Google Play Health apps declaration acceptance, Data safety accuracy, privacy review, or production release admission.
 
-| Data | Foundation location | Retention | External transfer |
+### Store requirements still external
+
+- complete the Health apps declaration from actual released behavior;
+- provide a public privacy policy and in-app access;
+- use prominent disclosure where sensitive data collection/transmission requires it;
+- keep exact alarm access out until the core use case and policy eligibility are established;
+- do not imply regulatory approval;
+- keep provider keys and privileged business logic outside clients and source control.
+
+## Data-flow inventory
+
+This table describes current code paths, not a production privacy attestation.
+
+| Data | Current engineering path | Default retention / transfer | Still required before production |
 |---|---|---|---|
-| Android label photo | app cache | deleted after scan | none |
-| iOS selected photo | picker/in-memory | not persisted by bridge | none |
-| OCR text | memory | user save not yet implemented | none |
-| Barcode | memory | user save not yet implemented | none |
-| Protocol selection | memory | not persisted | none |
-| Health data | not implemented | N/A | none |
-| LLM payload | contract only | N/A | not implemented |
-| Analytics | not implemented | N/A | none |
+| Android label photo | app cache -> on-device ML Kit | temporary deletion path; no provider transfer in current adapter | device/privacy verification |
+| iOS selected photo | picker/in-memory -> Vision | not persisted by native bridge by default | device/privacy verification |
+| OCR/barcode candidate | local candidate -> user confirmation | must stay out of general analytics | retention/export/delete policy if persisted |
+| Protocol/meal plan | shared deterministic state | user-visible local/product state | persistence/account policy if added |
+| Android health reads | Health Connect adapter | least-privilege feature read; no ad use authorized | real-device/OEM/store/privacy evidence |
+| iOS health reads | `NativeHealthReadBridge` | least-privilege feature read; no Health write authority | entitlement/device/store/privacy evidence |
+| LLM payload | receipt/provider contract | no client provider secret; live deployment not proven | security/privacy/provider admission |
+| Analytics | structural-event policy only | sensitive raw OCR/health data prohibited | production analytics inventory/consent |
 
 ## Production gates
 
-- privacy policy and data deletion;
-- consent/permission copy;
-- app privacy / data safety forms;
+Repository code or CI cannot self-close these gates:
+
+- privacy policy, operator identity, retention/export/deletion behavior;
+- consent/permission copy and jurisdiction-specific review;
+- Apple App Privacy and Google Play Data safety / Health apps declarations;
+- HealthKit entitlement and real-device authorization evidence;
+- Health Connect real-device/OEM/provider behavior;
 - age rating and audience;
-- subscription terms, restore purchases, and account deletion;
-- medical-claim review;
-- accessibility;
-- export controls and regional availability;
-- incident response;
-- security review;
-- evidence for every third-party asset;
-- signed Android/iOS release builds and reproducible CI evidence.
+- subscription terms, restore purchases, account deletion, and billing implementation if enabled;
+- medical-claim and safety wording review;
+- accessibility and supported-device/browser evaluation;
+- incident response and independent security/privacy review;
+- exact third-party asset/source rights;
+- signing identities, store records, signed release builds and submission;
+- release promotion and rollback authority.
+
+`GITHUB_CHECK_PASS != HUMAN_ADMIT`.

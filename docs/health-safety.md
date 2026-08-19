@@ -1,210 +1,157 @@
 # Health and supplement safety contract
 
-## Product boundary
+## Authority and product boundary
 
-Gym Come True is a planning, evidence-capture, and logging product. It is not a medical device, clinician, pharmacist, dietitian, emergency service, or source of an individualized supplement dose.
+The owner-admitted MVP decision in [`product/mvp-redesign.md`](product/mvp-redesign.md) and the user-facing wording SSOT in [`../legal/DISCLAIMER.md`](../legal/DISCLAIMER.md) define the shipped product boundary.
+
+Gym Come True is an **information and logging tool**. It may organize user-authored supplements, meals, workouts and reminders; perform honest arithmetic over confirmed data; and explain recorded information. It does not diagnose, treat, prescribe, recommend doses, or render a medical/safety verdict.
+
+```text
+INFORMATION_OR_LOGGING != SAFETY_VERDICT
+ARITHMETIC_RESULT != DOSE_RECOMMENDATION
+REVIEWED_RULE_PACK_CONTRACT_PRESENT != MVP_RULE_PACK_REQUIRED
+MODEL_EXPLANATION != MEDICAL_AUTHORITY
+```
+
+If a future owner decision reintroduces individualized safety verdicts, medication-interaction decisions, dosing recommendations, or other regulated decision support, that is a product reclassification. The dormant reviewed-rule-pack/source-lifecycle contracts may then become relevant again, but they are not a current MVP release prerequisite.
+
+## Permitted MVP behavior
 
 The application may:
 
-- extract candidate text and barcodes locally;
-- help a user compare candidates with a physical label;
-- normalize compatible mass units for display and duplicate detection;
-- organize user-authored meal, training, recovery, and reminder events;
-- apply reviewed deterministic rules that produce `LOG_ONLY`, `REVIEW_REQUIRED`, or `BLOCK_AUTOMATION`;
-- explain the reason for a deterministic result in plain language.
+- extract candidate label text and barcodes on device;
+- let the user compare candidates with a physical label and confirm or correct them;
+- normalize compatible mass units (`mcg`, `mg`, `g`) for display, totals and duplicate-product overlap;
+- preserve unresolved units or serving evidence instead of inventing a conversion;
+- organize user-authored meal, training, recovery and reminder events;
+- read explicitly requested, least-privilege health records through platform adapters where the feature is enabled;
+- send minimized, allowed data to an admitted AI provider boundary for general-information explanation, with the mandatory medical-risk notice.
 
 The application must not:
 
 - diagnose a condition or symptom;
-- state that a supplement, food, workout, or dose is safe for a person;
-- infer missing formulation or serving information;
-- convert IU or another activity unit with a generic formula;
-- recommend starting, stopping, increasing, decreasing, or combining a supplement or medication;
-- replace medication instructions or professional care;
-- hide a blocking rule because a model produced reassuring text.
-
-`LOG_ONLY` means “the evidence can be recorded under the active policy,” not “clinically approved.”
+- state that a supplement, food, workout, combination or amount is safe for a person;
+- infer missing formulation, serving size or ingredient data;
+- apply a generic conversion to IU, CFU, activity units, proprietary blends, tablets, capsules, scoops or servings without verified dimensional evidence;
+- recommend starting, stopping, increasing, decreasing or combining a supplement or medication;
+- encode the user's historical medication-related pause rules as universal medical rules;
+- let a model override deterministic evidence boundaries or hide uncertainty;
+- claim continuous monitoring, emergency detection or guaranteed reminder/alarm delivery.
 
 ## Evidence levels
 
-| Level | Meaning | Permitted use |
+| Level | Meaning | MVP use |
 |---|---|---|
-| `UNVERIFIED` | OCR, barcode, import, or free-form user entry | Display and correction only |
-| `USER_CONFIRMED` | User compared the field with the current physical label | Personal log; no product/rule authority |
-| `VERIFIED_BY_REVIEWED_SOURCE` | Product variant and rule source were independently reviewed and versioned | Deterministic rule evaluation under the reviewed scope |
+| `UNVERIFIED` | OCR, barcode, import or free-form user entry | display/correction only |
+| `USER_CONFIRMED` | user compared a field with the current physical label | personal log and arithmetic where dimensions match |
+| `SOURCE_REVIEWED` | an exact source/mapping has been reviewed under its stated scope | reference metadata only unless a future admitted feature explicitly consumes it |
 
-A barcode does not prove formulation, serving size, authenticity, expiry, country variant, or that the scanned bottle matches a database record.
+A barcode does not prove formulation, serving size, authenticity, expiry, market variant, or that the scanned bottle matches a database record.
 
-## Units
+## Unit and supplement arithmetic
 
-Generic conversion is limited to the same physical dimension:
-
-```text
-1 g   = 1,000 mg
-1 mg  = 1,000 mcg
-```
-
-The engine implements those display conversions only. It deliberately returns no generic conversion for:
-
-- IU;
-- CFU;
-- enzyme activity units;
-- proprietary blend totals;
-- drops, scoops, tablets, capsules, or “servings” without verified mass per unit;
-- ingredient-specific chemical equivalents.
-
-Even a valid mass conversion is not a dose recommendation.
-
-## User-provided A/B timetable
-
-The source request contains a personal draft with a morning meal, lunch, 16:00 or 22:00 training variants, dinner, sleep recovery, foods, supplement names, amounts, and medication-related pause rules.
-
-The implementation treats this as **Draft 0 / user-authored protocol**, not as validated health guidance:
-
-- Food and training time blocks can be represented as ordinary plan events.
-- Product names, servings, scoops, and amounts enter as unverified evidence.
-- The “medication within three days” statements are not encoded as universal medical rules.
-- A medication, planned procedure, pregnancy/breastfeeding state, unusual symptom, unclear label, IU value, or conflicting product blocks automation and asks for qualified review.
-- The app never changes the draft amount based on OCR or an LLM.
-- A future clinician-reviewed plan can reference the original draft while preserving who changed what, when, and why.
-
-### Safe transformation
+Generic conversion is limited to the same mass dimension:
 
 ```text
-User text
-  -> time blocks and user-stated items
-  -> each supplement field marked UNVERIFIED
-  -> physical-label confirmation
-  -> medication / symptom / procedure context gate
-  -> reviewed regional rule-pack lookup
-  -> log-only, review-required, or block receipt
-  -> optional plain-language explanation
+1 g  = 1,000 mg
+1 mg = 1,000 mcg
 ```
 
-No step creates a prescription.
+The engine may use these conversions for display and arithmetic. It must not derive a personalized dose, safe range, treatment recommendation or medication interaction from the result.
 
-## Deterministic safety receipt
+Unresolved evidence remains unresolved. In particular, IU and other activity units are not generically converted into mass.
 
-A production decision receipt should be immutable and include:
+## User-authored timetable
 
-```json
-{
-  "decisionId": "uuid",
-  "createdAt": "instant",
-  "decision": "REVIEW_REQUIRED",
-  "evidenceIds": ["scan-evidence-version"],
-  "productVariantId": null,
-  "rulePack": {
-    "id": "tw-supplement-policy",
-    "version": "not-active-in-foundation",
-    "status": "MISSING"
-  },
-  "contextFlags": ["MEDICATION_CONTEXT_UNRESOLVED"],
-  "reasons": ["A qualified interaction review is required"],
-  "normalizedDisplayValues": {},
-  "mayRecommendDose": false
-}
+The user's A/B training schedule, foods, supplement names, product servings and timing are represented as user-authored plan data, not validated health guidance.
+
+```text
+User input
+  -> local candidate/log record
+  -> optional physical-label confirmation
+  -> honest arithmetic where dimensions are compatible
+  -> user-visible timetable/reminder
+  -> optional general-information AI explanation
 ```
 
-The receipt is the authority passed to an explanation model. The model output is not written back as a decision.
+No step creates a prescription or a safety verdict. The application does not silently alter the user's amount based on OCR or an LLM.
 
-## Regional rule-pack admission
+## Dormant reviewed-rule-pack engineering
 
-A production Taiwan rule pack needs all of the following:
+The repository contains source-lineage, reviewed-rule-pack, decision-receipt and related validators created before the 2026-08-18 MVP repositioning. They remain tested engineering and provenance history.
 
-- explicit jurisdiction and product category;
-- primary source document, issuing body, publication/effective date, and retrieved copy hash;
-- exact field-to-rule mapping;
-- unit dimension and ingredient identity rules;
-- exclusions, ambiguity behavior, and conflict precedence;
-- qualified reviewer identity and review date;
-- automated tests for allowed, edge, ambiguous, and blocked cases;
-- version, rollout percentage, expiry/re-review date, rollback target, and incident owner;
-- user-facing wording reviewed separately from machine rules.
+For the current MVP:
 
-Web articles, model memories, marketing pages, forum posts, and product labels alone cannot become global safety rules.
+- they do not authorize a medical or safety claim;
+- a reviewed Taiwan clinical rule pack is **not** required merely to ship information/logging, arithmetic, reminders or general-information AI;
+- their presence must not cause the UI to label a product, combination or amount medically safe;
+- they may be removed later if they create maintenance cost;
+- reactivating them as user-facing decision authority requires a new owner product decision plus appropriate legal/clinical/store review and fresh tests.
 
-## Medication and clinical context
+## Medication, symptoms and emergencies
 
-The app stores only the minimum context needed for a decision. A first release should prefer coarse flags such as “medication context requires review” rather than sending full medication lists to analytics or an LLM.
+The MVP does not implement medication-interaction lookup and does not use a general-purpose model to triage emergencies.
 
-When a user chooses to maintain a medication list, the design must add:
+If users record medication, symptom, pregnancy, procedure or similar context, the application may preserve that as user-provided information under an admitted privacy design. It must not infer a medical action from it.
 
-- explicit consent and purpose;
-- local encryption and OS-protected keys;
-- source and last-confirmed time for each entry;
-- export/delete controls;
-- no ad targeting or unrelated profiling;
-- a reviewed interaction-data provider contract;
-- conflict handling when professional instructions differ from a generic rule;
-- emergency and adverse-event messaging reviewed for each store jurisdiction.
-
-The foundation does not implement medication interaction lookup.
-
-## Symptoms and emergency behavior
-
-The UI must not attempt to triage an emergency with a general-purpose model. When the user reports a serious or rapidly worsening symptom, the safe behavior is to stop protocol automation and direct the user to local emergency or qualified medical help using jurisdiction-reviewed language.
-
-Do not create a false promise that the app monitors the user continuously or can detect all dangerous reactions.
+Serious or rapidly worsening symptoms require jurisdiction-appropriate user-facing guidance reviewed outside repository code. Do not promise continuous monitoring or detection of dangerous reactions.
 
 ## Training safety
 
-Workout planning follows the same evidence hierarchy:
+Exercise metadata describes movements; it does not prove suitability for an individual. Pose or form signals, if added, are coaching signals rather than diagnosis. Pain, dizziness, loss of balance, unusual shortness of breath or other concerning conditions must not trigger an automated medical conclusion.
 
-- an exercise record describes a movement; it does not prove suitability;
-- pain, dizziness, loss of balance, unusual shortness of breath, or technique failure must stop automatic progression;
-- a camera pose estimate is a coaching signal, not a medical or injury diagnosis;
-- workload progression needs recent completion, effort, recovery, and explicit user confirmation;
-- late-night training recommendations must account for the user's sleep response rather than assume a universal result.
+Future computer-vision coaching requires separate accuracy, bias, accessibility and real-device evidence.
 
-Future computer-vision form analysis needs separate accuracy tests across body type, mobility, camera angle, clothing, lighting, assistive devices, and exercise variation.
+## AI contract
 
-## LLM contract
+The owner-selected provider direction is OpenAI (ChatGPT) and Anthropic (Claude), through a server-side or user-key provider boundary that keeps repository/client secrets absent.
 
-A model request contains only structured, minimized data and these immutable flags:
+Every AI response must carry the medical-risk notice whose wording SSOT is [`../legal/DISCLAIMER.md`](../legal/DISCLAIMER.md). The response is general information only.
 
-```json
-{
-  "purpose": "Explain deterministic results in plain language",
-  "mayRecommendDose": false,
-  "mayOverrideWarnings": false,
-  "instructions": [
-    "Do not infer missing label fields",
-    "Do not calculate or recommend a dose",
-    "Do not diagnose or claim medical safety",
-    "Repeat blocking reasons and qualified-review guidance"
-  ]
-}
+The AI boundary must reject or suppress behavior that:
+
+- invents an ingredient or amount absent from the supplied record;
+- calculates or recommends a dose;
+- diagnoses or claims medical safety;
+- overrides explicit uncertainty or evidence status;
+- omits the mandatory risk notice.
+
+Provider deployment, credentials, security review, privacy review, outage behavior, model/version observability and kill-switch operation require separate evidence.
+
+## Health-data boundary
+
+Android Health Connect and iOS HealthKit adapters are least-privilege read surfaces. Their checked-in presence does not prove real-device behavior, entitlement/store approval, OEM/provider availability, privacy disclosure completeness or release admission.
+
+```text
+ADAPTER_PRESENT != REAL_DEVICE_VALIDATION
+DECLARED_PERMISSION != STORE_APPROVAL
 ```
-
-The gateway must reject output that:
-
-- introduces an ingredient or amount absent from evidence;
-- changes the deterministic decision;
-- uses imperative dosing language;
-- states that a combination is safe;
-- omits a blocking reason;
-- contains a medical diagnosis.
-
-A release needs schema validation, adversarial tests, provider outage fallback, model/version traceability, and a kill switch.
 
 ## Privacy defaults
 
-- Process label images on device when platform support exists.
-- Delete temporary image files immediately after extraction.
-- Store evidence hashes and confirmed structured fields, not raw photos, by default.
-- Keep raw OCR text out of general analytics and crash reports.
-- Do not send barcode or product identity to a model unless needed and consented.
-- Separate account, health, billing, marketing, and diagnostic purposes.
-- Make export and deletion available before collecting sensitive long-term history.
+- process label images on device when platform support exists;
+- delete temporary image files after extraction unless the user explicitly chooses an admitted retention flow;
+- keep raw OCR text, images, barcodes and health samples out of general analytics/crash telemetry;
+- minimize any provider payload and do not put provider/store/signing secrets in the client or repository;
+- separate account, health, billing, marketing and diagnostics purposes;
+- implement export/deletion and store disclosures before long-term sensitive-history collection is admitted.
 
-## Release gate
+## Current MVP release gates
 
-Supplement intelligence cannot move from foundation to production until:
+The information/logging MVP still requires its real shipped behavior to satisfy the applicable engineering and external gates, including:
 
-1. the regional rule pack is source-anchored and reviewed;
-2. medication and symptom behavior is reviewed;
-3. OCR accuracy and confirmation completion are measured on representative labels;
-4. model output is constrained and independently evaluated;
-5. privacy/store disclosures match real data flow;
-6. there is a support, incident, rollback, and user-notification process.
+1. OCR/user-confirmation behavior measured on representative labels if the feature ships;
+2. AI notice enforcement, constrained provider boundary, adversarial evaluation, privacy/security review and kill switch if AI ships;
+3. real-device/OEM/entitlement evidence for enabled Health Connect/HealthKit features;
+4. privacy policy, retention/export/deletion behavior and accurate Apple/Google disclosures;
+5. rights evidence for every third-party source/media asset used in the released product;
+6. accessibility, supported-device/browser checks, incident handling and support process;
+7. signed release builds, store records, submission/review evidence, promotion and rollback authority.
+
+A clinically reviewed Taiwan rule pack is not a current MVP gate because the MVP does not render safety verdicts. If that product boundary changes, the required gates must be reassessed before implementation or release.
+
+```text
+GITHUB_CHECK_PASS != HUMAN_ADMIT
+DISCLAIMER_PRESENT != LEGAL_APPROVAL
+NO_SAFETY_VERDICT_MVP != NO_REGULATORY_OBLIGATIONS
+```

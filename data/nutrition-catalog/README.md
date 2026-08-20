@@ -39,12 +39,27 @@ overrides, impossible constraints) and
 [`../../docs/nutrition/meal-plan-compiler.md`](../../docs/nutrition/meal-plan-compiler.md) for the
 narrative.
 
-## Machine-readable schema
+## Machine-readable schema and repository gate
 
-- `schemas/food-catalog-entry.schema.json` — transport validation only for `food-catalog.example.json`.
-  As with the Taiwan supplement schemas, the Kotlin validator remains authoritative for admission;
-  this JSON Schema only checks shape and is not wired into `scripts/validate_*.py` by this lane (out
-  of this lane's path lease — recorded as a follow-up dependency, not silently done).
+- `schemas/food-catalog-entry.schema.json` remains transport validation only for
+  `food-catalog.example.json`; the Kotlin `FoodCatalogAdmissionValidator` remains authoritative for
+  production admission.
+- `../../scripts/validate_nutrition_catalog.py` is the repository-level, standard-library-only
+  convergence gate. It validates this synthetic catalog, the schema's fail-closed constants, and the
+  source-candidate evidence ceiling without network access.
+- `--self-test` plants policy/schema/content/source-state defects and requires every one to turn the
+  gate red.
+
+Run the deterministic repository gate with:
+
+```bash
+python3 scripts/validate_nutrition_catalog.py
+python3 scripts/validate_nutrition_catalog.py --self-test
+```
+
+Both commands are wired into the `policy-and-provenance` GitHub Actions job by Issue #54. A hosted
+result counts only if the exact-head job actually receives a runner and executes the commands.
 
 No fixture in this directory authorizes a medical claim, personalized diet/therapeutic target,
-scraped dataset, or production nutrient fact.
+scraped dataset, or production nutrient fact. Real Taiwan source capture, reuse-rights review, exact
+field mappings, and production admission remain `HUMAN_ADMIT_REQUIRED`.

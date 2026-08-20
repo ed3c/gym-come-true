@@ -25,15 +25,16 @@ records only use vocabulary that exists and claim no review that did not happen,
 stays inside its evidence ceiling (including a recomputed SHA-256 of the real asset bytes), and the
 provenance record names no reviewer.
 
-`--selftest` plants 17 defects one at a time — unknown taxonomy token, duplicate id, repository-root
-licence, missing locale, medical claim phrase, embedded hotlink, fabricated review state, unadmitted
-media reference, an external gate marked reviewed, a short record count, a region absent from the
-asset, vocabulary drift, an anatomical-validation claim, a fabricated media admission, a hash that
-does not match the bytes, a self-declared production admission, a fabricated reviewer attestation —
-and fails unless the gate rejects every one. A gate that has never been shown to go red is a gate
-whose green means nothing.
+`--selftest` runs the validator's planted-defect matrix and fails unless every defect is rejected.
+The matrix is intentionally maintained beside the validator rather than duplicated as a count in
+documentation; a gate that has never been shown to go red is a gate whose green means nothing.
 
-## Not wired into CI
+## CI ownership
 
-This validator is not referenced from `scripts/` or `.github/workflows/verify.yml`. Both surfaces are
-outside this lane's path lease and need a convergence packet before the gate runs automatically.
+Issue #54 wires both the baseline and `--selftest` commands into the `policy-and-provenance` GitHub
+Actions job. This closes the previous convergence gap between the merged exercise lane and its owning
+repository oracle. Hosted evidence still counts only when the exact-head job receives a runner and
+executes the commands.
+
+Editorial acceptance, rights review, real licensed media, and production promotion remain separate
+`HUMAN_ADMIT_REQUIRED` gates. CI wiring does not upgrade any `DRAFT` content or media state.

@@ -34,7 +34,7 @@ main@b1880abe...
     │                           └── PR #73  CURRENT_ARCHITECTURE_PLATFORM_AUTHORITY_DRAFT
     │                               └── PR #75  CURRENT_PRODUCT_SAFETY_AUTHORITY_DRAFT
     │                                   └── PR #77  CURRENT_PRODUCT_IMPLEMENTATION_SSOT_DRAFT
-    │                                       └── Issue #78 / X14  current machine-delivery reconciliation
+    │                                       └── PR #79 / Issue #78  CURRENT_MACHINE_DELIVERY_GRAPH_DRAFT
     └── PR #59  TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT
 ```
 
@@ -56,6 +56,7 @@ Every Draft head owns separate evidence. A child does not inherit a parent's gre
 | #73 | #72 | `c633066df3361b3c57ebbfafd994755a8b6c999c` | run #105, 3/3 PASS | architecture/platform authority |
 | #75 | #74 | `144035f07694fc0439a094ba5326e0e93f9ee3a4` | run #108, 3/3 PASS | product/safety authority |
 | #77 | #76 | `56844bba2f46b0488ee18669f7bdde28f6603690` | run #110, 3/3 PASS | current product implementation SSOT |
+| #79 | #78 | current branch head | fresh exact-head run required | current machine-delivery reconciliation |
 
 ## Current domain/product truth
 
@@ -74,7 +75,7 @@ Dormant rule-pack/decision-receipt engineering is provenance/tested code, not cu
 
 ## Open Issue semantics
 
-Issues #32/#33/#35/#46/#47 remain open because external or Human acceptance remains, not because their repository engineering is absent. Issues #54/#56/#58/#60/#62/#64/#66/#68/#70/#72/#74/#76 have exact Draft PR engineering; Issue #78 is the current bounded machine-delivery reconciliation packet.
+Issues #32/#33/#35/#46/#47 remain open because external or Human acceptance remains, not because their repository engineering is absent. Issues #54/#56/#58/#60/#62/#64/#66/#68/#70/#72/#74/#76 have exact Draft PR engineering; Issue #78 is implemented by Draft PR #79 and awaits fresh exact-head evidence plus Human merge.
 
 Issue #45's Actions-capacity problem is historical. Current hosted execution exists; old blocked SHAs must not be rewritten as PASS.
 

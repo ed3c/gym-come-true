@@ -2,255 +2,153 @@
 
 [English](README.md)
 
-使用 Kotlin Multiplatform 與 Compose Multiplatform 建立的 evidence-first 健身 protocol 執行系統，支援 Android、iOS 與 Web。
+使用 Kotlin Multiplatform 與 Compose Multiplatform 建立的 evidence-first 健身資訊／記錄與 protocol 執行系統，支援 Android、iOS 與 Web。
 
-> **目前真實狀態（2026-08-19）：** `ed3c/gym-come-true` 是公開 repository。`main@b1880abe317ac274b59695439c4f9682b8864f6b` 已包含 foundation 與主要 domain contracts；GitHub Actions hosted runners 現在能正常執行。`main` 之上的 Draft PR evidence 只能證明各自 exact head。產品尚未取得 clinical、store release、第三方 exercise-media 或 Git Town consumer runtime admission。
+> **目前真實狀態（2026-08-20）：** repository 為公開庫。原 staged repo-internal chain PR #55/#57/#61/#63/#65/#67/#69/#71/#73/#75/#77/#79 與 convergence PR #81 已 merge 進 `main`。歷史 sibling PR #59 因 workflow 衝突沒有被強制 merge，而是由 #81 在 current main 上重新驗證後取代。GitHub Actions hosted runners 現在能正常執行。legal/clinical/editorial/rights/device/store/provider/signing/Git Town runtime admission 仍是獨立外部 gate。
 
-## 閱讀順序與 Evidence Vocabulary
+## Agent 閱讀順序
 
-Agent 必須依序閱讀 [AGENTS.md](AGENTS.md)、[Implementation status](docs/implementation-status.md)、[Architecture](docs/architecture.md) 與 [Git / Stacked-PR governance](docs/git/README.md)。
-
-| State | 精確含義 |
-|---|---|
-| `MERGED` | 程式已進 `main`；不代表 external 或 production admission。 |
-| `OPEN DRAFT PR` | GitHub 上已有 review subject，但尚未 merge。 |
-| `PASS` / `FAIL` | 指定 command 確實對指定 subject 執行。 |
-| `PRE_RUN_BLOCKED` | 歷史 workflow 在 runner 執行前停止；不是 code pass 或 code fail。 |
-| `ABSENT` | 所需 evidence 不存在。 |
-| `NOT_IMPLEMENTED` | 能力尚未實作。 |
-| `NOT_EXERCISED` | subject-bound runtime canary 尚未執行。 |
-| `HUMAN_ADMIT` | merge、release、legal/clinical/rights、signing 或 destructive production 操作仍由 human 決定。 |
-
-硬規則：
+依序讀取 [AGENTS.md](AGENTS.md)、[Implementation status](docs/implementation-status.md)、[Issue closure audit](docs/issue-closure-audit.md)、[Local Handoff Execution Queue](docs/local-handoff-execution-queue.md)、[Architecture](docs/architecture.md)、[Git governance](docs/git/README.md) 與 [Molecular Stack graph](docs/git/STACKED_PRS.md)。
 
 ```text
+OPEN_ISSUE != ABSENT_IMPLEMENTATION
 HOSTED_PASS(commit A) != HOSTED_PASS(commit B)
 GITHUB_CHECK_PASS != HUMAN_ADMIT
+INFORMATION_OR_LOGGING != SAFETY_VERDICT
+ARITHMETIC_RESULT != DOSE_RECOMMENDATION
+CONTRACT_CODE != LIVE_PROVIDER_EVIDENCE
 ADAPTER_PRESENT != REAL_DEVICE_VALIDATION
+DECLARED_PERMISSION != STORE_APPROVAL
+DEBUG_SIGNED != RELEASE_SIGNED
+SEMANTIC_PAYLOAD_HASHED != REPRODUCIBLE_BUILD_PROVEN
 GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED
 ```
 
-## Current Delivery Graph
+## 產品邊界
 
-歷史 foundation/convergence PR #2、#15、#16、#20、#22 已 merge。
+Gym Come True 是 information/logging 與 deterministic protocol tool，不是 diagnosis、dosing、medication-interaction 或 clinical decision system。OCR/barcode 先產生 candidate，使用者確認 label facts 後才進 arithmetic/logging。AI 只能在 mandatory notice 下說明 logged totals / general information，不得推薦劑量、診斷、補造 evidence、核准 rights 或成為 decision authority。
 
-目前 Draft evidence stack：
-
-```text
-main@b1880abe...
-└── PR #55  DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT
-    ├── PR #57  CURRENT_PUBLIC_REPO_SSOT_DRAFT
-    │   └── PR #61  CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT
-    │       └── PR #63  MACHINE_GATED_AUTHORITY_DRAFT
-    └── PR #59  TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT
-```
-
-Hosted runs #88、#89、#90、#91、#92 都已在各自 exact PR head 執行成功。更早被 Actions budget 擋在 runner allocation 前的 SHA 仍保留為歷史 `PRE_RUN_BLOCKED` evidence，不會被後來 green run 改寫。
-
-## 產品定位
-
-Gym Come True 是 information/logging 與 protocol-execution 系統，不是自由生成補充品建議的 chatbot。
-
-1. **Evidence-first capture**：ML Kit／Apple Vision OCR 與 barcode 結果先是 unverified evidence。
-2. **Deterministic arithmetic**：只對相容 mass units 做通用換算；unsupported unit 與缺 serving evidence fail closed。
-3. **Copyright-clean exercise intelligence**：metadata、rendering、media、model、UGC 分開治理。
-4. **Nutrition provenance**：repo 內 food fixtures 是 synthetic/default-deny；LLM 不得創造 nutrient facts。
-5. **A/B daily protocol**：deterministic 16:00／22:00 訓練日 schedule 支援跨午夜排序。
-6. **Proof before explanation**：LLM 只能解釋 deterministic receipt，不能擁有 dose、diagnosis、regulatory 或 rights decision。
-
-## Repository Map 與 State Machine 分工
+## Repository DAG：目錄 → State Machine → Dataflow
 
 ```text
-.
-├── shared/                     deterministic domain contracts + shared UI
-├── androidApp/                 Android evidence、reminders、Health Connect adapters
-├── iosApp/                     Apple evidence、reminders、HealthKit read adapter
-├── webApp/                     JS/Wasm projection
-├── data/                       synthetic/Draft catalogs 與 schemas
-├── legal/                      source/media/provenance boundaries
-├── assets/                     first-party 或明確 admitted assets
-├── scripts/                    deterministic validators 與 local-byte capture
-├── docs/                       architecture、implementation、governance SSOT
-├── docs/git/                   stacked-worker / Git Town governance
-├── .github/workflows/          exact-head hosted verification
-└── AGENTS.md                   root execution contract
+androidApp/ ─┐
+iosApp/     ─┼─> shared/ deterministic domain core ─> shared UI ─> Android/iOS/Web
+webApp/     ─┘                     │
+                                   ├─> data/ schemas + Draft/default-deny catalogs
+                                   ├─> legal/ + assets/ provenance/admission
+                                   └─> scripts/ validators ─> .github/workflows/ evidence
+
+docs/ + docs/git/ ─> Agent/runtime/delivery authority ─> Issues / Local Handoff Queue
 ```
 
-| Directory | State Machine / responsibility | 目前 evidence ceiling |
+| Directory | State Machine | Input → output | Evidence ceiling |
+|---|---|---|---|
+| `shared/` | `UNVERIFIED -> USER_CONFIRMED -> DETERMINISTIC_RESULT -> LOGGED/RECEIPT` | confirmed facts → arithmetic/timetable/UI | 不具 dose/safety/clinical authority |
+| `androidApp/` | `PERMISSION -> CAPTURE -> ML_KIT_CANDIDATE -> CONFIRM -> LOCAL_ACTION` | camera/barcode/OCR → reminder/Health Connect read | adapter != real-device/OEM/store proof |
+| `iosApp/` | `PERMISSION -> CAPTURE -> VISION_CANDIDATE -> CONFIRM -> LOCAL_ACTION` | Photos/camera/Vision → notification/HealthKit read | entitlement/device/store/AlarmKit proof 尚未 admit |
+| `webApp/` | `BOOTSTRAP -> SHARED_UI_READY -> USER_INPUT -> LOCAL_RESULT` | browser input → shared deterministic result | 不宣稱 native-health parity |
+| `data/` | `SYNTHETIC_OR_DRAFT -> VALIDATED -> TEST_ONLY/ADMISSION_PENDING` | catalog/schema/source candidate → local records | fixture 不可自我 production-admit |
+| `legal/` | `UNKNOWN -> REVIEW -> ALLOW/DENY -> REVOKED` | exact terms → admission record | 不等於法律核准 |
+| `assets/` | `QUARANTINED -> HASHED -> RIGHTS_REVIEWED -> ADMITTED -> REVOKED` | bytes → immutable admitted asset | third-party rights 必須獨立證明 |
+| `scripts/` | `INPUT -> VALIDATED -> PASS/FAIL` | repo bytes → deterministic receipts | validator != reviewer |
+| `.github/workflows/` | `QUEUED -> RUNNER_ALLOCATED -> EXECUTED -> PASS/FAIL -> ARTIFACT_UPLOADED` | exact checkout → CI evidence | check != Human Admit |
+| `docs/` | `OBSERVED -> DOCUMENTED -> MACHINE_GATED -> SUPERSEDED` | live evidence → authority surfaces | 文件不能製造外部 evidence |
+| `docs/git/` | `WORK_PACKET -> LEASED -> VERIFIED -> PUBLICATION_GATE -> MERGED/HUMAN_ADMIT` | Issue/branch/evals → molecular trace | Git Town runtime 仍 blocked |
+
+## 端到端 Dataflows
+
+```text
+Supplement / Body Hacker
+capture -> OCR/barcode candidate -> user confirmation -> compatible-mass arithmetic
+-> logged total -> A/B timetable -> reminder -> optional general-information AI explanation
+
+Nutrition
+synthetic/admitted food record -> provenance/serving validation -> deterministic arithmetic
+-> meal slots -> A/B timetable -> editable reminders
+
+Exercise/media
+first-party metadata/candidate asset -> quarantine -> exact provenance/rights review
+-> immutable hash -> admitted package OR deny/revoke
+
+Health
+platform permission -> least-privilege read adapter -> normalized shared observation -> user-visible log
+
+Artifact evidence
+build -> transport hash -> payload enumeration -> semantic payload hash -> JSON receipt -> hosted upload
+```
+
+## 真實問題 Closure Matrix
+
+| 問題 | 已實作 | Closure |
 |---|---|---|
-| `shared/` | `UNVERIFIED -> USER_CONFIRMED -> DETERMINISTIC_RESULT -> RECEIPT` | 不提供 personalized safe-dose 或 clinical authority。 |
-| `androidApp/` | permission/capture -> ML Kit candidate -> confirmation；reminder 與 least-privilege Health Connect adapters | Adapter/tests 已存在；real-device/OEM/privacy/store evidence 分開處理。 |
-| `iosApp/` | picker/camera -> Vision candidate -> confirmation；UserNotifications 與 `NativeHealthReadBridge` | HealthKit read surface 已存在；entitlement/device/store evidence 分開處理。 |
-| `webApp/` | `BOOTSTRAP -> SHARED_UI_READY -> USER_INPUT -> LOCAL_RESULT` | 不宣稱 native-health parity。 |
-| `data/` | `SYNTHETIC_OR_DRAFT -> STRUCTURALLY_VALIDATED -> TEST_ONLY` | Exercise content 仍是 Draft；nutrition source candidates 仍為 `CANDIDATE + DENY`。 |
-| `legal/` | `UNKNOWN -> REVIEW -> ALLOW/DENY -> REVOKED` | 權利不明 source/media 不得自行 admission。 |
-| `assets/` | `QUARANTINED -> HASHED -> RIGHTS_REVIEWED -> ADMITTED -> REVOKED` | 除非存在 exact admission record，目前只使用 first-party schematic assets。 |
-| `scripts/` | `INPUT -> VALIDATED -> PASS/FAIL` | Validator 不是 legal/clinical reviewer。 |
-| `docs/` | `OBSERVED -> DOCUMENTED -> REVIEWED -> SUPERSEDED` | Staged PR #63 已 machine-gate authority drift。 |
-| `.github/workflows/` | `QUEUED -> RUNNER_ALLOCATED -> EXECUTED -> PASS/FAIL` | Hosted runs 現在可執行；歷史 pre-run block 仍保留歷史身分。 |
-| `docs/git/` | `TASK_PACKET -> LEASED -> VERIFIED -> PUBLICATION_GATE -> HUMAN_ADMIT` | Git Town consumer runtime 仍 denied。 |
+| KMP Android/iOS/Web | shared JVM、Android debug/lint、Web distribution、iOS simulator framework/host | **repo-internal closed**；store/signing/device release 外部 |
+| ML Kit / Apple Vision supplement capture | on-device candidate extraction + confirmation boundary | engineering present；real-device/consented accuracy corpus open |
+| supplement totals/timetable/reminders | deterministic mass arithmetic、A/B schedule、local reminders | **repo-internal closed**；不提供 dosing/safety verdict |
+| exercise metadata | taxonomy + first-party bilingual 50-record `DRAFT` + validator | #32/#33 editorial/rights open |
+| exercise media / muscle visualization | first-party schematic + default-deny media governance | licensed media/anatomical review open |
+| nutrition / meal planning | synthetic catalog + validator + deterministic compiler | #46 source/license、#47 admitted-record dependency open |
+| AI analysis | OpenAI/Anthropic descriptors、notice、logged-totals/general-information、fallback | #35 provider/security/privacy open |
+| Health Connect / HealthKit | least-privilege read adapters | device/OEM/entitlement/store open |
+| exact alarm / AlarmKit | reminder fallback contracts | **not admitted** |
+| artifact identity | PR #81 / run #128 transport-vs-semantic receipts | **repo-internal closed**；release signing/reproducibility/attestation 外部 |
+| Git Town worker | v24.0.0 candidate metadata/verifier/harness | runtime/config/sync/publication canaries `NOT_EXERCISED` |
 
-## 端到端 Data Flows
-
-### Supplement / Body Hacker Ledger
+## Molecular Stack PR Trace
 
 ```text
-明確 capture
--> on-device OCR / barcode
--> UNVERIFIED candidate
--> 實體 label confirmation
--> compatible-mass arithmetic
--> deterministic LOG / REVIEW / BLOCK receipt
--> A/B protocol compiler
--> Android / iOS / Web timeline
--> platform reminder
--> optional receipt-only explanation
+main
+└─ #55 X2 domain validators
+   ├─ #57 X3 implementation SSOT
+   │  └─ #61 X5 AGENTS runtime contract
+   │     └─ #63 X6 authority gate
+   │        └─ #65 X7 bilingual README authority
+   │           └─ #67 X8 delivery machine SSOT
+   │              └─ #69 X9 roadmap/Git routing
+   │                 └─ #71 X10 implementation SSOT
+   │                    └─ #73 X11 architecture/platform authority
+   │                       └─ #75 X12 product/safety authority
+   │                          └─ #77 X13 product implementation SSOT
+   │                             └─ #79 X14 machine delivery graph
+   └─ #59 X4 historical sibling evidence（closed/unmerged after conflict）
+      └─ semantics replayed by #81 X15 current-main artifact-identity convergence
 ```
 
-### Taiwan Regulatory Evidence
-
-```text
-Mutable MOHW/TFDA reference
--> CANDIDATE + DENY
--> approved local bytes
--> SHA-256 / content address
--> legal/reuse review
--> exact mapping
--> qualified review
--> DRAFT -> REVIEWED -> STAGED -> ACTIVE
--> SUSPENDED / EXPIRED / REVOKED / ROLLED_BACK
-```
-
-`HASH_VERIFIED != LEGAL_REVIEWED != CLINICALLY_REVIEWED`。
-
-### Exercise / Media Rights
-
-```text
-First-party metadata 或 candidate asset
--> quarantine
--> exact rights evidence
--> immutable hash
--> scope/territory/term/derivative review
--> ALLOW
--> deterministic package
--> takedown / revocation
-```
-
-Publicly reachable 不代表可商業再散布；vendor CDN hotlink 不是 admission path。
-
-### Nutrition / Meal Plan
-
-```text
-Synthetic 或 admitted food record
--> provenance + serving/unit validation
--> deterministic nutrition arithmetic
--> user-selected targets/preferences
--> meal slots + A/B workout-day timetable
--> editable reminder commands
-```
-
-不得輸出 disease-treatment diet、medical calorie target 或 LLM-created nutrient facts。
-
-### Worker / Stacked PR
-
-```text
-Work packet
--> branch/path lease
--> bounded edit
--> fixed evals + negative controls
--> exact-head publication
--> remote ancestry/check evidence
--> HUMAN_ADMIT for merge/promotion
-```
-
-## Current Capability Truth
-
-| Capability | 目前狀態 | 尚未證明／admit |
-|---|---|---|
-| Android OCR/barcode | Bundled ML Kit candidate extraction | Representative consented corpus 與 real-device accuracy evidence |
-| iOS OCR/barcode | Apple Vision candidate extraction | Representative consented corpus 與 real-device accuracy evidence |
-| Supplement arithmetic | Shared deterministic mass arithmetic | Personalized safe dose／medication compatibility |
-| Exercise catalog | 50-record first-party bilingual Draft + deterministic validator | Editorial/rights acceptance 與 licensed third-party media |
-| Muscle visualization | First-party schematic/local mapping | 超出 declared schematic scope 的 anatomical/medical validation |
-| Nutrition | Synthetic bilingual catalog + deterministic admission validator + meal-plan compiler | Real Taiwan source/version/reuse-rights admission |
-| Android health | Health Connect availability/permission/read adapters + tests | Real-device/OEM/privacy/store evidence |
-| iOS health | HealthKit least-privilege read adapter | Entitlement/user authorization/device/store evidence |
-| Reminders | Android local reminders + iOS UserNotifications | Universal delivery、exact-alarm 或 AlarmKit reliability guarantee |
-| LLM explanation | Receipt-only decision-preserving contract | Security/privacy Human Admit 與 live provider/deployment evidence |
-| Artifact identity | PR #59 staged transport-vs-semantic receipts | Release reproducibility/signing/supply-chain attestation |
-| Git Town | Pinned v24.0.0 candidate metadata + canary harness | Consumer config、binary execution、live sync/publication canaries、runtime admission |
+每個 historical hosted run 只證明自己的 exact head。#59 沒有 force merge；衝突依 semantic-conflict-stop 規則改由 fresh convergence 處理。
 
 ## Git Town Boundary
 
 Canonical method：[`skills-shared/skills/git-town-stacked-pr-worker`](https://github.com/ed3c/skills-shared/tree/main/skills/git-town-stacked-pr-worker)。
-
-目前狀態：
 
 ```yaml
 candidate: v24.0.0
 candidate_metadata: VERIFIED
 runtime: CANDIDATE_METADATA_VERIFIED_RUNTIME_BLOCKED
 consumer_config: NOT_IMPLEMENTED
-binary_execution_in_consumer: NOT_EXERCISED
 sync_canary: NOT_EXERCISED
 publication_canary: NOT_EXERCISED
 background_sync: DISABLED
 production_use: DENY
-merge_ship_promotion: HUMAN_ADMIT
 ```
 
-Git Town 只有在 runtime admission 後才能擁有 branch hierarchy/synchronization；它永遠不能證明 product correctness、legal/clinical acceptance、merge readiness 或 release readiness。
+## Local Handoff
+
+只剩需要 local devices/accounts/credentials/legal/rights review 的工作。詳見 [Local Handoff Execution Queue](docs/local-handoff-execution-queue.md)。Open Issues #32/#33/#35/#46/#47 是 acceptance queues，不代表 implementation absent。
 
 ## Validation
 
-目前 staged lineage 的 policy/convergence commands 包含：
-
 ```bash
 python3 scripts/validate_repository.py
-python3 scripts/validate_taiwan_rule_pack.py
-python3 scripts/validate_taiwan_source_lifecycle.py
-python3 scripts/validate_taiwan_source_hardening.py
 python3 scripts/validate_stacked_delivery.py --self-test
-python3 data/exercise-catalog/validate_catalog.py
 python3 data/exercise-catalog/validate_catalog.py --selftest
-python3 scripts/validate_nutrition_catalog.py
 python3 scripts/validate_nutrition_catalog.py --self-test
-python3 scripts/validate_authority_surfaces.py
 python3 scripts/validate_authority_surfaces.py --self-test
+python3 scripts/validate_product_safety_authority.py --self-test
+python3 scripts/validate_artifact_identity.py self-test
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 sh ./gradlew :webApp:composeCompatibilityBrowserDistribution
 ```
 
-Hosted macOS lane 另外會 link Kotlin iOS simulator framework、產生 canonical XcodeGen project，並 build unsigned simulator host。
-
-## Remaining External / Human Admit Gates
-
-Repository code 無法自行製造：
-
-- 真實 consented Traditional Chinese label corpus 與 withdrawal/deletion operations；
-- exact MOHW/TFDA bytes、reuse approval、qualified Taiwan review 與 production rule activation；
-- real Taiwan food-composition source/version/reuse-rights mappings；
-- exercise editorial/rights acceptance 與 licensed/commissioned media；
-- real-device Health Connect/HealthKit/reminder evidence；
-- security/privacy approval 與 production provider/store credentials；
-- App Store／Google Play signing、listing、declaration 與 release-console operations；
-- Git Town runtime admission 與 live consumer canaries；
-- merge/release promotion。
-
-## 文件索引
-
-- [Implementation status](docs/implementation-status.md)
-- [Architecture](docs/architecture.md)
-- [Roadmap](docs/roadmap.md)
-- [GitHub Issue / PR index](docs/github-issue-index.md)
-- [Git / Stacked-PR governance](docs/git/README.md)
-- [Molecular Stack graph](docs/git/STACKED_PRS.md)
-- [Git Town admission](docs/git/GIT_TOWN_ADMISSION.md)
-- [Authority surface contract](docs/authority-surface-contract.md)
-- [Copyright and data governance](docs/copyright-and-data-governance.md)
-- [Health and supplement safety](docs/health-safety.md)
-
 ## License
 
-Repository 自行創作的程式碼與文件採用 **Apache License 2.0**，詳見 [LICENSE](LICENSE)。Third-party dependencies 與 assets 保留各自授權，詳見 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。Apache-2.0 不授予 third-party media、official-source redistribution、trademark、medical approval 或 store/release authorization。
+Repository 自行創作的程式碼與文件採 **Apache License 2.0**。Third-party dependencies/assets 保留自己的授權；Apache-2.0 不會授予 third-party media、official-data redistribution、medical、trademark、store 或 release 權利。

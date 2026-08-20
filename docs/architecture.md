@@ -2,105 +2,86 @@
 
 ## Decision
 
-Gym Come True uses Kotlin Multiplatform for deterministic domain logic and Compose Multiplatform for the shared application surface. Platform shells own permissions, OCR, notifications, health stores, and future system-alarm integrations. Source, media, clinical-review, entitlement, and model-provider authority remain separate planes.
+Gym Come True uses Kotlin Multiplatform for deterministic domain logic and Compose Multiplatform for the shared application surface. Platform shells own permissions, OCR, notifications, health-store adapters, and any future system-alarm integration. Source, media, clinical-review, entitlement, device, store, and model-provider authority remain separate planes.
 
-The current repository has no production backend, no HealthKit/Health Connect integration, no exact alarm, no clinically admitted Taiwan rule pack, no third-party exercise-media catalog, and no client-side provider secret.
+Current engineering includes least-privilege Android Health Connect availability/permission/read adapters, an iOS HealthKit read bridge, Android reminder persistence/reconciliation, iOS notification scheduling, on-device label evidence paths, exercise/nutrition contracts, and receipt-only explanation boundaries. None of that proves real-device behavior, OEM compatibility, HealthKit entitlement/store acceptance, production privacy review, exact/system alarm reliability, a clinically admitted Taiwan rule pack, third-party exercise-media rights, provider deployment, or store-signed release.
+
+```text
+ADAPTER_PRESENT != REAL_DEVICE_VALIDATION
+ENGINEERING_PRESENT != PRODUCTION_ADMITTED
+```
 
 ## Authority chain
 
 ```text
 AGENTS.md
   -> README.md / README.zh-TW.md
+  -> docs/implementation-status.md
   -> docs/architecture.md
+  -> docs/platform-capability-matrix.md + docs/store-compliance.md
   -> docs/git/README.md + REPO_PROFILE.md + STACKED_PRS.md
   -> assigned Issue / work packet
   -> nearest directory README
   -> executable tests and exact-head receipts
 ```
 
-Architecture prose is a decision record. Executable code, immutable manifests, and exact-subject receipts remain the implementation evidence.
+Architecture prose is a decision record. Executable code, immutable manifests, and exact-subject receipts remain implementation evidence. Live GitHub state outranks checked-in routing snapshots.
 
 ## Directory contract
 
 ```text
 shared/
 ├── src/commonMain/kotlin/dev/ed3c/gymcometrue/
-│   ├── domain/
-│   │   ├── Domain.kt                       # scan evidence, units, safety, protocol, LLM boundary
-│   │   ├── DailyIntake.kt                  # verified arithmetic and duplicate ingredients
-│   │   ├── TaiwanSupplementEvidence.kt     # corpus/rule-pack admission and decision receipts
-│   │   └── TaiwanSourceLifecycle.kt        # immutable source/mapping/release lifecycle
-│   └── ui/App.kt                           # shared dashboard and timeline
-├── src/commonTest/.../domain/               # deterministic tests and negative controls
-└── src/iosMain/.../MainViewController.kt    # ComposeUIViewController export
+│   ├── domain/                 # evidence, arithmetic, protocol, nutrition, health policy
+│   ├── explanation/            # receipt-only/provider-boundary contracts
+│   └── ui/                     # shared Compose projection
+├── src/commonTest/             # deterministic and negative controls
+└── src/iosMain/                # ComposeUIViewController export
 
 androidApp/
-├── MainActivity.kt                          # explicit capture/reminder actions
-├── scan/AndroidLabelScanner.kt              # bundled ML Kit candidate extraction
-├── reminder/ProtocolReminder.kt             # inexact local reminder
-└── AndroidManifest.xml                      # least-privilege declarations
+├── MainActivity.kt
+├── scan/                       # bundled ML Kit candidate extraction
+├── health/                     # Health Connect availability/permission/read adapters
+├── reminder/                   # inexact reminder + persisted transition reconciliation
+└── AndroidManifest.xml         # least-privilege declarations
 
 iosApp/
-├── project.yml                              # only admitted XcodeGen specification
+├── project.yml                 # only admitted XcodeGen specification
 └── GymComeTrue/
     ├── GymComeTrueApp.swift
     ├── ContentView.swift
-    ├── NativeCapabilityBridge.swift         # PhotosPicker/Vision/UserNotifications bridge
-    └── Info.plist
+    ├── NativeCapabilityBridge.swift  # Photos/Vision/notifications + NativeHealthReadBridge
+    └── Info.plist              # declared usage descriptions
 
-webApp/
-└── src/commonMain/                          # JS/Wasm shared-UI projection
+webApp/                         # JS/Wasm shared-UI projection
 
-data/
-├── seed/                                    # first-party/demo exercise metadata
-└── taiwan-supplement/                       # synthetic/Draft fixtures and schemas
-
-legal/
-├── source-registry.json
-├── media-registry.json
-├── provenance/
-├── taiwan-supplement-source-registry.json
-└── taiwan-official-resource-candidates.json
-
-assets/
-└── first-party/                             # repository-authored schematic asset
-
-scripts/
-├── validate_repository.py
-├── validate_taiwan_rule_pack.py
-├── validate_taiwan_source_lifecycle.py
-├── validate_taiwan_source_hardening.py
-└── capture_taiwan_source.py                 # approved local bytes only; no HTTP client
-
-docs/
-├── architecture.md
-├── implementation-status.md
-├── roadmap.md
-├── git/                                     # branch/worktree/Stacked-PR governance
-└── domain-specific decisions
-
-.github/workflows/
-└── verify.yml                               # policy, Android/Web/domain, and iOS hosted lanes
+data/                           # synthetic/Draft exercise, nutrition and Taiwan fixtures
+legal/                          # source/media/provenance/default-deny policy
+assets/                         # first-party or admitted immutable assets only
+scripts/                        # deterministic validators and bounded local-byte capture
+docs/                           # architecture/status/safety/delivery/Git authority
+.github/workflows/              # exact-head hosted verification
 ```
 
-Shadow iOS project specifications and duplicate native bridges are prohibited; `iosApp/project.yml` and `NativeCapabilityBridge.swift` are the sole canonical paths.
+Shadow iOS project specifications and duplicate native bridges are prohibited; `iosApp/project.yml` and `NativeCapabilityBridge.swift` are the canonical paths.
 
 ## Directory-to-state-machine responsibility
 
 | Directory | State machine | Authority boundary |
 |---|---|---|
-| `shared/domain` | evidence, arithmetic, safety, rule-pack, source, mapping, and release states | Owns deterministic transitions; never owns platform permission or secret storage |
-| `shared/ui` | domain-state projection into visible timeline/dashboard | May render state; cannot create stronger evidence |
-| `androidApp` | Android permissions, temporary capture, OCR candidate, reminder lifecycle | Produces candidates/events; cannot admit health rules or product identity |
-| `iosApp` | picker/Vision candidate and notification lifecycle | Produces candidates/events; canonical build is `project.yml` |
-| `webApp` | browser bootstrap/input/result lifecycle | Does not emulate unavailable native capabilities |
-| `data` | synthetic/Draft/test-only fixtures | Cannot self-declare production admission |
-| `legal` | candidate/review/allow/deny/revoke | Rights/source authority; no clinical inference |
-| `assets` | quarantine/hash/review/admit/package/revoke | Exact asset scope, not repository-wide assumption |
-| `scripts` | fixed input validation and local-byte capture | No arbitrary command execution and no mutable source capture in CI |
-| `docs` | observed/documented/reviewed/superseded | Describes truth; cannot replace executable evidence |
-| `.github/workflows` | queued/allocated/executed/pass-or-fail | Pre-run billing block is a separate state |
-| `docs/git` | packet/lease/sync/eval/publication/human-admit | Branch governance only; no product admission |
+| `shared/domain` | evidence, arithmetic, protocol, nutrition, health-read policy, source/release states | deterministic transitions only; no platform permission or secret authority |
+| `shared/explanation` | immutable receipt -> constrained explanation request/result | cannot create or override safety decisions |
+| `shared/ui` | domain-state projection | may render state; cannot create stronger evidence |
+| `androidApp` | permission, temporary capture, OCR candidate, Health Connect read, reminder lifecycle | adapter events only; no medical/store/device admission |
+| `iosApp` | picker/Vision, HealthKit read bridge, notification lifecycle | no Health write authority; no entitlement/device/store admission |
+| `webApp` | browser bootstrap/input/result lifecycle | does not emulate unavailable native capabilities |
+| `data` | synthetic/Draft/test fixtures | cannot self-declare production admission |
+| `legal` | candidate/review/allow/deny/revoke | rights/source authority; no clinical inference |
+| `assets` | quarantine/hash/review/admit/package/revoke | exact asset scope only |
+| `scripts` | fixed-input validation and local-byte capture | no arbitrary execution or mutable source capture in CI |
+| `docs` | observed/documented/reviewed/superseded | describes truth; cannot replace executable evidence |
+| `.github/workflows` | queued/allocated/executed/pass-or-fail | exact commit evidence only |
+| `docs/git` | packet/lease/sync/eval/publication/human-admit | branch governance only; no product admission |
 
 ## Runtime planes
 
@@ -112,60 +93,47 @@ flowchart TB
       Candidate[UNVERIFIED candidate]
       Confirm[Human confirmation]
       Ledger[Verified arithmetic ledger]
-      Safety[Deterministic safety engine]
-      Receipt[Versioned decision receipt]
-      Protocol[A/B protocol compiler]
+      Protocol[Deterministic timetable compiler]
       UI[Compose UI]
       Reminder[Platform reminder]
+      Health[Least-privilege health read adapter]
     end
 
     subgraph Evidence[Evidence and policy plane]
-      SourceCandidate[Mutable official-source candidate]
-      SourceSnapshot[Immutable content-addressed snapshot]
+      SourceCandidate[Source candidate]
+      SourceSnapshot[Immutable snapshot]
       LegalReview[Legal / terms review]
       Mapping[Exact source-field mapping]
-      QualifiedReview[Qualified rule and wording review]
+      QualifiedReview[Qualified review]
       RulePack[Versioned rule pack]
-      ReleaseState[Review / stage / active / revoke / rollback]
-      MediaLedger[Media rights and takedown ledger]
+      ReleaseState[Stage / active / revoke / rollback]
+      MediaLedger[Media rights ledger]
     end
 
-    subgraph FutureServer[Future privileged service plane]
-      Gateway[Authenticated API gateway]
-      Explanation[Explanation gateway]
+    subgraph Privileged[Privileged service boundary]
+      Gateway[Authenticated gateway]
+      Explanation[Explanation service]
       Entitlement[Server-verified entitlement]
-      Audit[Append-only audit receipt]
+      Audit[Audit receipt]
     end
 
-    Capture --> OCR --> Candidate --> Confirm --> Ledger --> Safety --> Receipt --> Protocol --> UI
+    Capture --> OCR --> Candidate --> Confirm --> Ledger --> Protocol --> UI
     Protocol --> Reminder
-
-    SourceCandidate --> SourceSnapshot --> LegalReview --> Mapping --> QualifiedReview --> RulePack --> ReleaseState --> Safety
+    Health --> UI
+    SourceCandidate --> SourceSnapshot --> LegalReview --> Mapping --> QualifiedReview --> RulePack --> ReleaseState
     MediaLedger --> UI
-
-    Receipt -. minimized structured payload .-> Gateway --> Explanation --> Audit
+    Ledger -. minimized immutable receipt .-> Gateway --> Explanation --> Audit
     Entitlement --> Gateway
 ```
 
-### Trust boundaries
-
-The client is inspectable and modifiable. It may hold user-owned local state and public/admitted catalog records, but it cannot hold:
-
-- model-provider, store, KMS, or signing secrets;
-- authoritative subscription state;
-- private clinical rule packs;
-- private source archives or commercial license contracts;
-- global mutable safety thresholds;
-- qualified reviewer identity/signature material.
-
-A future server can enforce an admitted policy version and produce receipts. It is still not a medical authority; clinical and legal review remain external controls.
+Provider deployment/credentials remain absent unless separately evidenced. The client never owns model-provider, store, KMS, or signing secrets; authoritative subscription state; private clinical rule packs; private license contracts; global mutable safety thresholds; or reviewer signature material.
 
 ## Label evidence state machine
 
 ```mermaid
 stateDiagram-v2
     [*] --> NotCaptured
-    NotCaptured --> CaptureRequested: explicit user action
+    NotCaptured --> CaptureRequested
     CaptureRequested --> CapturedTemporarily
     CapturedTemporarily --> CandidateExtracted: local OCR / barcode
     CapturedTemporarily --> Deleted: cancel / failure
@@ -174,13 +142,9 @@ stateDiagram-v2
     CandidateExtracted --> Rejected: mismatch / unclear
     UserConfirmed --> ArithmeticEligible: compatible confirmed mass fields
     UserConfirmed --> ReviewRequired: missing serving / IU / conflict / risk context
-    ArithmeticEligible --> RuleEvaluated: admitted rule-pack selection
-    RuleEvaluated --> Logged: LOG decision
-    RuleEvaluated --> ReviewRequired: REVIEW decision
-    RuleEvaluated --> Blocked: BLOCK decision
-    Logged --> ReceiptEmitted
+    ArithmeticEligible --> Logged: information/logging path
     ReviewRequired --> ReceiptEmitted
-    Blocked --> ReceiptEmitted
+    Logged --> ReceiptEmitted
     ReceiptEmitted --> [*]
     Rejected --> [*]
     Deleted --> [*]
@@ -188,69 +152,34 @@ stateDiagram-v2
 
 A barcode may narrow a candidate identity but cannot prove formulation, country variant, serving size, expiry, or authenticity.
 
-## Unit and safety state machine
+## Daily protocol compiler
 
 ```mermaid
-flowchart LR
-    Confirmed[Confirmed label field] --> Dimension{Unit dimension}
-    Dimension -->|mcg / mg / g| Normalize[Generic mass normalization]
-    Dimension -->|IU / volume / count / unknown| Block[BLOCK automation]
-    Normalize --> Context{Risk context}
-    Context -->|medication / symptom / pregnancy / procedure| Block
-    Context -->|rule pack missing / expired / conflicting| Review[REVIEW required]
-    Context -->|admitted exact rule and evidence| Log[LOG only]
-    Block --> Receipt[Reason-coded receipt]
-    Review --> Receipt
-    Log --> Receipt
+flowchart TB
+    Draft[User-authored plan] --> Variant{Training time}
+    Variant -->|16:00| A[Afternoon variant]
+    Variant -->|22:00| B[Night variant]
+    A --> Normalize[Normalize local time + dayOffset]
+    B --> Normalize
+    Normalize --> Sort[Stable absolute-minute ordering]
+    Sort --> Timeline[Visible editable timeline]
+    Timeline --> Reminder[Optional platform reminder]
 ```
 
-`LOG` means the record can be logged under the stated evidence. It does not mean the product or amount is medically safe.
-
-## Taiwan source and release state machine
-
-```mermaid
-stateDiagram-v2
-    [*] --> Candidate
-    Candidate --> Captured: approved local bytes
-    Captured --> HashVerified: exact bytes / length / SHA-256 / content address
-    HashVerified --> LegalReviewed: exact intended-use terms approved
-    HashVerified --> Revoked: corruption / withdrawn candidate
-    LegalReviewed --> MappingVerified: exact locator / target / excerpt hash
-    MappingVerified --> Reviewed: qualified rule + wording attestation
-    Reviewed --> Staged: exact version prepared
-    Staged --> Active: effective window + signatures + tests
-    Active --> Suspended: incident
-    Suspended --> Active: signed resume
-    Active --> Expired: effective window ends
-    Active --> Revoked: source / rule / safety incident
-    Suspended --> Revoked
-    Active --> RolledBack: exact rollback target
-    Suspended --> RolledBack
-    Revoked --> RolledBack
-    Expired --> RolledBack
-    RolledBack --> [*]
-```
-
-Production admission is computed for an exact version and date. Input data cannot set `productionAdmitted=true` as authority.
+Cross-midnight events use `dayOffset`. Arithmetic and scheduling do not become individualized medical advice.
 
 ## Android adapter state machines
 
-### Capture
+### Health Connect
 
-```mermaid
-stateDiagram-v2
-    [*] --> Idle
-    Idle --> PermissionCheck: user taps scan
-    PermissionCheck --> Denied: permission denied
-    PermissionCheck --> TempFileCreated: permission available
-    TempFileCreated --> CameraLaunched
-    CameraLaunched --> OcrCandidate: successful image
-    CameraLaunched --> TempFileDeleted: cancel / failure
-    OcrCandidate --> TempFileDeleted: extraction completes
-    TempFileDeleted --> SharedUnverifiedEvidence
-    Denied --> [*]
-    SharedUnverifiedEvidence --> [*]
+```text
+FEATURE_DISABLED
+  -> AVAILABILITY_CHECK
+  -> UNAVAILABLE | PERMISSION_REQUIRED | READ_READY
+  -> READ_RESULT | PERMISSION_REVOKED | READ_FAILED
 ```
+
+The manifest declares only `READ_WEIGHT` and `READ_EXERCISE`. Adapter presence does not establish real-device/OEM behavior, Play declaration acceptance, privacy review, or broader data authority.
 
 ### Reminder
 
@@ -258,9 +187,13 @@ stateDiagram-v2
 UNSCHEDULED
   -> SCHEDULED_INEXACT
   -> FIRED | CANCELLED | PERMISSION_DENIED | OS_DEFERRED
+
+persisted pending reminder
+  -> BOOT_COMPLETED | MY_PACKAGE_REPLACED | TIMEZONE_CHANGED
+  -> reconcile same inexact reminder contract
 ```
 
-The current adapter does not claim reboot, timezone, OEM, or exact-alarm reliability. Issue #10 owns that future evidence.
+No exact-alarm permission or universal delivery guarantee is implied.
 
 ## iOS adapter state machines
 
@@ -274,6 +207,18 @@ PICKER_IDLE
   -> NATIVE_RESOURCE_RELEASED
 ```
 
+### HealthKit
+
+```text
+FEATURE_DISABLED
+  -> AVAILABILITY_CHECK
+  -> AUTHORIZATION_REQUEST
+  -> READ_ATTEMPT
+  -> READ_RESULT | DENIED_OR_UNAVAILABLE | FAILED
+```
+
+`NativeHealthReadBridge` is read-only and least-privilege. HealthKit does not provide a general read-authorization truth oracle. Entitlement, real-device authorization, App Store disclosure, privacy review, and production behavior remain separate evidence.
+
 ### Notification
 
 ```text
@@ -283,7 +228,7 @@ AUTHORIZATION_UNKNOWN
   -> SCHEDULED | CANCELLED | DELIVERY_NOT_OBSERVED
 ```
 
-The canonical source set is `iosApp/project.yml` plus `GymComeTrueApp.swift`, `ContentView.swift`, and `NativeCapabilityBridge.swift`. Issue #9 owns future HealthKit, recurrence/timezone evidence, real-device tests, and AlarmKit assessment.
+AlarmKit is not currently admitted as a product capability. If introduced, system stop controls, usage description, device behavior and store semantics must remain explicit.
 
 ## Web state machine
 
@@ -295,45 +240,17 @@ BOOTSTRAP
   -> RENDERED
 ```
 
-Unavailable camera, health-store, exact-alarm, and native-notification features remain explicit `NOT_IMPLEMENTED` or use an honest manual-import fallback.
+Native health parity and system alarms are unavailable; browser-specific capabilities require their own evidence.
 
-## Exercise and media state machine
+## Exercise/media state machine
 
-```mermaid
-stateDiagram-v2
-    [*] --> Discovered
-    Discovered --> Quarantined
-    Quarantined --> Denied: unknown / non-commercial / incompatible
-    Quarantined --> RightsReviewed: exact contract/license and authorship
-    RightsReviewed --> Denied: intended scope not permitted
-    RightsReviewed --> Hashed: scope permits intended use
-    Hashed --> Admitted: ALLOW + reviewer + date
-    Admitted --> Packaged: manifest hash matches
-    Admitted --> Revoked: terms/source/takedown change
-    Packaged --> Revoked: claim or takedown
-    Revoked --> Removed: kill switch / release patch
-    Removed --> [*]
-    Denied --> [*]
+```text
+DISCOVERED -> QUARANTINED -> RIGHTS_REVIEWED -> HASHED -> ADMITTED -> PACKAGED
+                         \-> DENIED
+ADMITTED/PACKAGED -> REVOKED -> REMOVED
 ```
 
-Metadata source, media source, rendering code, anatomy/model asset, and UGC must each have independent rights evidence.
-
-## Daily protocol compiler
-
-```mermaid
-flowchart TB
-    Draft[User-authored plan] --> Variant{Training time}
-    Variant -->|16:00| A[Afternoon variant]
-    Variant -->|22:00| B[Night variant]
-    A --> Normalize[Normalize local time + dayOffset]
-    B --> Normalize
-    Normalize --> Sort[Stable absolute-minute ordering]
-    Sort --> Checkpoint[Insert evidence/readiness checkpoints]
-    Checkpoint --> Timeline[Visible timeline]
-    Timeline --> Reminder[Optional platform reminder]
-```
-
-Cross-midnight events use `dayOffset`, so `+1d 00:15` follows `22:00`.
+Metadata, written instructions, translation, media, rendering code, anatomy/model assets and UGC require independent rights evidence. Repository Apache-2.0 does not grant third-party asset rights.
 
 ## Git / Worker architecture
 
@@ -346,55 +263,50 @@ flowchart TB
     Worker[Bounded Worker]
     Evals[Fixed evals + negative controls]
     Sync[No-push deterministic sync]
-    Receipt[Append-only subject receipt]
+    Receipt[Subject receipt]
     Publish[Exact-HEAD publication gate]
     Remote[Remote branch / Draft PR]
-    Trusted[Trusted GitHub checks]
+    Trusted[Trusted exact-head checks]
     Human[Human Admit]
 
     SharedSkill --> Profile --> Packet --> Lease --> Worker --> Evals
     Evals -->|PASS| Sync --> Receipt --> Publish
-    Evals -->|FAIL| Receipt
     Publish -->|ALLOW one operation| Remote --> Trusted --> Human
-    Publish -->|BLOCK| Receipt
 ```
 
-The current repository has the policy/profile layer only. Git Town executable admission and live worktree/sync/conflict/publication canaries are `ABSENT` or `NOT_EXERCISED`.
+Current Git Town state:
 
-## Platform capability boundary
+```text
+candidate                  PINNED_CANDIDATE / v24.0.0
+runtime                    CANDIDATE_METADATA_VERIFIED_RUNTIME_BLOCKED
+consumer .git-town.toml    NOT_IMPLEMENTED
+consumer canaries          NOT_EXERCISED
+background sync            DISABLED
+production use             DENY
+```
 
-| Capability | Shared contract | Android | iOS | Web |
-|---|---|---|---|---|
-| Label evidence | `ScanEvidence` / Taiwan evidence contracts | ML Kit text + barcode | Vision text + barcode | manual/import later |
-| Camera/photo | callback boundary | system camera | PhotosPicker; camera not yet wired | browser capture later |
-| Reminder | protocol event | inexact AlarmManager | UserNotifications | browser notification later |
-| Exact/system alarm | capability state | not implemented | AlarmKit not implemented | N/A |
-| Health records | future normalized DTO | Health Connect planned | HealthKit planned | user import only |
-| Rule-pack admission | deterministic common code | shared | shared | shared |
-| Source lifecycle | deterministic common code | shared | shared | shared |
-| Model explanation | immutable receipt contract | no provider call | no provider call | no provider call |
+```text
+GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED
+```
 
 ## Failure behavior
 
 | Failure | Required behavior |
 |---|---|
-| OCR unavailable/unclear | manual confirmation; no inference |
-| Barcode absent/mismatch | unresolved identity; no automatic rule lookup |
-| Rule pack missing/expired/revoked | `REVIEW`/`BLOCK`; no model intuition fallback |
-| Source hash or mapping mismatch | deny rule-pack activation |
-| Legal/reviewer evidence absent | keep Draft/Review state |
-| Network/model outage | deterministic UI and warnings remain available |
-| Notification denied/deferred | timeline remains visible; show permission/delivery state |
-| Exact alarm unavailable | honest reminder fallback |
-| Media revoked | remove by manifest/kill switch |
-| Health permission revoked | stop reads; retain only user-authorized local history |
-| Timezone change | reproject future events and confirm ambiguity |
-| Dirty worktree/lease conflict | stop Worker and preserve state |
-| Semantic Git conflict | `BLOCKED_CONFLICT`; human resolution |
-| GitHub Actions budget/no runner | `PRE_RUN_BLOCKED`; neither PASS nor code FAIL |
+| OCR unclear | manual confirmation; no inference |
+| Barcode mismatch | unresolved identity |
+| Missing/invalid reviewed source | keep information/logging boundary; no invented rule |
+| Network/model outage | deterministic UI remains available |
+| Notification denied/deferred | timeline remains visible; expose delivery state |
+| Health permission revoked | stop reads; retain only authorized local history |
+| Timezone change | reproject/reconcile future events |
+| Media rights absent/revoked | deny/remove asset; retain text/local fallback |
+| Dirty worktree/lease conflict | stop Worker |
+| Semantic Git conflict | Human Admit |
+| Hosted runner unavailable | `PRE_RUN_BLOCKED`, not code PASS/FAIL |
 
 ## Observability without surveillance
 
-Allowed structural events include `scan_started`, `scan_completed_locally`, `candidate_confirmed`, `safety_blocked`, `reminder_permission_denied`, `source_manifest_rejected`, and `media_manifest_rejected`.
+Allowed structural events include `scan_started`, `scan_completed_locally`, `candidate_confirmed`, `reminder_permission_denied`, `health_permission_denied`, `source_manifest_rejected`, and `media_manifest_rejected`.
 
 Do not send raw OCR text, image pixels, full barcode, medication free text, health samples, private source bytes, reviewer identity, secret values, or branch credentials into general analytics or portable receipts.

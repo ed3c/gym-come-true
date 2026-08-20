@@ -1,279 +1,194 @@
 # Implementation status
 
-**Snapshot date:** 2026-08-18 (post-MVP-repositioning; see `docs/product/mvp-redesign.md`)  
-**Repository:** `ed3c/gym-come-true` (private, immutable repository ID `1334805292`)  
-**Current leaf:** `main`, fast-forwarded to `a70a52cc6e3e2f4107edae2f7bb2034029161568` plus the delivery-contract commit  
-**Merge state:** the whole stack is integrated into `main`; hosted evidence is still absent
+**Authoritative snapshot:** 2026-08-19  
+**Repository:** `ed3c/gym-come-true` — public, immutable repository ID `1334805292`  
+**Merged `main` at snapshot:** `b1880abe317ac274b59695439c4f9682b8864f6b`  
+**Current staged parent:** Draft PR #55, `agent/converge-domain-validation@1338b6fd2a1007cf06e24aca3a6a4bd07f9b7fa5`  
+**This SSOT packet:** Issue #56, docs-only child of PR #55
 
-## Integrated stack
+This file separates merged repository truth, staged-but-unmerged evidence, and external Human Admit gates. A green check on one SHA never retroactively proves an older SHA, and code/tests never imply legal, clinical, rights, device, store, provider, or production admission.
 
-| PR | Transition | Merged head | Current meaning |
-|---:|---|---|---|
-| [#2](https://github.com/ed3c/gym-come-true/pull/2) | `EMPTY_REPOSITORY -> AUDITABLE_CROSS_PLATFORM_FOUNDATION` | `58492815f22af65665172bcf98bfb661639ece92` | KMP Android/iOS/Web foundation and default-deny safety/rights boundary |
-| [#15](https://github.com/ed3c/gym-come-true/pull/15) | `FOUNDATION -> TAIWAN_EVIDENCE_CONTRACT_DRAFT` | `79f8a65b370806925c32f0a15da88c7c0d7bda36` | Product/corpus identity, OCR metrics, rule-pack admission, decision receipts |
-| [#16](https://github.com/ed3c/gym-come-true/pull/16) | `EVIDENCE_DRAFT -> TAIWAN_SOURCE_LIFECYCLE_DRAFT` | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | Immutable source, exact mapping, release/revoke/rollback contracts |
-| [#20](https://github.com/ed3c/gym-come-true/pull/20) | `SOURCE_LIFECYCLE_DRAFT -> DOCUMENTED_DELIVERY_GRAPH_DRAFT` | `ad065c8ac944f2fb4f9d60e65b008367b1291c43` | README/AGENTS/architecture/roadmap/Git Town governance convergence |
-| [#22](https://github.com/ed3c/gym-come-true/pull/22) | `DELIVERY_GRAPH_DRAFT -> GIT_TOWN_CANDIDATE_EVIDENCE_RECORDED` | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | Pinned Git Town candidate metadata and disposable canary harness |
-| Issue [#23](https://github.com/ed3c/gym-come-true/issues/23) | `CANDIDATE_RECORDED -> MACHINE_VERIFIED_STACKED_DELIVERY` | delivered on `main` | Machine-verifiable delivery manifest, schema, validator, and templates |
+## Historical stack already merged
 
-Issues #24–#40 and #46–#48 advanced to local draft/contract states on 2026-08-18 (see the
-domain-lane table below). Issues #41–#45 remain human/external-owned. No lane state is a
-completed PR, a hosted check, or an external-gate admission.
+| PR | Merged state | Current meaning |
+|---:|---|---|
+| #2 | `AUDITABLE_CROSS_PLATFORM_FOUNDATION` | KMP Android/iOS/Web foundation with default-deny health/evidence/media boundaries |
+| #15 | `TAIWAN_EVIDENCE_CONTRACT_DRAFT` | Product/corpus identity, OCR metrics, rule-pack admission and decision receipts |
+| #16 | `TAIWAN_SOURCE_LIFECYCLE_DRAFT` | Immutable source, exact mapping, release/revoke/rollback contracts |
+| #20 | `DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT` | README/AGENTS/architecture/roadmap and repository-owned delivery governance |
 
-## Domain lane drafts (2026-08-18, local only)
+These PRs are merged history, not active Draft PRs.
 
-Seven sibling lanes were implemented in isolated worktrees from `main` and merged back without
-conflicts. Every external gate (legal/clinical review, real consent, provider/store credentials,
-devices, licensed media, signatures) remains `ABSENT` / `HUMAN_ADMIT_REQUIRED`.
+## Current staged convergence
 
-| Lane branch | Issues | Delivered local state |
+Draft PR #55 is one commit ahead of `main` and changes only the exercise/nutrition owning-oracle layer:
+
+```text
+main@b1880abe...
+└── PR #55 agent/converge-domain-validation@1338b6fd...
+    MERGED_DOMAIN_LANES_WITH_EVIDENCE_GAPS
+      -> DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT
+```
+
+PR #55 adds `scripts/validate_nutrition_catalog.py`, wires both exercise and nutrition baseline/self-tests into `policy-and-provenance`, and updates the two data-lane READMEs. It does not alter Kotlin domain semantics or admit external evidence.
+
+Exact-head GitHub Actions `verify` run #88 (`32250370996`) completed successfully on `1338b6fd2a1007cf06e24aca3a6a4bd07f9b7fa5`:
+
+- `policy-and-provenance`: PASS, including exercise baseline/self-test and nutrition baseline/10-mutation self-test;
+- `android-web-domain`: PASS, including shared JVM tests, Android debug/lint, Web compatibility distribution, and uploaded artifacts;
+- `ios-framework-and-host`: PASS, including Kotlin simulator framework, canonical XcodeGen generation, and unsigned simulator host build.
+
+This evidence proves PR #55's exact head only. PR #55 remains Draft; merge is Human Admit.
+
+## Current domain truth
+
+| Domain | Merged/staged engineering state | Still not admitted |
 |---|---|---|
-| `agent/lane-taiwan-corpus` | #24 #25 #26 | `CONSENT_CONTRACT_DRAFT`, `OCR_EVALUATION_DRAFT`; #26 deterministic admission gate only (`EXTERNAL_GATES_ABSENT`) |
-| `agent/lane-ios-native` | #27 #28 #29 | `IOS_EVIDENCE_HANDOFF_DRAFT`, `IOS_MINIMAL_HEALTH_READS_DRAFT`, reminder contract draft (device evidence `ABSENT`) |
-| `agent/lane-android-health` | #30 #31 | Health Connect adapter contract draft, reminder reliability harness contract (OEM matrix `ABSENT`) |
-| `agent/lane-exercise-catalog` | #32 #33 #34 #48 | `TAXONOMY_CONTRACT`; top-50 bilingual draft; media-admission contract core (0 admitted assets); muscle slug mapping + intensity semantics |
-| `agent/lane-explanation-gateway` | #35 #36 #37 | `EXPLANATION_GATEWAY_CONTRACT_DRAFT`, stub-only provider boundary, adversarial corpus draft |
-| `agent/lane-entitlement-privacy` | #38 #39 #40 | `VERIFIED_ENTITLEMENT_DRAFT`, `ACCOUNT_DATA_LIFECYCLE_DRAFT`; release-manifest schema only for #40 |
-| `agent/lane-nutrition` | #46 #47 | Food-catalog schema/validator draft, deterministic meal-plan compiler with tests |
+| Supplement evidence | OCR/barcode candidates, confirmed-mass arithmetic, duplicate detection, deterministic `LOG/REVIEW/BLOCK`, A/B timetable, decision receipts | personalized dose/diagnosis, medication compatibility, clinically reviewed Taiwan rule pack |
+| Taiwan source lifecycle | immutable-source, exact-mapping, release/revoke/rollback contracts and local-byte capture boundary | real official source bytes, exact reuse approval, legal review, qualified clinical review, production activation |
+| Exercise taxonomy/catalog | canonical taxonomy and 50-record first-party bilingual `DRAFT` catalog are merged; deterministic gate exists; PR #55 gives it CI ownership | editorial/rights acceptance, licensed third-party media, production promotion |
+| Nutrition/meal plan | `FoodCatalogAdmissionValidator`, bilingual synthetic catalog, `CANDIDATE + DENY` source fixtures, and deterministic meal-plan compiler are merged; PR #55 adds the repository-level nutrition oracle | real Taiwan food-composition source/version/license approval, exact mappings, production food records |
+| Explanation gateway | receipt-only, decision-preserving explanation contract is merged | security/privacy Human Admit, live provider/secret/deployment evidence, production traffic |
+| Android health | Health Connect availability/permission adapter surfaces and tests exist | real-device/OEM evidence, production disclosure/privacy evidence, any claim of universal availability |
+| iOS health | `HKHealthStore` bridge plus shared read-access decision logic exists | HealthKit entitlement/device authorization evidence, store disclosure, real-device validation |
+| Reminders | Android local reminder and iOS notification/recurrence contracts exist | exact-alarm/AlarmKit product admission, OEM/device reliability guarantees |
+| Git Town | v24.0.0 candidate metadata, static verifier and disposable canary harness exist | runtime admission, consumer `.git-town.toml`, live consumer sync/publication canaries, legal/supply-chain approval |
 
-## Implemented by directory
+## Evidence boundaries that remain hard laws
+
+```text
+OCR_CANDIDATE != CONFIRMED_FACT
+HASH_VERIFIED != LEGAL_REVIEWED
+LEGAL_REVIEWED != CLINICALLY_REVIEWED
+DRAFT_CONTENT != RIGHTS_ADMITTED_CONTENT
+CONTRACT_CODE != LIVE_PROVIDER_EVIDENCE
+ADAPTER_PRESENT != REAL_DEVICE_VALIDATION
+GITHUB_CHECK_PASS != HUMAN_ADMIT
+GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED
+```
+
+No LLM may invent nutrient facts, recommend a supplement dose, override a deterministic warning, sign a rule pack, approve rights, or promote a source/media record.
+
+## Open issues and actual remaining gates
+
+| Issue | Engineering state | Remaining gate |
+|---:|---|---|
+| #32 | `TAXONOMY_CONTRACT` present on `main`; owning validator staged in PR #55 | taxonomy/rights Human Admit |
+| #33 | first-party bilingual top-50 `DRAFT` present; owning validator staged in PR #55 | editorial/rights Human Admit |
+| #35 | `EXPLANATION_GATEWAY_CONTRACT_DRAFT` present | security/privacy Human Admit |
+| #46 | schema/admission contract and synthetic/default-deny catalog present; repository validator staged in PR #55 | real source/version/reuse-rights review and admitted mappings |
+| #47 | deterministic meal-plan compiler and tests present; shared JVM job passed on PR #55 | parent #46 must provide admitted real food records |
+| #54 | convergence implementation is PR #55 and exact-head hosted checks are green | merge PR #55 (Human Admit) |
+| #56 | this documentation reconciliation packet | exact-head child verification and merge (Human Admit) |
+
+Issue #45 is closed: Actions capacity is currently sufficient for the active Draft stack, as demonstrated by run #88. Older budget-blocked runs remain historical `PRE_RUN_BLOCKED` evidence and are not rewritten as green.
+
+## Directory-level implementation highlights
 
 ### `shared/`
 
-- English and Traditional Chinese supplement-label parser.
-- Ingredient names containing numbers, comma/thousands, and decimal variants.
-- Generic `mcg/µg/μg`, `mg`, and `g` mass normalization.
-- Explicit refusal to generically convert IU, volume, activity, or container-count units.
-- Deterministic `LOG`, `REVIEW`, and `BLOCK` decisions.
-- Verified-mass daily ledger and cross-product duplicate detection.
-- A 16:00 / B 22:00 protocol compiler with cross-midnight `dayOffset`.
-- Immutable explanation boundary with dose recommendation and warning override disabled.
-- Product-variant identity and nullable serving definition.
-- Consent-aware corpus admission and image-retention boundary.
-- Field-level OCR metrics separating first-pass accuracy from correction completion.
-- Taiwan rule-pack admission, required safety cases, reviewer/wording/rollback gates, and decision receipts.
-- Immutable source artifact, exact mapping, rule-pack release, suspension, revocation, expiry, and rollback contracts.
-- Common tests and negative controls.
-- Shared Compose dashboard, timeline, and repository-authored schematic muscle view.
+- supplement parsing and compatible mass normalization (`mcg/mg/g` only);
+- verified daily arithmetic, duplicate detection, deterministic safety decisions;
+- A 16:00 / B 22:00 protocol with cross-midnight ordering;
+- Taiwan evidence/source lifecycle and decision-receipt contracts;
+- exercise taxonomy/catalog contracts and muscle mapping;
+- nutrition catalog admission and deterministic meal-plan compiler;
+- shared Health/evidence/reminder decision contracts;
+- explanation boundary that cannot own the safety decision.
 
 ### `androidApp/`
 
-- Compose host.
-- Explicit system-camera capture via `TakePicture`.
-- Private cache `FileProvider`.
-- Bundled ML Kit Chinese text recognition and barcode scanning.
-- SHA-256 identity for recognized text.
-- Unverified candidate parsing.
-- Temporary image deletion on success/failure paths.
-- Notification permission flow.
-- Inexact local reminder and receiver.
+- Compose host, system-camera capture, private cache `FileProvider`;
+- bundled ML Kit Chinese OCR/barcode candidates and temporary-file deletion;
+- notification permission/reminder surfaces;
+- Health Connect availability/permission integration surfaces.
 
-Not yet implemented: Health Connect, reboot/timezone rescheduling, recurrence proof, exact-alarm need assessment, OEM/device reliability matrix.
+Real device/OEM reliability and production privacy/store evidence remain absent.
 
 ### `iosApp/`
 
-- SwiftUI host for shared Compose UI.
-- One canonical XcodeGen spec: `iosApp/project.yml`.
-- Canonical native bridge: `iosApp/GymComeTrue/NativeCapabilityBridge.swift`.
-- PhotosPicker and Apple Vision OCR/barcode candidate extraction.
-- Recognized-text SHA-256 and visible unverified-evidence summary.
-- UserNotifications reminder control.
-- Camera/photo usage-purpose strings.
+- SwiftUI/Compose host with canonical `iosApp/project.yml`;
+- PhotosPicker / Vision OCR+barcode evidence path;
+- notification scheduling bridge;
+- `HKHealthStore` integration surface and shared Health read policy.
 
-Not yet implemented: direct camera flow, structured Swift/Kotlin evidence handoff completion, HealthKit, recurrence/timezone harness, AlarmKit assessment, real-device evidence.
+Entitlements, real-user authorization, AlarmKit admission, signing and real-device/store evidence remain separate gates.
 
 ### `webApp/`
 
-- Compose JS executable.
-- Compose Wasm executable.
-- Wasm/JS compatibility distribution.
-- Browser host and responsive viewport.
+- Kotlin/Wasm + Kotlin/JS compatibility distribution;
+- shared UI/runtime contract.
 
-Not yet implemented: native camera/health parity, browser notification reliability, production hosting/release evidence.
+Production hosting, browser-notification reliability and native health parity are not implied.
 
-### `data/`, `legal/`, and `assets/`
+### `data/`, `legal/`, `assets/`
 
-- Repository-authored exercise seed and first-party demo metadata.
-- First-party schematic muscle asset with provenance.
-- Default-deny source and media registries.
-- Taiwan source candidates with prohibited-inference boundaries.
-- Synthetic Traditional Chinese corpus fixture.
-- Draft Taiwan rule-pack fixture.
-- Synthetic immutable source snapshot and exact excerpt-hash fixture.
-- JSON Schema transport contracts.
-- No third-party exercise image/video/GIF/3D model or vendor CDN hotlink is admitted.
-- No official MOHW/TFDA source byte is production-admitted.
+- synthetic/default-deny Taiwan evidence and nutrition fixtures;
+- first-party exercise catalog and schematic muscle asset;
+- default-deny source/media governance.
 
-### `scripts/`
+No unreviewed third-party media, scraped nutrition database, official source byte, or vendor CDN hotlink is production-admitted.
 
-- Repository policy validator.
-- Taiwan evidence/rule-pack validator.
-- Taiwan source lifecycle validator.
-- Taiwan source capture hardening validator.
-- Approved local-byte content-addressed source capture.
-- Source capture has no HTTP client and defaults to `HASH_VERIFIED + DENY`.
+## Git Town / Worker state
 
-### `.github/workflows/`
+`docs/git/GIT_TOWN_ADMISSION.md` is authoritative for runtime admission. Current state is:
 
-The workflow defines separate lanes for:
-
-- policy and provenance;
-- shared JVM, Android, lint, and Web compatibility;
-- iOS framework/XcodeGen/unsigned simulator host.
-
-Runner allocation and command execution are separate states.
-
-## Current state machines
-
-```text
-Label:
-NOT_CAPTURED
-  -> TEMPORARY_CAPTURE
-  -> UNVERIFIED_CANDIDATE
-  -> USER_CONFIRMED | REJECTED
-  -> LOG | REVIEW | BLOCK
-  -> DECISION_RECEIPT
-
-Taiwan source:
-CANDIDATE
-  -> CAPTURED
-  -> HASH_VERIFIED
-  -> LEGAL_REVIEWED
-  -> VERIFIED_MAPPING
-  -> REVIEWED
-  -> STAGED
-  -> ACTIVE
-  -> SUSPENDED | EXPIRED | REVOKED | ROLLED_BACK
-
-Media:
-QUARANTINED
-  -> RIGHTS_REVIEWED
-  -> HASHED
-  -> ADMITTED
-  -> PACKAGED
-  -> REVOKED
-  -> REMOVED
-
-Delivery:
-TASK_PACKET_DRAFT
-  -> LEASED
-  -> LOCALLY_VERIFIED
-  -> PUBLICATION_ALLOW/BLOCK
-  -> REMOTE_ANCESTRY_VERIFIED
-  -> TRUSTED_CHECKS
-  -> HUMAN_ADMIT
+```yaml
+state: CANDIDATE_METADATA_VERIFIED_RUNTIME_BLOCKED
+runtime_admitted: false
+consumer_config_admitted: false
+archive_materialized_in_current_environment: false
+binary_executed_in_current_environment: false
+live_canaries_exercised: false
+background_sync_enabled: false
+publication_enabled: false
+production_use: DENY
 ```
 
-## Partial or intentionally constrained capabilities
-
-| Capability | Current behavior | Missing production evidence |
-|---|---|---|
-| Supplement recognition | Local OCR/barcode candidates | representative consented corpus, field confidence UX, real device evaluation |
-| Daily ledger | confirmed mass arithmetic and duplicates | chemical-form ontology, clinically reviewed Taiwan limits |
-| Taiwan supplement policy | admission/lifecycle contracts | exact official bytes, legal scope, verified mappings, qualified review, production rules |
-| LLM | typed explanation boundary only | authenticated backend, provider, output validator, adversarial evals, audit, kill switch |
-| Exercise catalog | first-party demo/schema | canonical top-50, independent bilingual authoring, retention evidence |
-| Exercise media | first-party schematic only | executed licenses/commissioned assets, derivative pipeline, revocation drill |
-| Android reminders | inexact local reminder | reboot/timezone/OEM harness and exact-alarm assessment |
-| iOS reminders | local notification control | recurrence/timezone/device tests and AlarmKit assessment |
-| Health data | architecture boundary | least-privilege Health Connect/HealthKit adapters and privacy evidence |
-| Entitlements | product requirement only | server validation, restore/refund/offline grace, provider credentials |
-| Store release | docs/CI foundation | signing, forms, privacy manifests, listings, support and rollback operations |
-| Market validation | strategy and material guidance | real interviews, rights-cleared creator contracts, retained-contribution evidence |
-
-## Not implemented or not admitted
-
-- diagnosis, medication advice, personal supplement dose recommendation, or automatic stack optimization;
-- clinically reviewed Taiwan dose/interaction rules;
-- real consented production label corpus in Git;
-- production exercise importer or third-party media;
-- Health Connect or HealthKit;
-- Android exact alarms or AlarmKit;
-- login, cloud sync, backend database, active LLM provider, or provider keys;
-- StoreKit/Play/Web production entitlement authority;
-- App Store/Google Play signing and submission;
-- production analytics or creator CRM;
-- Git Town executable/config/runtime canaries.
-
-## Git Town / Worker adoption status
-
-| Item | State |
-|---|---|
-| Shared canonical Skill | `PASS` — resolved and reviewed |
-| Repo-owned Git profile | Documented |
-| Stack graph / work-packet template | Documented |
-| Exact Git Town version and executable | `ABSENT` |
-| Executable checksum/provenance/SBOM/notices/legal review | `ABSENT` |
-| `.git-town.toml` | `NOT_IMPLEMENTED` |
-| Linked worktree/lease canary | `NOT_EXERCISED` |
-| No-push sync canary | `NOT_EXERCISED` |
-| Conflict canary | `NOT_EXERCISED` |
-| Publication canary | `NOT_EXERCISED` |
-| Background sync | disabled |
-| Merge/ship/promotion | Human Admit |
-
-Documentation proves the intended method and branch graph. It does not prove a Git Town runtime.
+The repository contains the candidate packet, verifier and disposable canary harness. `.git-town.toml` remains `NOT_IMPLEMENTED`; no consumer sync, publication, merge, ship or rollback authority is delegated to Git Town.
 
 ## Verification contract
+
+On PR #55 the following owning lanes have exact-head hosted PASS:
 
 ```bash
 python3 scripts/validate_repository.py
 python3 scripts/validate_taiwan_rule_pack.py
 python3 scripts/validate_taiwan_source_lifecycle.py
 python3 scripts/validate_taiwan_source_hardening.py
+python3 scripts/validate_stacked_delivery.py --self-test
+python3 data/exercise-catalog/validate_catalog.py
+python3 data/exercise-catalog/validate_catalog.py --selftest
+python3 scripts/validate_nutrition_catalog.py
+python3 scripts/validate_nutrition_catalog.py --self-test
 
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 sh ./gradlew :webApp:composeCompatibilityBrowserDistribution
 ```
 
-macOS:
+The macOS job also linked the Kotlin simulator framework, generated the canonical Xcode project and built the unsigned simulator host. Re-run exact-head checks after any code/evidence/workflow change; do not reuse run #88 after the head moves.
 
-```bash
-cd iosApp
-xcodegen generate --spec project.yml
-xcodebuild \
-  -project GymComeTrue.xcodeproj \
-  -scheme GymComeTrue \
-  -sdk iphonesimulator \
-  -configuration Debug \
-  CODE_SIGNING_ALLOWED=NO \
-  ONLY_ACTIVE_ARCH=YES \
-  ARCHS=arm64 \
-  build
-```
+## Not production-admitted
 
-Only exact commands that actually ran against the stated commit count as `PASS` or `FAIL`.
+The repository does not currently establish:
 
-## Hosted evidence
-
-No workflow run on this repository has ever allocated a runner. PR #16 exact head
-`f58a2feac580ca37bb4d7b3c30e122908bfd6b07` has workflow run `31878284072` (run #79); its three jobs
-contain no executed steps and ended before runner allocation. GitHub's annotation states that an
-Actions budget prevented further use. Every other run to date matches.
-
-Classification:
-
-```text
-PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET
-```
-
-This is neither hosted PASS nor product-code failure. Restoring capacity is Issue #45 and stays
-owner-controlled.
-
-## Local evidence
-
-Local execution is not hosted evidence and does not satisfy any exact-head acceptance box. It is
-recorded because it is the only lane that has actually executed, and because it found three defects
-the blocked hosted lane never reported. See
-[2026-08-16 local verification receipt](delivery/2026-08-16-local-verification.md).
+- diagnosis, medication advice or personalized supplement dose recommendations;
+- a clinically reviewed Taiwan dose/interaction rule pack;
+- a real consented production label corpus in Git;
+- an admitted Taiwan food-composition dataset or medical diet target;
+- licensed third-party exercise media;
+- Health Connect/HealthKit real-device production validation;
+- Android exact-alarm or AlarmKit delivery guarantees;
+- live LLM/store/provider credentials or production authority;
+- App Store / Google Play signing and submission;
+- Git Town consumer runtime admission;
+- any external legal, clinical, editorial, rights or security approval inferred solely from code/tests.
 
 ## Next admitted work
 
-The dependency and molecular branch plan is maintained in:
-
-- [Roadmap](roadmap.md)
-- [GitHub Issue / PR index](github-issue-index.md)
-- [Molecular Stacked PR graph](git/STACKED_PRS.md)
-
-External gates remain source/legal review, consented corpus, qualified Taiwan review, exercise-media rights, provider/store credentials, real-device evidence, Actions capacity, and Human Admit.
+1. Human review/merge PR #55 after reading the exact-head run #88 receipt.
+2. Keep #32/#33/#35/#46 open until their explicit Human Admit/external gates are satisfied.
+3. Treat #47 as staged code blocked on admitted real food records from #46.
+4. Complete Issue #56 only as this docs-only child; it must not modify parent code/evidence.
+5. Continue future work from the dependency graph in `docs/roadmap.md`, `docs/github-issue-index.md`, and `docs/git/STACKED_PRS.md` without reopening already-merged implementations.

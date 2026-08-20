@@ -1,113 +1,94 @@
 # GitHub Delivery Issue and Pull Request Index
 
-**Authoritative snapshot:** 2026-08-19  
+**Authoritative snapshot:** 2026-08-20  
 **Repository:** `ed3c/gym-come-true` — public  
 **Live-state rule:** GitHub PR/Issue state and exact commit ancestry outrank historical prose.
 
-This index separates four things that previous snapshots conflated:
+This index separates merged history, staged engineering, exact-head Draft evidence, and Human/external admission.
 
 ```text
-MERGED_HISTORY
-STAGED_OR_MERGED_ENGINEERING
-OPEN_DRAFT_EVIDENCE
-HUMAN_OR_EXTERNAL_ADMISSION
-```
-
-A branch name or open Issue does not prove absent implementation. A green workflow on one SHA does not prove another SHA.
-
-## Historical stack merged to `main`
-
-| PR | Issue | Exact merged head | Durable engineering state |
-|---:|---:|---|---|
-| #2 | #1 | `58492815f22af65665172bcf98bfb661639ece92` | `AUDITABLE_CROSS_PLATFORM_FOUNDATION` |
-| #15 | #8 | `79f8a65b370806925c32f0a15da88c7c0d7bda36` | `TAIWAN_EVIDENCE_CONTRACT_DRAFT` |
-| #16 | #17 | `f58a2feac580ca37bb4d7b3c30e122908bfd6b07` | `TAIWAN_SOURCE_LIFECYCLE_DRAFT` |
-| #20 | #19 | `ad065c8ac944f2fb4f9d60e65b008367b1291c43` | `DOCUMENTED_GIT_TOWN_DELIVERY_GRAPH_DRAFT` |
-| #22 | #21 | `a70a52cc6e3e2f4107edae2f7bb2034029161568` | pinned Git Town v24.0.0 candidate packet; runtime not admitted |
-
-Older runs on these exact historical heads may remain `PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET`. That history is immutable evidence, but it is not the repository's current hosted-CI state.
-
-## Current merged `main` domain truth
-
-`main@b1880abe317ac274b59695439c4f9682b8864f6b` already contains more engineering than the original 2026-08-16 packet plan implied.
-
-| Domain / Issues | Engineering present on `main` | Still Human/external gated |
-|---|---|---|
-| Taiwan evidence/source (#8, #17/#18) | product/corpus identity, OCR metrics, immutable-source/mapping/release contracts | real official bytes, reuse/legal review, qualified review, production activation |
-| Exercise (#32/#33) | canonical taxonomy, first-party bilingual 50-record `DRAFT` catalog, deterministic validator | editorial/rights admission, licensed third-party media |
-| Nutrition (#46/#47) | schema/admission contracts, synthetic/default-deny catalog, deterministic meal-plan compiler | real source/version/license review, exact admitted mappings |
-| Explanation (#35, #49/#51) | receipt-only decision-preserving contract and provider-boundary engineering | live provider credentials/deployment, security/privacy admission |
-| Android health (#10/#30/#31) | Health Connect availability/permission adapter surfaces and tests | real-device/OEM/privacy/store evidence |
-| iOS health (#9/#27-#29) | HealthKit bridge/read-policy surfaces plus reminder contracts | entitlement, real-device, privacy/store and AlarmKit evidence |
-| Product surface (#50/#52/#53) | information-only/disclaimer and hardening work represented in current `main` state | release/store/signing and external review |
-| Git Town (#21/#23) | pinned v24.0.0 candidate metadata, verifier, disposable canary harness, machine delivery contract | executable/runtime admission, consumer config/sync/publication canaries, supply-chain/legal approval |
-
-`ENGINEERING_PRESENT != PRODUCTION_ADMITTED`.
-
-## Active Draft evidence graph
-
-The current public Draft stack is:
-
-```text
-main@b1880abe...
-└── PR #55  agent/converge-domain-validation@1338b6fd...
-    ├── PR #57  agent/reconcile-implementation-status@58e4fc14...
-    │   └── PR #61  agent/reconcile-agent-runtime-contract@7a59f6b8...
-    │       └── PR #63  agent/gate-authority-drift@0c76c714...
-    │           └── PR #65  agent/reconcile-readme-authority@30468077...
-    │               └── PR #67  agent/reconcile-delivery-machine-ssot (Issue #66)
-    └── PR #59  agent/artifact-identity-receipts@036951d5...
-```
-
-| PR | Issue | Transition | Exact-head hosted evidence | Admission |
-|---:|---:|---|---|---|
-| #55 | #54 | `MERGED_DOMAIN_LANES_WITH_EVIDENCE_GAPS -> DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT` | run #88: 3/3 PASS | Draft; merge Human Admit |
-| #57 | #56 | `STALE_IMPLEMENTATION_SNAPSHOT -> CURRENT_PUBLIC_REPO_SSOT_DRAFT` | run #89: 3/3 PASS | Draft; merge Human Admit |
-| #59 | #58 | `HOSTED_BUILD_ARTIFACTS_WITH_AMBIGUOUS_HASH_SEMANTICS -> TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT` | run #90: 3/3 PASS | Draft; signing/provenance/merge Human Admit |
-| #61 | #60 | `STALE_AGENT_AUTHORITY_SURFACE -> CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT` | run #91: 3/3 PASS | Draft; merge Human Admit |
-| #63 | #62 | `MANUALLY_RECONCILED_AUTHORITY -> MACHINE_GATED_AUTHORITY_DRAFT` | run #92: 3/3 PASS | Draft; merge Human Admit |
-| #65 | #64 | `MACHINE_GATED_AGENT_STATUS_AUTHORITY -> README_AUTHORITY_RECONCILED_AND_GATED_DRAFT` | run #96: 3/3 PASS | Draft; merge Human Admit |
-| #67 | #66 | `PUBLIC_AUTHORITY_SURFACES_CURRENT_BUT_DELIVERY_GRAPH_STALE -> LIVE_DELIVERY_GRAPH_RECONCILED_DRAFT` | fresh exact-head run required | Draft; merge Human Admit |
-
-PR #67 is the serial convergence packet under PR #65. Its final exact head and hosted receipt are recorded in PR/Issue metadata after verification; this index must not guess a future SHA.
-
-## Open Issue semantics
-
-Open Issue means “some acceptance remains,” not “nothing exists.”
-
-Current engineering-complete-but-admission-open examples include #32/#33/#35/#46/#47. Their remaining gates are recorded in `docs/implementation-status.md`. External or Human-owned work such as real-source licensing, clinical/legal review, real-device validation, provider/store credentials, signing, release promotion, and Git Town runtime admission must remain open until evidence actually exists.
-
-Issue #45's old Actions-capacity problem is historical. Current Draft heads #55/#57/#59/#61/#63/#65 have executed hosted workflows successfully. Do not rewrite the old blocked receipts as PASS.
-
-## Stacked delivery authority
-
-Human narrative and machine projection are a pair:
-
-- `docs/git/STACKED_PRS.md`
-- `docs/git/stacked-delivery-manifest.json`
-- `scripts/validate_stacked_delivery.py --self-test`
-
-The manifest SHA-binds the exact `STACKED_PRS.md` bytes. If the narrative, graph, status vocabulary, or Git Town runtime boundary changes, update the pair atomically.
-
-## Evidence laws
-
-```text
-HISTORICAL_PRE_RUN_BLOCKED != CURRENT_ACTIONS_STATE
 OPEN_ISSUE != ABSENT_IMPLEMENTATION
-MERGED_ENGINEERING != EXTERNAL_ADMISSION
 OPEN_DRAFT_PR != MERGED_TO_MAIN
 HOSTED_PASS(commit A) != HOSTED_PASS(commit B)
 GITHUB_CHECK_PASS != HUMAN_ADMIT
-GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED
 ```
 
-## Human / external gates that documentation cannot close
+## Historical merged baseline
 
-- legal, clinical, editorial and rights acceptance;
-- real MOHW/TFDA or nutrition-source bytes and exact reuse terms;
-- real-device/OEM/entitlement/store evidence;
-- provider credentials, live deployment and independent security/privacy review;
-- release signing, store submission, promotion and destructive rollback;
-- Git Town executable/runtime/consumer-config admission and publication authority.
+Historical PRs #2/#15/#16/#20/#22 are merged to `main`; their older `PRE_RUN_BLOCKED_BY_ACTIONS_BUDGET` receipts remain historical evidence only. `main@b1880abe317ac274b59695439c4f9682b8864f6b` also contains domain engineering for exercise, nutrition, supplement logging/evidence contracts, explanation/provider boundaries, Health Connect/HealthKit adapters, reminders, and product hardening.
 
-See `docs/implementation-status.md`, `docs/git/GIT_TOWN_ADMISSION.md`, and `docs/git/STACKED_PRS.md` for the corresponding engineering boundaries.
+`MERGED_ENGINEERING != PRODUCTION_ADMISSION`.
+
+## Active Draft evidence graph
+
+```text
+main@b1880abe...
+└── PR #55  DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT
+    ├── PR #57  CURRENT_PUBLIC_REPO_SSOT_DRAFT
+    │   └── PR #61  CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT
+    │       └── PR #63  MACHINE_GATED_AUTHORITY_DRAFT
+    │           └── PR #65  README_AUTHORITY_RECONCILED_AND_GATED_DRAFT
+    │               └── PR #67  LIVE_DELIVERY_GRAPH_RECONCILED_DRAFT
+    │                   └── PR #69  SECONDARY_ROUTING_SURFACES_RECONCILED_DRAFT
+    │                       └── PR #71  CURRENT_IMPLEMENTATION_SSOT_DRAFT
+    │                           └── PR #73  CURRENT_ARCHITECTURE_PLATFORM_AUTHORITY_DRAFT
+    │                               └── PR #75  CURRENT_PRODUCT_SAFETY_AUTHORITY_DRAFT
+    │                                   └── PR #77  CURRENT_PRODUCT_IMPLEMENTATION_SSOT_DRAFT
+    │                                       └── PR #79 / Issue #78  CURRENT_MACHINE_DELIVERY_GRAPH_DRAFT
+    └── PR #59  TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT
+```
+
+Every Draft head owns separate evidence. A child does not inherit a parent's green run.
+
+## Exact-head hosted receipts
+
+| PR | Issue | Exact head | Hosted receipt | Meaning |
+|---:|---:|---|---|---|
+| #55 | #54 | `1338b6fd2a1007cf06e24aca3a6a4bd07f9b7fa5` | run #88, 3/3 PASS | domain validators CI-owned |
+| #57 | #56 | `58e4fc14aa0347b9c47dd15ff8f7f58f8b97f8d6` | run #89, 3/3 PASS | public implementation SSOT |
+| #59 | #58 | `036951d5a57809809564cca824013f428bc1ce3e` | run #90, 3/3 PASS | artifact identity lane |
+| #61 | #60 | `7a59f6b80f806476fdcea90f4b7722dc0ecc8ef3` | run #91, 3/3 PASS | Agent runtime authority |
+| #63 | #62 | `0c76c71413a73194986418e5f24571840623197f` | run #92, 3/3 PASS | authority machine gate |
+| #65 | #64 | `3046807758d025e0a9ad903f1109d1c6942e312f` | run #96, 3/3 PASS | bilingual README authority |
+| #67 | #66 | `9b04470098c438f1fb9bf9cb80e87752754e10de` | run #100, 3/3 PASS | delivery graph X8 |
+| #69 | #68 | `c9837970086ea0a522bda35a435ee1acc89e4ff2` | run #102, 3/3 PASS | roadmap/Git routing |
+| #71 | #70 | `59cd8d3bea3a13b1c3acf36530c0436196d34a01` | run #103, 3/3 PASS | implementation SSOT X10 |
+| #73 | #72 | `c633066df3361b3c57ebbfafd994755a8b6c999c` | run #105, 3/3 PASS | architecture/platform authority |
+| #75 | #74 | `144035f07694fc0439a094ba5326e0e93f9ee3a4` | run #108, 3/3 PASS | product/safety authority |
+| #77 | #76 | `56844bba2f46b0488ee18669f7bdde28f6603690` | run #110, 3/3 PASS | current product implementation SSOT |
+| #79 | #78 | current branch head | fresh exact-head run required | current machine-delivery reconciliation |
+
+## Current domain/product truth
+
+| Domain | Engineering present | Still not admitted |
+|---|---|---|
+| Supplement/product | OCR/barcode candidates, confirmed arithmetic, logging/timetable contracts; current MVP is information/logging and renders no safety verdict | diagnosis, personalized dose, medication compatibility, clinical authority |
+| Taiwan source lifecycle | immutable-source/mapping/release/revoke/rollback contracts | real official bytes, reuse/legal/qualified review, production activation |
+| Exercise | canonical taxonomy + first-party bilingual 50-record `DRAFT` catalog + validator | editorial/rights/media admission |
+| Nutrition | synthetic/default-deny catalog + admission schema + deterministic meal-plan compiler | real source/version/license/mappings |
+| AI/explanation | OpenAI/Anthropic provider descriptors, mandatory medical-risk notice, logged-totals/general-information surface, deterministic fallback | real provider adapters, credentials/deployment, security/privacy review |
+| Android/iOS health | Health Connect / HealthKit read adapter surfaces | real-device/OEM/entitlement/privacy/store evidence |
+| Reminders | local notification/recurrence contracts | exact/system alarm admission and device reliability |
+| Git Town | v24.0.0 pinned candidate metadata/verifier/canary harness | consumer config, live canaries, runtime/supply-chain/legal admission |
+
+Dormant rule-pack/decision-receipt engineering is provenance/tested code, not current MVP product authority.
+
+## Open Issue semantics
+
+Issues #32/#33/#35/#46/#47 remain open because external or Human acceptance remains, not because their repository engineering is absent. Issues #54/#56/#58/#60/#62/#64/#66/#68/#70/#72/#74/#76 have exact Draft PR engineering; Issue #78 is implemented by Draft PR #79 and awaits fresh exact-head evidence plus Human merge.
+
+Issue #45's Actions-capacity problem is historical. Current hosted execution exists; old blocked SHAs must not be rewritten as PASS.
+
+## Machine delivery authority
+
+The delivery graph is owned as a bound pair:
+
+- `docs/git/STACKED_PRS.md`
+- `docs/git/stacked-delivery-manifest.json`
+- `python3 scripts/validate_stacked_delivery.py --self-test`
+
+The manifest SHA-256 binds the exact narrative bytes. Any graph transition must update the pair atomically.
+
+## Human / external gates
+
+Documentation and CI cannot close legal/clinical/editorial/rights acceptance, real source licensing, real-device/OEM/entitlement/store evidence, provider credentials/deployment/security review, release signing/promotion, destructive rollback, merge authority, or Git Town runtime admission.

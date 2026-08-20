@@ -4,292 +4,156 @@
 
 Evidence-first fitness protocol execution for Android, iOS, and Web with Kotlin Multiplatform and Compose Multiplatform.
 
-> **Current truth (2026-08-19):** `ed3c/gym-come-true` is public. `main@b1880abe317ac274b59695439c4f9682b8864f6b` contains the merged foundation and domain contracts. Hosted GitHub Actions now execute normally. Active Draft evidence is layered above `main`; green checks prove only their exact heads. The product is not clinically admitted, not store-release admitted, has no licensed third-party exercise-media catalog, and has not admitted a Git Town consumer runtime.
+> **Current truth (2026-08-20):** the repository is public. The previously staged repo-internal chain PRs #55/#57/#61/#63/#65/#67/#69/#71/#73/#75/#77/#79 and convergence PR #81 are merged into `main`. Historical sibling PR #59 is closed and superseded by #81 after a fresh current-main 3/3 hosted run. Hosted GitHub Actions now execute normally. External legal/clinical/editorial/rights/device/store/provider/signing/Git Town runtime admission remains separate.
 
-## Read order and evidence vocabulary
+## Agent read order
 
-Agents must follow [AGENTS.md](AGENTS.md), [Implementation status](docs/implementation-status.md), [Architecture](docs/architecture.md), and [Git / Stacked-PR governance](docs/git/README.md).
+Read [AGENTS.md](AGENTS.md), [Implementation status](docs/implementation-status.md), [Issue closure audit](docs/issue-closure-audit.md), [Local Handoff Execution Queue](docs/local-handoff-execution-queue.md), [Architecture](docs/architecture.md), then [Git / Stacked-PR governance](docs/git/README.md) and [Molecular Stack graph](docs/git/STACKED_PRS.md).
 
-| State | Meaning |
-|---|---|
-| `MERGED` | Code is in `main`; this does not imply external or production admission. |
-| `OPEN DRAFT PR` | A reviewable GitHub subject exists and is not merged. |
-| `PASS` / `FAIL` | A named command actually executed against the stated subject. |
-| `PRE_RUN_BLOCKED` | A historical workflow stopped before runner execution; it is neither code pass nor code fail. |
-| `ABSENT` | Required evidence is unavailable. |
-| `NOT_IMPLEMENTED` | The capability is intentionally not present. |
-| `NOT_EXERCISED` | A subject-bound runtime canary has not run. |
-| `HUMAN_ADMIT` | Merge, release, legal/clinical/rights acceptance, signing or destructive production action remains human-owned. |
-
-Hard laws:
+Hard evidence laws:
 
 ```text
+OPEN_ISSUE != ABSENT_IMPLEMENTATION
 HOSTED_PASS(commit A) != HOSTED_PASS(commit B)
 GITHUB_CHECK_PASS != HUMAN_ADMIT
+INFORMATION_OR_LOGGING != SAFETY_VERDICT
+ARITHMETIC_RESULT != DOSE_RECOMMENDATION
+CONTRACT_CODE != LIVE_PROVIDER_EVIDENCE
 ADAPTER_PRESENT != REAL_DEVICE_VALIDATION
+DECLARED_PERMISSION != STORE_APPROVAL
+DEBUG_SIGNED != RELEASE_SIGNED
+SEMANTIC_PAYLOAD_HASHED != REPRODUCIBLE_BUILD_PROVEN
 GIT_TOWN_CANDIDATE != GIT_TOWN_RUNTIME_ADMITTED
 ```
 
-## Current delivery graph
+## Product boundary
 
-Historical foundation/convergence PRs #2, #15, #16, #20 and #22 are merged history.
+Gym Come True is an information/logging and deterministic protocol tool, not a diagnostic, dosing, medication-interaction, or clinical decision system. OCR/barcode output starts as a candidate; the user confirms label facts before arithmetic or logging. AI may summarize logged totals/general information with the required notice, but it cannot recommend dosage, invent evidence, diagnose, approve rights, or become decision authority.
 
-Current Draft evidence stack:
-
-```text
-main@b1880abe...
-└── PR #55  DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT
-    ├── PR #57  CURRENT_PUBLIC_REPO_SSOT_DRAFT
-    │   └── PR #61  CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT
-    │       └── PR #63  MACHINE_GATED_AUTHORITY_DRAFT
-    └── PR #59  TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT
-```
-
-Exact-head hosted runs #88, #89, #90, #91 and #92 executed successfully on their own PR heads. Older budget-blocked SHAs remain historical `PRE_RUN_BLOCKED` evidence and are not rewritten as green.
-
-## Product thesis
-
-Gym Come True is an information/logging and protocol-execution system, not a free-form supplement advisor.
-
-1. **Evidence-first capture** — ML Kit / Apple Vision OCR and barcode output begins as unverified evidence.
-2. **Deterministic arithmetic** — compatible mass units are normalized; unsupported units and missing serving evidence fail closed.
-3. **Copyright-clean exercise intelligence** — metadata, rendering, media, models and UGC are separate rights domains.
-4. **Nutrition provenance** — checked-in food fixtures are synthetic/default-deny; LLMs cannot invent nutrient facts.
-5. **A/B daily protocol** — deterministic 16:00 and 22:00 workout-day schedules support cross-midnight ordering.
-6. **Explanation after proof** — an LLM may explain a deterministic receipt; it cannot own dose, diagnosis, regulatory or rights decisions.
-
-## Repository map and State Machine ownership
+## Repository DAG: directory → State Machine → dataflow
 
 ```text
-.
-├── shared/                     deterministic domain contracts + shared UI
-├── androidApp/                 Android evidence, reminders, Health Connect adapters
-├── iosApp/                     Apple evidence, reminders, HealthKit read adapter
-├── webApp/                     JS/Wasm projection
-├── data/                       synthetic/Draft catalogs and schemas
-├── legal/                      source/media/provenance boundaries
-├── assets/                     first-party or explicitly admitted assets
-├── scripts/                    deterministic validators and local-byte capture
-├── docs/                       architecture, implementation and governance SSOT
-├── docs/git/                   stacked-worker / Git Town governance
-├── .github/workflows/          exact-head hosted verification
-└── AGENTS.md                   root execution contract
+capture/platform leaves
+  androidApp/ ─┐
+  iosApp/     ─┼─> shared/ deterministic domain core ─> shared UI ─> Android/iOS/Web projections
+  webApp/     ─┘                     │
+                                     ├─> data/ schemas + Draft/default-deny catalogs
+                                     ├─> legal/ + assets/ provenance/admission boundaries
+                                     └─> scripts/ validators ─> .github/workflows/ hosted evidence
+
+docs/ + docs/git/ ─> Agent/runtime/delivery authority ─> Issues / Local Handoff Queue
 ```
 
-| Directory | State Machine / responsibility | Current evidence ceiling |
+| Directory | Owning State Machine | Inputs → outputs | Evidence ceiling |
+|---|---|---|---|
+| `shared/` | `UNVERIFIED -> USER_CONFIRMED -> DETERMINISTIC_RESULT -> LOGGED/RECEIPT` | confirmed supplement/food/workout facts → arithmetic, timetable, UI models | no dose/safety/clinical authority |
+| `androidApp/` | `PERMISSION -> CAPTURE -> ML_KIT_CANDIDATE -> CONFIRM -> LOCAL_ACTION` | camera/barcode/OCR + shared commands → reminders and Health Connect reads | adapter/tests != real-device/OEM/store proof |
+| `iosApp/` | `PERMISSION -> CAPTURE -> VISION_CANDIDATE -> CONFIRM -> LOCAL_ACTION` | Photos/camera/Vision + shared commands → notifications and HealthKit reads | entitlement/device/store/AlarmKit proof remains external |
+| `webApp/` | `BOOTSTRAP -> SHARED_UI_READY -> USER_INPUT -> LOCAL_RESULT` | browser input → shared deterministic result | no native-health parity claim |
+| `data/` | `SYNTHETIC_OR_DRAFT -> STRUCTURALLY_VALIDATED -> TEST_ONLY/ADMISSION_PENDING` | catalog/schema/source candidate → validated local records | checked-in fixture cannot self-admit production |
+| `legal/` | `UNKNOWN -> REVIEW -> ALLOW/DENY -> REVOKED` | exact source/media terms → admission record | no automatic legal approval |
+| `assets/` | `QUARANTINED -> HASHED -> RIGHTS_REVIEWED -> ADMITTED -> REVOKED` | first-party/candidate bytes → immutable admitted asset | third-party rights remain explicit |
+| `scripts/` | `INPUT -> VALIDATED -> PASS/FAIL` | repo bytes → deterministic receipts | validator != reviewer |
+| `.github/workflows/` | `QUEUED -> RUNNER_ALLOCATED -> EXECUTED -> PASS/FAIL -> ARTIFACT_UPLOADED` | exact checkout → CI evidence + artifact identity receipts | check != Human Admit |
+| `docs/` | `OBSERVED -> DOCUMENTED -> MACHINE_GATED -> SUPERSEDED` | live repo/evidence → authority surfaces | prose cannot close external gates |
+| `docs/git/` | `WORK_PACKET -> LEASED -> VERIFIED -> PUBLICATION_GATE -> MERGED/HUMAN_ADMIT` | Issue/branch/evals → molecular Stack trace | Git Town runtime remains blocked |
+
+## End-to-end product dataflows
+
+```text
+Supplement / Body Hacker
+capture -> OCR/barcode candidate -> user confirmation -> compatible-mass arithmetic
+-> logged total -> A/B daily timetable -> reminder command -> optional general-information AI explanation
+
+Nutrition
+synthetic/admitted food record -> provenance + serving validation -> deterministic nutrition arithmetic
+-> meal slots -> A/B workout timetable -> editable reminders
+
+Exercise/media
+first-party metadata/candidate asset -> quarantine -> exact provenance/rights review
+-> immutable hash -> admitted package OR deny/revoke
+
+Health
+platform permission -> least-privilege read adapter -> normalized shared observation -> user-visible log
+
+Artifact evidence
+build -> transport hash -> payload enumeration -> semantic payload hash -> JSON receipt -> hosted upload
+```
+
+## Real-problem closure matrix
+
+| Requested problem | Repository engineering | Closure state |
 |---|---|---|
-| `shared/` | `UNVERIFIED -> USER_CONFIRMED -> DETERMINISTIC_RESULT -> RECEIPT` | No personalized safe-dose or clinical authority. |
-| `androidApp/` | permission/capture -> ML Kit candidate -> confirmation; reminder and least-privilege Health Connect adapters | Adapter/tests exist; real-device/OEM/privacy/store evidence remains separate. |
-| `iosApp/` | picker/camera -> Vision candidate -> confirmation; UserNotifications and `NativeHealthReadBridge` | HealthKit read surface exists; entitlement/device/store evidence remains separate. |
-| `webApp/` | `BOOTSTRAP -> SHARED_UI_READY -> USER_INPUT -> LOCAL_RESULT` | No native-health parity claim. |
-| `data/` | `SYNTHETIC_OR_DRAFT -> STRUCTURALLY_VALIDATED -> TEST_ONLY` | Exercise content remains Draft; nutrition source candidates remain `CANDIDATE + DENY`. |
-| `legal/` | `UNKNOWN -> REVIEW -> ALLOW/DENY -> REVOKED` | No unknown-rights media/source can self-admit. |
-| `assets/` | `QUARANTINED -> HASHED -> RIGHTS_REVIEWED -> ADMITTED -> REVOKED` | First-party schematic assets only unless an exact admission record exists. |
-| `scripts/` | `INPUT -> VALIDATED -> PASS/FAIL` | Validators are not legal/clinical reviewers. |
-| `docs/` | `OBSERVED -> DOCUMENTED -> REVIEWED -> SUPERSEDED` | Authority drift is machine-gated on staged PR #63. |
-| `.github/workflows/` | `QUEUED -> RUNNER_ALLOCATED -> EXECUTED -> PASS/FAIL` | Current hosted runs execute; historical pre-run blocks remain historical evidence. |
-| `docs/git/` | `TASK_PACKET -> LEASED -> VERIFIED -> PUBLICATION_GATE -> HUMAN_ADMIT` | Git Town consumer runtime remains denied. |
+| KMP Android/iOS/Web build | shared JVM, Android debug/lint, Web distribution, iOS simulator framework/host repeatedly hosted-proven | **repo-internal closed**; store/signing/device release external |
+| ML Kit / Apple Vision supplement capture | on-device candidate extraction + user-confirmation boundary | **engineering present**; real consented accuracy corpus/device evidence open |
+| supplement totals/timetable/reminders | deterministic compatible-mass arithmetic, A/B schedule, local reminder contracts | **repo-internal closed**; no dosing/safety claim |
+| exercise metadata | canonical taxonomy + first-party bilingual 50-record `DRAFT` + validator | engineering present; Issue #32/#33 editorial/rights admission open |
+| exercise media / muscle visualization | first-party schematic/local mapping and default-deny media governance | licensed/commissioned media + anatomy validation open |
+| nutrition + meal planning | synthetic/default-deny catalog + validator + deterministic compiler | engineering present; Issue #46 real source/license and #47 admitted-record dependency open |
+| AI analysis | OpenAI/Anthropic descriptors, mandatory notice, logged-totals/general-information boundary, deterministic fallback | contract present; Issue #35 live provider/security/privacy open |
+| Health Connect / HealthKit | least-privilege read adapters | engineering present; real-device/OEM/entitlement/store evidence open |
+| exact alarm / AlarmKit | reminder fallback contracts only | **not admitted**; do not claim system-alarm reliability |
+| artifact identity | transport-vs-semantic receipt tooling merged by PR #81, run #128 | **repo-internal closed**; release signing/reproducibility/attestation external |
+| Git Town worker | v24.0.0 candidate metadata/verifier/harness | runtime/config/sync/publication canaries `NOT_EXERCISED` |
 
-## End-to-end data flows
+## Molecular Stack PR trace
 
-### Supplement / Body Hacker ledger
-
-```text
-Explicit capture
--> on-device OCR / barcode
--> UNVERIFIED candidate
--> physical-label confirmation
--> compatible-mass arithmetic
--> deterministic LOG / REVIEW / BLOCK receipt
--> A/B protocol compiler
--> Android / iOS / Web timeline
--> platform reminder
--> optional receipt-only explanation
-```
-
-### Taiwan regulatory evidence
+The implementation/governance chain is now merged:
 
 ```text
-Mutable MOHW/TFDA reference
--> CANDIDATE + DENY
--> approved local bytes
--> SHA-256 / content address
--> legal/reuse review
--> exact mapping
--> qualified review
--> DRAFT -> REVIEWED -> STAGED -> ACTIVE
--> SUSPENDED / EXPIRED / REVOKED / ROLLED_BACK
+main
+└─ #55 X2  domain validators / CI ownership
+   ├─ #57 X3  implementation SSOT
+   │  └─ #61 X5  AGENTS runtime contract
+   │     └─ #63 X6  authority machine gate
+   │        └─ #65 X7  bilingual README authority
+   │           └─ #67 X8  delivery machine SSOT
+   │              └─ #69 X9  roadmap/Git routing
+   │                 └─ #71 X10 implementation SSOT current chain
+   │                    └─ #73 X11 architecture/platform authority
+   │                       └─ #75 X12 product/safety authority
+   │                          └─ #77 X13 product implementation SSOT
+   │                             └─ #79 X14 current machine delivery graph
+   └─ #59 X4 historical sibling evidence (closed/unmerged after conflict)
+      └─ semantics replayed onto current main by #81 X15 artifact-identity convergence
 ```
 
-`HASH_VERIFIED != LEGAL_REVIEWED != CLINICALLY_REVIEWED`.
-
-### Exercise / media rights
-
-```text
-First-party metadata or candidate asset
--> quarantine
--> exact rights evidence
--> immutable hash
--> scope/territory/term/derivative review
--> ALLOW
--> deterministic package
--> takedown / revocation
-```
-
-Publicly reachable media is not automatically redistributable. Vendor CDN hotlinking is not an admission path.
-
-### Nutrition / meal plan
-
-```text
-Synthetic or admitted food record
--> provenance + serving/unit validation
--> deterministic nutrition arithmetic
--> user-selected targets/preferences
--> meal slots + A/B workout-day timetable
--> editable reminder commands
-```
-
-No disease-treatment diet, medical calorie target or LLM-created nutrient fact is admitted.
-
-### Worker / Stacked PR
-
-```text
-Work packet
--> branch/path lease
--> bounded edit
--> fixed evals + negative controls
--> exact-head publication
--> remote ancestry/check evidence
--> HUMAN_ADMIT for merge/promotion
-```
-
-## Current capability truth
-
-| Capability | Current state | Not yet proven/admitted |
-|---|---|---|
-| Android OCR/barcode | Bundled ML Kit candidate extraction | Representative consented corpus and real-device accuracy evidence |
-| iOS OCR/barcode | Apple Vision candidate extraction | Representative consented corpus and real-device accuracy evidence |
-| Supplement arithmetic | Shared deterministic mass arithmetic | Personalized safe dose / medication compatibility |
-| Exercise catalog | 50-record first-party bilingual Draft + deterministic validator | Editorial/rights acceptance and licensed third-party media |
-| Muscle visualization | First-party schematic/local mapping | Anatomical/medical validation beyond declared schematic scope |
-| Nutrition | Synthetic bilingual catalog + deterministic admission validator + meal-plan compiler | Real Taiwan source/version/reuse-rights admission |
-| Android health | Health Connect availability/permission/read adapters + tests | Real-device/OEM/privacy/store evidence |
-| iOS health | HealthKit least-privilege read adapter | Entitlement/user authorization/device/store evidence |
-| Reminders | Android local reminders + iOS UserNotifications | Universal delivery, exact-alarm or AlarmKit reliability guarantees |
-| LLM explanation | Receipt-only decision-preserving contract | Security/privacy Human Admit and live provider/deployment evidence |
-| Artifact identity | Staged transport-vs-semantic identity receipts in PR #59 | Release reproducibility / signing / supply-chain attestation |
-| Git Town | Pinned v24.0.0 candidate metadata and canary harness | Consumer config, binary execution, live sync/publication canaries, runtime admission |
-
-## Honest capability matrix
-
-The capability table above is intentionally split between **current state** and **not yet proven/admitted**. Adapter presence, hosted checks, local arithmetic, or Draft content never upgrades an external evidence lane.
-
-## Safety contract
-
-- OCR and barcode output remains `UNVERIFIED` until explicit confirmation.
-- Compatible mass arithmetic is information, not a safe or recommended dose.
-- IU, medication context, symptoms, pregnancy/procedure context, missing servings, and evidence conflicts fail closed.
-- LLM output cannot diagnose, recommend dosage, invent nutrient facts, create regulatory rules, approve rights, or suppress deterministic warnings.
-- Exact-alarm/AlarmKit and health adapters must not be presented as universal real-device reliability without measured evidence.
-- Current hosted PASS is exact-head evidence only and never grants merge or production authority.
-
-## Copyright and data admission
-
-- Publicly reachable content is not automatically redistributable.
-- Third-party exercise media, food photos, anatomy assets, UGC, vendor IDs, and CDN URLs require exact rights/provenance evidence.
-- Repository-level Apache-2.0 licensing does not license third-party media or official datasets.
-- Nutrition and regulatory source candidates default deny until their owning source/reuse/legal review is admitted.
-- Revocation/takedown remains part of every production asset lifecycle.
-
-## Delivery state machine
-
-```text
-MERGED_MAIN
-  -> DOMAIN_VALIDATORS_OWNED_BY_CI_DRAFT            # PR #55
-  -> CURRENT_PUBLIC_REPO_SSOT_DRAFT                 # PR #57
-  -> CURRENT_AGENT_RUNTIME_CONTRACT_DRAFT           # PR #61
-  -> MACHINE_GATED_AUTHORITY_DRAFT                  # PR #63
-
-Sibling evidence from PR #55:
-  -> TRANSPORT_AND_SEMANTIC_IDENTITIES_SEPARATED_DRAFT  # PR #59
-
-Every Draft head:
-  -> EXACT_HEAD_HOSTED_CHECKS
-  -> HUMAN_ADMIT
-  -> MERGE / PROMOTION only when authorized
-```
+Every historical hosted run remains evidence for its exact head only. #59 was not force-merged: its workflow conflict was handled by a fresh current-main convergence packet, preserving semantic-conflict-stop behavior.
 
 ## Git Town boundary
 
 Canonical method: [`skills-shared/skills/git-town-stacked-pr-worker`](https://github.com/ed3c/skills-shared/tree/main/skills/git-town-stacked-pr-worker).
-
-Current state:
 
 ```yaml
 candidate: v24.0.0
 candidate_metadata: VERIFIED
 runtime: CANDIDATE_METADATA_VERIFIED_RUNTIME_BLOCKED
 consumer_config: NOT_IMPLEMENTED
-binary_execution_in_consumer: NOT_EXERCISED
 sync_canary: NOT_EXERCISED
 publication_canary: NOT_EXERCISED
 background_sync: DISABLED
 production_use: DENY
-merge_ship_promotion: HUMAN_ADMIT
 ```
 
-Git Town may own branch hierarchy/synchronization only after runtime admission. It never proves product correctness, legal/clinical acceptance, merge readiness or release readiness.
+## Local Handoff
+
+Only work that requires local devices/accounts/credentials/legal or rights review remains in the handoff queue. See [docs/local-handoff-execution-queue.md](docs/local-handoff-execution-queue.md). Open domain Issues #32/#33/#35/#46/#47 are acceptance queues, not proof that implementation is absent.
 
 ## Validation
 
-Policy/convergence commands on the current staged lineage include:
-
 ```bash
 python3 scripts/validate_repository.py
-python3 scripts/validate_taiwan_rule_pack.py
-python3 scripts/validate_taiwan_source_lifecycle.py
-python3 scripts/validate_taiwan_source_hardening.py
 python3 scripts/validate_stacked_delivery.py --self-test
-python3 data/exercise-catalog/validate_catalog.py
 python3 data/exercise-catalog/validate_catalog.py --selftest
-python3 scripts/validate_nutrition_catalog.py
 python3 scripts/validate_nutrition_catalog.py --self-test
-python3 scripts/validate_authority_surfaces.py
 python3 scripts/validate_authority_surfaces.py --self-test
+python3 scripts/validate_product_safety_authority.py --self-test
+python3 scripts/validate_artifact_identity.py self-test
 sh ./gradlew :shared:jvmTest
 sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug
 sh ./gradlew :webApp:composeCompatibilityBrowserDistribution
 ```
 
-The hosted macOS lane also links the Kotlin iOS simulator framework, generates the canonical XcodeGen project and builds the unsigned simulator host.
-
-## Remaining external / Human Admit gates
-
-Repository code cannot manufacture:
-
-- consented real Traditional Chinese label corpus and withdrawal/deletion operations;
-- exact MOHW/TFDA bytes, reuse approval, qualified Taiwan review and production rule activation;
-- real Taiwan food-composition source/version/reuse-rights mappings;
-- exercise editorial/rights acceptance and licensed/commissioned media;
-- real-device Health Connect/HealthKit/reminder evidence;
-- security/privacy approval and production provider/store credentials;
-- App Store / Google Play signing, listings, declarations and release-console operations;
-- Git Town runtime admission and live consumer canaries;
-- merge/release promotion.
-
-## Document index
-
-- [Implementation status](docs/implementation-status.md)
-- [Architecture](docs/architecture.md)
-- [Roadmap](docs/roadmap.md)
-- [GitHub Issue / PR index](docs/github-issue-index.md)
-- [Git / Stacked-PR governance](docs/git/README.md)
-- [Molecular Stack graph](docs/git/STACKED_PRS.md)
-- [Git Town admission](docs/git/GIT_TOWN_ADMISSION.md)
-- [Authority surface contract](docs/authority-surface-contract.md)
-- [Copyright and data governance](docs/copyright-and-data-governance.md)
-- [Health and supplement safety](docs/health-safety.md)
-
 ## License
 
-Repository-authored code and documentation are licensed under the **Apache License 2.0**; see [LICENSE](LICENSE). Third-party dependencies and assets retain their own terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Apache-2.0 does not grant rights to third-party media, official-source redistribution, trademarks, medical approval or store/release authorization.
+Repository-authored code and documentation are licensed under the **Apache License 2.0**. Third-party dependencies/assets retain their own terms; Apache-2.0 does not grant third-party media, official-data redistribution, medical, trademark, store, or release rights.

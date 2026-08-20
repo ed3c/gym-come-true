@@ -39,6 +39,7 @@ jobs:
           python3 scripts/validate_authority_surfaces.py --self-test
           python3 scripts/validate_product_safety_authority.py
           python3 scripts/validate_product_safety_authority.py --self-test
+          python3 scripts/validate_artifact_identity.py self-test
 
   android-web-domain:
     name: android-web-domain
@@ -65,6 +66,22 @@ jobs:
         run: sh ./gradlew :androidApp:assembleDebug :androidApp:lintDebug --stacktrace
       - name: Browser compatibility distribution
         run: sh ./gradlew :webApp:composeCompatibilityBrowserDistribution --stacktrace
+      - name: Emit Android and Web artifact identity receipts
+        run: |
+          mkdir -p build/evidence
+          APK="$(find androidApp/build/outputs/apk/debug -maxdepth 1 -type f -name '*.apk' -print -quit)"
+          test -n "$APK"
+          python3 scripts/validate_artifact_identity.py apk "$APK" \
+            --output build/evidence/android-artifact-identity.json
+          python3 scripts/validate_artifact_identity.py tree webApp/build/dist \
+            --output build/evidence/web-artifact-identity.json
+      - name: Upload build identity receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact-identities
+          path: build/evidence/*.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Upload Android debug evidence
         uses: actions/upload-artifact@v4
         with:
